@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status"
+        android:layout_width="fill_parent"
+        android:layout_height="25.0dip"
+        android:background="@color/color1" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100.0dip"
+        android:background="@color/color1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="奖金池"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:text="3210"
+            android:textColor="@color/white"
+            android:textSize="30.0sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/service_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="5.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:drawablePadding="5.0dip"
+        android:drawableRight="@drawable/down"
+        android:padding="5.0dip"
+        android:text="1月"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
+
+    <include layout="@layout/service_fg_pro_layout" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:scrollbars="none">
+
+        <include layout="@layout/service_fg_barchart" />
+    </ScrollView>
+</LinearLayout>

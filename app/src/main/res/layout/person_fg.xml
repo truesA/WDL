@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status"
+        android:layout_width="fill_parent"
+        android:layout_height="25.0dip"
+        android:background="@color/text_color05" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55.0dip"
+        android:layout_below="@+id/view_status"
+        android:background="@color/text_color05"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="人脉"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="内测人脉模块暂不开放" />
+
+    <android.support.design.widget.FloatingActionButton
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/m_main_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20.0dip"
+        android:layout_marginRight="26.0dip"
+        android:clickable="true"
+        android:src="@drawable/out_app"
+        app:backgroundTint="@color/color1"
+        app:borderWidth="0.0dip"
+        app:fabSize="normal" />
+</RelativeLayout>

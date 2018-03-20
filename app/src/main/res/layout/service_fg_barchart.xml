@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/edit_wilter_c5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_m1_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:text="57(22)"
+                android:textColor="@color/color1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_m1_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="44(33)"
+                android:textColor="@color/color2"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_m1"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:background="@drawable/edit_wilter_c5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/edit_wilter_c5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M2"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_m2_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:text="57(22)"
+                android:textColor="@color/color1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_m2_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="44(33)"
+                android:textColor="@color/color2"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_m2"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:background="@drawable/edit_wilter_c5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/edit_wilter_c5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预约率"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_yyv_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:text="57%"
+                android:textColor="@color/color1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_yyv_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="44%"
+                android:textColor="@color/color2"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_yyv"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:background="@drawable/edit_wilter_c5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/edit_wilter_c5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_t1_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:text="57"
+                android:textColor="@color/color1"
+                android:textSize="@dimen/text_size3" />
+
+            <TextView
+                android:id="@+id/barchart_t1_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="44"
+                android:textColor="@color/color2"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_t1"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:background="@drawable/edit_wilter_c5" />
+    </LinearLayout>
+</LinearLayout>

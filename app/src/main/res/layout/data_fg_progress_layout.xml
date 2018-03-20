@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginBottom="10.0dip"
+    android:layout_marginLeft="10.0dip"
+    android:layout_marginRight="10.0dip"
+    android:background="@drawable/edit_wilter_c5"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_zcz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_zcz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_zcz_tc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="总产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_zcz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_zcz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_zbycz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_zbycz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bycz_bytc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="保养产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_zbycz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_zbycz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_t1cz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_t1cz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_t1cz_t1tc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="T1产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_t1cz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_t1cz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_m1cz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_m1cz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_m1cz_m1tc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="M1产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_m1cz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_m1cz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_m2cz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_m2cz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_m2cz_m2tc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="M2产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_m2cz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_m2cz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_yycz_right_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/color1"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_yycz_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_yycz_yytc"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center"
+            android:text="预约产值"
+            android:textSize="@dimen/text_size2" />
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/probar_yycz_left_p"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <TextView
+                android:id="@+id/probar_yycz_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size4" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

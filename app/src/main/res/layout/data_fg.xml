@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:andriod="http://schemas.android.com/apk/res/android"
+    andriod:layout_width="fill_parent"
+    andriod:layout_height="fill_parent"
+    andriod:orientation="vertical">
+
+    <LinearLayout
+        andriod:layout_width="fill_parent"
+        andriod:layout_height="fill_parent"
+        andriod:background="@color/bg_color"
+        andriod:orientation="vertical">
+
+        <View
+            andriod:id="@+id/view_status"
+            andriod:layout_width="fill_parent"
+            andriod:layout_height="25.0dip"
+            andriod:background="@color/text_color05" />
+
+        <RelativeLayout
+            andriod:layout_width="fill_parent"
+            andriod:layout_height="wrap_content">
+
+            <LinearLayout
+                andriod:layout_width="fill_parent"
+                andriod:layout_height="55.0dip"
+                andriod:layout_centerInParent="true"
+                andriod:background="@color/text_color05"
+                andriod:gravity="center">
+
+                <RadioGroup
+                    andriod:id="@+id/rg_top"
+                    andriod:layout_width="150.0dip"
+                    andriod:layout_height="35.0dip"
+                    andriod:layout_gravity="center"
+                    andriod:layout_margin="10.0dip"
+                    andriod:gravity="center"
+                    andriod:orientation="horizontal">
+
+                    <RadioButton
+                        andriod:id="@+id/rb_top_c"
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:background="@drawable/rb_bg_01"
+                        andriod:button="@null"
+                        andriod:checked="true"
+                        andriod:gravity="center"
+                        andriod:paddingBottom="6.0dip"
+                        andriod:paddingTop="6.0dip"
+                        andriod:text="产值"
+                        andriod:textColor="@color/title_text_sel"
+                        andriod:textSize="16.0sp" />
+
+                    <RadioButton
+                        andriod:id="@+id/rb_top_t"
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:background="@drawable/rb_bg_02"
+                        andriod:button="@null"
+                        andriod:gravity="center"
+                        andriod:paddingBottom="6.0dip"
+                        andriod:paddingTop="6.0dip"
+                        andriod:text="台次"
+                        andriod:textColor="@color/title_text_sel"
+                        andriod:textSize="16.0sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                andriod:id="@+id/time_selsect"
+                andriod:layout_width="wrap_content"
+                andriod:layout_height="wrap_content"
+                andriod:layout_alignParentLeft="true"
+                andriod:layout_centerInParent="true"
+                andriod:layout_marginLeft="15.0dip"
+                andriod:text="1月"
+                andriod:textColor="@color/white"
+                andriod:textSize="@dimen/text_size3" />
+        </RelativeLayout>
+
+        <ScrollView
+            andriod:layout_width="fill_parent"
+            andriod:layout_height="0.0dip"
+            andriod:layout_weight="1.0"
+            andriod:scrollbars="none">
+
+            <LinearLayout
+                andriod:layout_width="fill_parent"
+                andriod:layout_height="fill_parent"
+                andriod:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    andriod:id="@+id/data_line_chart"
+                    andriod:layout_width="fill_parent"
+                    andriod:layout_height="200.0dip"
+                    andriod:layout_margin="10.0dip"
+                    andriod:background="@drawable/edit_wilter_c5" />
+
+                <LinearLayout
+                    andriod:id="@+id/ll_chanZ"
+                    andriod:layout_width="fill_parent"
+                    andriod:layout_height="80.0dip"
+                    andriod:layout_margin="10.0dip"
+                    andriod:background="@drawable/edit_wilter_c5"
+                    andriod:gravity="center"
+                    andriod:orientation="horizontal">
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="目标达成率"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/chanZ_mubv"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="56%"
+                            andriod:textColor="@color/color1"
+                            andriod:textSize="@dimen/text_size1" />
+                    </LinearLayout>
+
+                    <View
+                        andriod:layout_width="1.0dip"
+                        andriod:layout_height="20.0dip"
+                        andriod:background="@color/black" />
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="平日（辆）"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/chanZ_today"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="9786"
+                            andriod:textColor="@color/color1"
+                            andriod:textSize="@dimen/text_size1" />
+                    </LinearLayout>
+
+                    <View
+                        andriod:layout_width="1.0dip"
+                        andriod:layout_height="20.0dip"
+                        andriod:background="@color/black" />
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="周末（辆）"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/chanZ_sunday"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="14986"
+                            andriod:textColor="@color/color1"
+                            andriod:textSize="@dimen/text_size1" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    andriod:id="@+id/ll_taiC"
+                    andriod:layout_width="fill_parent"
+                    andriod:layout_height="80.0dip"
+                    andriod:layout_margin="10.0dip"
+                    andriod:background="@drawable/edit_wilter_c5"
+                    andriod:gravity="center"
+                    andriod:orientation="horizontal"
+                    andriod:visibility="gone">
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:id="@+id/taiC_m1"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="M1"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/taiC_m2"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="M2"
+                            andriod:textSize="@dimen/text_size4" />
+                    </LinearLayout>
+
+                    <View
+                        andriod:layout_width="1.0dip"
+                        andriod:layout_height="20.0dip"
+                        andriod:background="@color/black" />
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:id="@+id/taiC_yuv"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="预约率"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/taiC_mubv"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="目标达成率"
+                            andriod:textSize="@dimen/text_size6" />
+                    </LinearLayout>
+
+                    <View
+                        andriod:layout_width="1.0dip"
+                        andriod:layout_height="20.0dip"
+                        andriod:background="@color/black" />
+
+                    <LinearLayout
+                        andriod:layout_width="0.0dip"
+                        andriod:layout_height="wrap_content"
+                        andriod:layout_weight="1.0"
+                        andriod:gravity="center"
+                        andriod:orientation="vertical"
+                        andriod:paddingBottom="5.0dip"
+                        andriod:paddingTop="5.0dip">
+
+                        <TextView
+                            andriod:id="@+id/taiC_today"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:text="平日（辆）"
+                            andriod:textSize="@dimen/text_size4" />
+
+                        <TextView
+                            andriod:id="@+id/taiC_sunday"
+                            andriod:layout_width="wrap_content"
+                            andriod:layout_height="wrap_content"
+                            andriod:layout_marginTop="5.0dip"
+                            andriod:text="周末（辆）"
+                            andriod:textSize="@dimen/text_size4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/data_fg_progress_layout" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
