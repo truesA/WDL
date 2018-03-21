@@ -4,10 +4,6 @@
     <color name="black">#ff000000</color>
     <color name="btn_cancel_color">#ff999999</color>
     <color name="btn_confirm_color">#ff303f9f</color>
-    <color name="cardview_dark_background">#ff424242</color>
-    <color name="cardview_light_background">#ffffffff</color>
-    <color name="cardview_shadow_end_color">#03000000</color>
-    <color name="cardview_shadow_start_color">#37000000</color>
     <color name="check_bg">#fff2f2f2</color>
     <color name="color1">#ffff3366</color>
     <color name="color2">#ff3f7fff</color>
@@ -24,6 +20,7 @@
     <color name="colorPrimary">#ff3f51b5</color>
     <color name="colorPrimaryDark">#ff303f9f</color>
     <color name="colorText">#ff797979</color>
+    <color name="white">#ffffffff</color>
     <color name="colorWhite1">#ffffffff</color>
     <color name="colorWhite2">#66ffffff</color>
     <color name="colorWhite3">#bbffffff</color>
@@ -31,13 +28,6 @@
     <color name="line_color">#ffe5e5e5</color>
     <color name="main_color">#ff1296db</color>
     <color name="main_hui">#ff8a8a8a</color>
-    <color name="md_btn_selected">#33969696</color>
-    <color name="md_btn_selected_dark">#40cbcbcb</color>
-    <color name="md_divider_black">#10000000</color>
-    <color name="md_divider_white">#10ffffff</color>
-    <color name="md_edittext_error">#ffdd2c00</color>
-    <color name="md_material_blue_600">#ff2196f3</color>
-    <color name="md_material_blue_800">#ff1565c0</color>
     <color name="phoneTextBlue">#ff128ce1</color>
     <color name="text_color01">#ffff3366</color>
     <color name="text_color02">#ff3f7fff</color>
@@ -48,5 +38,12 @@
     <color name="text_color07">#ffcccccc</color>
     <color name="toolbar_color">#ff333333</color>
     <color name="transparent">#00000000</color>
-    <color name="white">#ffffffff</color>
+
+    <color name="gray">#cccccc</color>
+
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="un_press_color">#9C27B0</color>
 </resources>

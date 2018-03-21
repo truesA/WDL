@@ -8,7 +8,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.achers.mvpdemo.R;
+
+import com.wdl.amdroid_jwdl.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

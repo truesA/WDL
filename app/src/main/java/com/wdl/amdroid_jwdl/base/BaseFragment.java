@@ -1,12 +1,17 @@
 package com.wdl.amdroid_jwdl.base;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 
 import butterknife.ButterKnife;
@@ -16,7 +21,7 @@ import butterknife.ButterKnife;
  * Created by lenovo on 2017/6/28.
  */
 public abstract class BaseFragment extends Fragment {
-
+    private AlertDialog alertDialog;
     protected Context context;
     protected View rootView;
     /**
@@ -100,4 +105,27 @@ public abstract class BaseFragment extends Fragment {
         return (String) PreferencesUtil.getInstance(context).getParam(key, "");
     }
 
+    public void showLoadingDialog()
+    {
+        alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+        alertDialog.setCancelable(false);
+        alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener()
+        {
+            public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+            {
+                if ((paramInt != 84) && (paramInt == 4));
+                return false;
+            }
+        });
+        alertDialog.show();
+        alertDialog.setContentView(R.layout.loading_alert);
+        alertDialog.setCanceledOnTouchOutside(false);
+    }
+
+    public void dismissLoadingDialog() {
+        if (alertDialog == null || (!alertDialog.isShowing()))
+            return;
+        alertDialog.dismiss();
+    }
 }

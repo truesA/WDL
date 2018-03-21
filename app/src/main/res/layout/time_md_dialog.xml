@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:orientation="vertical">
+
+    <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dip"
+         android:background="@drawable/edit_wilter_c5"
+         android:orientation="horizontal">
+
+        <cn.addapp.pickers.widget.WheelListView
+             android:id="@+id/wheelview_timeY"
+             android:layout_width="0dip"
+             android:layout_height="wrap_content"
+             android:layout_weight="1.0" />
+
+        <cn.addapp.pickers.widget.WheelListView
+             android:id="@+id/wheelview_timeM"
+             android:layout_width="0.0dip"
+             android:layout_height="wrap_content"
+             android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

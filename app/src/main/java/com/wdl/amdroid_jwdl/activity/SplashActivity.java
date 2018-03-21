@@ -7,6 +7,7 @@ import android.util.Log;
 import com.wdl.amdroid_jwdl.MainActivity;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.base.BaseActivity;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,15 +22,20 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
 
-       // full(true);
+        // full(true);
 
         Observable.timer(3, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        Log.e("Long",aLong+"");
-                        startActivity(LoginActivity.class);
-                        finish();
+                        Log.e("Long", aLong + "");
+                        if (PreferencesUtil.getInstance(SplashActivity.this).isLogin()) {
+                            startActivity(MainActivity.class);
+
+                        } else {
+                            finish();
+                            startActivity(LoginActivity.class);
+                        }
                     }
                 });
 

@@ -42,4 +42,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation 'com.google.guava:guava:19.0'
     implementation 'com.android.support:multidex:1.0.1'
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-1'//没有使用特殊Header，可以不加这行
+    implementation 'com.github.addappcn:android-pickers:1.0.3'
+    implementation project(':MPChartLib')
 }

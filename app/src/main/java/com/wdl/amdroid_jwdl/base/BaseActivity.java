@@ -94,7 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void dismissLoadingDialog() {
-        if ((alertDialog == null) || (!(alertDialog.isShowing())))
+        if (alertDialog == null || (!alertDialog.isShowing()))
             return;
         alertDialog.dismiss();
     }

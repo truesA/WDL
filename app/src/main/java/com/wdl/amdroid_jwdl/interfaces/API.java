@@ -6,7 +6,7 @@ package com.wdl.amdroid_jwdl.interfaces;
 
 public class API
 {
-    public static final String BASE_URL = "https://85bfb0a9.ngrok.io/";
+    public static final String BASE_URL = "https://de70ebd3.ngrok.io/";
     public static final String Main_Data = "sa_kpi";
     public static final String Main_USERMSG = "user_search_detail";
     public static final String Main_mine = "bk_call";

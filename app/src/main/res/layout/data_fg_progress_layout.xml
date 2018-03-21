@@ -432,7 +432,8 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/probar_yycz_left_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
