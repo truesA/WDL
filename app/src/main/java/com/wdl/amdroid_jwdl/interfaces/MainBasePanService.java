@@ -10,8 +10,7 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public abstract interface MainBasePanService
-{
-    @GET("user_search")
-    public abstract Observable<SeachBean> getSeachContent(@Query("plate_number") String paramString);
+public  interface MainBasePanService {
+    @GET(API.Msg_search)
+    Observable<SeachBean> getSeachContent(@Query("plate_number") String paramString);
 }

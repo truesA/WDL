@@ -79,7 +79,6 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     public TextView chanZ_today;
     int checkedIds = 0;
     private boolean isAnim = false;
-    boolean isAnimActive;
 
     @BindView(R.id.ll_chanZ)
     public LinearLayout llChanZ;
@@ -240,7 +239,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onNext(MainDataBean mainDataBean) {
-                        //dismissLoadingDialog();
+                        dismissLoadingDialog();
                         Log.e("mainDataBean", mainDataBean.getError_code() + "");
                         if (mainDataBean.getError_code() == 200) {
                             //  DataFragment.access$002(DataFragment.this,   val$months);
@@ -286,8 +285,6 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         mLineChar.invalidate();
     }
 
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(api = 24)
     private void dealProgess(MainDataBean resultBean, int checkedIds) {
         if (checkedIds == 0) {
             tv_zcz_tc.setText("总产值");
@@ -359,9 +356,9 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         int lastvalue = 0;
         if (value == 0) {
             if (checkedIds != 0) {
-                value = 20;
+                value = 1;
             } else {
-                value = 500;
+                value = 2500;
             }
         }
         double d1 = maxvalue * 1.0;
@@ -376,21 +373,21 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
 
     private void dealmeduler(MainDataBean resultBean, int checkedIds) {
-        LoginUesr LoginUesr = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
+        LoginUesr loginUesr = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
         if (checkedIds == 0) {
-            if (LoginUesr.getUserType() == 1) {
+            if (loginUesr.getUserType() == 1) {
                 int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(0);
-                chanZ_mubv.setText(new Double(d).intValue() + "%");
+                chanZ_mubv.setText(d + "%");
                 chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0) + "");
                 chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(0) + "");
             } else {
                 int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(1);
-                chanZ_mubv.setText(new Double(d).intValue() + "%");
+                chanZ_mubv.setText(d + "%");
                 chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(1) + "");
                 chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(1) + "");
             }
         } else {
-            if (LoginUesr.getUserType() == 1) {
+            if (loginUesr.getUserType() == 1) {
                 sethtmlValue(taiC_m1, "M1", resultBean.getResult().getM1_rate().get(0) + "%");
                 sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(0) + "%");
                 sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(0) + "%");
@@ -429,8 +426,9 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             set1.setValueTextSize(9.0F);
             set1.setDrawFilled(false);
             set1.setFormSize(15.0F);
+
             set2 = new LineDataSet(paramArrayList2, "");
-            set2.setColor(Color.BLACK);
+            set2.setColor(Color.BLUE);
             set2.setCircleColor(Color.BLACK);
             set2.setLineWidth(3.0F);
             set2.setCircleRadius(3.0F);
@@ -438,10 +436,11 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             set2.setValueTextSize(9.0F);
             set1.setDrawFilled(false);
             set2.setFormSize(15.0F);
+
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             dataSets.add(set1);
             dataSets.add(set2);
-            LineData lineData1 = new LineData(set1);
+            LineData lineData1 = new LineData(dataSets);
             lineData1.setValueTextColor(0);
             lineData1.setValueTextSize(9.0F);
             mLineChar.setData(lineData1);
@@ -453,6 +452,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             LineDataSet set = (LineDataSet) iSet;
             set.setDrawCircles(false);
         }
+
 
     }
 
@@ -519,7 +519,38 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if (checkedId == radioButtonC.getId()) {
 
+            if (resultBean == null) {
+                getAllData(monthdefult);
+                return;
+            }
+            checkedIds = 0;
+            ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getMn_rate().get(0));
+            ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getMn_rate().get(1));
+            llChanZ.setVisibility(View.GONE);
+            llTaiC.setVisibility(View.VISIBLE);
+            setData(value1, value2);
+            mLineChar.animateX(2500);
+            mLineChar.invalidate();
+            dealProgess(resultBean, checkedIds);
+            dealmeduler(resultBean, checkedIds);
+        } else {
+            if (resultBean == null) {
+                getAllData(monthdefult);
+                return;
+            }
+            checkedIds = 1;
+            ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getTimes_rate().get(0));
+            ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getTimes_rate().get(1));
+            llChanZ.setVisibility(View.VISIBLE);
+            llTaiC.setVisibility(View.GONE);
+            setData(value1, value2);
+            mLineChar.animateX(2500);
+            mLineChar.invalidate();
+            dealProgess(resultBean, checkedIds);
+            dealmeduler(resultBean, checkedIds);
+        }
     }
 
     @Override

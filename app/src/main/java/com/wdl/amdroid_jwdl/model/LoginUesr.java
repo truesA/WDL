@@ -6,8 +6,7 @@ package com.wdl.amdroid_jwdl.model;
 
 import java.io.Serializable;
 
-public class LoginUesr
-        implements Serializable
+public class LoginUesr implements Serializable
 {
     private boolean isLogin;
     private String token;

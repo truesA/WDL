@@ -8,16 +8,17 @@ import com.wdl.amdroid_jwdl.model.MainDataBean;
 import com.wdl.amdroid_jwdl.model.MsgListBean;
 
 import io.reactivex.Observable;
+
 import java.util.Map;
+
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
-public abstract interface DataService
-{
-    @GET("sa_kpi")
-    public abstract Observable<MainDataBean> getMainData(@Query("sa_month") int paramInt);
+public interface DataService {
+    @GET(API.Main_Data)
+    Observable<MainDataBean> getMainData(@Query("sa_month") int sa_month);
 
-    @GET("user_rank")
-    public abstract Observable<MsgListBean> getMsgListBean(@QueryMap Map<String, String> paramMap);
+    @GET(API.Main_msg)
+    Observable<MsgListBean> getMsgListBean(@QueryMap Map<String, String> paramMap);
 }

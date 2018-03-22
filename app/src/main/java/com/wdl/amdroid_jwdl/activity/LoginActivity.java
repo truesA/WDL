@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity {
             login.setLogin(true);
             login.setToken("admin1");
             login.setUserType(1);
-            PreferencesUtil.getInstance(this).saveParam("loginUesr", name);
+            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
             PreferencesUtil.getInstance(this).setLogin(true);
             startActivity(new Intent(this, MainActivity.class));
             AppManagerUtil.instance().finishActivity();
@@ -94,7 +94,7 @@ public class LoginActivity extends BaseActivity {
             login.setLogin(true);
             login.setToken("admin2");
             login.setUserType(2);
-            PreferencesUtil.getInstance(this).saveParam("loginUesr", name);
+            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
             PreferencesUtil.getInstance(this).setLogin(true);
             startActivity(new Intent(this, MainActivity.class));
             AppManagerUtil.instance().finishActivity();

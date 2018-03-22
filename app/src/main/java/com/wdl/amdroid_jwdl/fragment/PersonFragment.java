@@ -1,11 +1,21 @@
 package com.wdl.amdroid_jwdl.fragment;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.R;
+import com.wdl.amdroid_jwdl.activity.LoginActivity;
 import com.wdl.amdroid_jwdl.base.BaseFragment;
+import com.wdl.amdroid_jwdl.util.AppManagerUtil;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
+
+import butterknife.BindView;
 
 
 /**
@@ -14,7 +24,8 @@ import com.wdl.amdroid_jwdl.base.BaseFragment;
 
 public class PersonFragment extends BaseFragment {
 
-
+    @BindView(R.id.m_main_fab)
+    FloatingActionButton m_main_fab;
 
     @Override
     protected void initView() {
@@ -23,7 +34,7 @@ public class PersonFragment extends BaseFragment {
 
     @Override
     protected View setRootView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.person_fg, container,false);
+        View view = inflater.inflate(R.layout.person_fg, container, false);
 
 
         return view;
@@ -31,6 +42,22 @@ public class PersonFragment extends BaseFragment {
 
     @Override
     public void initData() {
-
+        m_main_fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View paramView) {
+                new MaterialDialog.Builder(getActivity())
+                        .title("退出登录").positiveText("确定退出")
+                        .negativeText("取消")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                                PreferencesUtil.getInstance(getActivity()).setLogin(false);
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(intent);
+                                AppManagerUtil.instance().finishAllActivity();
+                            }
+                        }).show();
+            }
+        });
     }
 }
