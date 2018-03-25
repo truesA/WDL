@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20.0dip"
+            android:layout_marginTop="20.0dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mine"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size1" />
+
+            <TextView
+                android:id="@+id/tv_mouth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:text="Mine"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size1" />
+
+            <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mine"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10.0dip"
+            android:background="@drawable/edit_wilter_c5"
+            android:orientation="horizontal">
+
+            <cn.addapp.pickers.widget.WheelListView
+                android:id="@+id/wheelview_single1"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:layout_margin="5dp"/>
+
+            <cn.addapp.pickers.widget.WheelListView
+                android:id="@+id/wheelview_single2"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:layout_margin="5dp"/>
+
+            <cn.addapp.pickers.widget.WheelListView
+                android:id="@+id/wheelview_single3"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit_reservation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
+</RelativeLayout>

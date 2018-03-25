@@ -16,6 +16,13 @@
         <item name="android:windowDisablePreview">true</item>
 
     </style>
-
+    <style name="MyTabLayoutTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="MyTabLayoutTextAppearanceInverse" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/color1</item>
+    </style>
 
 </resources>

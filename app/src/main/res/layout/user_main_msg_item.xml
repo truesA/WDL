@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="60.0dip"
+    android:layout_marginLeft="10.0dip"
+    android:layout_marginRight="10.0dip"
+    android:layout_marginTop="10.0dip"
+    android:background="@drawable/edit_wilter_c5"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size2" />
+
+        <TextView
+            android:id="@+id/user_identity"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size4" />
+
+        <TextView
+            android:id="@+id/user_identity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="110"
+            android:textColor="@color/color1"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_margin="5.0dip"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="行为"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size2" />
+
+        <TextView
+            android:id="@+id/user_behavior"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size4" />
+
+        <TextView
+            android:id="@+id/user_behavior_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="180"
+            android:textColor="@color/color1"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_margin="5.0dip"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忠诚"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size2" />
+
+        <TextView
+            android:id="@+id/user_loyalty"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size4" />
+
+        <TextView
+            android:id="@+id/user_loyalty_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="130"
+            android:textColor="@color/color1"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_margin="5.0dip"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="价值"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size2" />
+
+        <TextView
+            android:id="@+id/user_worth"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size4" />
+
+        <TextView
+            android:id="@+id/user_worth_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="210"
+            android:textColor="@color/color1"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_margin="5.0dip"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粘性"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size2" />
+
+        <TextView
+            android:id="@+id/user_viscosity"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size4" />
+
+        <TextView
+            android:id="@+id/user_viscosity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="110"
+            android:textColor="@color/color1"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+</LinearLayout>

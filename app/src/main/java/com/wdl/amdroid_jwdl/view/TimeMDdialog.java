@@ -91,7 +91,7 @@ public class TimeMDdialog extends DialogFragment {
         timeMDdialogListener = paramTimeMDdialogListener;
     }
 
-    public static abstract interface TimeMDdialogListener {
-        public abstract void ontimeMDdialogComplete(String paramString1, String paramString2);
+    public  interface TimeMDdialogListener {
+         void ontimeMDdialogComplete(String paramString1, String paramString2);
     }
 }

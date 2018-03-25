@@ -13,4 +13,6 @@ public class API
     public static final String Main_msg = "user_rank";
     public static final String Msg_search = "user_search";
     public static final String Submit_Content = "submit_basic";
+    public static final String Submit_Collection = "collection";
+
 }

@@ -18,11 +18,14 @@ import retrofit2.http.QueryMap;
 
 public interface UserService {
     @GET(API.Main_mine)
-    Observable<MainServiceBean> getMainServetMsg(@Query("bk_month") int paramInt);
+    Observable<MainServiceBean> getMainServetMsg(@Query("bk_month") int bk_month);
 
     @GET(API.Submit_Content)
     Observable<BaseBean> getSubmit_Content(@QueryMap Map<String, String> paramMap);
 
     @GET(API.Main_USERMSG)
-    Observable<UserMainMsg> getUserMsg(@Query("id") int paramInt);
+    Observable<UserMainMsg> getUserMsg(@Query("id") int id);
+
+    @GET(API.Submit_Collection)
+    Observable<BaseBean> getCollection(@Query("collection_user") int collection_user);
 }

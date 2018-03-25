@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_color"
     android:orientation="vertical">
 
@@ -10,7 +11,16 @@
         android:layout_width="fill_parent"
         android:layout_height="25.0dip"
         android:background="@color/color1" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/service_refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePreviewInEditMode="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="100.0dip"
@@ -60,4 +70,6 @@
 
         <include layout="@layout/service_fg_barchart" />
     </ScrollView>
+    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

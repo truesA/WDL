@@ -79,7 +79,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/lls"
-        app:dddividerColor="#ffcccccc"
+        app:dddividerColor="@color/transparent"
         app:ddmaskColor="#88888888"
         app:ddmenuBackgroundColor="@color/white"
         app:ddmenuMenuHeightPercent="0.3"
@@ -88,5 +88,5 @@
         app:ddmenuUnselectedIcon="@drawable/drop_down_unselected_icon"
         app:ddtextSelectedColor="@color/white"
         app:ddtextUnselectedColor="@color/white"
-        app:ddunderlineColor="#ffcccccc" />
+        app:ddunderlineColor="@color/transparent" />
 </RelativeLayout>

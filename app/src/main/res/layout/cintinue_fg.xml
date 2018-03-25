@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mine"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size1" />
+
+                <TextView
+                    android:id="@+id/tv_mouth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:text="Mine"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size1" />
+
+                <TextView
+                    android:id="@+id/tv_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mine"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@drawable/edit_wilter_c5"
+                android:orientation="horizontal">
+
+                <cn.addapp.pickers.widget.WheelListView
+                    android:id="@+id/wheelview_single1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="5dp"/>
+
+                <cn.addapp.pickers.widget.WheelListView
+                    android:id="@+id/wheelview_single2"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="5dp"/>
+
+                <cn.addapp.pickers.widget.WheelListView
+                    android:id="@+id/wheelview_single3"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cintinue_rc"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="备注:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size2" />
+
+            <EditText
+                android:id="@+id/continue_et"
+                android:layout_width="fill_parent"
+                android:layout_height="250.0dip"
+                android:layout_margin="10.0dip"
+                android:layout_marginBottom="50.0dip"
+                android:layout_marginTop="27.0dip"
+                android:background="@drawable/edit_wilter_c5"
+                android:gravity="top"
+                android:hint="输入您的备注信息"
+                android:maxLength="100"
+                android:padding="10.0dip"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/continue_sumit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
+</RelativeLayout>

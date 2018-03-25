@@ -55,6 +55,24 @@ public class MsgListBean
         private String phone_number;
         private String plate_num;
         private int total_score;
+        private String initial;
+        private int collection;
+
+        public String getInitial() {
+            return initial;
+        }
+
+        public void setInitial(String initial) {
+            this.initial = initial;
+        }
+
+        public int getCollection() {
+            return collection;
+        }
+
+        public void setCollection(int collection) {
+            this.collection = collection;
+        }
 
         public int getId()
         {

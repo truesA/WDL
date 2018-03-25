@@ -3,6 +3,8 @@ package com.wdl.amdroid_jwdl.fragment;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,15 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.base.BaseFragment;
+import com.wdl.amdroid_jwdl.commom.RecycleViewDivider;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.DataService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
@@ -216,15 +224,35 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     private LineDataSet set2;
     private int defulter = 1;
 
+    @BindView(R.id.data_refreshLayout)
+    SmartRefreshLayout refreshLayouts;
+
+    private int isRefresh=0;
+
     @Override
     protected void initView() {
+        refreshLayouts.setRefreshHeader(new MaterialHeader(getActivity()));
+        refreshLayouts.setOnRefreshListener(new OnRefreshListener() {
+            public void onRefresh(RefreshLayout RefreshLayout) {
+                isRefresh=1;
+                getAllData(defulter);
+            }
+        });
+        refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.finishLoadMore(false);//传入false表示加载失败
+            }
+        });
         radioGroup.setOnCheckedChangeListener(this);
         initMAChart();
         getAllData(defulter);
     }
 
-    private void getAllData(int defulter) {
-        showLoadingDialog();
+    private void getAllData(final int defulter) {
+        if (isRefresh==0){
+            showLoadingDialog();
+        }
         App.getRetrofit(API.BASE_URL)
                 .create(DataService.class)
                 .getMainData(defulter)
@@ -239,10 +267,13 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onNext(MainDataBean mainDataBean) {
-                        dismissLoadingDialog();
+                        refreshLayouts.finishRefresh();
+                        if (isRefresh==0){
+                            dismissLoadingDialog();
+                        }
                         Log.e("mainDataBean", mainDataBean.getError_code() + "");
                         if (mainDataBean.getError_code() == 200) {
-                            //  DataFragment.access$002(DataFragment.this,   val$months);
+                            monthdefult = defulter;
                             time_selsect.setText(monthdefult + "月");
                             setReusltData(mainDataBean);
                         }
@@ -254,22 +285,22 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                         e.printStackTrace();
                         dismissLoadingDialog();
                         UIUtils.showToast("出错啦！");
+                        refreshLayouts.finishRefresh();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        refreshLayouts.finishRefresh();
                     }
                 });
 
     }
+
     private ArrayList<Entry> dealLine(List<Double> paramList) {
-        Log.e("dounle", paramList.size() + "");
         ArrayList localArrayList = new ArrayList();
         int i = 0;
-        while (i < 31)
-        {
-            localArrayList.add(new Entry(i + 1, new Double(((Double)paramList.get(i)).doubleValue()).intValue()));
+        while (i < paramList.size()) {
+            localArrayList.add(new Entry(i + 1, new Double(((Double) paramList.get(i)).doubleValue()).intValue()));
             i += 1;
         }
         return localArrayList;
@@ -280,7 +311,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         resultBean = resultBeans;
         dealProgess(resultBean, checkedIds);
         dealmeduler(resultBean, checkedIds);
-        setData(dealLine(resultBean.getResult().getMn_rate().get(0)),dealLine(resultBean.getResult().getMn_rate().get(1)));
+        setData(dealLine(resultBean.getResult().getMn_rate().get(0)), dealLine(resultBean.getResult().getMn_rate().get(1)));
         mLineChar.animateX(2500);
         mLineChar.invalidate();
     }
@@ -514,13 +545,12 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @Override
     public void initData() {
-        UIUtils.showToast("data");
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == radioButtonC.getId()) {
-
+            Log.e("checkedId", checkedId + "");
             if (resultBean == null) {
                 getAllData(monthdefult);
                 return;
@@ -528,8 +558,8 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             checkedIds = 0;
             ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getMn_rate().get(0));
             ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getMn_rate().get(1));
-            llChanZ.setVisibility(View.GONE);
-            llTaiC.setVisibility(View.VISIBLE);
+            llChanZ.setVisibility(View.VISIBLE);
+            llTaiC.setVisibility(View.GONE);
             setData(value1, value2);
             mLineChar.animateX(2500);
             mLineChar.invalidate();
@@ -540,11 +570,12 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                 getAllData(monthdefult);
                 return;
             }
+            Log.e("checkedIds", checkedId + "");
             checkedIds = 1;
             ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getTimes_rate().get(0));
             ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getTimes_rate().get(1));
-            llChanZ.setVisibility(View.VISIBLE);
-            llTaiC.setVisibility(View.GONE);
+            llChanZ.setVisibility(View.GONE);
+            llTaiC.setVisibility(View.VISIBLE);
             setData(value1, value2);
             mLineChar.animateX(2500);
             mLineChar.invalidate();
@@ -612,6 +643,8 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         timeMDdialog.setTimeMDdialogListener(new TimeMDdialog.TimeMDdialogListener() {
             @Override
             public void ontimeMDdialogComplete(String year, String month) {
+                isRefresh=0;
+                defulter=Integer.parseInt(month);
                 getAllData(Integer.parseInt(month));
             }
         });

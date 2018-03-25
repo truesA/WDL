@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tl_tab"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        app:tabBackground="@color/white"
+        app:tabIndicatorColor="@color/color1"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/car_user_viewpage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+</LinearLayout>

@@ -46,7 +46,7 @@ public class DropDownMenu extends LinearLayout {
     private int current_tab_position = -1;
 
     //分割线颜色
-    private int dividerColor = 0xffcccccc;
+    private int dividerColor = 0xff000000;
     //tab选中颜色
     private int textSelectedColor = 0xff890c85;
     //tab未选中颜色
@@ -130,7 +130,7 @@ public class DropDownMenu extends LinearLayout {
         for (int i = 0; i < tabTexts.size(); i++) {
             addTab(tabTexts, i);
         }
-        containerView.addView(contentView, 0);
+        //containerView.addView(contentView, 0);
 
         maskView = new View(getContext());
         maskView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
@@ -141,16 +141,16 @@ public class DropDownMenu extends LinearLayout {
                 closeMenu();
             }
         });
-        containerView.addView(maskView, 1);
+        containerView.addView(maskView, 0);
         maskView.setVisibility(GONE);
-        if (containerView.getChildAt(2) != null){
-            containerView.removeViewAt(2);
+        if (containerView.getChildAt(1) != null){
+            containerView.removeViewAt(1);
         }
 
         popupMenuViews = new FrameLayout(getContext());
         popupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (DeviceUtils.getScreenSize(getContext()).y*menuHeighPercent)));
         popupMenuViews.setVisibility(GONE);
-        containerView.addView(popupMenuViews, 2);
+        containerView.addView(popupMenuViews, 1);
 
         for (int i = 0; i < popupViews.size(); i++) {
             popupViews.get(i).setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

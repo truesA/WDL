@@ -16,12 +16,14 @@
              android:id="@+id/wheelview_timeY"
              android:layout_width="0dip"
              android:layout_height="wrap_content"
-             android:layout_weight="1.0" />
+             android:layout_weight="1.0"
+            android:layout_margin="5dp"/>
 
         <cn.addapp.pickers.widget.WheelListView
              android:id="@+id/wheelview_timeM"
              android:layout_width="0.0dip"
              android:layout_height="wrap_content"
-             android:layout_weight="1.0" />
+             android:layout_weight="1.0"
+            android:layout_margin="5dp"/>
     </LinearLayout>
 </LinearLayout>

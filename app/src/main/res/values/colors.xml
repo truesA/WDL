@@ -9,7 +9,6 @@
     <color name="color2">#ff3f7fff</color>
     <color name="color3">#fff0f0f0</color>
     <color name="colorAccent">#ffff4081</color>
-    <color name="colorBackground">#fff1f0f6</color>
     <color name="colorBule2">#ff0697ff</color>
     <color name="colorBule3">#ff00b4ff</color>
     <color name="colorGray">#ff999999</color>
@@ -19,7 +18,6 @@
     <color name="colorLine">#ffeeeeee</color>
     <color name="colorPrimary">#ff3f51b5</color>
     <color name="colorPrimaryDark">#ff303f9f</color>
-    <color name="colorText">#ff797979</color>
     <color name="white">#ffffffff</color>
     <color name="colorWhite1">#ffffffff</color>
     <color name="colorWhite2">#66ffffff</color>
@@ -46,4 +44,9 @@
 
     <color name="mask_color">#88888888</color>
     <color name="un_press_color">#9C27B0</color>
+
+
+    <color name="colorDefault">#ffffff</color>
+    <color name="colorBackground">#f1f0f6</color>
+    <color name="colorText">#9b9b9b</color>
 </resources>

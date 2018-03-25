@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/waiver_rc"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="备注:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size2" />
+
+            <EditText
+                android:id="@+id/waiver_et"
+                android:layout_width="fill_parent"
+                android:layout_height="250.0dip"
+                android:layout_margin="10.0dip"
+                android:layout_marginBottom="50.0dip"
+                android:layout_marginTop="27.0dip"
+                android:background="@drawable/edit_wilter_c5"
+                android:gravity="top"
+                android:hint="输入您的备注信息"
+                android:maxLength="100"
+                android:padding="10.0dip"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/waiver_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
+</RelativeLayout>

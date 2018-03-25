@@ -1,6 +1,8 @@
 package com.wdl.amdroid_jwdl.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,18 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.base.BaseFragment;
@@ -26,6 +39,7 @@ import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
+import com.wdl.amdroid_jwdl.util.StringUtils;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.MyMarkerView;
 import com.wdl.amdroid_jwdl.view.TimeMDdialog;
@@ -121,24 +135,27 @@ public class ServiceFragment extends BaseFragment {
     private List<Integer> xAxisValues;
     private List<Float> yAxisValues1;
     private List<Float> yAxisValues2;
+    @BindView(R.id.service_refreshLayout)
+    SmartRefreshLayout refreshLayouts;
 
+    private int isRefresh=0;
     @Override
     protected View setRootView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.service_fg, container, false);
-
 
         return view;
     }
 
     @Override
     public void initData() {
-        {
+        getAllData(monthdefult);
             service_month.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View paramView) {
                     TimeMDdialog timeMDdialog = new TimeMDdialog();
                     timeMDdialog.setIndexmonthItem(monthdefult);
                     timeMDdialog.setTimeMDdialogListener(new TimeMDdialog.TimeMDdialogListener() {
                         public void ontimeMDdialogComplete(String paramString1, String paramString2) {
+                            isRefresh=0;
                             getAllData(Integer.parseInt(paramString2));
                         }
                     });
@@ -161,7 +178,7 @@ public class ServiceFragment extends BaseFragment {
             setTwoBarChart(mBarChartT1, xAxisValues, yAxisValues1, yAxisValues2, "T1产值", "T1台次");
             initViewTeValue();
         }
-    }
+
 
     private void initViewTeValue() {
     }
@@ -169,7 +186,19 @@ public class ServiceFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+        refreshLayouts.setRefreshHeader(new MaterialHeader(getActivity()));
+        refreshLayouts.setOnRefreshListener(new OnRefreshListener() {
+            public void onRefresh(RefreshLayout RefreshLayout) {
+                isRefresh=1;
+                getAllData(monthdefult);
+            }
+        });
+        refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.finishLoadMore(false);//传入false表示加载失败
+            }
+        });
 
     }
 
@@ -177,7 +206,7 @@ public class ServiceFragment extends BaseFragment {
     private int dealProgressValues(int paramInt, double paramDouble) {
         double d = paramDouble;
         if (paramDouble == 0D)
-            d = 10;
+            d = 100;
         paramDouble = paramInt * 1.0;
         Log.e("ints", paramDouble + "---" + d + "");
         paramDouble = d / paramDouble;
@@ -186,8 +215,10 @@ public class ServiceFragment extends BaseFragment {
         return paramInt;
     }
 
-    private void getAllData(int month) {
-        showLoadingDialog();
+    private void getAllData(final int month) {
+        if (isRefresh ==0){
+            showLoadingDialog();
+        }
         App.getRetrofit(API.BASE_URL)
                 .create(UserService.class)
                 .getMainServetMsg(month)
@@ -200,16 +231,21 @@ public class ServiceFragment extends BaseFragment {
                     }
 
                     public void onError(Throwable paramThrowable) {
-                        paramThrowable.printStackTrace();
                         dismissLoadingDialog();
+                        refreshLayouts.finishRefresh();
+                        paramThrowable.printStackTrace();
                         UIUtils.showToast("出错啦！");
                     }
 
                     public void onNext(MainServiceBean mainServiceBean) {
-                        dismissLoadingDialog();
+                        refreshLayouts.finishRefresh();
+                        if (isRefresh ==0){
+                            dismissLoadingDialog();
+                        }
                         if (mainServiceBean.getError_code() == 200) {
                             // ServiceFragment.access$002(ServiceFragment.this,val$month);
-                            service_month.setText(monthdefult+ "月");
+                            monthdefult=month;
+                            service_month.setText(monthdefult + "月");
                             setDataMsg(mainServiceBean.getResult());
                         }
                         UIUtils.showToast(mainServiceBean.getReason());
@@ -217,7 +253,7 @@ public class ServiceFragment extends BaseFragment {
 
                     @Override
                     public void onComplete() {
-
+                        refreshLayouts.finishRefresh();
                     }
                 });
     }
@@ -252,128 +288,117 @@ public class ServiceFragment extends BaseFragment {
         }
     }
 
-    public static void setTwoBarChart(BarChart paramBarChart, List<Integer> paramList, List<Float> paramList1, List<Float> paramList2, String paramString1, String paramString2)
-    {
-        paramBarChart.getDescription().setEnabled(false);
-        paramBarChart.setPinchZoom(true);
-        paramBarChart.setExtraBottomOffset(10.0F);
-        paramBarChart.setExtraTopOffset(30.0F);
-        paramBarChart.setDrawValueAboveBar(true);
-        paramBarChart.setDragEnabled(true);
-        paramBarChart.setTouchEnabled(true);
-        paramBarChart.setMarker(new MyMarkerView(paramBarChart.getContext(), 2131361837));
-        XAxis xAxis = paramBarChart.getXAxis();
+    public static void setTwoBarChart(BarChart barChart, List<Integer> xAxisValue, List<Float> yAxisValue1, List<Float> yAxisValue2, String bartilte1, String bartitle2) {
+        barChart.getDescription().setEnabled(false);//设置描述
+        barChart.setPinchZoom(true);//设置按比例放缩柱状图
+        barChart.setExtraBottomOffset(10);
+        barChart.setExtraTopOffset(30);
+
+        //x坐标轴设置
+        XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1.0F);
-        xAxis.setLabelCount(paramList.size());
-        xAxis.setCenterAxisLabels(true);
-        xAxis.setValueFormatter(new IAxisValueFormatter()
-        {
-            public String getFormattedValue(float paramFloat, AxisBase paramAxisBase)
-            {
-                return String.valueOf((int)paramFloat);
-            }
-        });
-        YAxis yAxis = paramBarChart.getAxisLeft();
-        yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        yAxis.setDrawGridLines(false);
-        yAxis.setDrawLabels(false);
-        yAxis.setDrawAxisLine(false);
-        localObject = (Float) Collections.min(paramList1);
-        Float localFloat3 = (Float)Collections.min(paramList2);
-        Float localFloat1 = (Float)Collections.max(paramList1);
-        Float localFloat2 = (Float)Collections.max(paramList2);
-        if (((Float)localObject).floatValue() < localFloat3.floatValue())
-        {
-            float f = Double.valueOf(((Float)localObject).floatValue() * 0.1D).floatValue();
-            if (localFloat1.floatValue() <= localFloat2.floatValue())
-                break label424;
-            localObject = localFloat1;
-           yAxis.setAxisMaximum(Float.valueOf(Double.valueOf(((Float)localObject).floatValue() * 1.1D).floatValue()).floatValue());
-            yAxis.setAxisMinimum(Float.valueOf(f).floatValue());
-            paramBarChart.getAxisRight().setEnabled(false);
-            Legend legend = paramBarChart.getLegend();
-            legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-            legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-            legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-            legend.setDrawInside(false);
-            legend.setDirection(Legend.LegendDirection.LEFT_TO_RIGHT);
-            legend.setForm(Legend.LegendForm.SQUARE);
-            legend.setTextSize(12.0F);
-            setTwoBarChartData(paramBarChart, paramList, paramList1, paramList2, paramString1, paramString2);
-            paramBarChart.animateY(1500);
-            List<Integer> paramList = ((BarData)paramBarChart.getData()).getDataSets().iterator();
-            label375: if (!(paramList.hasNext()))
-                break label437;
-            paramList1 = (IDataSet)paramList.next();
-            if (paramList1.isDrawValuesEnabled())
-                break label431;
+        xAxis.setDrawLabels(true);
+        xAxis.setGranularity(1f);
+        xAxis.setLabelCount(xAxisValue.size());
+        xAxis.setCenterAxisLabels(true);//设置标签居中
+       // xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValue));
+
+        //y轴设置
+        YAxis leftAxis = barChart.getAxisLeft();
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+        leftAxis.setDrawGridLines(false);
+        leftAxis.setDrawLabels(false);
+        leftAxis.setDrawAxisLine(false);
+
+        //设置MarkerView
+        barChart.setMarker(new MyMarkerView(barChart.getContext(), R.layout.custom_marker_view));
+        //设置坐标轴最大最小值
+        Float yMin1 = Collections.min(yAxisValue1);
+        Float yMin2 = Collections.min(yAxisValue2);
+        Float yMax1 = Collections.max(yAxisValue1);
+        Float yMax2 = Collections.max(yAxisValue2);
+        Float yMin = Double.valueOf((yMin1 < yMin2 ? yMin1 : yMin2) * 0.1).floatValue();
+        Float yMax = Double.valueOf((yMax1 > yMax2 ? yMax1 : yMax2) * 1.1).floatValue();
+        leftAxis.setAxisMaximum(yMax);
+        leftAxis.setAxisMinimum(yMin);
+        //保证Y轴从0开始，不然会上移一点
+
+        barChart.getAxisRight().setEnabled(false);
+
+
+        //图例设置
+        Legend legend = barChart.getLegend();
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        legend.setDrawInside(false);
+        legend.setDirection(Legend.LegendDirection.LEFT_TO_RIGHT);
+        legend.setForm(Legend.LegendForm.SQUARE);
+        legend.setTextSize(12f);
+
+        //设置柱状图数据
+        setTwoBarChartData(barChart, xAxisValue, yAxisValue1, yAxisValue2, bartilte1, bartitle2);
+
+        barChart.animateX(1500);//数据显示动画，从左往右依次显示
+        barChart.invalidate();
+    }
+    /**
+     * 设置柱状图数据源
+     */
+    private static void setTwoBarChartData(BarChart barChart, List<Integer> xAxisValue, List<Float> yAxisValue1, List<Float> yAxisValue2, String bartilte1, String bartitle2) {
+        float groupSpace = 0.03f;
+        float barSpace = 0.03f;
+        float barWidth = 0.45f;
+        // (0.45 + 0.03) * 2 + 0.03 = 1，即一个间隔为一组，包含两个柱图 -> interval per "group"
+
+        ArrayList<BarEntry> entries1 = new ArrayList<>();
+        ArrayList<BarEntry> entries2 = new ArrayList<>();
+
+        for (int i = 0, n = yAxisValue1.size(); i < n; ++i) {
+            entries1.add(new BarEntry(i, yAxisValue1.get(i)));
+            entries2.add(new BarEntry(i, yAxisValue2.get(i)));
         }
-        for (boolean bool = true; ; bool = false)
-        {
-            paramList1.setDrawValues(bool);
-            break label375:
-            localObject = localFloat3;
-            break label197:
-            label424: localObject = localFloat2;
-            label431: break label233:
+
+        BarDataSet dataset1, dataset2;
+
+        if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+            dataset1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
+            dataset2 = (BarDataSet) barChart.getData().getDataSetByIndex(1);
+            dataset1.setValues(entries1);
+            dataset2.setValues(entries2);
+            barChart.getData().notifyDataChanged();
+            barChart.notifyDataSetChanged();
+        } else {
+            dataset1 = new BarDataSet(entries1, bartilte1);
+            dataset2 = new BarDataSet(entries2, bartitle2);
+
+            dataset1.setColor(Color.rgb(255, 51, 120));
+            dataset2.setColor(Color.rgb(64, 127, 255));
+            ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(dataset1);
+            dataSets.add(dataset2);
+
+            BarData data = new BarData(dataSets);
+            data.setValueTextSize(10f);
+            data.setBarWidth(0.9f);
+
+
+            barChart.setData(data);
         }
-        if (paramBarChart.getData() != null)
-            label437: ((BarData)paramBarChart.getData()).setHighlightEnabled(true);
-        paramBarChart.invalidate();
+        for (IDataSet set : barChart.getData().getDataSets())
+            set.setDrawValues(!set.isDrawValuesEnabled());
+        barChart.getBarData().setBarWidth(barWidth);
+        barChart.getXAxis().setAxisMinimum(0);
+        // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
+        barChart.getXAxis().setAxisMaximum(barChart.getBarData().getGroupWidth(groupSpace, barSpace) * xAxisValue.size() + 0);
+        barChart.groupBars(0, groupSpace, barSpace);
     }
 
-    private static void setTwoBarChartData(BarChart paramBarChart, List<Integer> paramList, List<Float> paramList1, List<Float> paramList2, String paramString1, String paramString2)
-    {
-        ArrayList localArrayList2 = new ArrayList();
-        ArrayList localArrayList1 = new ArrayList();
-        int i = 0;
-        int j = paramList1.size();
-        while (i < j)
-        {
-            localArrayList2.add(new BarEntry(((Integer)paramList.get(i)).intValue(), ((Float)paramList1.get(i)).floatValue()));
-            localArrayList1.add(new BarEntry(((Integer)paramList.get(i)).intValue(), ((Float)paramList2.get(i)).floatValue()));
-            i += 1;
-        }
-        if ((paramBarChart.getData() != null) && (((BarData)paramBarChart.getData()).getDataSetCount() > 0))
-        {
-            BarData paramList1 = (BarDataSet)((BarData)paramBarChart.getData()).getDataSetByIndex(0);
-            paramList2 = (BarDataSet)((BarData)paramBarChart.getData()).getDataSetByIndex(1);
-            paramList1.setValues(localArrayList2);
-            paramList2.setValues(localArrayList1);
-            ((BarData)paramBarChart.getData()).notifyDataChanged();
-            paramBarChart.notifyDataSetChanged();
-        }
-        while (true)
-        {
-            paramBarChart.getBarData().setBarWidth(0.45F);
-            paramBarChart.getXAxis().setAxisMinimum(((Integer)paramList.get(0)).intValue());
-            paramList1 = paramBarChart.getXAxis();
-            float f1 = paramBarChart.getBarData().getGroupWidth(0.08F, 0.03F);
-            float f2 = paramList.size();
-            paramList1.setAxisMaximum(((Integer)paramList.get(0)).intValue() + f2 * f1);
-            paramBarChart.groupBars(((Integer)paramList.get(0)).intValue(), 0.08F, 0.03F);
-            return;
-            paramList1 = new BarDataSet(localArrayList2, paramString1);
-            paramList2 = new BarDataSet(localArrayList1, paramString2);
-            paramList1.setColor(Color.rgb(255, 51, 120));
-            paramList2.setColor(Color.rgb(64, 127, 255));
-            paramString1 = new ArrayList();
-            paramString1.add(paramList1);
-            paramString1.add(paramList2);
-            paramList1 = new BarData(paramString1);
-            paramList1.setValueTextSize(8.0F);
-            paramList1.setBarWidth(0.9F);
-            paramBarChart.setData(paramList1);
-        }
-    }
-
-    public void onResume()
-    {
-        super.onResume();
-        getAllData(monthdefult);
-    }
+//    public void onResume() {
+//        super.onResume();
+//        getAllData(monthdefult);
+//    }
 
 
 }

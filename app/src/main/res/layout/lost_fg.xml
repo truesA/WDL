@@ -1,0 +1,113 @@
+<?xml version="1" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/lost_rg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_wilter_c5"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/lost_r_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:text="过路车辆"
+                    android:textColor="@drawable/rb_textcolor_selector"
+                    android:textSize="@dimen/text_size3" />
+
+                <RadioButton
+                    android:id="@+id/lost_r_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:text="在外保养"
+                    android:textColor="@drawable/rb_textcolor_selector"
+                    android:textSize="@dimen/text_size3" />
+
+                <RadioButton
+                    android:id="@+id/lost_r_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:text="车已卖了"
+                    android:textColor="@drawable/rb_textcolor_selector"
+                    android:textSize="@dimen/text_size3" />
+
+                <RadioButton
+                    android:id="@+id/lost_r_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:text="投诉抱怨"
+                    android:textColor="@drawable/rb_textcolor_selector"
+                    android:textSize="@dimen/text_size3" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="备注:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size2" />
+
+            <EditText
+                android:id="@+id/lost_et"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/edit_wilter_c5"
+                android:gravity="top"
+                android:hint="输入您的备注信息"
+                android:maxLength="100"
+                android:padding="10dp"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/lost_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
+</RelativeLayout>
