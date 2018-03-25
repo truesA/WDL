@@ -45,7 +45,8 @@ dependencies {
     implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-1'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-1'//没有使用特殊Header，可以不加这行
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-1'
+    //没有使用特殊Header，可以不加这行
     implementation 'com.github.addappcn:android-pickers:1.0.3'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'cn.bingoogolapple:bga-qrcode-zbar:1.2.1'

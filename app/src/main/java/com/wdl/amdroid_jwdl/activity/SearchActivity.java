@@ -148,7 +148,7 @@ public class SearchActivity extends BaseActivity {
                 break;
             case R.id.ll_result:
                 Intent  intent= new Intent();
-                intent.setClass(this, MsgBusinessActivity.class);
+                intent.setClass(this, UserMainMsgActivity.class);
                 intent.putExtra("userid", userid);
                 intent.putExtra("carPai", carPai);
                 startActivity(intent);

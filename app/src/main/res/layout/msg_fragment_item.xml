@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="T1" />
+                    android:text="优秀" />
 
                 <TextView
                     android:id="@+id/msg_total_score"
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="5.0dip"
                     android:layout_marginRight="5.0dip"
                     android:gravity="center"
-                    android:text="优秀830" />
+                    android:text="830" />
 
                 <TextView
                     android:id="@+id/xu"

@@ -7,6 +7,7 @@ package com.wdl.amdroid_jwdl.interfaces;
 import com.wdl.amdroid_jwdl.model.BaseBean;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
 import com.wdl.amdroid_jwdl.model.UserMainMsg;
+import com.wdl.amdroid_jwdl.model.UserMainMsgBast;
 
 import io.reactivex.Observable;
 
@@ -28,4 +29,10 @@ public interface UserService {
 
     @GET(API.Submit_Collection)
     Observable<BaseBean> getCollection(@Query("collection_user") int collection_user);
+
+    //https://de70ebd3.ngrok.io/user_search_detail2?id=0  接口（9）：单个用户搜索，返回最详细信息
+
+    @GET(API.Main_USERMSG_BAST)
+    Observable<UserMainMsgBast> getUserMsgBast(@Query("id") int id);
+
 }

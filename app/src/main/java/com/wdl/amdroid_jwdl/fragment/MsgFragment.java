@@ -202,6 +202,14 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         msgAdapter = new MsgAdapter(getActivity(), R.layout.msg_fragment_item, arrayList);
         recyclerView.setAdapter(msgAdapter);
         msgAdapter.setOnItemClickListener(this);
+        msgAdapter.setDataPostionChangeListener(new MsgAdapter.DataPostionChangeListener() {
+            @Override
+            public void dataPostionChange(int postion) {
+              //  msgAdapter.notifyItemChanged(postion);
+               // msgAdapter.notifyDataSetChanged();
+                refresh();
+            }
+        });
     }
 
 

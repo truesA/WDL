@@ -5,6 +5,7 @@ package com.wdl.amdroid_jwdl.adapter;
  * <p>
  * email：3186834196@qq.com
  */
+
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import com.wdl.amdroid_jwdl.model.BaseBean;
 import com.wdl.amdroid_jwdl.model.MsgListBean;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -30,30 +33,29 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean>
-{
+public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean> {
     //private int[] colors = { -16711681, -256, -16711936 };
     Random random = new Random();
 
-    public MsgAdapter(Context paramContext, int paramInt, List<MsgListBean.ResultBean> paramList)
-    {
+    public MsgAdapter(Context paramContext, int paramInt, List<MsgListBean.ResultBean> paramList) {
         super(paramContext, paramInt, paramList);
     }
 
-    public void convert(CommonViewHolder ViewHolder, final MsgListBean.ResultBean paramResultBean, int paramInt)
-    {
-        TextView carType = (TextView)ViewHolder.getView(R.id.carType);
-        TextView name = (TextView)ViewHolder.getView(R.id.name);
-        TextView phone = (TextView)ViewHolder.getView(R.id.phone);
-        TextView carPai = (TextView)ViewHolder.getView(R.id.carPai);
-        TextView project = (TextView)ViewHolder.getView(R.id.project);
-        TextView msg_total_score = (TextView)ViewHolder.getView(R.id.msg_total_score);
-        TextView xu = (TextView)ViewHolder.getView(R.id.xu);
-        TextView zhe = (TextView)ViewHolder.getView(R.id.zhe);
-        TextView msgzcd = (TextView)ViewHolder.getView(R.id.msg_zcd);
-        ImageView msg_zcd_iv=ViewHolder.getView(R.id.msg_zcd_iv);
-        LinearLayout zcd_ll=ViewHolder.getView(R.id.zcd_ll);
-       // paramInt = this.random.nextInt(3);
+    public void convert(CommonViewHolder ViewHolder, final MsgListBean.ResultBean paramResultBean, final int paramInt) {
+        TextView carType = (TextView) ViewHolder.getView(R.id.carType);
+        TextView name = (TextView) ViewHolder.getView(R.id.name);
+        TextView phone = (TextView) ViewHolder.getView(R.id.phone);
+        TextView carPai = (TextView) ViewHolder.getView(R.id.carPai);
+        TextView project = (TextView) ViewHolder.getView(R.id.project);
+        TextView msg_total_score = (TextView) ViewHolder.getView(R.id.msg_total_score);
+        TextView xu = (TextView) ViewHolder.getView(R.id.xu);
+        TextView zhe = (TextView) ViewHolder.getView(R.id.zhe);
+        TextView msgzcd = (TextView) ViewHolder.getView(R.id.msg_zcd);
+        ImageView msg_zcd_iv = ViewHolder.getView(R.id.msg_zcd_iv);
+        LinearLayout zcd_ll = ViewHolder.getView(R.id.zcd_ll);
+
+        double loy_coef = new BigDecimal(paramResultBean.getLoy_coef()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        msgzcd.setText(loy_coef+"");
         carType.setText(paramResultBean.getInitial());
         name.setText(paramResultBean.getName());
         phone.setText(paramResultBean.getPhone_number());
@@ -63,9 +65,9 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         zhe.setText("折" + paramResultBean.getZhe());
         msg_total_score.setText(paramResultBean.getTotal_score() + "");
 
-        if (paramResultBean.getCollection()==1){
+        if (paramResultBean.getCollection() == 1) {
             msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_color);
-        }else{
+        } else {
             msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_hui);
         }
 
@@ -85,15 +87,17 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
 
                             @Override
                             public void onNext(BaseBean baseBean) {
-                                if (baseBean.getError_code()==200){
-                                    notifyDataSetChanged();
+                                if (baseBean.getError_code() == 200) {
+                                    if (mdataPostionChangeListener!=null){
+                                        mdataPostionChangeListener.dataPostionChange(paramInt);
+                                    }
                                 }
                                 UIUtils.showToast(baseBean.getReason());
                             }
 
                             @Override
                             public void onError(Throwable e) {
-
+                                e.printStackTrace();
                             }
 
                             @Override
@@ -104,6 +108,16 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
             }
         });
 
+
+    }
+    public static DataPostionChangeListener mdataPostionChangeListener;
+
+    public static void setDataPostionChangeListener(DataPostionChangeListener dataPostionChangeListener){
+        mdataPostionChangeListener=dataPostionChangeListener;
+    }
+
+    public interface DataPostionChangeListener {
+        void dataPostionChange(int postion);
 
     }
 }

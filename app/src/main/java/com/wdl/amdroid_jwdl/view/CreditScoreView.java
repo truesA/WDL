@@ -41,7 +41,9 @@ public class CreditScoreView extends View {
     private int[] icons = {R.mipmap.ic_performance, R.mipmap.ic_history, R.mipmap.ic_contacts,
             R.mipmap.ic_predilection, R.mipmap.ic_identity};
     //各维度分值
-    private float[] data = {170, 180, 160, 170, 180};
+    private float[] data = {170, 180, 0, 170, 180};
+    //各纬度实际分值
+    private float[] datade = {170, 180, 0, 170, 180};
     //数据最大值
     private float maxValue = 200;
     //雷达图与标题的间距
@@ -85,12 +87,13 @@ public class CreditScoreView extends View {
         valuePaint.setAntiAlias(true);
         valuePaint.setColor(getResources().getColor(R.color.color1));
         valuePaint.setAlpha(120);
+        valuePaint.setStrokeWidth(5);
         valuePaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
         scorePaint = new Paint();
         scorePaint.setAntiAlias(true);
         scorePaint.setTextSize(scoreSize);
-        scorePaint.setColor(Color.WHITE);
+        scorePaint.setColor(Color.BLACK);
         scorePaint.setTextAlign(Paint.Align.CENTER);
         scorePaint.setStyle(Paint.Style.FILL);
 
@@ -200,7 +203,7 @@ public class CreditScoreView extends View {
         int score = 0;
         //计算总分
         for (int i = 0; i < dataCount; i++) {
-            score += data[i];
+            score += datade[i];
         }
         canvas.drawText(score + "", centerX, centerY + scoreSize / 2, scorePaint);
     }
@@ -335,6 +338,14 @@ public class CreditScoreView extends View {
         data[2] = paramFloat3;
         data[3] = paramFloat4;
         data[4] = paramFloat5;
+    }
+
+    public void setDataDefultfloat(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {
+        datade[0] = paramFloat1;
+        datade[1] = paramFloat2;
+        datade[2] = paramFloat3;
+        datade[3] = paramFloat4;
+        datade[4] = paramFloat5;
     }
 
     public void setDataArr(float[] paramArrayOfFloat)

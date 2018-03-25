@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.wdl.amdroid_jwdl.App;
@@ -43,6 +44,7 @@ import retrofit2.Retrofit;
 
 public class WaiverFragment extends BaseFragment {
     private String CarUserid;
+    private int waiverStatus;
     private String giveup_reason;
 
     @BindView(R.id.waiver_rc)
@@ -50,6 +52,9 @@ public class WaiverFragment extends BaseFragment {
 
     @BindView(R.id.waiver_et)
     EditText waiver_et;
+
+    @BindView(R.id.waiver_submit)
+    Button waiver_submit;
 
     private void initRecycler() {
         ArrayList<String> arrayList = new ArrayList();
@@ -75,6 +80,10 @@ public class WaiverFragment extends BaseFragment {
     }
 
     public void initData() {
+        if (waiverStatus==1){
+            waiver_submit.setEnabled(false);
+            waiver_submit.setBackgroundResource(R.drawable.button_bg_mianhui_c5);
+        }
     }
 
     protected void initView() {
@@ -117,7 +126,8 @@ public class WaiverFragment extends BaseFragment {
                 });
     }
 
-    public void setCarUserid(String paramString) {
+    public void setCarUseridandSubmitStatus(String paramString,int status) {
+       this.waiverStatus=status;
         this.CarUserid = paramString;
     }
 

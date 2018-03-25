@@ -14,4 +14,12 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    private float dealCredScore(int value,double valueb){
+        value=120;
+        valueb=0.3;
+        float lastValue = (float) (value*valueb);
+        return lastValue;
+    }
 }

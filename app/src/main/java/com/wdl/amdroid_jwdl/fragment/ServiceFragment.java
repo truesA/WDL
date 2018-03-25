@@ -263,7 +263,9 @@ public class ServiceFragment extends BaseFragment {
             getAllData(monthdefult);
             return;
         }
-        if (((LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr")).getUserType() == 1) {
+        LoginUesr loginuser= (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
+        Log.e("login",loginuser.getUserType()+"");
+        if (loginuser.getUserType() == 1) {
             probar_hq_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue()));
             probar_hq_tv_bom.setText(new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue() + "");
             probar_cx_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getChuxu().get(0)).intValue()).intValue()));

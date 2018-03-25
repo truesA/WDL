@@ -44,16 +44,25 @@ public class MsgBusinessActivity extends BaseActivity
     @BindView(R.id.tl_tab)
     public TabLayout tl_tab;
 
+    private int submit_appoint = 0;
+    private int submit_continue = 0;
+    private int submit_giveup = 0;
+    private int submit_loss = 0;
+
 
     private void initFragment() {
         reservationFragment = new ReservationFragment();
-        reservationFragment.setCarUserid(carUesrid);
+        reservationFragment.setCarUseridandSubmitStatus(carUesrid,submit_appoint);
+
         continueFragment = new ContinueFragment();
-        continueFragment.setCarUserid(carUesrid);
+        continueFragment.setCarUseridandSubmitStatus(carUesrid,submit_continue);
+
         waiverFragment = new WaiverFragment();
-        waiverFragment.setCarUserid(carUesrid);
+        waiverFragment.setCarUseridandSubmitStatus(carUesrid,submit_giveup);
+
         lostFragment = new LostFragment();
-        lostFragment.setCarUserid(carUesrid);
+        lostFragment.setCarUseridandSubmitStatus(carUesrid,submit_loss);
+
         fragments.add(reservationFragment);
         fragments.add(continueFragment);
         fragments.add(waiverFragment);
@@ -73,9 +82,13 @@ public class MsgBusinessActivity extends BaseActivity
         int i = bundle.getInt("position");
         carUesrid = bundle.getString("carUserid");
         carName = bundle.getString("carPai");
+        submit_appoint = bundle.getInt("submit_appoint");
+        submit_continue = bundle.getInt("submit_continue");
+        submit_giveup = bundle.getInt("submit_giveup");
+        submit_loss = bundle.getInt("submit_loss");
         getToolbarTitle().setText(carName);
         initFragment();
-        MyViewPagerAdapter  pagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), fragments);
+        MyViewPagerAdapter pagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), fragments);
         car_user_viewpage.setAdapter(pagerAdapter);
         tl_tab.setOnTabSelectedListener(this);
         tl_tab.setupWithViewPager(car_user_viewpage, false);

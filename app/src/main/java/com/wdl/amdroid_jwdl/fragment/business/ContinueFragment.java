@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ContinueFragment extends BaseFragment {
     private String CarUserid;
+    private int continueStatus;
     private CustomAdapter adapter;
 
     @BindView(R.id.continue_et)
@@ -67,6 +69,9 @@ public class ContinueFragment extends BaseFragment {
     WheelListView wheelListViewy;
     int year = 2018;
     String years;
+
+    @BindView(R.id.continue_sumit)
+    Button continue_sumit;
 
     private void initRecycler() {
         ArrayList<String> Arrayname = new ArrayList();
@@ -152,6 +157,10 @@ public class ContinueFragment extends BaseFragment {
     }
 
     public void initData() {
+        if (continueStatus==1){
+            continue_sumit.setEnabled(false);
+            continue_sumit.setBackgroundResource(R.drawable.button_bg_mianhui_c5);
+        }
     }
 
     protected void initView() {
@@ -197,8 +206,9 @@ public class ContinueFragment extends BaseFragment {
                 });
     }
 
-    public void setCarUserid(String String) {
-        CarUserid = String;
+    public void setCarUseridandSubmitStatus(String String,int status) {
+        this.continueStatus=status;
+        this.CarUserid = String;
     }
 
     protected View setRootView(LayoutInflater LayoutInflater, ViewGroup ViewGroup) {

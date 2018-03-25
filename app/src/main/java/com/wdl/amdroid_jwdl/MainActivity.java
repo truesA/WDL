@@ -35,6 +35,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.view_page)
     public NoSlidingViewPaper viewPaper;
 
+
     private void initBottomNavigation() {
         bottomNavigationBar.setBackgroundStyle(2);
         bottomNavigationBar.setActiveColor("#FFFFFF").setInActiveColor(R.color.text_color06).setBarBackgroundColor(R.color.color1);

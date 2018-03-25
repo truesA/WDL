@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.wdl.amdroid_jwdl.App;
@@ -43,6 +44,7 @@ import retrofit2.Retrofit;
 
 public class ReservationFragment extends BaseFragment {
     private String CarUserid;
+    private int reservationStatus;
     private String days;
     String[] daysn;
     private String months;
@@ -56,6 +58,9 @@ public class ReservationFragment extends BaseFragment {
 
     @BindView(R.id.tv_year)
     TextView tv_year;
+
+    @BindView(R.id.submit_reservation)
+    Button submit_reservation;
     WheelListView wheelListViewd;
     WheelListView wheelListViewm;
     WheelListView wheelListViewy;
@@ -120,6 +125,10 @@ public class ReservationFragment extends BaseFragment {
     }
 
     public void initData() {
+        if (reservationStatus==1){//已提交
+            submit_reservation.setEnabled(false);
+            submit_reservation.setBackgroundResource(R.drawable.button_bg_mianhui_c5);
+        }
     }
 
     protected void initView() {
@@ -161,8 +170,9 @@ public class ReservationFragment extends BaseFragment {
                 });
     }
 
-    public void setCarUserid(String paramString) {
-        CarUserid = paramString;
+    public void setCarUseridandSubmitStatus(String paramString,int status) {
+        this.reservationStatus=status;
+        this.CarUserid = paramString;
     }
 
     protected View setRootView(LayoutInflater layoutInflater, ViewGroup paramViewGroup) {

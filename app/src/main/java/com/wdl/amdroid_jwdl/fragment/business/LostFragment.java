@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -41,6 +42,7 @@ import retrofit2.Retrofit;
 
 public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
     private String CarUserid;
+    private int lostStatus;
     private String loss_reason;
 
     @BindView(R.id.lost_et)
@@ -61,7 +63,14 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     @BindView(R.id.lost_rg)
     RadioGroup radioGroup;
 
+    @BindView(R.id.lost_submit)
+    Button lost_submit;
+
     public void initData() {
+        if (lostStatus==1){
+            lost_submit.setEnabled(false);
+            lost_submit.setBackgroundResource(R.drawable.button_bg_mianhui_c5);
+        }
     }
 
     protected void initView() {
@@ -136,9 +145,9 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
                 });
     }
 
-    public void setCarUserid(String paramString) {
-
-        CarUserid = paramString;
+    public void setCarUseridandSubmitStatus(String paramString,int status) {
+        this.lostStatus=status;
+        this.CarUserid = paramString;
     }
 
     protected View setRootView(LayoutInflater layoutInflater, ViewGroup viewGroup) {

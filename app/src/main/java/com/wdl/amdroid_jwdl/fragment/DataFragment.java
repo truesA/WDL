@@ -3,6 +3,7 @@ package com.wdl.amdroid_jwdl.fragment;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -67,6 +68,7 @@ import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 import retrofit2.Retrofit;
@@ -226,6 +228,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @BindView(R.id.data_refreshLayout)
     SmartRefreshLayout refreshLayouts;
+
 
     private int isRefresh=0;
 

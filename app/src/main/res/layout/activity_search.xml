@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorBackground">
 
     <com.wdl.amdroid_jwdl.view.searchView.SearchView
@@ -12,7 +13,7 @@
         app:searchBlockColor="#ffffffff"
         app:searchBlockHeight="150"
         app:textColorSearch="#ff9b9b9b"
-        app:textHintSearch="输入车牌号 如京"
+        app:textHintSearch="输入车牌号 如京AZ1566"
         app:textSizeSearch="5.0dip" />
 
     <LinearLayout
@@ -44,7 +45,7 @@
                 android:id="@+id/search_carPai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="京A-888888"
+                tools:text="京A-888888"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size2" />
 

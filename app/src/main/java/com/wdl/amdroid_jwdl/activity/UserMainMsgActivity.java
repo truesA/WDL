@@ -76,9 +76,15 @@ public class UserMainMsgActivity extends BaseActivity {
     @BindView(R.id.user_yy_gs)
     TextView user_yy_gs;
     private int userid;
+    private int submit_appoint=0;
+    private int submit_continue=0;
+    private int submit_giveup=0;
+    private int submit_loss=0;
+
 
     private void getDataMsg(int paramInt) {
-        App.getRetrofit(API.BASE_URL).create(UserService.class)
+        App.getRetrofit(API.BASE_URL)
+                .create(UserService.class)
                 .getUserMsg(paramInt)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -90,7 +96,6 @@ public class UserMainMsgActivity extends BaseActivity {
                         UIUtils.showToast("系统繁忙");
                     }
 
-                    @RequiresApi(api = 24)
                     public void onNext(UserMainMsg paramUserMainMsg) {
                         if (paramUserMainMsg.getError_code() == 200) {
                             setuserMainMsg(paramUserMainMsg.getResult());
@@ -107,9 +112,12 @@ public class UserMainMsgActivity extends BaseActivity {
     private void setuserMainMsg(UserMainMsg.ResultBean paramResultBean) {
         TextDecorator.decorate(user_jk_kh, "击溃" + paramResultBean.getJikuikehu() + "%").setTextColor(R.color.color1, new String[]{paramResultBean.getJikuikehu() + "%"}).build();
         TextDecorator.decorate(user_yy_gs, "预约工时" + paramResultBean.getYuyuegongshi() + "折").setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi() + "折"}).build();
-        ArrayList arrayList = (ArrayList) paramResultBean.getCred_score();
-        creditscoreview.setData(((Integer) arrayList.get(0)).intValue(), ((Integer) arrayList.get(1)).intValue(), ((Integer) arrayList.get(2)).intValue(), ((Integer) arrayList.get(3)).intValue(), ((Integer) arrayList.get(4)).intValue());
+        ArrayList<Integer> arrayList = (ArrayList) paramResultBean.getCred_score();
+        ArrayList<Double> arrayListd = (ArrayList)paramResultBean.getCred_score_ratio();
+        creditscoreview.setDataDefultfloat( arrayList.get(0), arrayList.get(1), arrayList.get(2), arrayList.get(3), arrayList.get(4));
+        creditscoreview.setData( arrayListd.get(0).floatValue(), arrayListd.get(1).floatValue(), arrayListd.get(2).floatValue(), arrayListd.get(3).floatValue(), arrayListd.get(4).floatValue());
         creditscoreview.invalidate();
+
         user_identity.setText(paramResultBean.getName() + " " + paramResultBean.getCar_purpose() + " " + paramResultBean.getKm_per_day() + "公里/日" + paramResultBean.getWork_field() + " " + "小刮痕" + "(" + paramResultBean.getSmall_scratch_number() + ")" +"\n"+ " 生日" + paramResultBean.getBirthday());
         user_identity_value.setText(arrayList.get(0) + "");
         user_behavior.setText("K15" + paramResultBean.getK15() + " K20" + paramResultBean.getK20() + " 维修(" + paramResultBean.getRepair_times() + ")" + " 精品(" + paramResultBean.getEconomy() + ")" + " 美容(" + paramResultBean.getCar_care() + ")" + " 微信预约(" + paramResultBean.getWechat_appoint() + ")" + " 保养次数(" + paramResultBean.getMaint_times() + ")");
@@ -121,7 +129,13 @@ public class UserMainMsgActivity extends BaseActivity {
         user_worth_value.setText(arrayList.get(3) + "");
         user_viscosity.setText("续保(" + paramResultBean.getExcent_insurance() + ")" + " 买3送1(" + paramResultBean.getBuy3free1() + ")");
         user_viscosity_value.setText(arrayList.get(4) + "");
+        submit_appoint=paramResultBean.getSubmit_appoint();
+        submit_continue=paramResultBean.getSubmit_continue();
+        submit_giveup=paramResultBean.getSubmit_giveup();
+        submit_loss=paramResultBean.getSubmit_loss();
     }
+
+
 
     protected int getlayoutview() {
         return R.layout.activity_user_main_msg;
@@ -145,17 +159,22 @@ public class UserMainMsgActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString("carUserid", userid + "");
         bundle.putString("carPai", carPai);
+
         switch (paramView.getId()) {
             case R.id.user_yy:
+                bundle.putInt("submit_appoint",submit_appoint);
                 bundle.putInt("position", 0);
                 break;
             case R.id.user_jx:
+                bundle.putInt("submit_continue",submit_continue);
                 bundle.putInt("position", 1);
                 break;
             case R.id.user_fq:
+                bundle.putInt("submit_giveup",submit_giveup);
                 bundle.putInt("position", 2);
                 break;
             case R.id.user_ls:
+                bundle.putInt("submit_loss",submit_loss);
                 bundle.putInt("position", 3);
                 break;
         }

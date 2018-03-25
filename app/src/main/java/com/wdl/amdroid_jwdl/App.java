@@ -51,7 +51,7 @@ public class App extends Application {
         LogUtils.initParam(true);
         HttpLoggingInterceptor localHttpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             public void log(String paramString) {
-                Log.i("Degin_TAG", paramString);
+                Log.i("WDL  App  Log", paramString);
             }
         });
         localHttpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

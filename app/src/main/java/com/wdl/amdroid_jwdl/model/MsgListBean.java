@@ -5,6 +5,7 @@ package com.wdl.amdroid_jwdl.model;
  */
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class MsgListBean
@@ -57,6 +58,16 @@ public class MsgListBean
         private int total_score;
         private String initial;
         private int collection;
+        private double loy_coef;
+
+        public double getLoy_coef() {
+
+            return loy_coef;
+        }
+
+        public void setLoy_coef(double loy_coef) {
+            this.loy_coef = loy_coef;
+        }
 
         public String getInitial() {
             return initial;
