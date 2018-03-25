@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -133,8 +134,12 @@ public class UserMainMsgActivity extends BaseActivity {
         submit_continue=paramResultBean.getSubmit_continue();
         submit_giveup=paramResultBean.getSubmit_giveup();
         submit_loss=paramResultBean.getSubmit_loss();
+        phone=paramResultBean.getNumb();
+        wechat=paramResultBean.getWechat_id();
     }
 
+    private String phone;
+    private String wechat;
 
 
     protected int getlayoutview() {
@@ -153,7 +158,7 @@ public class UserMainMsgActivity extends BaseActivity {
         getToolbarTitle().setText(carPai);
     }
 
-    @OnClick({R.id.user_yy, R.id.user_jx, R.id.user_fq, R.id.user_ls, R.id.call_phone, R.id.weixin})
+    @OnClick({R.id.user_yy, R.id.user_jx, R.id.user_fq, R.id.user_ls})
     public void onClickgo(View paramView) {
         Intent intent = new Intent(this, MsgBusinessActivity.class);
         Bundle bundle = new Bundle();
@@ -186,13 +191,21 @@ public class UserMainMsgActivity extends BaseActivity {
     public void onclickPhonetowx(View view){
         switch (view.getId()) {
             case R.id.call_phone:
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:15100000000"));
-                startActivity(intent);
+                if (TextUtils.isEmpty(phone)){
+                    UIUtils.showToast("暂无手机号");
+                }else{
+                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:" + phone));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
                 break;
             case R.id.weixin:
-                UIUtils.showToast("暂无微信号");
+                if (TextUtils.isEmpty(wechat)){
+                    UIUtils.showToast("暂无微信号");
+                }else{
+                    UIUtils.showToast(wechat);
+                }
+
                 break;
         }
     }

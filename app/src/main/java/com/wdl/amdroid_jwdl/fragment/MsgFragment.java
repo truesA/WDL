@@ -235,7 +235,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
                     @Override
                     public void onNext(MsgListBean msgListBean) {
-                       // dismissLoadingDialog();
+                        dismissLoadingDialog();
                         if (msgListBean.getError_code() == 200) {
                             setRequset(msgListBean.getResult());
                             refreshAndloadMoreFinsh();
@@ -246,12 +246,12 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                     @Override
                     public void onError(Throwable e) {
                         refreshAndloadMoreFinsh();
-                   //     dismissLoadingDialog();
+                        dismissLoadingDialog();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        dismissLoadingDialog();
                     }
                 });
     }
