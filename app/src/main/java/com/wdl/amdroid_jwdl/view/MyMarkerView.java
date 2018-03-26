@@ -7,6 +7,7 @@ package com.wdl.amdroid_jwdl.view;
  */
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.components.MarkerView;

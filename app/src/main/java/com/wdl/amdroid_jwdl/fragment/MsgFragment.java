@@ -61,14 +61,14 @@ import io.reactivex.schedulers.Schedulers;
 public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private static final int CAMERA_CODE = 1;
     List<MsgListBean.ResultBean> arrayList = new ArrayList();
-    private String[] carTapes = {"不限", "R", "C", "H", "L", "Y", "M"};
+    private String[] carTapes = {"不限", "R", "C", "H", "L", "Y", "YL","YZ","YX"};
     private String type = "不限";
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
     private int constellationPosition = 0;
     private String[] headers = {"类型", "车型", "地区", "忠诚度"};
     private int isRefresh = 1;
-    private String location = "本地";
+    private String location = "不限";
     private String[] locations = {"不限", "本地", "吉安县", "泰和县", "吉水县", "永丰县", "永新县", "峡江县", "安福县", "万安县", "隧川县", "新干县", "井冈山市", "吉州区", "青原区"};
     private String loyalty = "不限";
     private GirdDropDownAdapter loyaltyAdapter;

@@ -98,6 +98,7 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
                             @Override
                             public void onError(Throwable e) {
                                 e.printStackTrace();
+                                UIUtils.showToast("系统繁忙");
                             }
 
                             @Override

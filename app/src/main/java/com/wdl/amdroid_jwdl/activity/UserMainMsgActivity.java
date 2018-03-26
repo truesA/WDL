@@ -203,7 +203,8 @@ public class UserMainMsgActivity extends BaseActivity {
                 if (TextUtils.isEmpty(wechat)){
                     UIUtils.showToast("暂无微信号");
                 }else{
-                    UIUtils.showToast(wechat);
+                    UIUtils.clipText(this,wechat);
+                    UIUtils.showToast("微信号已复制到粘贴板");
                 }
 
                 break;

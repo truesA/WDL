@@ -1,5 +1,7 @@
 package com.wdl.amdroid_jwdl.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -10,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wdl.amdroid_jwdl.App;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 
 /**
@@ -284,5 +288,18 @@ public class UIUtils {
         }
         ;
         return result;
+    }
+
+    /**
+     * 把文本复制到剪切板
+     *
+     * @param context Context
+     * @param text    String
+     */
+    public static void clipText(Context context, String text) {
+        ClipboardManager myClipboard =
+                (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+        ClipData myClip = ClipData.newPlainText("text", text);
+        myClipboard.setPrimaryClip(myClip);
     }
 }

@@ -314,7 +314,13 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         resultBean = resultBeans;
         dealProgess(resultBean, checkedIds);
         dealmeduler(resultBean, checkedIds);
-        setData(dealLine(resultBean.getResult().getMn_rate().get(0)), dealLine(resultBean.getResult().getMn_rate().get(1)));
+        if(checkedIds==0){
+            setData(dealLine(resultBean.getResult().getMn_rate().get(0)), dealLine(resultBean.getResult().getMn_rate().get(1)));
+        }else{
+            setData(dealLine(resultBean.getResult().getTimes_rate().get(0)), dealLine(resultBean.getResult().getTimes_rate().get(1)));
+        }
+
+
         mLineChar.animateX(2500);
         mLineChar.invalidate();
     }
@@ -359,12 +365,12 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             tv_m1cz_m1tc.setText("M1台次");
             tv_m2cz_m2tc.setText("M2台次");
             tv_yycz_yytc.setText("预约台次");
-            probar_zcz_right_p.setProgress(100 - dealProgressValues(100, ((Integer) resultBean.getResult().getGoal_times().get(0)).intValue()));
-            probar_zcz_left_p.setProgress(dealProgressValues(100, ((Integer) resultBean.getResult().getGoal_times().get(1)).intValue()));
+            probar_zcz_right_p.setProgress(100 - dealProgressValues(350, ((Integer) resultBean.getResult().getGoal_times().get(0)).intValue()));
+            probar_zcz_left_p.setProgress(dealProgressValues(350, ((Integer) resultBean.getResult().getGoal_times().get(1)).intValue()));
             probar_zcz_right_tv.setText(resultBean.getResult().getGoal_times().get(0) + "");
             probar_zcz_left_tv.setText(resultBean.getResult().getGoal_times().get(1) + "");
-            probar_zbycz_right_p.setProgress(100 - dealProgressValues(20, ((Integer) resultBean.getResult().getMaint_times().get(0)).intValue()));
-            probar_zbycz_left_p.setProgress(dealProgressValues(20, ((Integer) resultBean.getResult().getMaint_times().get(1)).intValue()));
+            probar_zbycz_right_p.setProgress(100 - dealProgressValues(350, ((Integer) resultBean.getResult().getMaint_times().get(0)).intValue()));
+            probar_zbycz_left_p.setProgress(dealProgressValues(350, ((Integer) resultBean.getResult().getMaint_times().get(1)).intValue()));
             probar_zbycz_right_tv.setText(resultBean.getResult().getMaint_times().get(0) + "");
             probar_zbycz_left_tv.setText(resultBean.getResult().getMaint_times().get(1) + "");
             probar_t1cz_right_p.setProgress(100 - dealProgressValues(20, ((Integer) resultBean.getResult().getT1_times().get(0)).intValue()));
