@@ -12,6 +12,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/user_msg_identity"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -51,6 +52,7 @@
         android:background="@color/line_color" />
 
     <LinearLayout
+        android:id="@+id/user_msg_action"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -90,6 +92,7 @@
         android:background="@color/line_color" />
 
     <LinearLayout
+        android:id="@+id/user_msg_loyalty"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -129,6 +132,7 @@
         android:background="@color/line_color" />
 
     <LinearLayout
+        android:id="@+id/user_msg_value"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -168,6 +172,7 @@
         android:background="@color/line_color" />
 
     <LinearLayout
+        android:id="@+id/user_msg_viscosity"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,10 @@ import android.widget.TextView;
 import com.tuyenmonkey.textdecorator.TextDecorator;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
+import com.wdl.amdroid_jwdl.activity.clientmsg.ClienteBehaviorActivity;
+import com.wdl.amdroid_jwdl.activity.clientmsg.ClientIdentityActivity;
+import com.wdl.amdroid_jwdl.activity.clientmsg.ClientLoyaltyActivity;
+import com.wdl.amdroid_jwdl.activity.clientmsg.ClientValueActivity;
 import com.wdl.amdroid_jwdl.base.BaseActivity;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
@@ -76,12 +79,13 @@ public class UserMainMsgActivity extends BaseActivity {
 
     @BindView(R.id.user_yy_gs)
     TextView user_yy_gs;
+
+
     private int userid;
     private int submit_appoint=0;
     private int submit_continue=0;
     private int submit_giveup=0;
     private int submit_loss=0;
-
 
     private void getDataMsg(int paramInt) {
         App.getRetrofit(API.BASE_URL)
@@ -209,5 +213,30 @@ public class UserMainMsgActivity extends BaseActivity {
 
                 break;
         }
+    }
+    @OnClick({R.id.user_msg_identity,R.id.user_msg_action,R.id.user_msg_loyalty,R.id.user_msg_value,R.id.user_msg_viscosity})
+    public void goToClientMsg(View view){
+        Intent intent=new Intent();
+        intent.putExtra("clientid",userid);
+        switch (view.getId()){
+            case R.id.user_msg_identity:
+                intent.setClass(this, ClientIdentityActivity.class);
+                break;
+            case R.id.user_msg_action:
+                intent.setClass(this, ClienteBehaviorActivity.class);
+                break;
+            case R.id.user_msg_loyalty:
+                intent.setClass(this, ClientLoyaltyActivity.class);
+                break;
+            case R.id.user_msg_value:
+                intent.putExtra("type",1);// 1 价值
+                intent.setClass(this, ClientValueActivity.class);
+                break;
+            case R.id.user_viscosity:
+                intent.putExtra("type",2);// 2 粘性
+                intent.setClass(this, ClientValueActivity.class);
+                break;
+        }
+        startActivity(intent);
     }
 }

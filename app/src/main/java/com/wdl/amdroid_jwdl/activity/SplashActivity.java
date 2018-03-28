@@ -15,6 +15,9 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
+/**
+ * 启动页
+ */
 public class SplashActivity extends BaseActivity {
 
     @Override

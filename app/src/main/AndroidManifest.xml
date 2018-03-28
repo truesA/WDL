@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -18,37 +17,56 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name=".activity.UserMainMsgActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.RegisteAndForgetPassActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DecoderActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MsgBusinessActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".activity.RegisteAndForgetPassActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.DecoderActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SearchActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MsgBusinessActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <!--<activity-->
+            <!--android:name=".activity.UserMainMsgActivity"-->
+            <!--android:configChanges="orientation"-->
+            <!--android:screenOrientation="portrait" />-->
+        <activity android:name=".activity.clientmsg.ClientIdentityActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".activity.UserMainMsgActivity"
+        <activity android:name=".activity.clientmsg.ClienteBehaviorActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.clientmsg.ClientLoyaltyActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.clientmsg.ClientValueActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
