@@ -69,6 +69,9 @@
                 android:layout_weight="1.0"
                 android:gravity="left"
                 android:text="刘浩明"
+                android:ellipsize="end"
+                android:maxEms="12"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size2" />
 
