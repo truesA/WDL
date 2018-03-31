@@ -232,7 +232,7 @@ public class UserMainMsgActivity extends BaseActivity {
                 intent.putExtra("type",1);// 1 价值
                 intent.setClass(this, ClientValueActivity.class);
                 break;
-            case R.id.user_viscosity:
+            case R.id.user_msg_viscosity:
                 intent.putExtra("type",2);// 2 粘性
                 intent.setClass(this, ClientValueActivity.class);
                 break;

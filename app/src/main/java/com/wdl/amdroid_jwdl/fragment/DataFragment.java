@@ -491,6 +491,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         for (ILineDataSet iSet : setsFilled) {
             LineDataSet set = (LineDataSet) iSet;
             set.setDrawCircles(false);
+            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         }
 
 

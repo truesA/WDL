@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_color"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -19,9 +20,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@color/line_color"/>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/identity_carname_msg_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -39,6 +45,7 @@
             android:text="车牌号"/>
 
         <TextView
+            android:id="@+id/identity_carname_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -47,9 +54,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_down_checked"
+            android:src="@drawable/msg_more_gray"
             android:layout_marginLeft="8dp"
-            tools:layout_gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <View
@@ -60,6 +67,7 @@
         android:background="@color/line_color"/>
 
     <LinearLayout
+        android:id="@+id/identity_cartype_msg_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -77,6 +85,7 @@
             android:text="车型"/>
 
         <TextView
+            android:id="@+id/identity_cartype_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -85,9 +94,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_down_checked"
+            android:src="@drawable/msg_more_gray"
             android:layout_marginLeft="8dp"
-            tools:layout_gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <View
@@ -98,6 +107,7 @@
         android:background="@color/line_color"/>
 
     <LinearLayout
+        android:id="@+id/identity_bxday_msg_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -115,6 +125,7 @@
             android:text="保险日"/>
 
         <TextView
+            android:id="@+id/identity_bxday_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -123,9 +134,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_down_checked"
+            android:src="@drawable/msg_more_gray"
             android:layout_marginLeft="8dp"
-            tools:layout_gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <View
@@ -136,6 +147,7 @@
         android:background="@color/line_color"/>
 
     <LinearLayout
+        android:id="@+id/identity_jcday_msg_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -153,6 +165,7 @@
             android:text="交车日"/>
 
         <TextView
+            android:id="@+id/identity_jcday_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -161,9 +174,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_down_checked"
+            android:src="@drawable/msg_more_gray"
             android:layout_marginLeft="8dp"
-            tools:layout_gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <View
@@ -174,6 +187,7 @@
         android:background="@color/line_color"/>
 
     <LinearLayout
+        android:id="@+id/identity_carage_msg_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -191,6 +205,7 @@
             android:text="车龄"/>
 
         <TextView
+            android:id="@+id/identity_carage_msgs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -199,9 +214,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_down_checked"
+            android:src="@drawable/msg_more_gray"
             android:layout_marginLeft="8dp"
-            tools:layout_gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <View
@@ -229,6 +244,7 @@
             android:text="日均公里"/>
 
         <TextView
+            android:id="@+id/identity_daykm_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -261,6 +277,7 @@
             android:text="小划痕"/>
 
         <TextView
+            android:id="@+id/identity_xhh_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -293,6 +310,7 @@
             android:text="车辆用途"/>
 
         <TextView
+            android:id="@+id/identity_userful_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -325,6 +343,7 @@
             android:text="行业"/>
 
         <TextView
+            android:id="@+id/identity_hy_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
@@ -357,12 +376,13 @@
             android:text="职位"/>
 
         <TextView
+            android:id="@+id/identity_zw_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
             tools:text="1234(59%)"/>
     </LinearLayout>
-
+</LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -375,9 +395,9 @@
     <EditText
         android:id="@+id/client_identity_et"
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_margin="10dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="27dp"
         android:background="@drawable/edit_wilter_c5"
         android:gravity="top"
@@ -386,4 +406,16 @@
         android:padding="10dp"
         android:textSize="@dimen/text_size3" />
 
+    <Button
+        android:id="@+id/client_identity_bz_sumit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交特征备注"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
 </LinearLayout>

@@ -8,5 +8,8 @@
     <string name="exit">再按一次退出应用</string>
     <string name="share_to">分享到</string>
     <string name="version_unknown">版本号获取失败</string>
-
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
 </resources>

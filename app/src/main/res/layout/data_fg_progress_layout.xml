@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_marginBottom="10.0dip"
@@ -25,7 +26,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_zcz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -99,7 +100,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_zbycz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -136,7 +137,7 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_zbycz_left_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -173,7 +174,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_t1cz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -210,7 +211,7 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_t1cz_left_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -247,7 +248,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_m1cz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -284,7 +285,7 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_m1cz_left_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -321,7 +322,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_m2cz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -358,7 +359,7 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_m2cz_left_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"
@@ -395,7 +396,7 @@
             android:gravity="center|right"
             android:orientation="vertical">
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/probar_yycz_right_p"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="fill_parent"

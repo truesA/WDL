@@ -71,7 +71,9 @@
             android:id="@+id/recy"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:layoutAnimation="@anim/layout_animation_fall_down"/>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <com.wdl.amdroid_jwdl.view.dropdownmenu.DropDownMenu

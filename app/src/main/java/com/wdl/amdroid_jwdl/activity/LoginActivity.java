@@ -108,7 +108,7 @@ public class LoginActivity extends BaseActivity {
 
     protected void initView() {
         getToolbarTitle().setText("登录");
-        String content = "还没有帐号,<font color=\"#1296db\">去注册</font>";
+        String content = "还没有帐号,<font color=\"#ffff3366\">去注册</font>";
         if (Build.VERSION.SDK_INT >= 24)
             login_register.setText(Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT));
         else

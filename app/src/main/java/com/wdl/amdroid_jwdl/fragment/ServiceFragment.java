@@ -102,43 +102,67 @@ public class ServiceFragment extends BaseFragment {
 
     @BindView(R.id.probar_cx_p)
     MaterialProgressBar probar_cx_p;
+    @BindView(R.id.probar_cx_p2)
+    MaterialProgressBar probar_cx_p2;
 
     @BindView(R.id.probar_cx_tv_bom)
     TextView probar_cx_tv_bom;
+    @BindView(R.id.probar_cx_tv_bom2)
+    TextView probar_cx_tv_bom2;
 
     @BindView(R.id.probar_hq_p)
     MaterialProgressBar probar_hq_p;
+    @BindView(R.id.probar_hq_p2)
+    MaterialProgressBar probar_hq_p2;
 
     @BindView(R.id.probar_hq_tv_bom)
     TextView probar_hq_tv_bom;
+    @BindView(R.id.probar_hq_tv_bom2)
+    TextView probar_hq_tv_bom2;
 
     @BindView(R.id.probar_jcz_bom)
     TextView probar_jcz_bom;
+    @BindView(R.id.probar_jcz_bom2)
+    TextView probar_jcz_bom2;
 
     @BindView(R.id.probar_jcz_p)
     MaterialProgressBar probar_jcz_p;
+    @BindView(R.id.probar_jcz_p2)
+    MaterialProgressBar probar_jcz_p2;
 
     @BindView(R.id.probar_jjc_p)
     MaterialProgressBar probar_jjc_p;
+    @BindView(R.id.probar_jjc_p2)
+    MaterialProgressBar probar_jjc_p2;
 
     @BindView(R.id.probar_jjc_tv_bom)
     TextView probar_jjc_tv_bom;
+    @BindView(R.id.probar_jjc_tv_bom2)
+    TextView probar_jjc_tv_bom2;
 
     @BindView(R.id.probar_t1_p)
     MaterialProgressBar probar_t1_p;
+    @BindView(R.id.probar_t1_p2)
+    MaterialProgressBar probar_t1_p2;
 
     @BindView(R.id.probar_t1_tv_bom)
     TextView probar_t1_tv_bom;
+    @BindView(R.id.probar_t1_tv_bom2)
+    TextView probar_t1_tv_bom2;
 
     @BindView(R.id.service_month)
     TextView service_month;
+
+    @BindView(R.id.jiangjinchi_tot_tv)
+    TextView jiangjinchi_tot_tv;
     private List<Integer> xAxisValues;
     private List<Float> yAxisValues1;
     private List<Float> yAxisValues2;
     @BindView(R.id.service_refreshLayout)
     SmartRefreshLayout refreshLayouts;
 
-    private int isRefresh=0;
+    private int isRefresh = 0;
+
     @Override
     protected View setRootView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.service_fg, container, false);
@@ -149,35 +173,35 @@ public class ServiceFragment extends BaseFragment {
     @Override
     public void initData() {
         getAllData(monthdefult);
-            service_month.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View paramView) {
-                    TimeMDdialog timeMDdialog = new TimeMDdialog();
-                    timeMDdialog.setIndexmonthItem(monthdefult);
-                    timeMDdialog.setTimeMDdialogListener(new TimeMDdialog.TimeMDdialogListener() {
-                        public void ontimeMDdialogComplete(String paramString1, String paramString2) {
-                            isRefresh=0;
-                            getAllData(Integer.parseInt(paramString2));
-                        }
-                    });
-                    timeMDdialog.show(getActivity().getFragmentManager(), "time");
-                }
-            });
-            xAxisValues = new ArrayList();
-            yAxisValues1 = new ArrayList();
-            yAxisValues2 = new ArrayList();
-            int i = 1;
-            while (i < 13) {
-                xAxisValues.add(Integer.valueOf(i));
-                yAxisValues1.add(Float.valueOf((float) (Math.random() * 40.0D + 20.0D)));
-                yAxisValues2.add(Float.valueOf((float) (Math.random() * 40.0D + 20.0D)));
-                i += 1;
+        service_month.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View paramView) {
+                TimeMDdialog timeMDdialog = new TimeMDdialog();
+                timeMDdialog.setIndexmonthItem(monthdefult);
+                timeMDdialog.setTimeMDdialogListener(new TimeMDdialog.TimeMDdialogListener() {
+                    public void ontimeMDdialogComplete(String paramString1, String paramString2) {
+                        isRefresh = 0;
+                        getAllData(Integer.parseInt(paramString2));
+                    }
+                });
+                timeMDdialog.show(getActivity().getFragmentManager(), "time");
             }
-            setTwoBarChart(mBarChartM1, xAxisValues, yAxisValues1, yAxisValues2, "M1产值", "M1台次");
-            setTwoBarChart(mBarChartM2, xAxisValues, yAxisValues1, yAxisValues2, "M2产值", "M2台次");
-            setTwoBarChart(mBarChartYyv, xAxisValues, yAxisValues1, yAxisValues2, "预约率", "达成率");
-            setTwoBarChart(mBarChartT1, xAxisValues, yAxisValues1, yAxisValues2, "T1产值", "T1台次");
-            initViewTeValue();
+        });
+        xAxisValues = new ArrayList();
+        yAxisValues1 = new ArrayList();
+        yAxisValues2 = new ArrayList();
+        int i = 1;
+        while (i < 13) {
+            xAxisValues.add(Integer.valueOf(i));
+            yAxisValues1.add(Float.valueOf((float) (Math.random() * 40.0D + 20.0D)));
+            yAxisValues2.add(Float.valueOf((float) (Math.random() * 40.0D + 20.0D)));
+            i += 1;
         }
+        setTwoBarChart(mBarChartM1, xAxisValues, yAxisValues1, yAxisValues2, "M1产值", "M1台次");
+        setTwoBarChart(mBarChartM2, xAxisValues, yAxisValues1, yAxisValues2, "M2产值", "M2台次");
+        setTwoBarChart(mBarChartYyv, xAxisValues, yAxisValues1, yAxisValues2, "预约率", "达成率");
+        setTwoBarChart(mBarChartT1, xAxisValues, yAxisValues1, yAxisValues2, "T1产值", "T1台次");
+        initViewTeValue();
+    }
 
 
     private void initViewTeValue() {
@@ -189,7 +213,7 @@ public class ServiceFragment extends BaseFragment {
         refreshLayouts.setRefreshHeader(new MaterialHeader(getActivity()));
         refreshLayouts.setOnRefreshListener(new OnRefreshListener() {
             public void onRefresh(RefreshLayout RefreshLayout) {
-                isRefresh=1;
+                isRefresh = 1;
                 getAllData(monthdefult);
             }
         });
@@ -216,7 +240,7 @@ public class ServiceFragment extends BaseFragment {
     }
 
     private void getAllData(final int month) {
-        if (isRefresh ==0){
+        if (isRefresh == 0) {
             showLoadingDialog();
         }
         App.getRetrofit(API.BASE_URL)
@@ -239,12 +263,12 @@ public class ServiceFragment extends BaseFragment {
 
                     public void onNext(MainServiceBean mainServiceBean) {
                         refreshLayouts.finishRefresh();
-                        if (isRefresh ==0){
+                        if (isRefresh == 0) {
                             dismissLoadingDialog();
                         }
                         if (mainServiceBean.getError_code() == 200) {
                             // ServiceFragment.access$002(ServiceFragment.this,val$month);
-                            monthdefult=month;
+                            monthdefult = month;
                             service_month.setText(monthdefult + "月");
                             setDataMsg(mainServiceBean.getResult());
                         }
@@ -263,31 +287,37 @@ public class ServiceFragment extends BaseFragment {
             getAllData(monthdefult);
             return;
         }
-        LoginUesr loginuser= (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
-        Log.e("login",loginuser.getUserType()+"");
+        LoginUesr loginuser = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
+        Log.e("login", loginuser.getUserType() + "");
         if (loginuser.getUserType() == 1) {
-            probar_hq_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue()));
-            probar_hq_tv_bom.setText(new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue() + "");
-            probar_cx_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getChuxu().get(0)).intValue()).intValue()));
-            probar_cx_tv_bom.setText(new Double(((Integer) paramResultBean.getChuxu().get(0)).intValue()).intValue() + "");
-            probar_t1_p.setProgress(dealProgressValues(500, ((Integer) paramResultBean.getT1().get(0)).intValue()));
-            probar_t1_tv_bom.setText(paramResultBean.getT1().get(0) + "");
-            probar_jcz_p.setProgress(((Integer) paramResultBean.getChanzhilv().get(0)).intValue());
-            probar_jcz_bom.setText(paramResultBean.getChanzhilv().get(0) + "%");
-            probar_jjc_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getJiangjinchi().get(0)).intValue()).intValue()));
-            probar_jjc_tv_bom.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue() + "");
+            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(0) + "");
         } else {
-            probar_hq_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(1)).intValue()).intValue()));
-            probar_hq_tv_bom.setText(new Double(((Integer) paramResultBean.getHuoqi().get(1)).intValue()).intValue() + "");
-            probar_cx_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getChuxu().get(1)).intValue()).intValue()));
-            probar_cx_tv_bom.setText(new Double(((Integer) paramResultBean.getChuxu().get(1)).intValue()).intValue() + "");
-            probar_t1_p.setProgress(dealProgressValues(500, ((Integer) paramResultBean.getT1().get(1)).intValue()));
-            probar_t1_tv_bom.setText(paramResultBean.getT1().get(1) + "");
-            probar_jcz_p.setProgress(((Integer) paramResultBean.getChanzhilv().get(1)).intValue());
-            probar_jcz_bom.setText(paramResultBean.getChanzhilv().get(1) + "%");
-            probar_jjc_p.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue()));
-            probar_jjc_tv_bom.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue() + "");
+            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(1) + "");
         }
+
+
+        probar_hq_p.setProgress(100 - dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue()));
+        probar_hq_tv_bom.setText(new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue() + "");
+        probar_cx_p.setProgress(100 - dealProgressValues(10000, new Double(((Integer) paramResultBean.getChuxu().get(0)).intValue()).intValue()));
+        probar_cx_tv_bom.setText(new Double(((Integer) paramResultBean.getChuxu().get(0)).intValue()).intValue() + "");
+        probar_t1_p.setProgress(100 - dealProgressValues(500, ((Integer) paramResultBean.getT1().get(0)).intValue()));
+        probar_t1_tv_bom.setText(paramResultBean.getT1().get(0) + "");
+        probar_jcz_p.setProgress(100 - ((Integer) paramResultBean.getChanzhilv().get(0)).intValue());
+        probar_jcz_bom.setText(paramResultBean.getChanzhilv().get(0) + "%");
+        probar_jjc_p.setProgress(100 - dealProgressValues(10000, new Double(((Integer) paramResultBean.getJiangjinchi().get(0)).intValue()).intValue()));
+        probar_jjc_tv_bom.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue() + "");
+
+
+        probar_hq_p2.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(1)).intValue()).intValue()));
+        probar_hq_tv_bom2.setText(new Double(((Integer) paramResultBean.getHuoqi().get(1)).intValue()).intValue() + "");
+        probar_cx_p2.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getChuxu().get(1)).intValue()).intValue()));
+        probar_cx_tv_bom2.setText(new Double(((Integer) paramResultBean.getChuxu().get(1)).intValue()).intValue() + "");
+        probar_t1_p2.setProgress(dealProgressValues(500, ((Integer) paramResultBean.getT1().get(1)).intValue()));
+        probar_t1_tv_bom2.setText(paramResultBean.getT1().get(1) + "");
+        probar_jcz_p2.setProgress(((Integer) paramResultBean.getChanzhilv().get(1)).intValue());
+        probar_jcz_bom2.setText(paramResultBean.getChanzhilv().get(1) + "%");
+        probar_jjc_p2.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue()));
+        probar_jjc_tv_bom2.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue() + "");
     }
 
     public static void setTwoBarChart(BarChart barChart, List<Integer> xAxisValue, List<Float> yAxisValue1, List<Float> yAxisValue2, String bartilte1, String bartitle2) {
@@ -304,7 +334,7 @@ public class ServiceFragment extends BaseFragment {
         xAxis.setGranularity(1f);
         xAxis.setLabelCount(xAxisValue.size());
         xAxis.setCenterAxisLabels(true);//设置标签居中
-       // xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValue));
+        // xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValue));
 
         //y轴设置
         YAxis leftAxis = barChart.getAxisLeft();
@@ -345,6 +375,7 @@ public class ServiceFragment extends BaseFragment {
         barChart.animateX(1500);//数据显示动画，从左往右依次显示
         barChart.invalidate();
     }
+
     /**
      * 设置柱状图数据源
      */

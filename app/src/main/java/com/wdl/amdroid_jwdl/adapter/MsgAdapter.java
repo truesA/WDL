@@ -35,7 +35,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean> {
     //private int[] colors = { -16711681, -256, -16711936 };
-    Random random = new Random();
 
     public MsgAdapter(Context paramContext, int paramInt, List<MsgListBean.ResultBean> paramList) {
         super(paramContext, paramInt, paramList);

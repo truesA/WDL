@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -61,7 +63,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private static final int CAMERA_CODE = 1;
     List<MsgListBean.ResultBean> arrayList = new ArrayList();
-    private String[] carTapes = {"不限", "R", "C", "H", "L", "Y", "YL","YZ","YX"};
+    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌","雅力士", "致炫","致享" ,"逸致" };
     private String type = "不限";
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
@@ -185,7 +187,10 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         refresh();
         refreshLayout.setRefreshHeader(new MaterialHeader(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.VERTICAL,R.drawable.divider));
+       //recyclerView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.VERTICAL,R.drawable.divider));
+        int resId = R.anim.layout_animation_fall_down;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
+        recyclerView.setLayoutAnimation(animation);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             public void onRefresh(RefreshLayout RefreshLayout) {
                 isRefresh = 1;

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="10.0dip">
+    android:padding="5dip">
 
     <TextView
         android:id="@+id/carType"
@@ -106,11 +117,10 @@
         android:id="@+id/zcd_ll"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:background="@color/colorGray"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingLeft="3.0dip"
-        android:paddingRight="3.0dip">
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip">
 
         <ImageView
             android:id="@+id/msg_zcd_iv"
@@ -126,3 +136,4 @@
             android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>
+</android.support.v7.widget.CardView>

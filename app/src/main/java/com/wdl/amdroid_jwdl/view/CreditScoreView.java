@@ -333,19 +333,19 @@ public class CreditScoreView extends View {
     }
 
     public void setData(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {
-        data[0] = paramFloat1;
-        data[1] = paramFloat2;
-        data[2] = paramFloat3;
-        data[3] = paramFloat4;
-        data[4] = paramFloat5;
+        data[0] = paramFloat2;
+        data[1] = paramFloat3;
+        data[2] = paramFloat4;
+        data[3] = paramFloat5;
+        data[4] = paramFloat1;
     }
 
     public void setDataDefultfloat(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {
-        datade[0] = paramFloat1;
-        datade[1] = paramFloat2;
-        datade[2] = paramFloat3;
-        datade[3] = paramFloat4;
-        datade[4] = paramFloat5;
+        datade[0] = paramFloat2;
+        datade[1] = paramFloat3;
+        datade[2] = paramFloat4;
+        datade[3] = paramFloat5;
+        datade[4] = paramFloat1;
     }
 
     public void setDataArr(float[] paramArrayOfFloat)

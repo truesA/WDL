@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class App extends Application {
-    private static final String TAG = "Degin_TAG";
+    private static final String TAG = "APP_TAG";
     private static final int TIMEOUT_CONNECTION = 35;
     private static final int TIMEOUT_READ = 35;
     public static OkHttpClient client;

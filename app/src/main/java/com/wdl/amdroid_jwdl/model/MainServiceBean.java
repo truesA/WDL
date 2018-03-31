@@ -45,6 +45,15 @@ public class MainServiceBean
         private HeaderBean header;
         private List<Integer> huoqi;
         private List<Integer> jiangjinchi;
+        private List<Integer> jiangjinchi_total;
+
+        public List<Integer> getJiangjinchi_total() {
+            return jiangjinchi_total;
+        }
+
+        public void setJiangjinchi_total(List<Integer> jiangjinchi_total) {
+            this.jiangjinchi_total = jiangjinchi_total;
+        }
 
         public List<Integer> getChanzhilv() {
             return this.chanzhilv;

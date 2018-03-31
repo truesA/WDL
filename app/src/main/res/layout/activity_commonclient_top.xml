@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -46,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/line_color"
-        android:layout_marginBottom="15dp"/>
+        />
 
 
 </LinearLayout>
