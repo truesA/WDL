@@ -305,7 +305,7 @@ public class ServiceFragment extends BaseFragment {
         probar_jcz_p.setProgress(100 - ((Integer) paramResultBean.getChanzhilv().get(0)).intValue());
         probar_jcz_bom.setText(paramResultBean.getChanzhilv().get(0) + "%");
         probar_jjc_p.setProgress(100 - dealProgressValues(10000, new Double(((Integer) paramResultBean.getJiangjinchi().get(0)).intValue()).intValue()));
-        probar_jjc_tv_bom.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(1)).intValue()).intValue() + "");
+        probar_jjc_tv_bom.setText(new Double(((Integer) paramResultBean.getJiangjinchi().get(0)).intValue()).intValue() + "");
 
 
         probar_hq_p2.setProgress(dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(1)).intValue()).intValue()));

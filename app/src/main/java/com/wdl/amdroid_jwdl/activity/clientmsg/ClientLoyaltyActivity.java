@@ -80,7 +80,7 @@ public class ClientLoyaltyActivity extends BaseActivity {
                         dismissLoadingDialog();
                         if (clientLoyaltyBean.getError_code()==200){
                             clientLtvValue.setText("忠诚指数"+clientLoyaltyBean.getResult().getLoyalty_score());
-                            clientRtvValue.setText("总用户排行"+clientLoyaltyBean.getResult().getLoyalty_score()+"%");
+                            clientRtvValue.setText("总用户排行"+clientLoyaltyBean.getResult().getLoyalty_percent()+"%");
                             setLoyaltyData(clientLoyaltyBean.getResult());
                         }
                         UIUtils.showToast(clientLoyaltyBean.getReason());
