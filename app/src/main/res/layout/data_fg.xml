@@ -164,7 +164,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="平日（元）"
+                                    android:text="平日"
                                     android:textSize="@dimen/text_size4" />
 
                                 <TextView
@@ -194,7 +194,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="周末（元）"
+                                    android:text="周末"
                                     android:textSize="@dimen/text_size4" />
 
                                 <TextView
@@ -269,8 +269,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5.0dip"
-                                    android:text="目标达成率"
-                                    android:textSize="@dimen/text_size6" />
+                                    android:text="达成率"
+                                    android:textSize="@dimen/text_size4" />
                             </LinearLayout>
 
                             <View
@@ -291,7 +291,7 @@
                                     android:id="@+id/taiC_today"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="平日（辆）"
+                                    android:text="平日"
                                     android:textSize="@dimen/text_size4" />
 
                                 <TextView
@@ -299,7 +299,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5.0dip"
-                                    android:text="周末（辆）"
+                                    android:text="周末"
                                     android:textSize="@dimen/text_size4" />
                             </LinearLayout>
                         </LinearLayout>

@@ -68,7 +68,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
     private int constellationPosition = 0;
-    private String[] headers = {"类型", "车型", "地区", "忠诚度"};
+    private String[] headers = {"类型", "车型", "地区", "忠诚"};
     private int isRefresh = 1;
     private String location = "不限";
     private String[] locations = {"不限", "本地", "吉安县", "泰和县", "吉水县", "永丰县", "永新县", "峡江县", "安福县", "万安县", "隧川县", "新干县", "井冈山市", "吉州区", "青原区"};

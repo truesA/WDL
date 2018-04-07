@@ -217,12 +217,12 @@ public class ServiceFragment extends BaseFragment {
                 getAllData(monthdefult);
             }
         });
-        refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore(false);//传入false表示加载失败
-            }
-        });
+//        refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
+//            @Override
+//            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+//                refreshLayout.finishLoadMore(false);//传入false表示加载失败
+//            }
+//        });
 
     }
 
