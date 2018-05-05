@@ -48,4 +48,19 @@
     <color name="colorBackground">#f1f0f6</color>
     <color name="colorText">#9b9b9b</color>
     <color name="client_tv_color">#000000</color>
+
+
+    <!--新-->
+    <!--//浅灰-->
+    <color name="new_color1">#F5F5F5</color>
+    <!--//深灰-->
+    <color name="new_color2">#bdbdbd</color>
+    <!--//红色-->
+    <color name="new_color3">#c62828</color>
+    <!--//橘色-->
+    <color name="new_color4">#fb8c00</color>
+    <!--//绿色-->
+    <color name="new_color5">#43a047</color>
+    <!--//蓝色-->
+    <color name="new_color6">#1e88e5</color>
 </resources>

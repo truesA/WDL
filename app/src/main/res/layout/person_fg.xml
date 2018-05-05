@@ -28,6 +28,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -38,13 +39,27 @@
         android:id="@+id/m_main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="20.0dip"
-        android:layout_marginRight="26.0dip"
+        android:layout_below="@id/tv_person"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
         android:clickable="true"
         android:src="@drawable/out_app"
         app:backgroundTint="@color/color1"
         app:borderWidth="0.0dip"
         app:fabSize="normal" />
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/m_main_fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginBottom="20.0dip"-->
+        <!--android:layout_marginRight="26.0dip"-->
+        <!--android:clickable="true"-->
+        <!--android:src="@drawable/out_app"-->
+        <!--app:backgroundTint="@color/color1"-->
+        <!--app:borderWidth="0.0dip"-->
+        <!--app:fabSize="normal" />-->
 </RelativeLayout>

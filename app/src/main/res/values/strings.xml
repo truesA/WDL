@@ -12,4 +12,6 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+    <string name="title_activity_login2">Login2Activity</string>
+    <string name="login">登陆</string>
 </resources>

@@ -31,14 +31,13 @@ public class SplashActivity extends BaseActivity {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        Log.e("Long", aLong + "");
                         if (PreferencesUtil.getInstance(SplashActivity.this).isLogin()) {
                             finish();
                             startActivity(MainActivity.class);
 
                         } else {
                             finish();
-                            startActivity(LoginActivity.class);
+                            startActivity(Login2Activity.class);
                         }
                     }
                 });
