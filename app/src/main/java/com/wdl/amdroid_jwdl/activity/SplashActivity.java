@@ -33,7 +33,7 @@ public class SplashActivity extends BaseActivity {
                     public void accept(Long aLong) throws Exception {
                         if (PreferencesUtil.getInstance(SplashActivity.this).isLogin()) {
                             finish();
-                            startActivity(MainActivity.class);
+                            startActivity(Login2Activity.class);
 
                         } else {
                             finish();

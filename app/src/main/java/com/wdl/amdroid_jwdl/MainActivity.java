@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
 
     private void initBottomNavigation() {
         bottomNavigationBar.setBackgroundStyle(2);
-        bottomNavigationBar.setActiveColor("#FFFFFF").setInActiveColor(R.color.text_color06).setBarBackgroundColor(R.color.color1);
+        bottomNavigationBar.setActiveColor("#FFFFFF").setInActiveColor(R.color.text_color06).setBarBackgroundColor(R.color.new_color3);
         bottomNavigationBar.setMode(1);
         bottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.mub_icon_color, "目标")
                 .setInactiveIcon(ContextCompat.getDrawable(this, R.mipmap.mub_icon_nocolor)))

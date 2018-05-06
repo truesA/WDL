@@ -1,19 +1,31 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'wdlkey'
+            keyPassword '091838'
+            storeFile file('D:/Achers/Amdroid_JWDL/app/keystore/wdlkey.jks')
+            storePassword '091838'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.wdl.amdroid_jwdl"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.1.3" //奇数 为测试  偶数为正式
+        versionName "1.2.3" //奇数 为测试  偶数为正式
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
 }
