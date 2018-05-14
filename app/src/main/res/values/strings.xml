@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">微动力信用</string>
+    <string name="app_name">微动力</string>
     <string name="no_data">没有更多数据了</string>
     <string name="loading">玩命加载中...</string>
     <string name="loading_error">加载出错了...</string>
@@ -12,6 +12,5 @@
         <item>男</item>
         <item>女</item>
     </string-array>
-    <string name="title_activity_login2">Login2Activity</string>
     <string name="login">登陆</string>
 </resources>

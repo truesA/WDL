@@ -111,17 +111,26 @@ public class ClienteBehaviorActivity extends BaseActivity {
     }
 
     private void setBehavior(ClientBehaviorBean.ResultBean result) {
-        behavior_5k_msg.setText("5K   "+result.getK5());
-        behavior_10k_msg.setText("10K   "+result.getK10());
-        behavior_15k_msg.setText("15K   "+result.getK15());
-        behavior_20k_msg.setText("20K   "+result.getK20());
-        behavior_bp_msg.setText("钣喷   "+result.getBody_shop());
-        behavior_fix_msg.setText("维修  "+result.getRepair_times());
-        behavior_bx_msg.setText("保险   "+result.getInsurance());
-        behavior_yb_msg.setText("延保   "+result.getExtension());
-        behavior_jr_msg.setText("金融   "+result.getInsurance());
-        behavior_mr_msg.setText("美容   "+result.getCar_care());
-        behavior_wc_msg.setText("微信主动预约   "+result.getWechat_appoint());
-        behavior_cycs_msg.setText("12个月内保养次数   "+result.getMaint_times());
+        behavior_5k_msg.setText("5K   "+changeValue(result.getK5()));
+        behavior_10k_msg.setText("10K   "+changeValue(result.getK10()));
+        behavior_15k_msg.setText("15K   "+changeValue(result.getK15()));
+        behavior_20k_msg.setText("20K   "+changeValue(result.getK20()));
+        behavior_bp_msg.setText("钣喷   "+changeValue(result.getBody_shop()));
+        behavior_fix_msg.setText("维修  "+changeValue(result.getRepair_times()));
+        behavior_bx_msg.setText("保险   "+changeValue(result.getInsurance()));
+        behavior_yb_msg.setText("延保   "+changeValue(result.getExtension()));
+        behavior_jr_msg.setText("金融   "+changeValue(result.getInsurance()));
+        behavior_mr_msg.setText("美容   "+changeValue(result.getCar_care()));
+        behavior_wc_msg.setText("微信主动预约   "+changeValue(result.getWechat_appoint()));
+        behavior_cycs_msg.setText("12个月内保养次数   "+changeValue(result.getMaint_times()));
+    }
+
+    private String changeValue(int value){
+        if (value==1){
+            return "O";
+        }else if (value==0){
+            return "X";
+        }
+        return "X";
     }
 }

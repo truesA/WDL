@@ -97,10 +97,12 @@ public class MainActivity extends BaseActivity {
                 UIUtils.showToast("再次点击退出");
                 clickTime = System.currentTimeMillis();
             } else {
-                AppManagerUtil.instance().finishActivity();
+              //  AppManagerUtil.instance().finishActivity();
+                AppManagerUtil.instance().AppExit(this);
             }
 
         }
+
         return super.onKeyDown(paramInt, paramKeyEvent);
     }
 }

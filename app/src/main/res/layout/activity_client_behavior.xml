@@ -31,6 +31,16 @@
             android:text="行为指数详情"
             android:textColor="@color/client_tv_color" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size5"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/text_color06"
+            android:text="提示  O(有)，X(无)"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

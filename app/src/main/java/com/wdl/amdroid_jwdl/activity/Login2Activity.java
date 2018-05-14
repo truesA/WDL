@@ -220,6 +220,7 @@ public class Login2Activity extends BaseActivity implements View.OnClickListener
                     PreferencesUtil.getInstance(this).setLogin(true);
                     startActivity(new Intent(this, MainActivity.class));
                     AppManagerUtil.instance().finishActivity();
+                    dismissLoadingDialog();
                     return;
                 }
                 if (name.equals("admin2") && (str.equals("123456"))) {
@@ -232,6 +233,7 @@ public class Login2Activity extends BaseActivity implements View.OnClickListener
                     PreferencesUtil.getInstance(this).setLogin(true);
                     startActivity(new Intent(this, MainActivity.class));
                     AppManagerUtil.instance().finishActivity();
+                    dismissLoadingDialog();
                     return;
                 }
                 UIUtils.showToast("用户名密码错误");

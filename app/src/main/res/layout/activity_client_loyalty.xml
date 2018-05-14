@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="1234(59%)" />
+                    tools:text="1.1" />
             </LinearLayout>
 
             <LinearLayout
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center|left"
-                    android:text="保养周期"
+                    android:text="里程周期"
                     android:textColor="@color/client_tv_color" />
 
                 <TextView
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="1234(59%)" />
+                    tools:text="6533" />
             </LinearLayout>
 
             <LinearLayout
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center|left"
-                    android:text="最近里程"
+                    android:text="已走里程"
                     android:textColor="@color/client_tv_color" />
 
                 <TextView
@@ -117,7 +117,108 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="1234(59%)" />
+                    tools:text="5643" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="多久未入"
+                    android:textColor="@color/client_tv_color" />
+
+                <TextView
+                    android:id="@+id/loyalty_djwr_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/client_tv_color"
+                    tools:text="3.5个月" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="最近速度"
+                    android:textColor="@color/client_tv_color" />
+
+                <TextView
+                    android:id="@+id/loyalty_zjsd_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/client_tv_color"
+                    tools:text="56公里/日" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="平均速度"
+                    android:textColor="@color/client_tv_color" />
+
+                <TextView
+                    android:id="@+id/loyalty_pjsd_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/client_tv_color"
+                    tools:text="45公里/日" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="调研速度"
+                    android:textColor="@color/client_tv_color" />
+
+                <TextView
+                    android:id="@+id/loyalty_dysd_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/client_tv_color"
+                    tools:text="40公里/日" />
             </LinearLayout>
 
             <LinearLayout
@@ -142,7 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="1234(59%)" />
+                    tools:text="1234 4545 6563" />
             </LinearLayout>
 
             <LinearLayout
@@ -167,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="1234(59%)" />
+                    tools:text="2个月 5.4个月 6.4个月" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

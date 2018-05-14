@@ -52,7 +52,31 @@ public class AppManagerUtil {
 	}
 
 	/**
+	 * 移除解绑 - 防止内存泄漏
+	 * @param detachActivity
+	 */
+	public void detach(Activity detachActivity){
+		// for 去移除有没有问题？ 一边循环一边移除会出问题 ，
+		// 既然这个写法有问题，自己又想不到什么解决方法，参考一下别人怎么写的
+        /*for (Activity activity : mActivities) {
+            if(activity == detachActivity){
+                mActivities.remove(activity);
+            }
+        }*/
+		int size = activityStack.size();
+		for (int i = 0; i < size; i++) {
+			Activity activity = activityStack.get(i);
+			if (activity == detachActivity) {
+				activityStack.remove(i);
+				i--;
+				size--;
+			}
+		}
+	}
+
+	/**
 	 * Gets the current Activity (stack last pressed into)
+	 * 获取当前的Activity（最前面）
 	 */
 	public Activity currentActivity() {
 		Activity activity = activityStack.lastElement();
@@ -70,23 +94,46 @@ public class AppManagerUtil {
 	/**
 	 * The finish of the specified Activity
 	 */
-	public void finishActivity(Activity activity) {
-		if (activity != null) {
-			activityStack.remove(activity);
-			activity.finish();
-			activity.overridePendingTransition(R.anim.tran_pre_in,
-					R.anim.tran_pre_out);
-			activity = null;
+	public void finishActivity(Activity finishActivity) {
+//		if (activity != null) {
+//			activityStack.remove(activity);
+//			activity.finish();
+//			activity.overridePendingTransition(R.anim.tran_pre_in,
+//					R.anim.tran_pre_out);
+//			activity = null;
+//		}
+		int size = activityStack.size();
+		for (int i = 0; i < size; i++) {
+			Activity activity = activityStack.get(i);
+			if (activity == finishActivity) {
+				activityStack.remove(i);
+				activity.finish();
+				i--;
+				size--;
+			}
 		}
 	}
 
 	/**
 	 * End of the specified class name of the Activity
 	 */
-	public void finishActivity(Class<?> cls) {
-		for (Activity activity : activityStack) {
-			if (activity.getClass().equals(cls)) {
-				finishActivity(activity);
+	public void finishActivity(Class<? extends Activity> activityClass){
+		// for 去移除有没有问题？
+        /*for (Activity activity : mActivities) {
+            if(activity.getClass().getCanonicalName().equals(activityClass.getCanonicalName())){
+                mActivities.remove(activity);
+                activity.finish();
+            }
+        }*/
+
+		int size = activityStack.size();
+		for (int i = 0; i < size; i++) {
+			Activity activity = activityStack.get(i);
+			if (activity.getClass().getCanonicalName().equals(activityClass.getCanonicalName())) {
+				activityStack.remove(i);
+				activity.finish();
+				i--;
+				size--;
 			}
 		}
 	}
@@ -119,4 +166,6 @@ public class AppManagerUtil {
 
 		}
 	}
+
+
 }
