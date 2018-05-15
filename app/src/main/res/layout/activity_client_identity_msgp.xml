@@ -300,6 +300,13 @@
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
             tools:text="1234(59%)" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/msg_more_gray" />
     </LinearLayout>
 
 
@@ -334,6 +341,13 @@
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
             tools:text="1234(59%)" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/msg_more_gray" />
     </LinearLayout>
 
     <View
@@ -367,6 +381,13 @@
             android:layout_height="wrap_content"
             android:textColor="@color/client_tv_color"
             tools:text="1234(59%)" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/msg_more_gray" />
     </LinearLayout>
 
     <View

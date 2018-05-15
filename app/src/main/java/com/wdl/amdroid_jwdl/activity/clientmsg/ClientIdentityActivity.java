@@ -103,8 +103,10 @@ public class ClientIdentityActivity extends BaseActivity {
     TextView identity_xbdqday_msg;
     @BindView(R.id.client_identity_bz_sumit)
     Button client_identity_bz_sumit;
-
-
+    @BindView(R.id.identity_jxbz_msg)
+    TextView identity_jxbz_msg;
+    @BindView(R.id.identity_fqbz_msg)
+    TextView identity_fqbz_msg;
     @Override
     protected int getlayoutview() {
         return R.layout.activity_client_identity;
@@ -212,7 +214,7 @@ public class ClientIdentityActivity extends BaseActivity {
             R.id.identity_cartype_msg_ll, R.id.identity_bxday_msg_ll, R.id.identity_jcday_msg_ll, R.id.identity_carage_msg_ll,
             R.id.client_identity_bz_sumit, R.id.identity_wechat_msg_ll, R.id.identity_place_msg_ll, R.id.identity_like_msg_ll,
             R.id.identity_birthday_msg_ll, R.id.identity_jh_msg_ll, R.id.identity_kid_msg_ll, R.id.identity_learn_msg_ll,
-            R.id.identity_age_msg_ll, R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll})
+            R.id.identity_age_msg_ll, R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll,R.id.identity_xhh_msg_ll})
     public void submitMsg(View view) {
         switch (view.getId()) {
             case R.id.identity_name_msg_ll:
@@ -260,32 +262,32 @@ public class ClientIdentityActivity extends BaseActivity {
                         }).show();
                 break;
             case R.id.identity_carname_msg_ll:
-                new MaterialDialog.Builder(this)
-                        .title("修改车牌号")
-                        .inputRange(2, 16)
-                        .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .input("车牌号", identity_carname_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                // Do something
-                                submitMsgData("plate_number", input + "");
-                            }
-                        }).show();
+//                new MaterialDialog.Builder(this)
+//                        .title("修改车牌号")
+//                        .inputRange(2, 16)
+//                        .positiveText("提交")
+//                        .inputType(InputType.TYPE_CLASS_TEXT)
+//                        .input("车牌号", identity_carname_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
+//                            @Override
+//                            public void onInput(MaterialDialog dialog, CharSequence input) {
+//                                // Do something
+//                                submitMsgData("plate_number", input + "");
+//                            }
+//                        }).show();
                 break;
             case R.id.identity_cartype_msg_ll:
-                new MaterialDialog.Builder(this)
-                        .title("修改车辆型号")
-                        .inputRange(2, 16)
-                        .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .input("车辆型号", identity_cartype_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                // Do something
-                                submitMsgData("car_model", input + "");
-                            }
-                        }).show();
+//                new MaterialDialog.Builder(this)
+//                        .title("修改车辆型号")
+//                        .inputRange(2, 16)
+//                        .positiveText("提交")
+//                        .inputType(InputType.TYPE_CLASS_TEXT)
+//                        .input("车辆型号", identity_cartype_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
+//                            @Override
+//                            public void onInput(MaterialDialog dialog, CharSequence input) {
+//                                // Do something
+//                                submitMsgData("car_model", input + "");
+//                            }
+//                        }).show();
                 break;
             case R.id.identity_bxday_msg_ll:
                 final DatePicker picker = new DatePicker(this);
@@ -468,6 +470,9 @@ public class ClientIdentityActivity extends BaseActivity {
                 break;
             case R.id.identity_zw_msg_ll:
                 commonDialig("职位", "", identity_zw_msg.getText().toString(), "");
+                break;
+            case R.id.identity_xhh_msg_ll:
+                commonDialig("小划痕", "", identity_zw_msg.getText().toString(), "");
                 break;
             case R.id.identity_jh_msg_ll:
                 new MaterialDialog.Builder(this)
