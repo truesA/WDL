@@ -31,7 +31,7 @@ import com.wdl.amdroid_jwdl.util.UIUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
+@Deprecated
 public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.et_name)

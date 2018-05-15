@@ -44,7 +44,7 @@ import io.reactivex.schedulers.Schedulers;
  * author：lhm on 2018/3/24 22:29
  * <p>
  * email：3186834196@qq.com
- *
+ * <p>
  * 身份
  */
 public class ClientIdentityActivity extends BaseActivity {
@@ -54,8 +54,6 @@ public class ClientIdentityActivity extends BaseActivity {
     @BindView(R.id.client_common_rtv)
     TextView clientRtvValue;
     private int clientid;
-
-
 
 
     @BindView(R.id.identity_name_msg)
@@ -71,11 +69,11 @@ public class ClientIdentityActivity extends BaseActivity {
     @BindView(R.id.identity_birthday_msg)
     TextView identity_birthday_msg;
     @BindView(R.id.identity_age_msg)
-    TextView identity_age_msg;
+    TextView identity_age_msg; // 排量
     @BindView(R.id.identity_like_msg)
     TextView identity_like_msg;
     @BindView(R.id.identity_learn_msg)
-    TextView identity_learn_msg;
+    TextView identity_learn_msg; //调研速度
     @BindView(R.id.identity_jh_msg)
     TextView identity_jh_msg;
     @BindView(R.id.identity_kid_msg)
@@ -101,10 +99,10 @@ public class ClientIdentityActivity extends BaseActivity {
     TextView identity_hy_msg;
     @BindView(R.id.identity_zw_msg)
     TextView identity_zw_msg;
-
+    @BindView(R.id.identity_xbdqday_msg)
+    TextView identity_xbdqday_msg;
     @BindView(R.id.client_identity_bz_sumit)
     Button client_identity_bz_sumit;
-
 
 
     @Override
@@ -115,7 +113,7 @@ public class ClientIdentityActivity extends BaseActivity {
     @Override
     protected void initView() {
         Intent intent = getIntent();
-        clientid= intent.getIntExtra("clientid",0);
+        clientid = intent.getIntExtra("clientid", 0);
         getToolbarTitle().setText("身份");
 
     }
@@ -137,9 +135,9 @@ public class ClientIdentityActivity extends BaseActivity {
                     @Override
                     public void onNext(ClientIdentityBean clientIdentityBean) {
                         dismissLoadingDialog();
-                        if (clientIdentityBean.getError_code()==200){
-                            clientLtvValue.setText("身份指数"+clientIdentityBean.getResult().getIdentity_score());
-                            clientRtvValue.setText("总用户排行"+clientIdentityBean.getResult().getIdentity_percent()+"%");
+                        if (clientIdentityBean.getError_code() == 200) {
+                            clientLtvValue.setText("身份指数" + clientIdentityBean.getResult().getIdentity_score());
+                            clientRtvValue.setText("总用户排行" + clientIdentityBean.getResult().getIdentity_percent() + "%");
                             setIdentityData(clientIdentityBean.getResult());
                         }
                         UIUtils.showToast(clientIdentityBean.getReason());
@@ -158,69 +156,76 @@ public class ClientIdentityActivity extends BaseActivity {
                 });
     }
 
-    private int sex=0;
-    private int bxyear=2018;
-    private int bxmonth=1;
-    private int bxday=1;
-    private int jcyear=2018;
-    private int jcmonth=1;
-    private int jcday=1;
+    private int sex = 0;
+    private int bxyear = 2018;
+    private int bxmonth = 1;
+    private int bxday = 1;
+    private int jcyear = 2018;
+    private int jcmonth = 1;
+    private int jcday = 1;
+    private int marriage = 0;
+    private int haschild = 0;
+
     private void setIdentityData(ClientIdentityBean.ResultBean result) {
         identity_name_msg.setText(result.getName());
         identity_sex_msg.setText(result.getGender());
-        if ("男".equals(result.getGender())){
-            sex=0;
-        }else if ("男".equals(result.getGender())){
-            sex=1;
+        if ("男".equals(result.getGender())) {
+            sex = 0;
+        } else if ("男".equals(result.getGender())) {
+            sex = 1;
         }
         identity_phone_msg.setText(result.getNumb());
         identity_wechat_msg.setText(result.getWechat_id());
         identity_place_msg.setText(result.getLocation());
         identity_birthday_msg.setText(result.getBirthday());
-        identity_age_msg.setText(result.getAge()+"年");
+//        identity_age_msg.setText(result.getAge() + "年");
         identity_like_msg.setText(result.getHobby());
-        identity_learn_msg.setText(result.getEducation());
+//        identity_learn_msg.setText(result.getEducation());
         identity_jh_msg.setText(result.getMarriage());
         identity_kid_msg.setText(result.getChildren());
         identity_carname_msg.setText(result.getPlate_num());
         identity_cartype_msg.setText(result.getCar_model());
 
         identity_bxday_msg.setText(result.getInsurance_date());
-        String [] bxString =result.getInsurance_date().split("-");
-        bxyear=Integer.parseInt(bxString[0]);
-        bxmonth=Integer.parseInt(bxString[1]);
-        bxday=Integer.parseInt(bxString[2]);
+        String[] bxString = result.getInsurance_date().split("-");
+        bxyear = Integer.parseInt(bxString[0]);
+        bxmonth = Integer.parseInt(bxString[1]);
+        bxday = Integer.parseInt(bxString[2]);
         identity_jcday_msg.setText(result.getSale_date());
-        String [] jcString =result.getInsurance_date().split("-");
-        jcyear=Integer.parseInt(jcString[0]);
-        jcmonth=Integer.parseInt(jcString[1]);
-        jcday=Integer.parseInt(jcString[2]);
-        identity_carage_msgs.setText(result.getCar_age()+"年");
+        String[] jcString = result.getInsurance_date().split("-");
+        jcyear = Integer.parseInt(jcString[0]);
+        jcmonth = Integer.parseInt(jcString[1]);
+        jcday = Integer.parseInt(jcString[2]);
+        identity_carage_msgs.setText(result.getCar_age() + "年");
         double km_per_day = new BigDecimal(result.getKm_per_day()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
-        identity_daykm_msg.setText(km_per_day+"km");
-        identity_xhh_msg.setText(result.getSmall_scratch_number()+"");
+        identity_daykm_msg.setText(km_per_day + "km");
+        identity_xhh_msg.setText(result.getSmall_scratch_number() + "");
         identity_userful_msg.setText(result.getCar_purpose());
         identity_hy_msg.setText(result.getWork_field());
         identity_zw_msg.setText(result.getPosition());
 
+//        identity_xbdqday_msg.setText();
 
     }
 
-    @OnClick({R.id.identity_name_msg_ll,R.id.identity_sex_msg_ll,R.id.identity_phone_msg_ll,R.id.identity_carname_msg_ll,
-            R.id.identity_cartype_msg_ll,R.id.identity_bxday_msg_ll,R.id.identity_jcday_msg_ll,R.id.identity_carage_msg_ll,R.id.client_identity_bz_sumit})
-    public void submitMsg(View view){
-        switch (view.getId()){
+    @OnClick({R.id.identity_name_msg_ll, R.id.identity_sex_msg_ll, R.id.identity_phone_msg_ll, R.id.identity_carname_msg_ll,
+            R.id.identity_cartype_msg_ll, R.id.identity_bxday_msg_ll, R.id.identity_jcday_msg_ll, R.id.identity_carage_msg_ll,
+            R.id.client_identity_bz_sumit, R.id.identity_wechat_msg_ll, R.id.identity_place_msg_ll, R.id.identity_like_msg_ll,
+            R.id.identity_birthday_msg_ll, R.id.identity_jh_msg_ll, R.id.identity_kid_msg_ll, R.id.identity_learn_msg_ll,
+            R.id.identity_age_msg_ll, R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll})
+    public void submitMsg(View view) {
+        switch (view.getId()) {
             case R.id.identity_name_msg_ll:
                 new MaterialDialog.Builder(this)
                         .title("修改姓名")
                         .inputRange(2, 16)
                         .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT )
-                        .input("姓名", identity_name_msg.getText().toString(),false, new MaterialDialog.InputCallback() {
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("姓名", identity_name_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 // Do something
-                                submitMsgData("name",input+"");
+                                submitMsgData("name", input + "");
                             }
                         }).show();
                 break;
@@ -231,8 +236,8 @@ public class ClientIdentityActivity extends BaseActivity {
                         .itemsCallbackSingleChoice(sex, new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
                             public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                               // UIUtils.showToast(text + "-" );
-                                submitMsgData("gender",text+"");
+                                // UIUtils.showToast(text + "-" );
+                                submitMsgData("gender", text + "");
                                 return true;
                             }
                         })
@@ -244,13 +249,13 @@ public class ClientIdentityActivity extends BaseActivity {
                         .title("修改手机号")
                         .inputRange(2, 16)
                         .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT )
-                        .input("手机号", identity_phone_msg.getText().toString(),false, new MaterialDialog.InputCallback() {
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("手机号", identity_phone_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 // Do something
-                               // UIUtils.showToast(input + "-" );
-                                submitMsgData("phone_number",input+"");
+                                // UIUtils.showToast(input + "-" );
+                                submitMsgData("phone_number", input + "");
                             }
                         }).show();
                 break;
@@ -259,12 +264,12 @@ public class ClientIdentityActivity extends BaseActivity {
                         .title("修改车牌号")
                         .inputRange(2, 16)
                         .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT )
-                        .input("车牌号", identity_carname_msg.getText().toString(),false, new MaterialDialog.InputCallback() {
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("车牌号", identity_carname_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 // Do something
-                                submitMsgData("plate_number",input+"");
+                                submitMsgData("plate_number", input + "");
                             }
                         }).show();
                 break;
@@ -273,12 +278,12 @@ public class ClientIdentityActivity extends BaseActivity {
                         .title("修改车辆型号")
                         .inputRange(2, 16)
                         .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT )
-                        .input("车辆型号", identity_cartype_msg.getText().toString(),false, new MaterialDialog.InputCallback() {
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("车辆型号", identity_cartype_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 // Do something
-                                submitMsgData("car_model",input+"");
+                                submitMsgData("car_model", input + "");
                             }
                         }).show();
                 break;
@@ -286,6 +291,7 @@ public class ClientIdentityActivity extends BaseActivity {
                 final DatePicker picker = new DatePicker(this);
                 picker.setCanLoop(true);
                 picker.setWheelModeEnable(true);
+                picker.setTitleTextSize(16);
                 picker.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
                 picker.setTopPadding(15);
                 picker.setRangeStart(2009, 8, 29);
@@ -299,49 +305,35 @@ public class ClientIdentityActivity extends BaseActivity {
                 picker.setOnDatePickListener(new DatePicker.OnYearMonthDayPickListener() {
                     @Override
                     public void onDatePicked(String year, String month, String day) {
-                    //    UIUtils.showToast(year + "-" + month + "-" + day);
-                        submitMsgData("insurance_date",year + "-" + month + "-" + day);
+                        //    UIUtils.showToast(year + "-" + month + "-" + day);
+                        submitMsgData("insurance_date", year + "-" + month + "-" + day);
                     }
                 });
-//                picker.setOnWheelListener(new DatePicker.OnWheelListener() {
-//                    @Override
-//                    public void onYearWheeled(int index, String year) {
-//                        picker.setTitleText(year + "-" + picker.getSelectedMonth() + "-" + picker.getSelectedDay());
-//                    }
-//
-//                    @Override
-//                    public void onMonthWheeled(int index, String month) {
-//                        picker.setTitleText(picker.getSelectedYear() + "-" + month + "-" + picker.getSelectedDay());
-//                    }
-//
-//                    @Override
-//                    public void onDayWheeled(int index, String day) {
-//                        picker.setTitleText(picker.getSelectedYear() + "-" + picker.getSelectedMonth() + "-" + day);
-//                    }
-//                });
                 picker.show();
                 break;
-            case R.id.identity_jcday_msg_ll:
-                final DatePicker pickerjcday = new DatePicker(this);
-                pickerjcday.setCanLoop(true);
-                pickerjcday.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
-                pickerjcday.setWheelModeEnable(true);
-                pickerjcday.setTopPadding(15);
-                pickerjcday.setRangeStart(2009, 8, 29);
-                pickerjcday.setRangeEnd(2111, 1, 11);
-                pickerjcday.setSelectedItem(jcyear, jcmonth, jcday);
-                pickerjcday.setTitleText("交车日");
-                pickerjcday.setCancelText("取消");
-                pickerjcday.setSubmitText("确定");
-                pickerjcday.setWeightEnable(true);
-                pickerjcday.setLineColor(Color.BLACK);
-                pickerjcday.setOnDatePickListener(new DatePicker.OnYearMonthDayPickListener() {
-                    @Override
-                    public void onDatePicked(String year, String month, String day) {
-                  //      UIUtils.showToast(year + "-" + month + "-" + day);
-                        submitMsgData("sale_date",year + "-" + month + "-" + day);
-                    }
-                });
+//            case R.id.identity_xbdqday_msg_ll:
+//                final DatePicker pickerjcday = new DatePicker(this);
+//                pickerjcday.setCanLoop(true);
+//                pickerjcday.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
+//                pickerjcday.setWheelModeEnable(true);
+//                pickerjcday.setTopPadding(15);
+//                pickerjcday.setTitleTextSize(16);
+//                pickerjcday.setRangeStart(2009, 8, 29);
+//                pickerjcday.setRangeEnd(2111, 1, 11);
+//                pickerjcday.setSelectedItem(jcyear, jcmonth, jcday);
+//                pickerjcday.setTitleText("交车日");
+//                pickerjcday.setCancelText("取消");
+//                pickerjcday.setSubmitText("确定");
+//                pickerjcday.setWeightEnable(true);
+//                pickerjcday.setLineColor(Color.BLACK);
+//                pickerjcday.setOnDatePickListener(new DatePicker.OnYearMonthDayPickListener() {
+//                    @Override
+//                    public void onDatePicked(String year, String month, String day) {
+//                        //      UIUtils.showToast(year + "-" + month + "-" + day);
+//                        submitMsgData("sale_date", year + "-" + month + "-" + day);
+//                    }
+//                });
+
 //                pickerjcday.setOnWheelListener(new DatePicker.OnWheelListener() {
 //                    @Override
 //                    public void onYearWheeled(int index, String year) {
@@ -358,44 +350,154 @@ public class ClientIdentityActivity extends BaseActivity {
 //                        pickerjcday.setTitleText(pickerjcday.getSelectedYear() + "-" + pickerjcday.getSelectedMonth() + "-" + day);
 //                    }
 //                });
-                pickerjcday.show();
+//                pickerjcday.show();
+//                break;
+            case R.id.identity_birthday_msg_ll://生日
+                final DatePicker birthdayday = new DatePicker(this);
+                birthdayday.setCanLoop(true);
+                birthdayday.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
+                birthdayday.setWheelModeEnable(true);
+                birthdayday.setTopPadding(15);
+                birthdayday.setTitleTextSize(16);
+                birthdayday.setRangeStart(2009, 8, 29);
+                birthdayday.setRangeEnd(2111, 1, 11);
+                birthdayday.setSelectedItem(jcyear, jcmonth, jcday);
+                birthdayday.setTitleText("生日");
+                birthdayday.setCancelText("取消");
+                birthdayday.setSubmitText("确定");
+                birthdayday.setWeightEnable(true);
+                birthdayday.setLineColor(Color.BLACK);
+                birthdayday.setOnDatePickListener(new DatePicker.OnYearMonthDayPickListener() {
+                    @Override
+                    public void onDatePicked(String year, String month, String day) {
+                        //      UIUtils.showToast(year + "-" + month + "-" + day);
+                        submitMsgData("birthday", year + "-" + month + "-" + day);
+                    }
+                });
+                birthdayday.show();
                 break;
+
             case R.id.identity_carage_msg_ll:
-                ArrayList<String> list = new ArrayList<>();
-                for(int i = 1;i<10; i++){
-                    list.add(i+"");
-                }
-//        String[] ss = (String[]) list.toArray();
-                SinglePicker<String> pickersinge = new SinglePicker<>(this, list);
-                pickersinge.setCanLoop(false);//不禁用循环
-                pickersinge.setLineVisible(true);
-                pickersinge.setTextSize(18);
-                pickersinge.setSelectedIndex(8);
-                pickersinge.setWheelModeEnable(false);
+//                ArrayList<String> list = new ArrayList<>();
+//                for (int i = 1; i < 10; i++) {
+//                    list.add(i + "");
+//                }
+//                SinglePicker<String> pickersinge = new SinglePicker<>(this, list);
+//                pickersinge.setCanLoop(false);//不禁用循环
+//                pickersinge.setLineVisible(true);
+//                pickersinge.setTextSize(18);
+//                pickersinge.setSelectedIndex(0);
+//                pickersinge.setWheelModeEnable(false);
+//                //启用权重 setWeightWidth 才起作用
+//                pickersinge.setTitleText("车龄");
+//                pickersinge.setTitleTextSize(16);
+//                pickersinge.setCancelText("取消");
+//                pickersinge.setSubmitText("确定");
+//                pickersinge.setLabel("年");
+//                pickersinge.setWeightEnable(true);
+//                pickersinge.setWeightWidth(1);
+//                pickersinge.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
+//                pickersinge.setUnSelectedTextColor(Color.BLACK);
+//                pickersinge.setOnSingleWheelListener(new OnSingleWheelListener() {
+//                    @Override
+//                    public void onWheeled(int index, String item) {
+//                        // UIUtils.showToast("index=" + index + ", item=" + item);
+//                    }
+//                });
+//                pickersinge.setOnItemPickListener(new OnItemPickListener<String>() {
+//                    @Override
+//                    public void onItemPicked(int index, String item) {
+//                        //   UIUtils.showToast("index=" + index + ", item=" + item);
+//                        submitMsgData("car_age", item);
+//                    }
+//                });
+//                pickersinge.show();
+                break;
+            case R.id.identity_userful_msg_ll:
+                ArrayList<String> userfullist = new ArrayList<>();
+                userfullist.add("家用");
+                userfullist.add("业务");
+                userfullist.add("公用");
+                SinglePicker<String> pickeruserful = new SinglePicker<>(this, userfullist);
+                pickeruserful.setCanLoop(false);//不禁用循环
+                pickeruserful.setLineVisible(true);
+                pickeruserful.setTextSize(18);
+                pickeruserful.setSelectedIndex(0);
+                pickeruserful.setWheelModeEnable(false);
                 //启用权重 setWeightWidth 才起作用
-                pickersinge.setTitleText("车龄");
-                pickersinge.setCancelText("取消");
-                pickersinge.setSubmitText("确定");
-                pickersinge.setLabel("年");
-                pickersinge.setWeightEnable(true);
-                pickersinge.setWeightWidth(1);
-                pickersinge.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
-                pickersinge.setUnSelectedTextColor(Color.BLACK);
-                pickersinge.setOnSingleWheelListener(new OnSingleWheelListener() {
+                pickeruserful.setTitleText("车辆用途");
+                pickeruserful.setTitleTextSize(16);
+                pickeruserful.setCancelText("取消");
+                pickeruserful.setSubmitText("确定");
+                pickeruserful.setLabel("");
+                pickeruserful.setWeightEnable(true);
+                pickeruserful.setWeightWidth(1);
+                pickeruserful.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
+                pickeruserful.setUnSelectedTextColor(Color.BLACK);
+                pickeruserful.setOnSingleWheelListener(new OnSingleWheelListener() {
                     @Override
                     public void onWheeled(int index, String item) {
-                       // UIUtils.showToast("index=" + index + ", item=" + item);
+                        // UIUtils.showToast("index=" + index + ", item=" + item);
                     }
                 });
-                pickersinge.setOnItemPickListener(new OnItemPickListener<String>() {
+                pickeruserful.setOnItemPickListener(new OnItemPickListener<String>() {
                     @Override
                     public void onItemPicked(int index, String item) {
-                     //   UIUtils.showToast("index=" + index + ", item=" + item);
-                        submitMsgData("car_age",item);
+                        submitMsgData("", item);
                     }
                 });
-                pickersinge.show();
-
+                pickeruserful.show();
+                    break;
+            case R.id.identity_wechat_msg_ll://微信号
+                commonDialig("修改微信号", "微信号", identity_wechat_msg.getText().toString(), "");
+                break;
+            case R.id.identity_place_msg_ll://省市
+                commonDialig("修改地址", "省市县", identity_place_msg.getText().toString(), "");
+                break;
+            case R.id.identity_like_msg_ll:
+                commonDialig("修改爱好", "爱好", identity_like_msg.getText().toString(), "");
+                break;
+            case R.id.identity_learn_msg_ll:
+                commonDialig("调研速度", "", identity_learn_msg.getText().toString(), "");
+                break;
+            case R.id.identity_age_msg_ll:
+                commonDialig("排量", "", identity_age_msg.getText().toString(), "");
+                break;
+            case R.id.identity_hy_msg_ll:
+                commonDialig("行业", "", identity_hy_msg.getText().toString(), "");
+                break;
+            case R.id.identity_zw_msg_ll:
+                commonDialig("职位", "", identity_zw_msg.getText().toString(), "");
+                break;
+            case R.id.identity_jh_msg_ll:
+                new MaterialDialog.Builder(this)
+                        .title("是否婚否")
+                        .items(R.array.marriage)
+                        .itemsCallbackSingleChoice(marriage, new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                // UIUtils.showToast(text + "-" );
+                                submitMsgData("", text + "");
+                                return true;
+                            }
+                        })
+                        .positiveText("提交")
+                        .show();
+                break;
+            case R.id.identity_kid_msg_ll:
+                new MaterialDialog.Builder(this)
+                        .title("是否有小孩")
+                        .items(R.array.haschild)
+                        .itemsCallbackSingleChoice(haschild, new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                // UIUtils.showToast(text + "-" );
+                                submitMsgData("", text + "");
+                                return true;
+                            }
+                        })
+                        .positiveText("提交")
+                        .show();
                 break;
             case R.id.client_identity_bz_sumit:
                 UIUtils.showToast("提交备注");
@@ -403,11 +505,39 @@ public class ClientIdentityActivity extends BaseActivity {
         }
     }
 
-    private void submitMsgData(String msgtype,String content){
+    /**
+     * 通用提交按钮
+     *
+     * @param title  标题
+     * @param hint   未填写提示
+     * @param value  提交的值
+     * @param params 请求字段
+     */
+    private void commonDialig(String title, String hint, String value, final String params) {
+        new MaterialDialog.Builder(this)
+                .title(title)
+                .positiveText("提交")
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .input(hint, value, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(MaterialDialog dialog, CharSequence input) {
+                        // Do something
+                        submitMsgData(params, input + "");
+                    }
+                }).show();
+    }
+
+    /**
+     * 提交接口
+     *
+     * @param msgtype
+     * @param content
+     */
+    private void submitMsgData(String msgtype, String content) {
         showLoadingDialog();
-        Map<String,String> params =new HashMap<>();
-        params.put("user_id",clientid+"");
-        params.put(msgtype,content);
+        Map<String, String> params = new HashMap<>();
+        params.put("user_id", clientid + "");
+        params.put(msgtype, content);
         App.getRetrofit(API.BASE_URL)
                 .create(ClientService.class)
                 .getClientSubmitIdentity(params)
@@ -422,7 +552,7 @@ public class ClientIdentityActivity extends BaseActivity {
                     @Override
                     public void onNext(BaseBean baseBean) {
                         dismissLoadingDialog();
-                        if (baseBean.getError_code()==200){
+                        if (baseBean.getError_code() == 200) {
                             initData();
                         }
                         UIUtils.showToast(baseBean.getReason());

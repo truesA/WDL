@@ -12,5 +12,13 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+    <string-array name="marriage">
+        <item>未婚</item>
+        <item>已婚</item>
+    </string-array>
+    <string-array name="haschild">
+        <item>否</item>
+        <item>是</item>
+    </string-array>
     <string name="login">登陆</string>
 </resources>

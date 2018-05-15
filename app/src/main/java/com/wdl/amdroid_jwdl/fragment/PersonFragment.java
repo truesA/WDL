@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.R;
+import com.wdl.amdroid_jwdl.activity.Login2Activity;
 import com.wdl.amdroid_jwdl.activity.LoginActivity;
 import com.wdl.amdroid_jwdl.base.BaseFragment;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
@@ -52,7 +53,7 @@ public class PersonFragment extends BaseFragment {
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 dialog.dismiss();
                                 PreferencesUtil.getInstance(getActivity()).setLogin(false);
-                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                Intent intent = new Intent(getActivity(), Login2Activity.class);
                                 startActivity(intent);
                                 AppManagerUtil.instance().finishAllActivity();
                             }
