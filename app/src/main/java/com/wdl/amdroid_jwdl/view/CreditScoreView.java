@@ -61,7 +61,7 @@ public class CreditScoreView extends View {
     //分数大小
     private int scoreSize = DensityUtils.dp2px(getContext(), 28);
     //标题文字大小
-    private int titleSize = DensityUtils.dp2px(getContext(), 13);
+    private int titleSize = DensityUtils.dp2px(getContext(), 15);
 
     public CreditScoreView(Context context) {
         this(context, null);
@@ -110,7 +110,7 @@ public class CreditScoreView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         //雷达图半径
-        radius = Math.min(h, w) / 2 * 0.5f;
+        radius = Math.min(h, w) / 2 * 0.7f;
         //中心坐标
         centerX = w / 2;
         centerY = h / 2;

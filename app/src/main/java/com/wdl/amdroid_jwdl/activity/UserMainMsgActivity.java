@@ -56,8 +56,8 @@ public class UserMainMsgActivity extends BaseActivity {
     @BindView(R.id.user_identity_value)
     TextView user_identity_value;
 
-    @BindView(R.id.user_jk_kh)
-    TextView user_jk_kh;
+//    @BindView(R.id.user_jk_kh)
+//    TextView user_jk_kh;
 
     @BindView(R.id.user_loyalty)
     TextView user_loyalty;
@@ -79,6 +79,13 @@ public class UserMainMsgActivity extends BaseActivity {
 
     @BindView(R.id.user_yy_gs)
     TextView user_yy_gs;
+
+    @BindView(R.id.user_yycs_tv)
+    TextView user_yycs_tv;
+    @BindView(R.id.user_jxcs_tv)
+    TextView user_jxcs_tv;
+    @BindView(R.id.user_fqcs_tv)
+    TextView user_fqcs_tv;
 
 
     private int userid;
@@ -115,8 +122,12 @@ public class UserMainMsgActivity extends BaseActivity {
 
     @SuppressLint({"SetTextI18n"})
     private void setuserMainMsg(UserMainMsg.ResultBean paramResultBean) {
-        TextDecorator.decorate(user_jk_kh, "击溃" + paramResultBean.getJikuikehu() + "%").setTextColor(R.color.color1, new String[]{paramResultBean.getJikuikehu() + "%"}).build();
-        TextDecorator.decorate(user_yy_gs, "预约工时" + paramResultBean.getYuyuegongshi() + "折").setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi() + "折"}).build();
+//        TextDecorator.decorate(user_jk_kh, "击溃" + paramResultBean.getJikuikehu() + "%").setTextColor(R.color.color1, new String[]{paramResultBean.getJikuikehu() + "%"}).build();
+        TextDecorator.decorate(user_yy_gs, "T1分数线" + paramResultBean.getYuyuegongshi()).setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi()+""}).build();
+        TextDecorator.decorate(user_yycs_tv, "预约次数" + paramResultBean.getYuyuegongshi()).setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi()+""}).build();
+        TextDecorator.decorate(user_jxcs_tv, "继续次数" + paramResultBean.getYuyuegongshi()).setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi()+""}).build();
+        TextDecorator.decorate(user_fqcs_tv, "放弃次数" + paramResultBean.getYuyuegongshi()).setTextColor(R.color.color1, new String[]{paramResultBean.getYuyuegongshi()+""}).build();
+
         ArrayList<Integer> arrayList = (ArrayList) paramResultBean.getCred_score();
         ArrayList<Double> arrayListd = (ArrayList)paramResultBean.getCred_score_ratio();
         creditscoreview.setDataDefultfloat( arrayList.get(0), arrayList.get(1), arrayList.get(2), arrayList.get(3), arrayList.get(4));
