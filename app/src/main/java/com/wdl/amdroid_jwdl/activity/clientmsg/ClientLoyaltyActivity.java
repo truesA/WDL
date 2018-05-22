@@ -38,10 +38,19 @@ public class ClientLoyaltyActivity extends BaseActivity {
 
     @BindView(R.id.loyalty_zcxs_msg)
     TextView loyalty_zcxs_msg;
-    @BindView(R.id.loyalty_byzq_msg)
-    TextView loyalty_byzq_msg;
-    @BindView(R.id.loyalty_zjlc_msg)
-    TextView loyalty_zjlc_msg;
+    @BindView(R.id.loyalty_lczq_msg)
+    TextView loyalty_lczq_msg;
+    @BindView(R.id.loyalty_yzlc_msg)
+    TextView loyalty_yzlc_msg;
+    @BindView(R.id.loyalty_djwr_msg)
+    TextView loyalty_djwr_msg;
+    @BindView(R.id.loyalty_zjsd_msg)
+    TextView loyalty_zjsd_msg;
+    @BindView(R.id.loyalty_pjsd_msg)
+    TextView loyalty_pjsd_msg;
+    @BindView(R.id.loyalty_dysd_msg)
+    TextView loyalty_dysd_msg;
+
     @BindView(R.id.loyalty_lcjg_msg)
     TextView loyalty_lcjg_msg;
     @BindView(R.id.loyalty_sjjg_msg)
@@ -103,22 +112,38 @@ public class ClientLoyaltyActivity extends BaseActivity {
     private void setLoyaltyData(ClientLoyaltyBean.ResultBean result) {
         double loy_coef = new BigDecimal(result.getLoy_coef()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         loyalty_zcxs_msg.setText(loy_coef+"");
-        int  period = (int) result.getPeriod();
-        loyalty_byzq_msg.setText(period+"");
-        loyalty_zjlc_msg.setText(result.getKm_per_day()+"");
+        int  period =result.getKm_period();
+        loyalty_lczq_msg.setText(period+"");
+        loyalty_yzlc_msg.setText(result.getKm_past()+"");
+        loyalty_djwr_msg.setText(result.getMonth_past()+"个月");
+        loyalty_zjsd_msg.setText(result.getSpeed_recent()+"公里/日");
+        loyalty_pjsd_msg.setText(result.getSpeed_average()+"公里/日");
+        loyalty_dysd_msg.setText(result.getSpeed_survey()+"公里/日");
 
         loyalty_lcjg_msg.setText(toListSizeSpace(result.getMile_gap()));
-        loyalty_sjjg_msg.setText(toListSizeSpace(result.getTime_gap()));
+        loyalty_sjjg_msg.setText(toListSizeSpaceTime(result.getTime_gap()));
     }
 
     private String toListSizeSpace(List<Integer> list){
-        if (list.size()==0){
+        if (list.size() == 0){
             return "无";
         }
         StringBuffer sb=new StringBuffer();
         for (int i=0;i<list.size();i++){
             sb.append(list.get(i)+"");
-            sb.append(" ");
+            sb.append("  ");
+        }
+        return sb.toString();
+    }
+
+    private String toListSizeSpaceTime(List<Integer> list){
+        if (list.size() == 0){
+            return "无";
+        }
+        StringBuffer sb=new StringBuffer();
+        for (int i=0;i<list.size();i++){
+            sb.append(list.get(i)+"");
+            sb.append("个月 ");
         }
         return sb.toString();
     }

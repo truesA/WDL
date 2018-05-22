@@ -88,11 +88,11 @@
                     android:textColor="@color/client_tv_color" />
 
                 <TextView
-                    android:id="@+id/loyalty_byzq_msg"
+                    android:id="@+id/loyalty_lczq_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="6533" />
+                    tools:text="里程周期" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,11 +113,11 @@
                     android:textColor="@color/client_tv_color" />
 
                 <TextView
-                    android:id="@+id/loyalty_zjlc_msg"
+                    android:id="@+id/loyalty_yzlc_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/client_tv_color"
-                    tools:text="5643" />
+                    tools:text="已走里程" />
             </LinearLayout>
 
             <LinearLayout

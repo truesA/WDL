@@ -217,6 +217,7 @@ public class ServiceFragment extends BaseFragment {
                 getAllData(monthdefult);
             }
         });
+        refreshLayouts.setEnableLoadMore(false);
 //        refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
 //            @Override
 //            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {

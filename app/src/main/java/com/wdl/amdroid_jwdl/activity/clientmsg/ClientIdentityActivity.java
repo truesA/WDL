@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,6 +108,10 @@ public class ClientIdentityActivity extends BaseActivity {
     TextView identity_jxbz_msg;
     @BindView(R.id.identity_fqbz_msg)
     TextView identity_fqbz_msg;
+    @BindView(R.id.client_identity_et)
+    EditText client_identity_et;
+
+
     @Override
     protected int getlayoutview() {
         return R.layout.activity_client_identity;
@@ -180,9 +185,9 @@ public class ClientIdentityActivity extends BaseActivity {
         identity_wechat_msg.setText(result.getWechat_id());
         identity_place_msg.setText(result.getLocation());
         identity_birthday_msg.setText(result.getBirthday());
-//        identity_age_msg.setText(result.getAge() + "年");
+        identity_age_msg.setText(result.getDisplacement());//排量
         identity_like_msg.setText(result.getHobby());
-//        identity_learn_msg.setText(result.getEducation());
+        identity_learn_msg.setText(result.getSurvey_speed()+"");//调研速度
         identity_jh_msg.setText(result.getMarriage());
         identity_kid_msg.setText(result.getChildren());
         identity_carname_msg.setText(result.getPlate_num());
@@ -206,31 +211,19 @@ public class ClientIdentityActivity extends BaseActivity {
         identity_hy_msg.setText(result.getWork_field());
         identity_zw_msg.setText(result.getPosition());
 
-//        identity_xbdqday_msg.setText();
-
+        identity_xbdqday_msg.setText(result.getContinue_insurance_date());
+        identity_jxbz_msg.setText(result.getContinue_notes());
+        identity_fqbz_msg.setText(result.getGiveup_notes());
+        client_identity_et.setText(result.getFeature_notes());
     }
 
-    @OnClick({R.id.identity_name_msg_ll, R.id.identity_sex_msg_ll, R.id.identity_phone_msg_ll, R.id.identity_carname_msg_ll,
+    @OnClick({ R.id.identity_sex_msg_ll, R.id.identity_carname_msg_ll,
             R.id.identity_cartype_msg_ll, R.id.identity_bxday_msg_ll, R.id.identity_jcday_msg_ll, R.id.identity_carage_msg_ll,
             R.id.client_identity_bz_sumit, R.id.identity_wechat_msg_ll, R.id.identity_place_msg_ll, R.id.identity_like_msg_ll,
             R.id.identity_birthday_msg_ll, R.id.identity_jh_msg_ll, R.id.identity_kid_msg_ll, R.id.identity_learn_msg_ll,
-            R.id.identity_age_msg_ll, R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll,R.id.identity_xhh_msg_ll})
+            R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll,R.id.identity_xhh_msg_ll})
     public void submitMsg(View view) {
         switch (view.getId()) {
-            case R.id.identity_name_msg_ll:
-                new MaterialDialog.Builder(this)
-                        .title("修改姓名")
-                        .inputRange(2, 16)
-                        .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .input("姓名", identity_name_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                // Do something
-                                submitMsgData("name", input + "");
-                            }
-                        }).show();
-                break;
             case R.id.identity_sex_msg_ll:
                 new MaterialDialog.Builder(this)
                         .title("性别")
@@ -245,21 +238,6 @@ public class ClientIdentityActivity extends BaseActivity {
                         })
                         .positiveText("提交")
                         .show();
-                break;
-            case R.id.identity_phone_msg_ll:
-                new MaterialDialog.Builder(this)
-                        .title("修改手机号")
-                        .inputRange(2, 16)
-                        .positiveText("提交")
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .input("手机号", identity_phone_msg.getText().toString(), false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                // Do something
-                                // UIUtils.showToast(input + "-" );
-                                submitMsgData("phone_number", input + "");
-                            }
-                        }).show();
                 break;
             case R.id.identity_carname_msg_ll:
 //                new MaterialDialog.Builder(this)
@@ -296,7 +274,7 @@ public class ClientIdentityActivity extends BaseActivity {
                 picker.setTitleTextSize(16);
                 picker.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
                 picker.setTopPadding(15);
-                picker.setRangeStart(2009, 8, 29);
+                picker.setRangeStart(1900, 1, 29);
                 picker.setRangeEnd(2111, 1, 11);
                 picker.setSelectedItem(bxyear, bxmonth, bxday);
                 picker.setTitleText("保险日");
@@ -361,7 +339,7 @@ public class ClientIdentityActivity extends BaseActivity {
                 birthdayday.setWheelModeEnable(true);
                 birthdayday.setTopPadding(15);
                 birthdayday.setTitleTextSize(16);
-                birthdayday.setRangeStart(2009, 8, 29);
+                birthdayday.setRangeStart(1900, 1, 29);
                 birthdayday.setRangeEnd(2111, 1, 11);
                 birthdayday.setSelectedItem(jcyear, jcmonth, jcday);
                 birthdayday.setTitleText("生日");
@@ -445,34 +423,34 @@ public class ClientIdentityActivity extends BaseActivity {
                 pickeruserful.setOnItemPickListener(new OnItemPickListener<String>() {
                     @Override
                     public void onItemPicked(int index, String item) {
-                        submitMsgData("", item);
+                        submitMsgData("car_purpose", item);
                     }
                 });
                 pickeruserful.show();
                     break;
             case R.id.identity_wechat_msg_ll://微信号
-                commonDialig("修改微信号", "微信号", identity_wechat_msg.getText().toString(), "");
+                commonDialig("修改微信号", "微信号", identity_wechat_msg.getText().toString(), "wechat_id");
                 break;
             case R.id.identity_place_msg_ll://省市
-                commonDialig("修改地址", "省市县", identity_place_msg.getText().toString(), "");
+                commonDialig("修改地址", "省市县", identity_place_msg.getText().toString(), "address");
                 break;
             case R.id.identity_like_msg_ll:
-                commonDialig("修改爱好", "爱好", identity_like_msg.getText().toString(), "");
+                commonDialig("修改爱好", "爱好", identity_like_msg.getText().toString(), "hobby");
                 break;
             case R.id.identity_learn_msg_ll:
-                commonDialig("调研速度", "", identity_learn_msg.getText().toString(), "");
+                commonDialig("调研速度", "", identity_learn_msg.getText().toString(), "survey_speed");
                 break;
-            case R.id.identity_age_msg_ll:
-                commonDialig("排量", "", identity_age_msg.getText().toString(), "");
-                break;
+//            case R.id.identity_age_msg_ll:
+//                commonDialig("排量", "", identity_age_msg.getText().toString(), "");
+//                break;
             case R.id.identity_hy_msg_ll:
-                commonDialig("行业", "", identity_hy_msg.getText().toString(), "");
+                commonDialig("行业", "", identity_hy_msg.getText().toString(), "work_field");
                 break;
             case R.id.identity_zw_msg_ll:
-                commonDialig("职位", "", identity_zw_msg.getText().toString(), "");
+                commonDialig("职位", "", identity_zw_msg.getText().toString(), "position");
                 break;
             case R.id.identity_xhh_msg_ll:
-                commonDialig("小划痕", "", identity_zw_msg.getText().toString(), "");
+                commonDialig("小划痕", "", identity_xhh_msg.getText().toString(), "small_scratch");
                 break;
             case R.id.identity_jh_msg_ll:
                 new MaterialDialog.Builder(this)
@@ -482,7 +460,7 @@ public class ClientIdentityActivity extends BaseActivity {
                             @Override
                             public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
                                 // UIUtils.showToast(text + "-" );
-                                submitMsgData("", text + "");
+                                submitMsgData("marriage", text + "");
                                 return true;
                             }
                         })
@@ -497,7 +475,7 @@ public class ClientIdentityActivity extends BaseActivity {
                             @Override
                             public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
                                 // UIUtils.showToast(text + "-" );
-                                submitMsgData("", text + "");
+                                submitMsgData("children", text + "");
                                 return true;
                             }
                         })
@@ -505,7 +483,7 @@ public class ClientIdentityActivity extends BaseActivity {
                         .show();
                 break;
             case R.id.client_identity_bz_sumit:
-                UIUtils.showToast("提交备注");
+                submitMsgData("feature_notes",client_identity_et.getText().toString() );
                 break;
         }
     }

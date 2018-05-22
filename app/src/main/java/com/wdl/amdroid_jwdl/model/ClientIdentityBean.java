@@ -13,7 +13,7 @@ public class ClientIdentityBean implements Serializable {
     /**
      * error_code : 200
      * reason : 用户详细信息已正确返回!
-     * result : {"Numb":"17611499018","age":"","birthday":"","car_age":"","car_model":"ACV40L-JEAGKC","car_purpose":"","children":"","education":"","gender":"未填写","hobby":"","id":0,"identity_percent":34,"identity_score":0,"insurance_date":"","km_per_day":37.735849056603776,"location":"江西省吉安市永新县禾川镇学背居民区北门路一区","marriage":"","name":"谭克福","plate_num":"赣D-T8866","position":"","sale_date":"2007-12-22","small_scratch_number":0,"wechat_id":"Harry_Brown_2019","work_field":""}
+     * result : {"Numb":"13766286568","age":0,"birthday":"1900-01-31","car_age":7,"car_model":"汉兰达","car_purpose":"未填","children":0,"continue_insurance_date":"0000-00-00","continue_notes":"0.0","displacement":"2.7L","feature_notes":"0.0","gender":"男","giveup_notes":"0.0","hobby":"0.0","id":0,"identity_percent":49,"identity_score":0,"insurance_date":"1900-01-31","km_per_day":84,"location":"吉安市","marriage":"0.0","name":"罗","plate_num":"赣D-L1838","position":"未填","sale_date":"2011-02-15","small_scratch_number":0,"survey_speed":0,"wechat_id":"0.0","work_field":"未填"}
      */
 
     private int error_code;
@@ -46,47 +46,56 @@ public class ClientIdentityBean implements Serializable {
 
     public static class ResultBean {
         /**
-         * Numb : 17611499018
-         * age :
-         * birthday :
-         * car_age :
-         * car_model : ACV40L-JEAGKC
-         * car_purpose :
-         * children :
-         * education :
-         * gender : 未填写
-         * hobby :
+         * Numb : 13766286568
+         * age : 0.0
+         * birthday : 1900-01-31
+         * car_age : 7
+         * car_model : 汉兰达
+         * car_purpose : 未填
+         * children : 0
+         * continue_insurance_date : 0000-00-00
+         * continue_notes : 0.0
+         * displacement : 2.7L
+         * feature_notes : 0.0
+         * gender : 男
+         * giveup_notes : 0.0
+         * hobby : 0.0
          * id : 0
-         * identity_percent : 34
+         * identity_percent : 49
          * identity_score : 0
-         * insurance_date :
-         * km_per_day : 37.735849056603776
-         * location : 江西省吉安市永新县禾川镇学背居民区北门路一区
-         * marriage :
-         * name : 谭克福
-         * plate_num : 赣D-T8866
-         * position :
-         * sale_date : 2007-12-22
+         * insurance_date : 1900-01-31
+         * km_per_day : 84
+         * location : 吉安市
+         * marriage : 0.0
+         * name : 罗
+         * plate_num : 赣D-L1838
+         * position : 未填
+         * sale_date : 2011-02-15
          * small_scratch_number : 0
-         * wechat_id : Harry_Brown_2019
-         * work_field :
+         * survey_speed : 0
+         * wechat_id : 0.0
+         * work_field : 未填
          */
 
         private String Numb;
-        private String age;
+        private double age;
         private String birthday;
-        private String car_age;
+        private int car_age;
         private String car_model;
         private String car_purpose;
         private String children;
-        private String education;
+        private String continue_insurance_date;
+        private String continue_notes;
+        private String displacement;
+        private String feature_notes;
         private String gender;
+        private String giveup_notes;
         private String hobby;
         private int id;
         private int identity_percent;
         private int identity_score;
         private String insurance_date;
-        private double km_per_day;
+        private int km_per_day;
         private String location;
         private String marriage;
         private String name;
@@ -94,6 +103,7 @@ public class ClientIdentityBean implements Serializable {
         private String position;
         private String sale_date;
         private int small_scratch_number;
+        private int survey_speed;
         private String wechat_id;
         private String work_field;
 
@@ -105,11 +115,11 @@ public class ClientIdentityBean implements Serializable {
             this.Numb = Numb;
         }
 
-        public String getAge() {
+        public double getAge() {
             return age;
         }
 
-        public void setAge(String age) {
+        public void setAge(double age) {
             this.age = age;
         }
 
@@ -121,11 +131,11 @@ public class ClientIdentityBean implements Serializable {
             this.birthday = birthday;
         }
 
-        public String getCar_age() {
+        public int getCar_age() {
             return car_age;
         }
 
-        public void setCar_age(String car_age) {
+        public void setCar_age(int car_age) {
             this.car_age = car_age;
         }
 
@@ -153,12 +163,36 @@ public class ClientIdentityBean implements Serializable {
             this.children = children;
         }
 
-        public String getEducation() {
-            return education;
+        public String getContinue_insurance_date() {
+            return continue_insurance_date;
         }
 
-        public void setEducation(String education) {
-            this.education = education;
+        public void setContinue_insurance_date(String continue_insurance_date) {
+            this.continue_insurance_date = continue_insurance_date;
+        }
+
+        public String getContinue_notes() {
+            return continue_notes;
+        }
+
+        public void setContinue_notes(String continue_notes) {
+            this.continue_notes = continue_notes;
+        }
+
+        public String getDisplacement() {
+            return displacement;
+        }
+
+        public void setDisplacement(String displacement) {
+            this.displacement = displacement;
+        }
+
+        public String getFeature_notes() {
+            return feature_notes;
+        }
+
+        public void setFeature_notes(String feature_notes) {
+            this.feature_notes = feature_notes;
         }
 
         public String getGender() {
@@ -167,6 +201,14 @@ public class ClientIdentityBean implements Serializable {
 
         public void setGender(String gender) {
             this.gender = gender;
+        }
+
+        public String getGiveup_notes() {
+            return giveup_notes;
+        }
+
+        public void setGiveup_notes(String giveup_notes) {
+            this.giveup_notes = giveup_notes;
         }
 
         public String getHobby() {
@@ -209,11 +251,11 @@ public class ClientIdentityBean implements Serializable {
             this.insurance_date = insurance_date;
         }
 
-        public double getKm_per_day() {
+        public int getKm_per_day() {
             return km_per_day;
         }
 
-        public void setKm_per_day(double km_per_day) {
+        public void setKm_per_day(int km_per_day) {
             this.km_per_day = km_per_day;
         }
 
@@ -271,6 +313,14 @@ public class ClientIdentityBean implements Serializable {
 
         public void setSmall_scratch_number(int small_scratch_number) {
             this.small_scratch_number = small_scratch_number;
+        }
+
+        public int getSurvey_speed() {
+            return survey_speed;
+        }
+
+        public void setSurvey_speed(int survey_speed) {
+            this.survey_speed = survey_speed;
         }
 
         public String getWechat_id() {

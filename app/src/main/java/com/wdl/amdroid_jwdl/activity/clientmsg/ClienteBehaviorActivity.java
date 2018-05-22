@@ -52,10 +52,10 @@ public class ClienteBehaviorActivity extends BaseActivity {
     TextView behavior_jr_msg;
     @BindView(R.id.behavior_mr_msg)
     TextView behavior_mr_msg;
-    @BindView(R.id.behavior_wc_msg)
-    TextView behavior_wc_msg;
-    @BindView(R.id.behavior_cycs_msg)
-    TextView behavior_cycs_msg;
+//    @BindView(R.id.behavior_wc_msg)
+//    TextView behavior_wc_msg;
+//    @BindView(R.id.behavior_cycs_msg)
+//    TextView behavior_cycs_msg;
 
 
     @Override
@@ -121,8 +121,8 @@ public class ClienteBehaviorActivity extends BaseActivity {
         behavior_yb_msg.setText("延保   "+changeValue(result.getExtension()));
         behavior_jr_msg.setText("金融   "+changeValue(result.getInsurance()));
         behavior_mr_msg.setText("美容   "+changeValue(result.getCar_care()));
-        behavior_wc_msg.setText("微信主动预约   "+changeValue(result.getWechat_appoint()));
-        behavior_cycs_msg.setText("12个月内保养次数   "+changeValue(result.getMaint_times()));
+//        behavior_wc_msg.setText("微信主动预约   "+changeValue(result.getWechat_appoint()));
+//        behavior_cycs_msg.setText("12个月内保养次数   "+changeValue(result.getMaint_times()));
     }
 
     private String changeValue(int value){

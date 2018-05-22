@@ -13,7 +13,7 @@ public class UserMainMsg implements Serializable {
     /**
      * error_code : 200
      * reason : 用户详细信息已正确返回!
-     * result : {"K15":0,"K20":0,"Numb":"","birthday":"","buy3free1":0,"car_care":0,"car_purpose":"","cred_score":[0,0,270,168,0,438],"cred_score_ratio":[0,0,0.9,0.84,0],"day_mile_recent":8,"economy":0,"excent_insurance":0,"id":11,"jikuikehu":61,"km_per_day":8.23045267489712,"loy_coef":0.9279610067090001,"maint_single":0,"maint_sum":0,"maint_times":12,"mile_gap":[571,6108,3698],"name":"张其祥","period":729.5565170360001,"plate_num":"赣D-Z1566","repair_times":2,"small_scratch_number":0,"submit_appoint":0,"submit_continue":0,"submit_giveup":0,"submit_loss":0,"time_gap":[7,226,85],"wechat_appoint":0,"wechat_id":"Harry_Brown_2019","work_field":"","yuyuegongshi":8.5}
+     * result : {"M1":0,"M2":0,"Numb":"13766286568","T1_threshold":430,"birthday":"1900-01-31","body_shop_times":0,"car_age":7,"car_care_times":0,"car_model":"汉兰达","continue_insurance_times":0,"count_appoint":0,"count_continue":0,"count_giveup":0,"cred_score":[0,15,0,168,0],"cred_score_ratio":[0,15,0,168,0],"day_km_recent":77,"economy_times":0,"excellent_times":0,"header":{"request_time":"2018-05-23 00:16:43","response_time":"2018-05-23 00:16:43"},"id":0,"insurance_date":"1900-01-31","km_past":179256,"km_per_day":84,"km_period":11004,"loy_coef":9.33827002571,"maint_single":0,"maint_single_pct":33,"maint_sum":0,"maint_sum_pct":36,"maint_times":8,"month_past":71,"name":"罗","period":131.608959327,"plate_num":"赣D-L1838","repair_times":1,"small_scratch_number":0,"submit_appoint":0,"submit_continue":0,"submit_giveup":0,"submit_loss":0,"survey_speed":0,"wechat_appoint":0,"wechat_id":"0.0","zhe":7.5}
      */
 
     private int error_code;
@@ -46,59 +46,81 @@ public class UserMainMsg implements Serializable {
 
     public static class ResultBean {
         /**
-         * K15 : 0
-         * K20 : 0
-         * Numb :
-         * birthday :
-         * buy3free1 : 0
-         * car_care : 0
-         * car_purpose :
-         * cred_score : [0,0,270,168,0,438]
-         * cred_score_ratio : [0,0,0.9,0.84,0] 身份，行为，忠诚，价值，粘性
-         * day_mile_recent : 8
-         * economy : 0
-         * excent_insurance : 0
-         * id : 11
-         * jikuikehu : 61
-         * km_per_day : 8.23045267489712
-         * loy_coef : 0.9279610067090001
+         * M1 : 0
+         * M2 : 0
+         * Numb : 13766286568
+         * T1_threshold : 430.0
+         * birthday : 1900-01-31
+         * body_shop_times : 0
+         * car_age : 7
+         * car_care_times : 0
+         * car_model : 汉兰达
+         * continue_insurance_times : 0
+         * count_appoint : 0
+         * count_continue : 0
+         * count_giveup : 0
+         * cred_score : [0,15,0,168,0]
+         * cred_score_ratio : [0,15,0,168,0]
+         * day_km_recent : 77
+         * economy_times : 0
+         * excellent_times : 0
+         * header : {"request_time":"2018-05-23 00:16:43","response_time":"2018-05-23 00:16:43"}
+         * id : 0
+         * insurance_date : 1900-01-31
+         * km_past : 179256
+         * km_per_day : 84
+         * km_period : 11004
+         * loy_coef : 9.33827002571
          * maint_single : 0
+         * maint_single_pct : 33
          * maint_sum : 0
-         * maint_times : 12
-         * mile_gap : [571,6108,3698]
-         * name : 张其祥
-         * period : 729.5565170360001
-         * plate_num : 赣D-Z1566
-         * repair_times : 2
+         * maint_sum_pct : 36
+         * maint_times : 8
+         * month_past : 71
+         * name : 罗
+         * period : 131.608959327
+         * plate_num : 赣D-L1838
+         * repair_times : 1
          * small_scratch_number : 0
          * submit_appoint : 0
          * submit_continue : 0
          * submit_giveup : 0
          * submit_loss : 0
-         * time_gap : [7,226,85]
+         * survey_speed : 0
          * wechat_appoint : 0
-         * wechat_id : Harry_Brown_2019
-         * work_field :
-         * yuyuegongshi : 8.5
+         * wechat_id : 0.0
+         * zhe : 7.5
          */
 
-        private int K15;
-        private int K20;
+        private int M1;
+        private int M2;
         private String Numb;
+        private double T1_threshold;
         private String birthday;
-        private int buy3free1;
-        private int car_care;
-        private String car_purpose;
-        private int day_mile_recent;
-        private int economy;
-        private int excent_insurance;
+        private int body_shop_times;
+        private int car_age;
+        private int car_care_times;
+        private String car_model;
+        private int continue_insurance_times;
+        private int count_appoint;
+        private int count_continue;
+        private int count_giveup;
+        private int day_km_recent;
+        private int economy_times;
+        private int excellent_times;
+        private HeaderBean header;
         private int id;
-        private int jikuikehu;
-        private double km_per_day;
+        private String insurance_date;
+        private int km_past;
+        private int km_per_day;
+        private int km_period;
         private double loy_coef;
         private int maint_single;
+        private int maint_single_pct;
         private int maint_sum;
+        private int maint_sum_pct;
         private int maint_times;
+        private int month_past;
         private String name;
         private double period;
         private String plate_num;
@@ -108,29 +130,27 @@ public class UserMainMsg implements Serializable {
         private int submit_continue;
         private int submit_giveup;
         private int submit_loss;
+        private int survey_speed;
         private int wechat_appoint;
         private String wechat_id;
-        private String work_field;
-        private double yuyuegongshi;
+        private double zhe;
         private List<Integer> cred_score;
         private List<Double> cred_score_ratio;
-        private List<Integer> mile_gap;
-        private List<Integer> time_gap;
 
-        public int getK15() {
-            return K15;
+        public int getM1() {
+            return M1;
         }
 
-        public void setK15(int K15) {
-            this.K15 = K15;
+        public void setM1(int M1) {
+            this.M1 = M1;
         }
 
-        public int getK20() {
-            return K20;
+        public int getM2() {
+            return M2;
         }
 
-        public void setK20(int K20) {
-            this.K20 = K20;
+        public void setM2(int M2) {
+            this.M2 = M2;
         }
 
         public String getNumb() {
@@ -141,6 +161,14 @@ public class UserMainMsg implements Serializable {
             this.Numb = Numb;
         }
 
+        public double getT1_threshold() {
+            return T1_threshold;
+        }
+
+        public void setT1_threshold(double T1_threshold) {
+            this.T1_threshold = T1_threshold;
+        }
+
         public String getBirthday() {
             return birthday;
         }
@@ -149,52 +177,100 @@ public class UserMainMsg implements Serializable {
             this.birthday = birthday;
         }
 
-        public int getBuy3free1() {
-            return buy3free1;
+        public int getBody_shop_times() {
+            return body_shop_times;
         }
 
-        public void setBuy3free1(int buy3free1) {
-            this.buy3free1 = buy3free1;
+        public void setBody_shop_times(int body_shop_times) {
+            this.body_shop_times = body_shop_times;
         }
 
-        public int getCar_care() {
-            return car_care;
+        public int getCar_age() {
+            return car_age;
         }
 
-        public void setCar_care(int car_care) {
-            this.car_care = car_care;
+        public void setCar_age(int car_age) {
+            this.car_age = car_age;
         }
 
-        public String getCar_purpose() {
-            return car_purpose;
+        public int getCar_care_times() {
+            return car_care_times;
         }
 
-        public void setCar_purpose(String car_purpose) {
-            this.car_purpose = car_purpose;
+        public void setCar_care_times(int car_care_times) {
+            this.car_care_times = car_care_times;
         }
 
-        public int getDay_mile_recent() {
-            return day_mile_recent;
+        public String getCar_model() {
+            return car_model;
         }
 
-        public void setDay_mile_recent(int day_mile_recent) {
-            this.day_mile_recent = day_mile_recent;
+        public void setCar_model(String car_model) {
+            this.car_model = car_model;
         }
 
-        public int getEconomy() {
-            return economy;
+        public int getContinue_insurance_times() {
+            return continue_insurance_times;
         }
 
-        public void setEconomy(int economy) {
-            this.economy = economy;
+        public void setContinue_insurance_times(int continue_insurance_times) {
+            this.continue_insurance_times = continue_insurance_times;
         }
 
-        public int getExcent_insurance() {
-            return excent_insurance;
+        public int getCount_appoint() {
+            return count_appoint;
         }
 
-        public void setExcent_insurance(int excent_insurance) {
-            this.excent_insurance = excent_insurance;
+        public void setCount_appoint(int count_appoint) {
+            this.count_appoint = count_appoint;
+        }
+
+        public int getCount_continue() {
+            return count_continue;
+        }
+
+        public void setCount_continue(int count_continue) {
+            this.count_continue = count_continue;
+        }
+
+        public int getCount_giveup() {
+            return count_giveup;
+        }
+
+        public void setCount_giveup(int count_giveup) {
+            this.count_giveup = count_giveup;
+        }
+
+        public int getDay_km_recent() {
+            return day_km_recent;
+        }
+
+        public void setDay_km_recent(int day_km_recent) {
+            this.day_km_recent = day_km_recent;
+        }
+
+        public int getEconomy_times() {
+            return economy_times;
+        }
+
+        public void setEconomy_times(int economy_times) {
+            this.economy_times = economy_times;
+        }
+
+        public int getExcellent_times() {
+            return excellent_times;
+        }
+
+        public void setExcellent_times(int excellent_times) {
+            this.excellent_times = excellent_times;
+        }
+
+        public HeaderBean getHeader() {
+            return header;
+        }
+
+        public void setHeader(HeaderBean header) {
+            this.header = header;
         }
 
         public int getId() {
@@ -205,20 +281,36 @@ public class UserMainMsg implements Serializable {
             this.id = id;
         }
 
-        public int getJikuikehu() {
-            return jikuikehu;
+        public String getInsurance_date() {
+            return insurance_date;
         }
 
-        public void setJikuikehu(int jikuikehu) {
-            this.jikuikehu = jikuikehu;
+        public void setInsurance_date(String insurance_date) {
+            this.insurance_date = insurance_date;
         }
 
-        public double getKm_per_day() {
+        public int getKm_past() {
+            return km_past;
+        }
+
+        public void setKm_past(int km_past) {
+            this.km_past = km_past;
+        }
+
+        public int getKm_per_day() {
             return km_per_day;
         }
 
-        public void setKm_per_day(double km_per_day) {
+        public void setKm_per_day(int km_per_day) {
             this.km_per_day = km_per_day;
+        }
+
+        public int getKm_period() {
+            return km_period;
+        }
+
+        public void setKm_period(int km_period) {
+            this.km_period = km_period;
         }
 
         public double getLoy_coef() {
@@ -237,6 +329,14 @@ public class UserMainMsg implements Serializable {
             this.maint_single = maint_single;
         }
 
+        public int getMaint_single_pct() {
+            return maint_single_pct;
+        }
+
+        public void setMaint_single_pct(int maint_single_pct) {
+            this.maint_single_pct = maint_single_pct;
+        }
+
         public int getMaint_sum() {
             return maint_sum;
         }
@@ -245,12 +345,28 @@ public class UserMainMsg implements Serializable {
             this.maint_sum = maint_sum;
         }
 
+        public int getMaint_sum_pct() {
+            return maint_sum_pct;
+        }
+
+        public void setMaint_sum_pct(int maint_sum_pct) {
+            this.maint_sum_pct = maint_sum_pct;
+        }
+
         public int getMaint_times() {
             return maint_times;
         }
 
         public void setMaint_times(int maint_times) {
             this.maint_times = maint_times;
+        }
+
+        public int getMonth_past() {
+            return month_past;
+        }
+
+        public void setMonth_past(int month_past) {
+            this.month_past = month_past;
         }
 
         public String getName() {
@@ -325,6 +441,14 @@ public class UserMainMsg implements Serializable {
             this.submit_loss = submit_loss;
         }
 
+        public int getSurvey_speed() {
+            return survey_speed;
+        }
+
+        public void setSurvey_speed(int survey_speed) {
+            this.survey_speed = survey_speed;
+        }
+
         public int getWechat_appoint() {
             return wechat_appoint;
         }
@@ -341,20 +465,12 @@ public class UserMainMsg implements Serializable {
             this.wechat_id = wechat_id;
         }
 
-        public String getWork_field() {
-            return work_field;
+        public double getZhe() {
+            return zhe;
         }
 
-        public void setWork_field(String work_field) {
-            this.work_field = work_field;
-        }
-
-        public double getYuyuegongshi() {
-            return yuyuegongshi;
-        }
-
-        public void setYuyuegongshi(double yuyuegongshi) {
-            this.yuyuegongshi = yuyuegongshi;
+        public void setZhe(double zhe) {
+            this.zhe = zhe;
         }
 
         public List<Integer> getCred_score() {
@@ -373,20 +489,30 @@ public class UserMainMsg implements Serializable {
             this.cred_score_ratio = cred_score_ratio;
         }
 
-        public List<Integer> getMile_gap() {
-            return mile_gap;
-        }
+        public static class HeaderBean {
+            /**
+             * request_time : 2018-05-23 00:16:43
+             * response_time : 2018-05-23 00:16:43
+             */
 
-        public void setMile_gap(List<Integer> mile_gap) {
-            this.mile_gap = mile_gap;
-        }
+            private String request_time;
+            private String response_time;
 
-        public List<Integer> getTime_gap() {
-            return time_gap;
-        }
+            public String getRequest_time() {
+                return request_time;
+            }
 
-        public void setTime_gap(List<Integer> time_gap) {
-            this.time_gap = time_gap;
+            public void setRequest_time(String request_time) {
+                this.request_time = request_time;
+            }
+
+            public String getResponse_time() {
+                return response_time;
+            }
+
+            public void setResponse_time(String response_time) {
+                this.response_time = response_time;
+            }
         }
     }
 }
