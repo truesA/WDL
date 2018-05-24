@@ -2,6 +2,7 @@ package com.wdl.amdroid_jwdl.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -199,15 +200,24 @@ public class UserMainMsgActivity extends BaseActivity {
         user_identity_yygs.setText("预约工时折扣"+"("+paramResultBean.getZhe()+")");
 
         //行为
-        user_behavior_m1.setText("M1"+changeValue(paramResultBean.getM1()));
-        user_behavior_m2.setText("M2"+changeValue(paramResultBean.getM2()));
+     //   user_behavior_m1.setText("M1"+changeValue(paramResultBean.getM1()));
+      //  user_behavior_m2.setText("M2"+changeValue(paramResultBean.getM2()));
         user_behavior_anum.setText("12个月内A次数"+"("+paramResultBean.getMaint_times()+")");
-        user_behavior_xb.setText("续保"+changeValue(paramResultBean.getContinue_insurance_times()));
-        user_behavior_bp.setText("钣喷"+changeValue(paramResultBean.getBody_shop_times()));
-        user_behavior_wx.setText("维修"+changeValue(paramResultBean.getRepair_times()));
-        user_behavior_jp.setText("精品"+changeValue(paramResultBean.getExcellent_times()));
-        user_behavior_jr.setText("金融"+changeValue(paramResultBean.getEconomy_times()));
-        user_behavior_mr.setText("美容"+changeValue(paramResultBean.getCar_care_times()));
+       // user_behavior_xb.setText("续保"+changeValue(paramResultBean.getContinue_insurance_times()));
+       // user_behavior_bp.setText("钣喷"+changeValue(paramResultBean.getBody_shop_times()));
+      //  user_behavior_wx.setText("维修"+changeValue(paramResultBean.getRepair_times()));
+      //  user_behavior_jp.setText("精品"+changeValue(paramResultBean.getExcellent_times()));
+      //  user_behavior_jr.setText("金融"+changeValue(paramResultBean.getEconomy_times()));
+      //  user_behavior_mr.setText("美容"+changeValue(paramResultBean.getCar_care_times()));
+
+        changeValueView(user_behavior_m1,"M1",paramResultBean.getM1());
+        changeValueView(user_behavior_m2,"M2",paramResultBean.getM2());
+        changeValueView(user_behavior_xb,"续保",paramResultBean.getContinue_insurance_times());
+        changeValueView(user_behavior_bp,"钣喷",paramResultBean.getBody_shop_times());
+        changeValueView(user_behavior_wx,"维修",paramResultBean.getRepair_times());
+        changeValueView(user_behavior_jp,"精品",paramResultBean.getExcellent_times());
+        changeValueView(user_behavior_jr,"金融",paramResultBean.getEconomy_times());
+        changeValueView(user_behavior_mr,"美容",paramResultBean.getCar_care_times());
 
         //忠诚
         DecimalFormat localDecimalFormat = new DecimalFormat("#.00");
@@ -346,5 +356,14 @@ public class UserMainMsgActivity extends BaseActivity {
             return "X";
         }
         return "X";
+    }
+
+    private void changeValueView(TextView view,String name,int value){
+        if (value==1){
+            view.setText(name+"O");
+            view.setBackgroundColor(Color.parseColor("#ffff3366"));
+        }else if (value==0){
+            view.setText(name+"X");
+        }
     }
 }
