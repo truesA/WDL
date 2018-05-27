@@ -1,5 +1,12 @@
 <?xml version="1" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wdl.amdroid_jwdl.view.StateFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:enableContentAnim="true"
+    app:loadingLayoutResId="@layout/layout_loading">
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/bg_color"
@@ -199,3 +206,4 @@
 
 
 </RelativeLayout>
+</com.wdl.amdroid_jwdl.view.StateFrameLayout>

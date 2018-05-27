@@ -6,9 +6,11 @@ package com.wdl.amdroid_jwdl.interfaces;
 
 import com.wdl.amdroid_jwdl.model.BaseBean;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
+import com.wdl.amdroid_jwdl.model.SavingBean;
 import com.wdl.amdroid_jwdl.model.UserMainMsg;
 import com.wdl.amdroid_jwdl.model.UserMainMsgBast;
 
+import butterknife.BindView;
 import io.reactivex.Observable;
 
 import java.util.Map;
@@ -34,5 +36,8 @@ public interface UserService {
 
     @GET(API.Main_USERMSG_BAST)
     Observable<UserMainMsgBast> getUserMsgBast(@Query("id") int id);
+
+    @GET(API.Main_saving)
+    Observable<SavingBean> getMainSavingMsg(@Query("date") String date);
 
 }

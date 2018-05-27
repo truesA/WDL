@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tuyenmonkey.textdecorator.TextDecorator;
 import com.wdl.amdroid_jwdl.App;
@@ -23,6 +25,7 @@ import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.UserMainMsg;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.CreditScoreView;
+import com.wdl.amdroid_jwdl.view.StateFrameLayout;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -144,6 +147,9 @@ public class UserMainMsgActivity extends BaseActivity {
     @BindView(R.id.user_worth_bydc_wz)
     TextView user_worth_bydc_wz;
 
+    @BindView(R.id.stateLayout)
+    StateFrameLayout mStateFrameLayout;
+
 
     private int userid;
     private int submit_appoint=0;
@@ -151,7 +157,8 @@ public class UserMainMsgActivity extends BaseActivity {
     private int submit_giveup=0;
     private int submit_loss=0;
 
-    private void getDataMsg(int paramInt) {
+    private void getDataMsg(final int paramInt) {
+        mStateFrameLayout.changeState(StateFrameLayout.LOADING);
         App.getRetrofit(API.BASE_URL)
                 .create(UserService.class)
                 .getUserMsg(paramInt)
@@ -162,12 +169,18 @@ public class UserMainMsgActivity extends BaseActivity {
                     }
 
                     public void onError(Throwable paramThrowable) {
-                        UIUtils.showToast("系统繁忙");
+//                        UIUtils.showToast("系统繁忙");
+                        mStateFrameLayout.changeState(StateFrameLayout.ERROR);
                     }
 
                     public void onNext(UserMainMsg paramUserMainMsg) {
+                        if (paramUserMainMsg.getResult()==null){
+                            mStateFrameLayout.changeState(StateFrameLayout.EMPTY);
+                            return;
+                        }
                         if (paramUserMainMsg.getError_code() == 200) {
                             setuserMainMsg(paramUserMainMsg.getResult());
+                            mStateFrameLayout.changeState(StateFrameLayout.SUCCESS);
                         }
                         UIUtils.showToast(paramUserMainMsg.getReason());
                     }
@@ -192,7 +205,12 @@ public class UserMainMsgActivity extends BaseActivity {
         creditscoreview.invalidate();
 
         //身份
-        user_identity_name.setText(paramResultBean.getName()+"("+paramResultBean.getBirthday()+")");
+        if (paramResultBean.getName().length()>3) {
+            user_identity_name.setText(paramResultBean.getName().substring(0,4) + "(" + paramResultBean.getBirthday() + ")");
+            user_identity_name.setTextSize(11f);
+        }else {
+            user_identity_name.setText(paramResultBean.getName() + "(" + paramResultBean.getBirthday() + ")");
+        }
         user_identity_carAge.setText(paramResultBean.getCar_model()+"("+paramResultBean.getCar_age()+")");
         user_identity_dysu.setText("调研速度"+"("+paramResultBean.getSurvey_speed()+")");
         user_identity_xubao.setText("保险日"+"("+paramResultBean.getInsurance_date()+")");
@@ -269,6 +287,62 @@ public class UserMainMsgActivity extends BaseActivity {
         Log.e("e", userid + "");
         carPai = localIntent.getStringExtra("carPai");
         getToolbarTitle().setText(carPai);
+
+        View emptyView = getLayoutInflater().inflate(R.layout.layout_empty, (ViewGroup) findViewById(android.R.id.content), false);
+        mStateFrameLayout.setEmptyView(emptyView);
+        mStateFrameLayout.setNetErrorViewLayoutId(R.layout.layout_net_error);
+      //  mStateFrameLayout.setErrorViewLayoutId(R.layout.layout_error);
+        View errorView = getLayoutInflater().inflate(R.layout.layout_error, (ViewGroup) findViewById(android.R.id.content), false);
+        mStateFrameLayout.setErrorView(errorView);
+        mStateFrameLayout.setOnNetErrorRetryListener(new StateFrameLayout.OnNetErrorRetryListener()
+        {
+            @Override
+            public void onNetErrorRetry()
+            {
+                //Toast.makeText(UserMainMsgActivity.this, "点击网络错误重试", Toast.LENGTH_LONG).show();
+                getDataMsg(userid);
+            }
+        });
+        mStateFrameLayout.setOnEmptyRetryListener(new StateFrameLayout.OnEmptyRetryListener()
+        {
+            @Override
+            public void onEmptyRetry()
+            {
+              //  Toast.makeText(UserMainMsgActivity.this, "点击空数据重试", Toast.LENGTH_LONG).show();
+                getDataMsg(userid);
+            }
+        });
+        mStateFrameLayout.setOnErrorRetryListener(new StateFrameLayout.OnErrorRetryListener() {
+            @Override
+            public void onErrorRetry() {
+                getDataMsg(userid);
+            }
+        });
+
+//        findViewById(R.id.btn_empty).setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//
+//            }
+//        });
+//        findViewById(R.id.btn_net_error).setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                mStateFrameLayout.changeState(StateFrameLayout.NET_ERROR);
+//            }
+//        });
+//        findViewById(R.id.btn_success).setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                mStateFrameLayout.changeState(StateFrameLayout.SUCCESS);
+//            }
+//        });
     }
 
     @OnClick({R.id.user_yy, R.id.user_jx, R.id.user_fq, R.id.user_ls})
@@ -360,10 +434,10 @@ public class UserMainMsgActivity extends BaseActivity {
 
     private void changeValueView(TextView view,String name,int value){
         if (value==1){
-            view.setText(name+"O");
-            view.setBackgroundColor(Color.parseColor("#ffff3366"));
+            view.setText(name+" O");
         }else if (value==0){
-            view.setText(name+"X");
+            view.setText(name+" X");
+            view.setBackgroundColor(Color.parseColor("#ffff3366"));
         }
     }
 }

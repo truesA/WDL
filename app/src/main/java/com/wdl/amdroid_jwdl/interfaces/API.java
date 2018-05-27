@@ -22,5 +22,7 @@ public class API
     public static final String Client_sticky="user_search_detail/sticky";
     //https://de70ebd3.ngrok.io/submit_identity?user_id=1&name=&plate_number=&gender=&car_model=&phone_number=&insurance_date=&sale_date=&car_age=8年
     public static final String Client_submit_identity="submit_identity";
+     //http://wdl.blackholebigdata.com/bk_call?date=2018-05-26
+    public static final String Main_saving = "bk_call";
 
 }

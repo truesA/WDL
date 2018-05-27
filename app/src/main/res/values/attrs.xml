@@ -23,4 +23,18 @@
         <attr name="searchBlockHeight" format="integer" />
         <attr name="searchBlockColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="XOView">
+        <attr name="xo_status" format="integer" />
+        <attr name="xo_color" format="color" />
+
+    </declare-styleable>
+
+    <declare-styleable name="StateFrameLayout">
+        <attr name="loadingLayoutResId" format="reference"/>
+        <attr name="emptyLayoutResId" format="reference"/>
+        <attr name="netErrorLayoutResId" format="reference"/>
+        <attr name="enableContentAnim" format="boolean"/>
+        <attr name="errorLayoutResId" format="reference"/>
+    </declare-styleable>
 </resources>

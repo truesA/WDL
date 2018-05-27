@@ -23,3 +23,5 @@
 -keepattributes *Annotation*
 
 -keep class cn.addapp.pickers.entity.** { *;}
+-dontwarn com.wdl.amdroid_jwdl.view.StateFrameLayout.**
+-keep class com.wdl.amdroid_jwdl.view.StateFrameLayout.**{*;}
