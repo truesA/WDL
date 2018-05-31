@@ -76,30 +76,30 @@ public class LoginActivity extends BaseActivity {
             UIUtils.showToast("密码不能为空");
             return;
         }
-        if (name.equals("admin1") && (str.equals("123456"))) {
-            showLoadingDialog();
-            LoginUesr login = new LoginUesr();
-            login.setLogin(true);
-            login.setToken("admin1");
-            login.setUserType(1);
-            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
-            PreferencesUtil.getInstance(this).setLogin(true);
-            startActivity(new Intent(this, MainActivity.class));
-            AppManagerUtil.instance().finishActivity();
-            return;
-        }
-        if (name.equals("admin2") && (str.equals("123456"))) {
-            showLoadingDialog();
-            LoginUesr login = new LoginUesr();
-            login.setLogin(true);
-            login.setToken("admin2");
-            login.setUserType(2);
-            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
-            PreferencesUtil.getInstance(this).setLogin(true);
-            startActivity(new Intent(this, MainActivity.class));
-            AppManagerUtil.instance().finishActivity();
-            return;
-        }
+//        if (name.equals("admin1") && (str.equals("123456"))) {
+//            showLoadingDialog();
+//            LoginUesr login = new LoginUesr();
+//            login.setLogin(true);
+//            login.setToken("admin1");
+//            login.setUserType(1);
+//            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
+//            PreferencesUtil.getInstance(this).setLogin(true);
+//            startActivity(new Intent(this, MainActivity.class));
+//            AppManagerUtil.instance().finishActivity();
+//            return;
+//        }
+//        if (name.equals("admin2") && (str.equals("123456"))) {
+//            showLoadingDialog();
+//            LoginUesr login = new LoginUesr();
+//            login.setLogin(true);
+//            login.setToken("admin2");
+//            login.setUserType(2);
+//            PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
+//            PreferencesUtil.getInstance(this).setLogin(true);
+//            startActivity(new Intent(this, MainActivity.class));
+//            AppManagerUtil.instance().finishActivity();
+//            return;
+//        }
         UIUtils.showToast("用户名密码错误");
     }
 

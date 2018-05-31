@@ -5,6 +5,7 @@ package com.wdl.amdroid_jwdl.interfaces;
  */
 
 import com.wdl.amdroid_jwdl.model.BaseBean;
+import com.wdl.amdroid_jwdl.model.LoginUesr;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
 import com.wdl.amdroid_jwdl.model.SavingBean;
 import com.wdl.amdroid_jwdl.model.UserMainMsg;
@@ -15,11 +16,18 @@ import io.reactivex.Observable;
 
 import java.util.Map;
 
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface UserService {
+    @FormUrlEncoded
+    @POST(API.User_Login)
+    Observable<LoginUesr> getLoginuser(@FieldMap Map<String,String> map);
+
     @GET(API.Main_mine)
     Observable<MainServiceBean> getMainServetMsg(@Query("bk_month") int bk_month);
 

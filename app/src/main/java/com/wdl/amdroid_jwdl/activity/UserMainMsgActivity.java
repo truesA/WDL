@@ -205,12 +205,12 @@ public class UserMainMsgActivity extends BaseActivity {
         creditscoreview.invalidate();
 
         //身份
-        if (paramResultBean.getName().length()>3) {
-            user_identity_name.setText(paramResultBean.getName().substring(0,4) + "(" + paramResultBean.getBirthday() + ")");
-            user_identity_name.setTextSize(11f);
-        }else {
+     //   if (paramResultBean.getName().length()>3) {
+       //     user_identity_name.setText(paramResultBean.getName().substring(0,4) + "(" + paramResultBean.getBirthday() + ")");
+     //       user_identity_name.setTextSize(11f);
+      //  }else {
             user_identity_name.setText(paramResultBean.getName() + "(" + paramResultBean.getBirthday() + ")");
-        }
+    //    }
         user_identity_carAge.setText(paramResultBean.getCar_model()+"("+paramResultBean.getCar_age()+")");
         user_identity_dysu.setText("调研速度"+"("+paramResultBean.getSurvey_speed()+")");
         user_identity_xubao.setText("保险日"+"("+paramResultBean.getInsurance_date()+")");

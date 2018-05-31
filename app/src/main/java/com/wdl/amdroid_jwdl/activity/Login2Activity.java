@@ -3,15 +3,18 @@ package com.wdl.amdroid_jwdl.activity;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,17 +25,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.MainActivity;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.base.BaseActivity;
+import com.wdl.amdroid_jwdl.interfaces.API;
+import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
 import com.wdl.amdroid_jwdl.util.KeyboardWatcher;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class Login2Activity extends BaseActivity implements View.OnClickListener, KeyboardWatcher.SoftKeyboardStateListener {
 
@@ -174,6 +187,7 @@ public class Login2Activity extends BaseActivity implements View.OnClickListener
 
     private boolean flag = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @OnClick({R.id.et_close,R.id.close, R.id.iv_show_pwd,R.id.btn_login})
     public void onClick(View v) {
         int id = v.getId();
@@ -201,44 +215,99 @@ public class Login2Activity extends BaseActivity implements View.OnClickListener
             case R.id.btn_login:
                 hideKeyboard();
                 String name =  et_mobile.getText().toString();
-                String str =  et_password.getText().toString();
+                String password =  et_password.getText().toString();
                 if (TextUtils.isEmpty(name)) {
                     UIUtils.showToast("手机号不能为空");
                     return;
                 }
-                if (TextUtils.isEmpty(str)) {
+                if (TextUtils.isEmpty(password)) {
                     UIUtils.showToast("密码不能为空");
                     return;
                 }
-                if (name.equals("admin1") && (str.equals("123456"))) {
-                    showLoadingDialog();
-                    LoginUesr login = new LoginUesr();
-                    login.setLogin(true);
-                    login.setToken("admin1");
-                    login.setUserType(1);
-                    PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
-                    PreferencesUtil.getInstance(this).setLogin(true);
-                    startActivity(new Intent(this, MainActivity.class));
-                    AppManagerUtil.instance().finishActivity();
-                    dismissLoadingDialog();
-                    return;
-                }
-                if (name.equals("admin2") && (str.equals("123456"))) {
-                    showLoadingDialog();
-                    LoginUesr login = new LoginUesr();
-                    login.setLogin(true);
-                    login.setToken("admin2");
-                    login.setUserType(2);
-                    PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
-                    PreferencesUtil.getInstance(this).setLogin(true);
-                    startActivity(new Intent(this, MainActivity.class));
-                    AppManagerUtil.instance().finishActivity();
-                    dismissLoadingDialog();
-                    return;
-                }
-                UIUtils.showToast("用户名密码错误");
+                logon(name, password);
+//                if (name.equals("admin1") && (str.equals("123456"))) {
+//                    showLoadingDialog();
+//                    LoginUesr login = new LoginUesr();
+//                    login.setLogin(true);
+//                    login.setToken("admin1");
+//                    login.setUserType(1);
+//                    PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
+//                    PreferencesUtil.getInstance(this).setLogin(true);
+//                    startActivity(new Intent(this, MainActivity.class));
+//                    AppManagerUtil.instance().finishActivity();
+//                    dismissLoadingDialog();
+//                    return;
+//                }
+//                if (name.equals("admin2") && (str.equals("123456"))) {
+//                    showLoadingDialog();
+//                    LoginUesr login = new LoginUesr();
+//                    login.setLogin(true);
+//                    login.setToken("admin2");
+//                    login.setUserType(2);
+//                    PreferencesUtil.getInstance(this).saveParam("loginUesr", login);
+//                    PreferencesUtil.getInstance(this).setLogin(true);
+//                    startActivity(new Intent(this, MainActivity.class));
+//                    AppManagerUtil.instance().finishActivity();
+//                    dismissLoadingDialog();
+//                    return;
+//                }
+         //       UIUtils.showToast("用户名密码错误");
                 break;
         }
+    }
+
+    /**
+     * 去登录
+     * @param name
+     * @param password
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void logon(String name, String password) {
+        Map<String,String> params =new ArrayMap<>();
+        params.put("name",name);
+        params.put("password",password);
+        App.getRetrofit(API.BASE_URL)
+                .create(UserService.class)
+                .getLoginuser(params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LoginUesr>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(LoginUesr loginUesr) {
+                        if (loginUesr.getError_code()==200){
+                            showLoadingDialog();
+                            UserInfo userInfo = new UserInfo();
+                            userInfo.setUsername(loginUesr.getResult().getName());
+                            userInfo.setPassword(loginUesr.getResult().getPassword());
+                            userInfo.setLogintype(loginUesr.getResult().getLogintype());
+                            PreferencesUtil.getInstance(Login2Activity.this).saveParam("UserInfo", userInfo);
+                            PreferencesUtil.getInstance(Login2Activity.this).setLogin(true);
+                            startActivity(new Intent(Login2Activity.this, MainActivity.class));
+                            AppManagerUtil.instance().finishActivity();
+                            dismissLoadingDialog();
+                        }else {
+                            UIUtils.showToast(loginUesr.getReason());
+                            dismissLoadingDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        UIUtils.showToast("系统错误");
+                        dismissLoadingDialog();
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
     }
 
 

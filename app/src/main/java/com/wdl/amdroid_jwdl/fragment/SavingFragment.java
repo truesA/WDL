@@ -25,6 +25,7 @@ import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
 import com.wdl.amdroid_jwdl.model.SavingBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.TimeMDdialog;
@@ -162,7 +163,7 @@ public class SavingFragment extends BaseFragment {
     private int relativeLayoutBonusHeight;
     private int isRefresh = 0;
     private String startdefult = "2018-05-26";
-    private LoginUesr loginUesr;
+    private UserInfo userInfo;
 
     @Override
     protected void initView() {
@@ -219,7 +220,7 @@ public class SavingFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        loginUesr = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
         getAllData(startdefult);
     }
 
@@ -271,7 +272,7 @@ public class SavingFragment extends BaseFragment {
     @SuppressLint("SetTextI18n")
     private void setDataMsg(SavingBean.ResultBean result) {
         int cashSign;
-        if (loginUesr.getUserType() == 1) {
+        if (userInfo.getLogintype() == 1) {
             cashSign=result.getSA1().getCash_flow_sign();
             saving_bonus_y_n.setText(cashSign == 1 ? "+" : "-");
             saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#ff3f7fff"): Color.parseColor("#ffff3366"));

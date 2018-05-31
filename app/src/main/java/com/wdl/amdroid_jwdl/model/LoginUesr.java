@@ -8,37 +8,77 @@ import java.io.Serializable;
 
 public class LoginUesr implements Serializable
 {
+
+
+    /**
+     * error_code : 200
+     * reason : login successful!
+     * result : {"logintype":1,"name":"admin1","password":"123456"}
+     */
+
+    private int error_code;
+    private String reason;
+    private ResultBean result;
     private boolean isLogin;
-    private String token;
-    private int userType;
 
-    public String getToken()
-    {
-        return this.token;
+
+    public int getError_code() {
+        return error_code;
     }
 
-    public int getUserType()
-    {
-        return this.userType;
+    public void setError_code(int error_code) {
+        this.error_code = error_code;
     }
 
-    public boolean isLogin()
-    {
-        return this.isLogin;
+    public String getReason() {
+        return reason;
     }
 
-    public void setLogin(boolean paramBoolean)
-    {
-        this.isLogin = paramBoolean;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
-    public void setToken(String paramString)
-    {
-        this.token = paramString;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setUserType(int paramInt)
-    {
-        this.userType = paramInt;
+    public void setResult(ResultBean result) {
+        this.result = result;
+    }
+
+    public static class ResultBean {
+        /**
+         * logintype : 1
+         * name : admin1
+         * password : 123456
+         */
+
+        private int logintype;
+        private String name;
+        private String password;
+
+        public int getLogintype() {
+            return logintype;
+        }
+
+        public void setLogintype(int logintype) {
+            this.logintype = logintype;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
 }

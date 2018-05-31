@@ -7,6 +7,7 @@ package com.wdl.amdroid_jwdl.interfaces;
 public class API
 {
     public static final String BASE_URL = "http://wdl.blackholebigdata.com/";
+    public static final String User_Login ="login";
     public static final String Main_Data = "sa_kpi";
     public static final String Main_USERMSG = "user_search_detail";
     public static final String Main_USERMSG_BAST ="user_search_detail2";
@@ -24,5 +25,6 @@ public class API
     public static final String Client_submit_identity="submit_identity";
      //http://wdl.blackholebigdata.com/bk_call?date=2018-05-26
     public static final String Main_saving = "bk_call";
+
 
 }

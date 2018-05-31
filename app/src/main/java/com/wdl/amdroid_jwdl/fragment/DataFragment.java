@@ -36,6 +36,7 @@ import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.DataService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
 import com.wdl.amdroid_jwdl.model.MainDataBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.MyMarkerView;
@@ -413,9 +414,9 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
 
     private void dealmeduler(MainDataBean resultBean, int checkedIds) {
-        LoginUesr loginUesr = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
+        UserInfo userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
         if (checkedIds == 0) {
-            if (loginUesr.getUserType() == 1) {
+            if (userInfo.getLogintype() == 1) {
                 int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(0);
                 chanZ_mubv.setText(d + "%");
                 chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0) + "");
@@ -427,7 +428,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                 chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(1) + "");
             }
         } else {
-            if (loginUesr.getUserType() == 1) {
+            if (userInfo.getLogintype() == 1) {
                 sethtmlValue(taiC_m1, "M1", resultBean.getResult().getM1_rate().get(0) + "%");
                 sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(0) + "%");
                 sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(0) + "%");

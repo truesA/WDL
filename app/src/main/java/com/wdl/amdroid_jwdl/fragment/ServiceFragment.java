@@ -38,6 +38,7 @@ import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.LoginUesr;
 import com.wdl.amdroid_jwdl.model.MainServiceBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.StringUtils;
 import com.wdl.amdroid_jwdl.util.UIUtils;
@@ -288,9 +289,9 @@ public class ServiceFragment extends BaseFragment {
             getAllData(monthdefult);
             return;
         }
-        LoginUesr loginuser = (LoginUesr) PreferencesUtil.getInstance(getActivity()).getObject("loginUesr");
-        Log.e("login", loginuser.getUserType() + "");
-        if (loginuser.getUserType() == 1) {
+        UserInfo userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
+        //Log.e("login", loginuser.getUserType() + "");
+        if (userInfo.getLogintype() == 1) {
             jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(0) + "");
         } else {
             jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(1) + "");
