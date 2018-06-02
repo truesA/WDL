@@ -134,6 +134,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="活期金额"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -148,7 +149,7 @@
                                 android:id="@+id/saving_hqje_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="123456" />
 
 
@@ -178,6 +179,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季奖金池"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -192,7 +194,7 @@
                                 android:id="@+id/saving_jjje_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="3421" />
                         </LinearLayout>
 
@@ -220,6 +222,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="丢失金额"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -234,7 +237,7 @@
                                 android:id="@+id/saving_dsje_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="1234" />
                         </LinearLayout>
 
@@ -274,6 +277,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季台次达成率"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -288,7 +292,7 @@
                                 android:id="@+id/saving_jtcdcl_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="123456" />
 
 
@@ -319,6 +323,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季T1客户数"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -333,7 +338,7 @@
                                 android:id="@+id/saving_t1khs_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="23123" />
 
                         </LinearLayout>
@@ -362,6 +367,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季产值达成率"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6"
                                 />
 
@@ -377,7 +383,7 @@
                                 android:id="@+id/saving_jczdcl_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="2311" />
                         </LinearLayout>
                     </LinearLayout>
@@ -414,6 +420,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季M1客户数"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -428,7 +435,7 @@
                                 android:id="@+id/saving_m1khs_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="123456" />
                         </LinearLayout>
 
@@ -456,6 +463,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季预约成功率"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -470,7 +478,7 @@
                                 android:id="@+id/saving_jyycgl_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="1313" />
                         </LinearLayout>
 
@@ -498,6 +506,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季M2客户数"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -512,7 +521,7 @@
                                 android:id="@+id/saving_m2khs_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="13123" />
                         </LinearLayout>
                     </LinearLayout>
@@ -549,6 +558,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季准时交车数"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -563,7 +573,7 @@
                                 android:id="@+id/saving_jzsjcs_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="123456" />
                         </LinearLayout>
 
@@ -591,6 +601,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季追加产值"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -605,7 +616,7 @@
                                 android:id="@+id/saving_jzjcz_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="1313" />
                         </LinearLayout>
 
@@ -633,6 +644,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="季准时率"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/text_size6" />
 
                             <TextView
@@ -647,7 +659,7 @@
                                 android:id="@+id/saving_jzsl_value2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/main_hui"
                                 android:text="13123" />
 
                         </LinearLayout>

@@ -167,7 +167,7 @@ public class SavingFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        saving_month.setText(startdefult);
+        saving_month.setText("05-26");
         saving_bonus_rl.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
             @Override

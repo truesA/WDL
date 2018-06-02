@@ -232,7 +232,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="M1"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/taiC_m2"
@@ -240,7 +240,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5.0dip"
                                     android:text="M2"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
                             </LinearLayout>
 
                             <View
@@ -262,7 +262,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="预约率"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/taiC_mubv"
@@ -270,7 +270,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5.0dip"
                                     android:text="达成率"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
                             </LinearLayout>
 
                             <View
@@ -292,7 +292,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="平日"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/taiC_sunday"
@@ -300,7 +300,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5.0dip"
                                     android:text="周末"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
                             </LinearLayout>
                         </LinearLayout>
 

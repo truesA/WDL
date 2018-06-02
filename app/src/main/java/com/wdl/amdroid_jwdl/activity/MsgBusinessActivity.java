@@ -92,6 +92,7 @@ public class MsgBusinessActivity extends BaseActivity
         car_user_viewpage.setAdapter(pagerAdapter);
         tl_tab.setOnTabSelectedListener(this);
         tl_tab.setupWithViewPager(car_user_viewpage, false);
+        //tl_tab.setTabTextColors();
         tl_tab.setTabGravity(0);
         tl_tab.setTabMode(1);
         tl_tab.getTabAt(i).select();

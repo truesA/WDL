@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_color">
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="none">
-
+    android:scrollbars="none"
+    android:background="@color/bg_color"
+   >
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -20,7 +18,8 @@
                 android:layout_marginBottom="20.0dip"
                 android:layout_marginTop="20.0dip"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_year"
@@ -51,8 +50,11 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10.0dip"
+                android:layout_height="155dp"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="-35dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/edit_wilter_c5"
                 android:orientation="horizontal">
 
@@ -60,65 +62,76 @@
                     android:id="@+id/wheelview_single1"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1.0"
-                    android:layout_margin="5dp"/>
+                    />
 
                 <cn.addapp.pickers.widget.WheelListView
                     android:id="@+id/wheelview_single2"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1.0"
-                    android:layout_margin="5dp"/>
+                    />
 
                 <cn.addapp.pickers.widget.WheelListView
                     android:id="@+id/wheelview_single3"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1.0"
-                    android:layout_margin="5dp"/>
+                    />
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/cintinue_rc"
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
-                android:layout_weight="1.0" />
+                android:layout_weight="1.0"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_wilter_c5"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20.0dip"
-                android:layout_marginTop="10.0dip"
+                android:layout_marginTop="5.0dip"
                 android:text="备注:"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size2" />
 
-            <EditText
+            <TextView
                 android:id="@+id/continue_et"
                 android:layout_width="fill_parent"
-                android:layout_height="250.0dip"
-                android:layout_margin="10.0dip"
-                android:layout_marginBottom="50.0dip"
-                android:layout_marginTop="27.0dip"
+                android:layout_height="110.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
                 android:background="@drawable/edit_wilter_c5"
                 android:gravity="top"
                 android:hint="输入您的备注信息"
                 android:maxLength="100"
                 android:padding="10.0dip"
                 android:textSize="@dimen/text_size3" />
-        </LinearLayout>
-    </ScrollView>
 
-    <Button
-        android:id="@+id/continue_sumit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10.0dip"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:background="@drawable/button_bg_mianred_c5"
-        android:text="提交"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size3" />
-</RelativeLayout>
+            <Button
+                android:id="@+id/continue_sumit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_bg_mianred_c5"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size3" />
+        </LinearLayout>
+
+
+</ScrollView>

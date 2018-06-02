@@ -51,9 +51,16 @@
                 android:id="@+id/identity_carname_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -86,8 +93,16 @@
                 android:id="@+id/identity_cartype_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -120,9 +135,16 @@
                 android:id="@+id/identity_age_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -156,7 +178,7 @@
                 android:id="@+id/identity_learn_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -197,7 +219,7 @@
                 android:id="@+id/identity_bxday_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
 
             <ImageView
@@ -237,9 +259,16 @@
                 android:id="@+id/identity_xbdqday_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -272,9 +301,16 @@
                 android:id="@+id/identity_jcday_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <View
@@ -306,9 +342,16 @@
                 android:id="@+id/identity_carage_msgs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="刘浩远" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
         </LinearLayout>
 
 
@@ -368,7 +411,7 @@
                 android:id="@+id/identity_xhh_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -409,7 +452,7 @@
                 android:id="@+id/identity_userful_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -450,7 +493,7 @@
                 android:id="@+id/identity_hy_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -491,7 +534,7 @@
                 android:id="@+id/identity_zw_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -513,7 +556,8 @@
         <LinearLayout
             android:id="@+id/identity_jxbz_msg_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
@@ -532,7 +576,7 @@
                 android:id="@+id/identity_jxbz_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -540,7 +584,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
-                android:src="@drawable/msg_more_gray" />
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
+
         </LinearLayout>
 
 
@@ -555,7 +601,8 @@
         <LinearLayout
             android:id="@+id/identity_fqbz_msg_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
@@ -574,7 +621,7 @@
                 android:id="@+id/identity_fqbz_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/client_tv_color"
+                android:textColor="@color/colorGray"
                 tools:text="1234(59%)" />
 
             <ImageView
@@ -582,7 +629,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
-                android:src="@drawable/msg_more_gray" />
+                android:src="@drawable/msg_more_gray"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 

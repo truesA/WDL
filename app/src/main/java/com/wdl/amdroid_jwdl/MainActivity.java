@@ -1,5 +1,6 @@
 package com.wdl.amdroid_jwdl;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -58,7 +59,15 @@ public class MainActivity extends BaseActivity {
             }
 
             public void onTabSelected(int paramInt) {
+//                if (paramInt==3){
+//                    viewPaper.setCurrentItem(paramInt, false);
+//                    setStatusBarColor(Color.TRANSPARENT);
+//                }else {
+//                    setStatusBarColor(Color.parseColor("#ff333333"));
+//
+//                }
                 viewPaper.setCurrentItem(paramInt, false);
+
             }
 
             public void onTabUnselected(int paramInt) {

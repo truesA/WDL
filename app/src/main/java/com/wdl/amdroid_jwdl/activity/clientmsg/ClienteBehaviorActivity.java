@@ -113,8 +113,8 @@ public class ClienteBehaviorActivity extends BaseActivity {
     private void setBehavior(ClientBehaviorBean.ResultBean result) {
         behavior_5k_msg.setText("5K   "+changeValue(result.getK5()));
         behavior_10k_msg.setText("10K   "+changeValue(result.getK10()));
-        behavior_15k_msg.setText("15K   "+changeValue(result.getK15()));
-        behavior_20k_msg.setText("20K   "+changeValue(result.getK20()));
+        behavior_15k_msg.setText("M1   "+changeValue(result.getK15()));
+        behavior_20k_msg.setText("M2   "+changeValue(result.getK20()));
         behavior_bp_msg.setText("钣喷   "+changeValue(result.getBody_shop()));
         behavior_fix_msg.setText("维修  "+changeValue(result.getRepair_times()));
         behavior_bx_msg.setText("保险   "+changeValue(result.getInsurance()));

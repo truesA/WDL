@@ -29,10 +29,10 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size2" />
 
-            <EditText
+            <TextView
                 android:id="@+id/waiver_et"
                 android:layout_width="fill_parent"
-                android:layout_height="250.0dip"
+                android:layout_height="120.0dip"
                 android:layout_margin="10.0dip"
                 android:layout_marginBottom="50.0dip"
                 android:layout_marginTop="27.0dip"
@@ -42,19 +42,20 @@
                 android:maxLength="100"
                 android:padding="10.0dip"
                 android:textSize="@dimen/text_size3" />
+
+            <Button
+                android:id="@+id/waiver_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/button_bg_mianred_c5"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size3" />
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/waiver_submit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10.0dip"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:background="@drawable/button_bg_mianred_c5"
-        android:text="提交"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size3" />
+
 </RelativeLayout>

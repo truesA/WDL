@@ -95,7 +95,7 @@ public class UserMainMsg implements Serializable {
         private int M1;
         private int M2;
         private String Numb;
-        private double T1_threshold;
+        private int T1_threshold;
         private String birthday;
         private int body_shop_times;
         private int car_age;
@@ -161,11 +161,11 @@ public class UserMainMsg implements Serializable {
             this.Numb = Numb;
         }
 
-        public double getT1_threshold() {
+        public int getT1_threshold() {
             return T1_threshold;
         }
 
-        public void setT1_threshold(double T1_threshold) {
+        public void setT1_threshold(int T1_threshold) {
             this.T1_threshold = T1_threshold;
         }
 

@@ -7,6 +7,7 @@ package com.wdl.amdroid_jwdl.fragment.business;
  */
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.base.BaseFragment;
@@ -46,7 +50,7 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     private String loss_reason;
 
     @BindView(R.id.lost_et)
-    EditText lost_et;
+    TextView lost_et;
 
     @BindView(R.id.lost_r_1)
     RadioButton radioButton1;
@@ -110,39 +114,60 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     }
 
 
-    @OnClick({R.id.lost_submit})
-    public void onclickSubmitLost() {
-        showLoadingDialog();
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("loss_action", "1");
-        localHashMap.put("loss_user", CarUserid);
-        localHashMap.put("loss_reason", loss_reason);
-        localHashMap.put("loss_notes", lost_et.getText().toString());
-        App.getRetrofit(API.BASE_URL).create(UserService.class)
-                .getSubmit_Content(localHashMap)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseBean>() {
-                    public void onComplete() {
-                        dismissLoadingDialog();
-                    }
+    @OnClick({R.id.lost_submit,R.id.lost_et})
+    public void onclickSubmitLost(View view) {
+        switch (view.getId()){
+            case R.id.lost_submit:
+                showLoadingDialog();
+                HashMap localHashMap = new HashMap();
+                localHashMap.put("loss_action", "1");
+                localHashMap.put("loss_user", CarUserid);
+                localHashMap.put("loss_reason", loss_reason);
+                localHashMap.put("loss_notes", lost_et.getText().toString());
+                App.getRetrofit(API.BASE_URL).create(UserService.class)
+                        .getSubmit_Content(localHashMap)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<BaseBean>() {
+                            public void onComplete() {
+                                dismissLoadingDialog();
+                            }
 
-                    public void onError(Throwable paramThrowable) {
-                        UIUtils.showToast("系统繁忙");
-                        dismissLoadingDialog();
-                    }
+                            public void onError(Throwable paramThrowable) {
+                                UIUtils.showToast("系统繁忙");
+                                dismissLoadingDialog();
+                            }
 
-                    public void onNext(BaseBean paramBaseBean) {
-                        if (paramBaseBean.getError_code() == 200){
-                            dismissLoadingDialog();
-                            AppManagerUtil.instance().finishActivity();
-                        }
-                        UIUtils.showToast(paramBaseBean.getReason());
-                    }
+                            public void onNext(BaseBean paramBaseBean) {
+                                if (paramBaseBean.getError_code() == 200){
+                                    dismissLoadingDialog();
+                                    AppManagerUtil.instance().finishActivity();
+                                }
+                                UIUtils.showToast(paramBaseBean.getReason());
+                            }
 
-                    public void onSubscribe(Disposable paramDisposable) {
-                    }
-                });
+                            public void onSubscribe(Disposable paramDisposable) {
+                            }
+                        });
+                break;
+            case R.id.lost_et:
+                boolean wrapInScrollView = true;
+                new MaterialDialog.Builder(getActivity())
+                        .title("备注")
+                        .customView(R.layout.continue_text_view, wrapInScrollView)
+                        .positiveText("确定")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                EditText editText = (EditText) dialog.getView().findViewById(R.id.text_content);
+                                lost_et.setText( editText.getText());
+                                lost_et.setTextColor(Color.BLACK);
+                            }
+                        })
+                        .show();
+                break;
+        }
+
     }
 
     public void setCarUseridandSubmitStatus(String paramString,int status) {

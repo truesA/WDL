@@ -212,7 +212,7 @@ public class UserMainMsgActivity extends BaseActivity {
             user_identity_name.setText(paramResultBean.getName() + "(" + paramResultBean.getBirthday() + ")");
     //    }
         user_identity_carAge.setText(paramResultBean.getCar_model()+"("+paramResultBean.getCar_age()+")");
-        user_identity_dysu.setText("调研速度"+"("+paramResultBean.getSurvey_speed()+")");
+        user_identity_dysu.setText("调研速度"+"("+paramResultBean.getSurvey_speed()+") ");
         user_identity_xubao.setText("保险日"+"("+paramResultBean.getInsurance_date()+")");
         user_identity_xgh.setText("小划痕"+"("+paramResultBean.getSmall_scratch_number()+")");
         user_identity_yygs.setText("预约工时折扣"+"("+paramResultBean.getZhe()+")");

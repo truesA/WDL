@@ -1,6 +1,7 @@
 package com.wdl.amdroid_jwdl.fragment.business;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.adapter.CustomAdapter;
@@ -45,7 +48,7 @@ public class ContinueFragment extends BaseFragment {
     private CustomAdapter adapter;
 
     @BindView(R.id.continue_et)
-    EditText continue_et;
+    TextView continue_et;
     private String continue_notes;
     private String continue_reason;
     String days;
@@ -100,7 +103,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewy.setItems(new String[]{"2018", "2019", "2020"}, 1);
         wheelListViewy.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig lineConfig = new LineConfig();
-        lineConfig.setColor(Color.parseColor("#ff3366"));
+        lineConfig.setColor(Color.parseColor("#c62828"));
         lineConfig.setAlpha(100);
         // lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -109,7 +112,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewy.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String String) {
-                tv_year.setText(String + "年");
+            //    tv_year.setText(String + "年");
                 year = Integer.parseInt(String);
                 daysn = TimeUtil.setDays(year, mother);
                 wheelListViewd.setItems(daysn, 15);
@@ -120,7 +123,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewm.setItems(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}, 1);
         wheelListViewm.setSelectedTextColor(getResources().getColor(R.color.black));
         lineConfig = new LineConfig();
-        lineConfig.setColor(Color.parseColor("#ff3366"));
+        lineConfig.setColor(Color.parseColor("#c62828"));
         lineConfig.setAlpha(100);
         //lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -129,7 +132,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewm.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String String) {
-                tv_mouth.setText(String + "月");
+              //  tv_mouth.setText(String + "月");
                 mother = Integer.parseInt(String);
                 daysn = TimeUtil.setDays(year, mother);
                 wheelListViewd.setItems(daysn, 15);
@@ -141,7 +144,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewd.setItems(new String[]{"1"}, 0);
         wheelListViewd.setSelectedTextColor(getResources().getColor(R.color.black));
         lineConfig = new LineConfig();
-        lineConfig.setColor(Color.parseColor("#ff3366"));
+        lineConfig.setColor(Color.parseColor("#c62828"));
         lineConfig.setAlpha(100);
         // lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -150,7 +153,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewd.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String String) {
-                tv_day.setText(String + "日");
+            //    tv_day.setText(String + "日");
                 days = String;
             }
         });
@@ -167,43 +170,64 @@ public class ContinueFragment extends BaseFragment {
         getActivity().getWindow().setSoftInputMode(32);
         initWheelList();
         initRecycler();
+
     }
 
-    @OnClick({R.id.continue_sumit})
-    public void oncklickSubmit() {
-        showLoadingDialog();
-        HashMap<String, String> localHashMap = new HashMap();
-        localHashMap.put("continue_action", "1");
-        localHashMap.put("continue_user", CarUserid);
-        localHashMap.put("continue_time", years + "-" + months + "-" + days);
-        localHashMap.put("continue_reason", continue_reason);
-        localHashMap.put("continue_notes", continue_et.getText().toString());
-        App.getRetrofit(API.BASE_URL)
-                .create(UserService.class)
-                .getSubmit_Content(localHashMap)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseBean>() {
-                    public void onComplete() {
-                        dismissLoadingDialog();
-                    }
+    @OnClick({R.id.continue_sumit,R.id.continue_et})
+    public void oncklickSubmit(View view) {
+       switch (view.getId()){
+           case R.id.continue_sumit:
+               showLoadingDialog();
+               HashMap<String, String> localHashMap = new HashMap();
+               localHashMap.put("continue_action", "1");
+               localHashMap.put("continue_user", CarUserid);
+               localHashMap.put("continue_time", years + "-" + months + "-" + days);
+               localHashMap.put("continue_reason", continue_reason);
+               localHashMap.put("continue_notes", continue_et.getText().toString());
+               App.getRetrofit(API.BASE_URL)
+                       .create(UserService.class)
+                       .getSubmit_Content(localHashMap)
+                       .subscribeOn(Schedulers.io())
+                       .observeOn(AndroidSchedulers.mainThread())
+                       .subscribe(new Observer<BaseBean>() {
+                           public void onComplete() {
+                               dismissLoadingDialog();
+                           }
 
-                    public void onError(Throwable Throwable) {
-                        UIUtils.showToast("系统繁忙");
-                        dismissLoadingDialog();
-                    }
+                           public void onError(Throwable Throwable) {
+                               UIUtils.showToast("系统繁忙");
+                               dismissLoadingDialog();
+                           }
 
-                    public void onNext(BaseBean BaseBean) {
-                        if (BaseBean.getError_code() == 200){
-                            AppManagerUtil.instance().finishActivity();
-                            dismissLoadingDialog();
-                        }
-                        UIUtils.showToast(BaseBean.getReason());
-                    }
+                           public void onNext(BaseBean BaseBean) {
+                               if (BaseBean.getError_code() == 200){
+                                   AppManagerUtil.instance().finishActivity();
+                                   dismissLoadingDialog();
+                               }
+                               UIUtils.showToast(BaseBean.getReason());
+                           }
 
-                    public void onSubscribe(Disposable Disposable) {
-                    }
-                });
+                           public void onSubscribe(Disposable Disposable) {
+                           }
+                       });
+               break;
+           case R.id.continue_et:
+               boolean wrapInScrollView = true;
+               new MaterialDialog.Builder(getActivity())
+                       .title("备注")
+                       .customView(R.layout.continue_text_view, wrapInScrollView)
+                       .positiveText("确定")
+                       .onPositive(new MaterialDialog.SingleButtonCallback() {
+                           @Override
+                           public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                             EditText editText = (EditText) dialog.getView().findViewById(R.id.text_content);
+                             continue_et.setText( editText.getText());
+                               continue_et.setTextColor(Color.BLACK);
+                           }
+                       })
+                       .show();
+               break;
+       }
     }
 
     public void setCarUseridandSubmitStatus(String String,int status) {

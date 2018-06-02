@@ -413,14 +413,15 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void dealmeduler(MainDataBean resultBean, int checkedIds) {
         UserInfo userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
         if (checkedIds == 0) {
             if (userInfo.getLogintype() == 1) {
                 int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(0);
                 chanZ_mubv.setText(d + "%");
-                chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0) + "");
-                chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(0) + "");
+                chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0).intValue() + "");
+                chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(0).intValue() + "");
             } else {
                 int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(1);
                 chanZ_mubv.setText(d + "%");
@@ -433,15 +434,15 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                 sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(0) + "%");
                 sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(0) + "%");
                 sethtmlValue(taiC_mubv, "目标达成率", resultBean.getResult().getGoal_times_achv_rate().get(0) + "%");
-                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(0) + "");
-                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(0) + "");
+                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(0).intValue() + "");
+                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(0).intValue() + "");
             } else {
                 sethtmlValue(taiC_m1, "M1", resultBean.getResult().getM1_rate().get(1) + "%");
                 sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(1) + "%");
                 sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(1) + "%");
                 sethtmlValue(taiC_mubv, "目标达成率", resultBean.getResult().getGoal_times_achv_rate().get(1) + "%");
-                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(1) + "");
-                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(1) + "");
+                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(1).intValue() + "");
+                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(1).intValue() + "");
             }
         }
     }

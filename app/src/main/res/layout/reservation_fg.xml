@@ -15,7 +15,8 @@
             android:layout_marginBottom="20.0dip"
             android:layout_marginTop="20.0dip"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/tv_year"
@@ -80,8 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10.0dip"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
         android:background="@drawable/button_bg_mianred_c5"
         android:text="提交"
         android:textColor="@color/white"

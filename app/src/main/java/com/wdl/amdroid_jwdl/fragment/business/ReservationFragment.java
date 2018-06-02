@@ -71,7 +71,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewy.setItems(new String[]{"2018", "2019", "2020"}, 1);
         wheelListViewy.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig localLineConfig = new LineConfig();
-        localLineConfig.setColor(Color.parseColor("#ff3366"));
+        localLineConfig.setColor(Color.parseColor("#c62828"));
         localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -80,7 +80,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewy.setOnWheelChangeListener(new OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String paramString) {
-                tv_year.setText(paramString + "年");
+          //      tv_year.setText(paramString + "年");
                 year = Integer.parseInt(paramString);
                 daysn = TimeUtil.setDays(year, mother);
                 wheelListViewd.setItems(daysn, 15);
@@ -90,7 +90,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewm.setItems(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}, 1);
         wheelListViewm.setSelectedTextColor(getResources().getColor(R.color.black));
         localLineConfig = new LineConfig();
-        localLineConfig.setColor(Color.parseColor("#ff3366"));
+        localLineConfig.setColor(Color.parseColor("#c62828"));
         localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -99,7 +99,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewm.setOnWheelChangeListener(new OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String paramString) {
-                tv_mouth.setText(paramString + "月");
+             //   tv_mouth.setText(paramString + "月");
                 mother = Integer.parseInt(paramString);
                 daysn = TimeUtil.setDays(year, mother);
                 wheelListViewd.setItems(daysn, 15);
@@ -109,7 +109,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewd.setItems(new String[]{"1"}, 0);
         wheelListViewd.setSelectedTextColor(getResources().getColor(R.color.black));
         localLineConfig = new LineConfig();
-        localLineConfig.setColor(Color.parseColor("#ff3366"));
+        localLineConfig.setColor(Color.parseColor("#c62828"));
         localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -118,7 +118,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewd.setOnWheelChangeListener(new OnWheelChangeListener() {
             @Override
             public void onItemSelected(int i, String paramString) {
-                tv_day.setText(paramString + "日");
+           //     tv_day.setText(paramString + "日");
                 days = paramString;
             }
         });

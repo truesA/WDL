@@ -51,7 +51,7 @@
             android:id="@+id/identity_name_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="刘浩远" />
 
         <ImageView
@@ -91,7 +91,7 @@
             android:id="@+id/identity_sex_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="男" />
 
         <ImageView
@@ -131,7 +131,7 @@
             android:id="@+id/identity_phone_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="17611499018" />
 
         <ImageView
@@ -171,7 +171,7 @@
             android:id="@+id/identity_wechat_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView
@@ -215,7 +215,7 @@
             android:ellipsize="end"
             android:maxEms="12"
             android:maxLines="1"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView
@@ -256,7 +256,7 @@
             android:id="@+id/identity_birthday_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView
@@ -298,7 +298,7 @@
             android:id="@+id/identity_like_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView
@@ -339,7 +339,7 @@
             android:id="@+id/identity_jh_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView
@@ -379,7 +379,7 @@
             android:id="@+id/identity_kid_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/client_tv_color"
+            android:textColor="@color/colorGray"
             tools:text="1234(59%)" />
 
         <ImageView

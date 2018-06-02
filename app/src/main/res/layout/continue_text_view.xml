@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/text_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="@dimen/text_size3"
+        android:textColor="@color/black"
+        android:gravity="top"
+        android:background="@drawable/edit_hui_c5"
+        android:maxLength="100"/>
+</LinearLayout>

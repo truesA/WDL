@@ -6,6 +6,8 @@ package com.wdl.amdroid_jwdl.fragment.business;
  * email：3186834196@qq.com
  */
 
+import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +18,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
 import com.wdl.amdroid_jwdl.adapter.CustomAdapter;
@@ -51,7 +56,7 @@ public class WaiverFragment extends BaseFragment {
     public RecyclerView recyclerView;
 
     @BindView(R.id.waiver_et)
-    EditText waiver_et;
+    TextView waiver_et;
 
     @BindView(R.id.waiver_submit)
     Button waiver_submit;
@@ -91,39 +96,61 @@ public class WaiverFragment extends BaseFragment {
         initRecycler();
     }
 
-    @OnClick({R.id.waiver_submit})
-    public void onclickWaiver() {
-        showLoadingDialog();
-        HashMap<String, String> params = new HashMap();
-        params.put("giveup_action", "1");
-        params.put("giveup_user", this.CarUserid);
-        params.put("giveup_reason", this.giveup_reason);
-        params.put("giveup_notes", this.waiver_et.getText().toString());
-        App.getRetrofit(API.BASE_URL).create(UserService.class)
-                .getSubmit_Content(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseBean>() {
-                    public void onComplete() {
-                        dismissLoadingDialog();
-                    }
+    @OnClick({R.id.waiver_submit,R.id.waiver_et})
+    public void onclickWaiver(View view) {
+        switch (view.getId()){
+            case R.id.waiver_submit:
+                showLoadingDialog();
+                HashMap<String, String> params = new HashMap();
+                params.put("giveup_action", "1");
+                params.put("giveup_user", this.CarUserid);
+                params.put("giveup_reason", this.giveup_reason);
+                params.put("giveup_notes", this.waiver_et.getText().toString());
+                App.getRetrofit(API.BASE_URL).create(UserService.class)
+                        .getSubmit_Content(params).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<BaseBean>() {
+                            public void onComplete() {
+                                dismissLoadingDialog();
+                            }
 
-                    public void onError(Throwable paramThrowable) {
-                        dismissLoadingDialog();
-                        UIUtils.showToast("系统繁忙");
-                        paramThrowable.printStackTrace();
-                    }
+                            public void onError(Throwable paramThrowable) {
+                                dismissLoadingDialog();
+                                UIUtils.showToast("系统繁忙");
+                                paramThrowable.printStackTrace();
+                            }
 
-                    public void onNext(BaseBean paramBaseBean) {
-                        if (paramBaseBean.getError_code() == 200){
-                            AppManagerUtil.instance().finishActivity();
-                            dismissLoadingDialog();
-                        }
-                        UIUtils.showToast(paramBaseBean.getReason());
-                    }
+                            public void onNext(BaseBean paramBaseBean) {
+                                if (paramBaseBean.getError_code() == 200){
+                                    AppManagerUtil.instance().finishActivity();
+                                    dismissLoadingDialog();
+                                }else {
+                                    UIUtils.showToast(paramBaseBean.getReason());
+                                }
+                            }
 
-                    public void onSubscribe(Disposable paramDisposable) {
-                    }
-                });
+                            public void onSubscribe(Disposable paramDisposable) {
+                            }
+                        });
+                break;
+            case R.id.waiver_et:
+                boolean wrapInScrollView = true;
+                new MaterialDialog.Builder(getActivity())
+                        .title("备注")
+                        .customView(R.layout.continue_text_view, wrapInScrollView)
+                        .positiveText("确定")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                EditText editText = (EditText) dialog.getView().findViewById(R.id.text_content);
+                                waiver_et.setText( editText.getText());
+                                waiver_et.setTextColor(Color.BLACK);
+                            }
+                        })
+                        .show();
+                break;
+        }
+
     }
 
     public void setCarUseridandSubmitStatus(String paramString,int status) {

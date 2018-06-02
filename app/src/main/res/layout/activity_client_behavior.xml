@@ -115,7 +115,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:paddingTop="10dp"
-                    android:text="15K   X"
+                    android:text="M1   X"
                     android:textColor="@color/client_tv_color" />
                 <View
                     android:layout_width="1dp"
@@ -132,7 +132,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:paddingTop="10dp"
-                    android:text="20K   X"
+                    android:text="M2   X"
                     android:textColor="@color/client_tv_color" />
             </LinearLayout>
 

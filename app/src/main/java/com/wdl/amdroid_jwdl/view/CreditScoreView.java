@@ -61,7 +61,7 @@ public class CreditScoreView extends View {
     //分数大小
     private int scoreSize = DensityUtils.dp2px(getContext(), 28);
     //标题文字大小
-    private int titleSize = DensityUtils.dp2px(getContext(), 15);
+    private int titleSize = DensityUtils.dp2px(getContext(), 13);
 
     public CreditScoreView(Context context) {
         this(context, null);
@@ -100,7 +100,7 @@ public class CreditScoreView extends View {
         titlePaint = new Paint();
         titlePaint.setAntiAlias(true);
         titlePaint.setTextSize(titleSize);
-        titlePaint.setColor(Color.BLACK);
+        titlePaint.setColor(Color.parseColor("#666666"));
         titlePaint.setStyle(Paint.Style.FILL);
 
         iconPaint = new Paint();
