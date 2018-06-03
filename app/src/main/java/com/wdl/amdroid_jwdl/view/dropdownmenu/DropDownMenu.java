@@ -167,7 +167,7 @@ public class DropDownMenu extends LinearLayout {
         tab.setGravity(Gravity.CENTER);
         tab.setTextSize(TypedValue.COMPLEX_UNIT_PX,menuTextSize);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
-        localLayoutParams.setMargins(dpTpPx(15.0F), dpTpPx(5.0F), dpTpPx(15.0F), dpTpPx(5.0F));
+        localLayoutParams.setMargins(dpTpPx(5.0F), dpTpPx(5.0F), dpTpPx(5.0F), dpTpPx(5.0F));
         tab.setLayoutParams(localLayoutParams);
         tab.setTextColor(textUnselectedColor);
         tab.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(menuUnselectedIcon), null);

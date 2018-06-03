@@ -25,7 +25,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="55.0dip"
+                android:layout_height="35.0dip"
                 android:layout_centerInParent="true"
                 android:background="@color/text_color05"
                 android:gravity="center">
@@ -33,40 +33,40 @@
                 <RadioGroup
                     android:id="@+id/rg_top"
                     android:layout_width="150.0dip"
-                    android:layout_height="35.0dip"
+                    android:layout_height="26dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10.0dip"
+                    android:layout_margin="5.0dip"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/rb_top_c"
                         android:layout_width="0.0dip"
-                        android:layout_height="wrap_content"
+                        android:layout_height="26dp"
                         android:layout_weight="1.0"
                         android:background="@drawable/rb_bg_01"
                         android:button="@null"
                         android:checked="true"
                         android:gravity="center"
-                        android:paddingBottom="6.0dip"
-                        android:paddingTop="6.0dip"
+                        android:paddingBottom="3.0dip"
+                        android:paddingTop="3.0dip"
                         android:text="产值"
                         android:textColor="@color/title_text_sel"
-                        android:textSize="16.0sp" />
+                        android:textSize="@dimen/text_size4" />
 
                     <RadioButton
                         android:id="@+id/rb_top_t"
                         android:layout_width="0.0dip"
-                        android:layout_height="wrap_content"
+                        android:layout_height="26dp"
                         android:layout_weight="1.0"
                         android:background="@drawable/rb_bg_02"
                         android:button="@null"
                         android:gravity="center"
-                        android:paddingBottom="6.0dip"
-                        android:paddingTop="6.0dip"
+                        android:paddingBottom="3.0dip"
+                        android:paddingTop="3.0dip"
                         android:text="台次"
                         android:textColor="@color/title_text_sel"
-                        android:textSize="16.0sp" />
+                        android:textSize="@dimen/text_size4" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -109,15 +109,19 @@
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/data_line_chart"
                             android:layout_width="fill_parent"
-                            android:layout_height="200.0dip"
+                            android:layout_height="150.0dip"
                             android:layout_margin="10.0dip"
                             android:background="@drawable/edit_wilter_c5" />
 
                         <LinearLayout
                             android:id="@+id/ll_chanZ"
                             android:layout_width="fill_parent"
-                            android:layout_height="80.0dip"
-                            android:layout_margin="10.0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dip"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:padding="3dp"
                             android:background="@drawable/edit_wilter_c5"
                             android:gravity="center"
                             android:orientation="horizontal">
@@ -127,83 +131,68 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.0"
                                 android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+                                android:orientation="horizontal"
+                                >
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="目标达成率"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/chanZ_mubv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5.0dip"
                                     android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size1"
+                                    android:textSize="@dimen/text_size5"
                                     tools:text="56%" />
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/black" />
 
                             <LinearLayout
                                 android:layout_width="0.0dip"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.0"
                                 android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+                                android:orientation="horizontal"
+                               >
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="平日"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/chanZ_today"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5.0dip"
                                     android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size1"
+                                    android:textSize="@dimen/text_size5"
                                     tools:text="9786" />
                             </LinearLayout>
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/black" />
 
                             <LinearLayout
                                 android:layout_width="0.0dip"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.0"
                                 android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+                                android:orientation="horizontal"
+                               >
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="周末"
-                                    android:textSize="@dimen/text_size4" />
+                                    android:textSize="@dimen/text_size5" />
 
                                 <TextView
                                     android:id="@+id/chanZ_sunday"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5.0dip"
                                     android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size1"
+                                    android:textSize="@dimen/text_size5"
                                     tools:text="14986" />
                             </LinearLayout>
                         </LinearLayout>

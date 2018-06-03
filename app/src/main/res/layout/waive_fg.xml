@@ -4,21 +4,18 @@
     android:layout_height="fill_parent"
     android:background="@color/bg_color">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="none">
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/waiver_rc"
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
-                android:layout_weight="1.0" />
+                android:layout_weight="1.0"
+                android:layout_margin="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,19 +40,20 @@
                 android:padding="10.0dip"
                 android:textSize="@dimen/text_size3" />
 
-            <Button
-                android:id="@+id/waiver_submit"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginRight="10.0dip"
-                android:background="@drawable/button_bg_mianred_c5"
-                android:text="提交"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size3" />
-        </LinearLayout>
-    </ScrollView>
 
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/waiver_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:background="@drawable/button_bg_mianred_c5"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size3" />
 
 </RelativeLayout>

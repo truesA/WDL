@@ -63,4 +63,40 @@
     <color name="new_color5">#43a047</color>
     <!--//蓝色-->
     <color name="new_color6">#1e88e5</color>
+
+
+
+    <!--新颜色-->
+    <!--文字-->
+    <!--（深灰）-->
+    <color name="new_text_color01">#2e2e2e</color>
+    <!--（中灰）-->
+    <color name="new_text_color02">#595959</color>
+    <!--（浅灰）-->
+    <color name="new_text_color03">#8f8f8f</color>
+    <!--（白）-->
+    <color name="new_text_color04">#ffffff</color>
+    <!--（红）-->
+    <color name="new_text_color05">#c62828</color>
+
+    <!--色彩-->
+    <!--（背景色）-->
+    <color name="new_bg_color">#f7f7f7</color>
+    <!--（线条色）-->
+    <color name="new_line_color">#e0e0e0</color>
+    <!--（主色调：红）-->
+    <color name="new_color01">#c62828</color>
+    <!--（辅色调：中灰）-->
+    <color name="new_color02">#737373</color>
+    <!--（辅色调：浅灰）-->
+    <color name="new_color03">#e5e5e5</color>
+    <!--（辅色调：橙）-->
+    <color name="new_color04">#fb8c00</color>
+    <!--（辅色调：绿）-->
+    <color name="new_color05">#43a047</color>
+    <!--（辅色调：蓝）-->
+    <color name="new_color06">#1e88e5</color>
+    <!--（辅色调：白）-->
+    <color name="new_color07">#ffffff</color>
+
 </resources>

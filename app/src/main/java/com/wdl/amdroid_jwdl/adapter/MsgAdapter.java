@@ -45,13 +45,17 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         TextView name = (TextView) ViewHolder.getView(R.id.name);
         TextView phone = (TextView) ViewHolder.getView(R.id.phone);
         TextView carPai = (TextView) ViewHolder.getView(R.id.carPai);
-        TextView project = (TextView) ViewHolder.getView(R.id.project);
+        TextView project_t1 = (TextView) ViewHolder.getView(R.id.project_t1);
         TextView msg_total_score = (TextView) ViewHolder.getView(R.id.msg_total_score);
         TextView xu = (TextView) ViewHolder.getView(R.id.xu);
         TextView zhe = (TextView) ViewHolder.getView(R.id.zhe);
         TextView msgzcd = (TextView) ViewHolder.getView(R.id.msg_zcd);
         ImageView msg_zcd_iv = ViewHolder.getView(R.id.msg_zcd_iv);
         LinearLayout zcd_ll = ViewHolder.getView(R.id.zcd_ll);
+        View item_left_color=ViewHolder.getView(R.id.item_left_color);
+        LinearLayout msg_data =ViewHolder.getView(R.id.msg_data);
+        TextView msg_month =ViewHolder.getView(R.id.msg_month);
+        TextView msg_day=ViewHolder.getView(R.id.msg_day);
 
         double loy_coef = new BigDecimal(paramResultBean.getLoy_coef()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         msgzcd.setText(loy_coef+"");
@@ -59,7 +63,7 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         name.setText(paramResultBean.getName());
         phone.setText(paramResultBean.getPhone_number());
         carPai.setText(paramResultBean.getPlate_num());
-        project.setText(paramResultBean.getLevel());
+//        project_t1.setText(paramResultBean.getLevel());
         xu.setText("续 " + paramResultBean.getXu());
         zhe.setText("折" + paramResultBean.getZhe());
         msg_total_score.setText(paramResultBean.getTotal_score() + "");

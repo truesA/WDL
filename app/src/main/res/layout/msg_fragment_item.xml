@@ -15,22 +15,30 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="5dip">
+    >
+
+    <View
+        android:id="@+id/item_left_color"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_bg_bule_c5" />
 
     <TextView
         android:id="@+id/carType"
         android:layout_width="40.0dip"
-        android:layout_height="40.0dip"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:text="H"
-        android:textSize="30.0sp" />
+        android:textSize="40.0sp" />
 
     <LinearLayout
         android:layout_width="0.0dip"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10.0dip"
         android:layout_weight="1.0"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -82,11 +90,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/project"
+                    android:id="@+id/project_t1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="优秀" />
+                    android:text="T1目标"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textColor="@color/white"
+                    android:background="@color/new_color3"/>
 
                 <TextView
                     android:id="@+id/msg_total_score"
@@ -137,6 +149,36 @@
             android:layout_height="wrap_content"
             android:text="0.8"
             android:textColor="@color/black" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/msg_data"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/msg_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09"
+            android:textSize="@dimen/text_size2"
+            android:textColor="@color/colorGray" />
+
+        <TextView
+            android:id="@+id/msg_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18"
+            android:textSize="@dimen/text_size2"
+            android:textColor="@color/colorGray" />
     </LinearLayout>
 </LinearLayout>
 </android.support.v7.widget.CardView>

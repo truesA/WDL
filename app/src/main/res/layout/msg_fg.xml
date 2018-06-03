@@ -65,14 +65,51 @@
         android:layout_below="@+id/lls"
         android:layout_marginTop="32.0dip">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recy"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@color/white"
-            android:layout_marginTop="10dp"
-            android:layoutAnimation="@anim/layout_animation_fall_down"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layoutAnimation="@anim/layout_animation_fall_down"/>
+
+
+            <LinearLayout
+                android:id="@+id/empty_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_error"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="啊哦！没有数据！"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
 
     <com.wdl.amdroid_jwdl.view.dropdownmenu.DropDownMenu
         android:id="@+id/dropDownMenu"
@@ -89,4 +126,6 @@
         app:ddtextSelectedColor="@color/white"
         app:ddtextUnselectedColor="@color/white"
         app:ddunderlineColor="@color/transparent" />
+
+
 </RelativeLayout>

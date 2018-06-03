@@ -58,8 +58,8 @@ public class App extends Application {
         client = new OkHttpClient.Builder()
                 .addInterceptor(localHttpLoggingInterceptor)
                 .retryOnConnectionFailure(true)
-                .readTimeout(35L, TimeUnit.SECONDS)
-                .connectTimeout(35L, TimeUnit.SECONDS)
+                .readTimeout(10000, TimeUnit.SECONDS)
+                .connectTimeout(10000, TimeUnit.SECONDS)
                 .build();
         MultiDex.install(this);
     }

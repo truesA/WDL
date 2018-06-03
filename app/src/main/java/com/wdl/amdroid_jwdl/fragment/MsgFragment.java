@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.joker.annotation.PermissionsDenied;
@@ -43,6 +44,7 @@ import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.dropdownmenu.DropDownMenu;
 import com.wdl.amdroid_jwdl.view.dropdownmenu.adapter.GirdDropDownAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -63,21 +65,28 @@ import io.reactivex.schedulers.Schedulers;
 public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private static final int CAMERA_CODE = 1;
     List<MsgListBean.ResultBean> arrayList = new ArrayList();
-    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌","雅力士", "致炫","致享" ,"逸致" };
-    private String type = "不限";
+    private String[] chiZi = {"我的", "基盘", "他的"};
+    private String chiZi_model = "我的";
+    private GirdDropDownAdapter chiZiAdapter;
+
+    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌", "雅力士", "致炫", "致享", "逸致"};
+    private String type_model = "不限";
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
     private int constellationPosition = 0;
-    private String[] headers = {"类型", "车型", "地区", "忠诚"};
     private int isRefresh = 1;
     private String location = "不限";
     private String[] locations = {"不限", "本地", "吉安县", "泰和县", "吉水县", "永丰县", "永新县", "峡江县", "安福县", "万安县", "隧川县", "新干县", "井冈山市", "吉州区", "青原区"};
     private String loyalty = "不限";
     private GirdDropDownAdapter loyaltyAdapter;
     private String[] loyaltys = {"不限", "0.1-0.3", "0.4-0.6", "0.7-0.9", "1.0-1.3", "1.4-1.6", "1.7-1.9", "2.0+"};
-    private String[] types = {"不限", "收藏", "预约", "继续", "定保", "T1", "M1", "M2", "5K", "10K", "12K+"};
+    private String[] types = {"不限", "收藏", "预约", "继续", "续保", "T1", "M1", "M2", "5K", "10K"};
+
+    private String[] headers = {"池子", "类型", "车型", "地区", "忠诚"};
     @BindView(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
+    @BindView(R.id.empty_ll)
+    LinearLayout emptyLl;
     private MsgAdapter msgAdapter;
     private int page = 1;
     private int pageNum = 20;
@@ -96,6 +105,11 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void initView() {
+        final ListView chiZiView = new ListView(getActivity());
+        chiZiAdapter = new GirdDropDownAdapter(getActivity(), Arrays.asList(chiZi));
+        chiZiView.setDividerHeight(0);
+        chiZiView.setAdapter(chiZiAdapter);
+
         ListView typeView = new ListView(getActivity());
         typeAdapter = new GirdDropDownAdapter(getActivity(), Arrays.asList(types));
         typeView.setDividerHeight(0);
@@ -115,18 +129,33 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         loyaltyAdapter = new GirdDropDownAdapter(getActivity(), Arrays.asList(loyaltys));
         loyaltyView.setDividerHeight(0);
         loyaltyView.setAdapter(loyaltyAdapter);
+        popupViews.add(chiZiView);
         popupViews.add(typeView);
         popupViews.add(carTapeView);
         popupViews.add(placeView);
         popupViews.add(loyaltyView);
+        chiZiView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chiZiAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : chiZi[position]);
+                mDropDownMenu.closeMenu();
+                chiZi_model = position == 0 ? "我的" : chiZi[position];
+                Log.e("click0", chiZi_model);
+                showLoadingDialog();
+                getDataList();
+            }
+        });
+
+
         typeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> AdapterView, View View, int position, long Long) {
                 typeAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[0] : types[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[1] : types[position]);
                 mDropDownMenu.closeMenu();
-                type = position == 0 ? "不限" : types[position];
+                type_model = position == 0 ? "不限" : types[position];
 
-                Log.e("click1", type);
+                Log.e("click1", type_model);
                 showLoadingDialog();
                 getDataList();
 
@@ -136,7 +165,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
             public void onItemClick(AdapterView<?> AdapterView, View View, int position,
                                     long Long) {
                 carTaypeAdatapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[1] : carTapes[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[2] : carTapes[position]);
                 mDropDownMenu.closeMenu();
                 car_model = position == 0 ? "不限" : carTapes[position];
 
@@ -149,7 +178,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
             public void onItemClick(AdapterView<?> AdapterView, View View, int position,
                                     long Long) {
                 placeAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[2] : locations[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[3] : locations[position]);
                 mDropDownMenu.closeMenu();
                 location = position == 0 ? "不限" : locations[position];
 
@@ -164,7 +193,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
             public void onItemClick(AdapterView<?> AdapterView, View View, int position,
                                     long Long) {
                 loyaltyAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[3] : loyaltys[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[4] : loyaltys[position]);
                 mDropDownMenu.closeMenu();
                 loyalty = position == 0 ? "不限" : loyaltys[position];
 
@@ -187,7 +216,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         refresh();
         refreshLayout.setRefreshHeader(new MaterialHeader(getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-       //recyclerView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.VERTICAL,R.drawable.divider));
+        //recyclerView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.VERTICAL,R.drawable.divider));
         int resId = R.anim.layout_animation_fall_down;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
         recyclerView.setLayoutAnimation(animation);
@@ -210,8 +239,8 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         msgAdapter.setDataPostionChangeListener(new MsgAdapter.DataPostionChangeListener() {
             @Override
             public void dataPostionChange(int postion) {
-              //  msgAdapter.notifyItemChanged(postion);
-               // msgAdapter.notifyDataSetChanged();
+                //  msgAdapter.notifyItemChanged(postion);
+                // msgAdapter.notifyDataSetChanged();
                 refresh();
             }
         });
@@ -222,11 +251,11 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         HashMap<String, String> params = new HashMap();
         params.put("page", page + "");
         params.put("user_per_page", pageNum + "");
-        params.put("type", type);
+        params.put("type", type_model);
         params.put("car_model", car_model);
         params.put("location", location);
         params.put("loyalty", loyalty);
-        Log.e("getDataList", "type" + type + "car_model" + car_model + "location" + location + "loyalty" + loyalty);
+        Log.e("getDataList", type_model + type_model + "car_model" + car_model + "location" + location + "loyalty" + loyalty);
         App.getRetrofit(API.BASE_URL)
                 .create(DataService.class)
                 .getMsgListBean(params)
@@ -242,10 +271,19 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                     public void onNext(MsgListBean msgListBean) {
                         dismissLoadingDialog();
                         if (msgListBean.getError_code() == 200) {
+                            if (msgListBean.getResult()==null||msgListBean.getResult().size()==0){
+                                recyclerView.setVisibility(View.GONE);
+                                emptyLl.setVisibility(View.VISIBLE);
+                                refreshAndloadMoreFinsh();
+                                return;
+                            }
+                            emptyLl.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                             setRequset(msgListBean.getResult());
                             refreshAndloadMoreFinsh();
+                        }else {
+                            UIUtils.showToast(msgListBean.getReason());
                         }
-                        UIUtils.showToast(msgListBean.getReason());
                     }
 
                     @Override
@@ -286,61 +324,57 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
     @Override
     public void onItemClick(View View, int position) {
-      Intent  intent = new Intent(getActivity(), UserMainMsgActivity.class);
+        Intent intent = new Intent(getActivity(), UserMainMsgActivity.class);
         intent.putExtra("userid", arrayList.get(position).getId());
-        intent.putExtra("carPai",arrayList.get(position).getPlate_num());
+        intent.putExtra("carPai", arrayList.get(position).getPlate_num());
         startActivity(intent);
     }
 
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
         if (!(mDropDownMenu.isShowing()))
             return;
         mDropDownMenu.closeMenu();
     }
 
-    public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
-    {
+    public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt) {
         Permissions4M.onRequestPermissionsResult(this, paramInt, paramArrayOfInt);
         super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
 
     @PermissionsRationale({1})
-    public void rationale()
-    {
+    public void rationale() {
         UIUtils.showToast("请开启相机权限");
     }
+
     @PermissionsNonRationale({1})
-    public void nonRationale(Intent Intent)
-    {
+    public void nonRationale(Intent Intent) {
         startActivity(Intent);
     }
 
     @PermissionsGranted({1})
-    public void granted()
-    {
+    public void granted() {
         UIUtils.showToast("相机权限成功");
         startActivity(new Intent(getActivity(), DecoderActivity.class));
     }
 
     @PermissionsDenied({1})
-    public void denied()
-    {
+    public void denied() {
         UIUtils.showToast("相机权限失败");
     }
+
     @OnClick({R.id.search_ll, R.id.msg_fg_sao})
     public void goSaoTo(View View) {
         switch (View.getId()) {
             case R.id.search_ll:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
-            case  R.id.msg_fg_sao:
-                Permissions4M.get(this).requestForce(true).requestUnderM(true).requestPermissions(new String[] { "android.permission.CAMERA" }).requestCodes(new int[] { 1 }).requestPageType(1).requestPageType(0).request();
+            case R.id.msg_fg_sao:
+                Permissions4M.get(this).requestForce(true).requestUnderM(true).requestPermissions(new String[]{"android.permission.CAMERA"}).requestCodes(new int[]{1}).requestPageType(1).requestPageType(0).request();
                 break;
             default:
                 break;
         }
-          }
+    }
 
 }

@@ -10,4 +10,7 @@
     <dimen name="text_size5">13.0dip</dimen>
     <dimen name="text_size6">11.0dip</dimen>
     <dimen name="view_text_size">16.0sp</dimen>
+
+
+
 </resources>
