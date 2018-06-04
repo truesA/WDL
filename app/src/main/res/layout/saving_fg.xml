@@ -10,7 +10,7 @@
         android:id="@+id/view_status"
         android:layout_width="fill_parent"
         android:layout_height="25.0dip"
-        android:background="@color/color1" />
+        android:background="@color/new_color3" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/saving_refreshLayout"
@@ -34,8 +34,8 @@
                 <RelativeLayout
                     android:id="@+id/saving_bonus_rl_value_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="165dp"
-                    android:background="@color/color1">
+                    android:layout_height="115dp"
+                    android:background="@color/new_color3">
 
                     <TextView
                         android:id="@+id/saving_month"

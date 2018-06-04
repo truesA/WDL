@@ -29,14 +29,14 @@
                android:layout_height="wrap_content"
                android:text="身份"
                android:textColor="@color/black"
-               android:textSize="@dimen/text_size2" />
+               android:textSize="@dimen/new_text_size5" />
 
            <TextView
                android:id="@+id/user_identity_value"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textColor="@color/color1"
-               android:textSize="@dimen/text_size2"
+               android:textSize="@dimen/new_text_size5"
                tools:text="110" />
        </LinearLayout>
 
@@ -156,14 +156,14 @@
                android:layout_height="wrap_content"
                android:text="行为"
                android:textColor="@color/black"
-               android:textSize="@dimen/text_size2" />
+               android:textSize="@dimen/new_text_size5" />
 
            <TextView
                android:id="@+id/user_behavior_value"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textColor="@color/color1"
-               android:textSize="@dimen/text_size2"
+               android:textSize="@dimen/new_text_size5"
                tools:text="180" />
 
        </LinearLayout>
@@ -318,7 +318,7 @@
                 android:layout_height="wrap_content"
                 android:text="忠诚"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_size2" />
+                android:textSize="@dimen/new_text_size5" />
 
 
             <TextView
@@ -326,7 +326,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color1"
-                android:textSize="@dimen/text_size2"
+                android:textSize="@dimen/new_text_size5"
                 tools:text="130" />
 
         </LinearLayout>

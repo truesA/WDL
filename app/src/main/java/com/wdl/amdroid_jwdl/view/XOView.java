@@ -44,22 +44,22 @@ public class XOView extends View {
         color=typedArray.getColor(R.styleable.XOView_xo_color, Color.parseColor("#88888888"));
 
         paintBlueC = new Paint();
-        paintBlueC.setColor(Color.parseColor("#ff3f7fff"));
+        paintBlueC.setColor(Color.parseColor("#1e88e5"));
         paintBlueC.setStrokeWidth(15);
         paintBlueC.setStyle(Paint.Style.STROKE);
 
         paintRedX = new Paint();
-        paintRedX.setColor(Color.parseColor("#ffff3366"));
+        paintRedX.setColor(Color.parseColor("#c62828"));
         paintRedX.setStrokeWidth(15);
 
 
         paintHuiC = new Paint();
-        paintHuiC.setColor(Color.parseColor("#88888888"));
+        paintHuiC.setColor(Color.parseColor("#737373"));
         paintHuiC.setStrokeWidth(15);
         paintHuiC.setStyle(Paint.Style.STROKE);
 
         PaintHuiX = new Paint();
-        PaintHuiX.setColor(Color.parseColor("#88888888"));
+        PaintHuiX.setColor(Color.parseColor("#737373"));
         PaintHuiX.setStrokeWidth(15);
     }
 

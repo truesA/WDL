@@ -275,8 +275,8 @@ public class SavingFragment extends BaseFragment {
         if (userInfo.getLogintype() == 1) {
             cashSign=result.getSA1().getCash_flow_sign();
             saving_bonus_y_n.setText(cashSign == 1 ? "+" : "-");
-            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#ff3f7fff"): Color.parseColor("#ffff3366"));
-            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#ff3f7fff"): Color.parseColor("#ffff3366"));
+            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
+            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
             saving_bonus_value.setText(result.getSA1().getCash_flow() + "");
             saving_user_num.setText(result.getSA1().getCustomer_nm() + "");
 
@@ -308,8 +308,8 @@ public class SavingFragment extends BaseFragment {
         } else {
             cashSign=result.getSA2().getCash_flow_sign();
             saving_bonus_y_n.setText(cashSign== 1 ? "+" : "-");
-            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#ff3f7fff"): Color.parseColor("#ffff3366"));
-            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#ff3f7fff"): Color.parseColor("#ffff3366"));
+            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
+            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
             saving_bonus_value.setText(result.getSA2().getCash_flow() + "");
             saving_user_num.setText(result.getSA2().getCustomer_nm() + "");
 

@@ -17,9 +17,6 @@
         android:id="@+id/ll_top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/edit_wilter_c5"
         android:gravity="center_vertical"
@@ -34,7 +31,7 @@
             android:padding="10dp"
             android:text="预约"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size2" />
+            android:textSize="@dimen/new_text_size3" />
 
         <TextView
             android:id="@+id/user_jx"
@@ -45,7 +42,7 @@
             android:padding="10dp"
             android:text="继续"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size2" />
+            android:textSize="@dimen/new_text_size3" />
 
         <TextView
             android:id="@+id/user_fq"
@@ -56,7 +53,7 @@
             android:padding="10dp"
             android:text="放弃"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size2" />
+            android:textSize="@dimen/new_text_size3" />
 
         <TextView
             android:id="@+id/user_ls"
@@ -67,7 +64,7 @@
             android:padding="10dp"
             android:text="流失"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size2" />
+            android:textSize="@dimen/new_text_size3" />
     </LinearLayout>
 
     <ScrollView
@@ -113,7 +110,7 @@
                 android:gravity="center"
                 android:text="1231312"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_size5" />
+                android:textSize="@dimen/new_text_size2" />
 
 
         </RelativeLayout>

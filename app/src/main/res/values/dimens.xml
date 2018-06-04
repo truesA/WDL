@@ -12,5 +12,20 @@
     <dimen name="view_text_size">16.0sp</dimen>
 
 
+    <dimen name="new_text_size1">10dp</dimen>
+    <dimen name="new_text_size2">11dip</dimen>
+    <dimen name="new_text_size3">13.0dip</dimen>
+    <dimen name="new_text_size4">16.0dip</dimen>
+    <dimen name="new_text_size5">17.0dip</dimen>
+
+    <!--text_size01：18px-->
+
+    <!--text_size02：20px-->
+
+    <!--text_size03：24px-->
+
+    <!--text_size04：28px-->
+
+    <!--text_size05：32px-->
 
 </resources>
