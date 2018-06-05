@@ -215,7 +215,8 @@
                             android:background="@drawable/edit_wilter_c5"
                             android:gravity="center"
                             android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                           >
 
                             <LinearLayout
                                 android:layout_width="0.0dip"
@@ -224,7 +225,8 @@
                                 android:gravity="center"
                                 android:orientation="vertical"
                                 android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+                                android:paddingTop="5.0dip"
+                                android:visibility="gone">
 
                                 <TextView
                                     android:id="@+id/taiC_m1"
@@ -247,60 +249,78 @@
                                 android:layout_height="20.0dip"
                                 android:background="@color/new_line_color" />
 
-                            <LinearLayout
-                                android:layout_width="0.0dip"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.0"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0.0dip"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.0"-->
+                                <!--android:gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:paddingBottom="5.0dip"-->
+                                <!--android:paddingTop="5.0dip">-->
 
                                 <TextView
                                     android:id="@+id/taiC_yuv"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:text="预约率"
+                                    android:gravity="center"
                                     android:textSize="@dimen/text_size5" />
-
-                                <TextView
-                                    android:id="@+id/taiC_mubv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5.0dip"
-                                    android:text="达成率"
-                                    android:textSize="@dimen/text_size5" />
-                            </LinearLayout>
 
                             <View
                                 android:layout_width="1.0dip"
                                 android:layout_height="20.0dip"
                                 android:background="@color/new_line_color" />
 
-                            <LinearLayout
-                                android:layout_width="0.0dip"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.0"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingBottom="5.0dip"
-                                android:paddingTop="5.0dip">
+
+                            <TextView
+                                    android:id="@+id/taiC_mubv"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="达成率"
+                                    android:textSize="@dimen/text_size5" />
+                            <!--</LinearLayout>-->
+
+                            <View
+                                android:layout_width="1.0dip"
+                                android:layout_height="20.0dip"
+                                android:background="@color/new_line_color" />
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0.0dip"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.0"-->
+                                <!--android:gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:paddingBottom="5.0dip"-->
+                                <!--android:paddingTop="5.0dip">-->
 
                                 <TextView
                                     android:id="@+id/taiC_today"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center"
                                     android:text="平日"
                                     android:textSize="@dimen/text_size5" />
 
-                                <TextView
+                            <View
+                                android:layout_width="1.0dip"
+                                android:layout_height="20.0dip"
+                                android:background="@color/new_line_color" />
+
+
+                            <TextView
                                     android:id="@+id/taiC_sunday"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5.0dip"
+                                    android:gravity="center"
                                     android:text="周末"
                                     android:textSize="@dimen/text_size5" />
-                            </LinearLayout>
+                            <!--</LinearLayout>-->
                         </LinearLayout>
 
                         <include layout="@layout/data_fg_progress_layout" />

@@ -138,7 +138,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 chiZiAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[0] : chiZi[position]);
+                mDropDownMenu.setTabText(position == 0 ? chiZi[0] : chiZi[position]);
                 mDropDownMenu.closeMenu();
                 chiZi_model = position == 0 ? "我的" : chiZi[position];
                 Log.e("click0", chiZi_model);
