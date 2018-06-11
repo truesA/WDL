@@ -7,6 +7,8 @@ package com.wdl.amdroid_jwdl.adapter;
  */
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -50,7 +52,7 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         TextView xu = (TextView) ViewHolder.getView(R.id.xu);
         TextView zhe = (TextView) ViewHolder.getView(R.id.zhe);
         TextView msgzcd = (TextView) ViewHolder.getView(R.id.msg_zcd);
-        ImageView msg_zcd_iv = ViewHolder.getView(R.id.msg_zcd_iv);
+        final ImageView msg_zcd_iv = ViewHolder.getView(R.id.msg_zcd_iv);
         LinearLayout zcd_ll = ViewHolder.getView(R.id.zcd_ll);
         View item_left_color=ViewHolder.getView(R.id.item_left_color);
         LinearLayout msg_data =ViewHolder.getView(R.id.msg_data);
@@ -59,14 +61,35 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
 
         double loy_coef = new BigDecimal(paramResultBean.getLoy_coef()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         msgzcd.setText(loy_coef+"");
-        carType.setText(paramResultBean.getInitial());
+//        carType.setText(paramResultBean.getInitial());
+        carType.setText("凯美瑞");
         name.setText(paramResultBean.getName());
         phone.setText(paramResultBean.getPhone_number());
         carPai.setText(paramResultBean.getPlate_num());
+
 //        project_t1.setText(paramResultBean.getLevel());
         xu.setText("续 " + paramResultBean.getXu());
         zhe.setText("折" + paramResultBean.getZhe());
         msg_total_score.setText(paramResultBean.getTotal_score() + "");
+        if (paramResultBean.getT1_target()==1){
+            project_t1.setVisibility(View.VISIBLE);
+        }else {
+            project_t1.setVisibility(View.GONE);
+        }
+        if (TextUtils.isEmpty(paramResultBean.getColor())){
+            item_left_color.setBackgroundColor(Color.WHITE);
+        }else {
+            item_left_color.setBackgroundColor(Color.parseColor(paramResultBean.getColor()));
+        }
+        if (TextUtils.isEmpty(paramResultBean.getDate())){
+            msg_data.setVisibility(View.GONE);
+        }else {
+            msg_data.setVisibility(View.VISIBLE);
+            String[] bxString = paramResultBean.getDate().split("-");
+            msg_month.setText(bxString[1]);
+            msg_day.setText(bxString[2]);
+
+        }
 
         if (paramResultBean.getCollection() == 1) {
             msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_color);
@@ -77,6 +100,7 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         zcd_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_color);
                 App.getRetrofit(API.BASE_URL)
                         .create(UserService.class)
                         .getCollection(paramResultBean.getId())
@@ -94,14 +118,17 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
                                     if (mdataPostionChangeListener!=null){
                                         mdataPostionChangeListener.dataPostionChange(paramInt);
                                     }
+                                }else {
+                                    UIUtils.showToast(baseBean.getReason());
+                                    msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_hui);
                                 }
-                                UIUtils.showToast(baseBean.getReason());
                             }
 
                             @Override
                             public void onError(Throwable e) {
                                 e.printStackTrace();
                                 UIUtils.showToast("系统繁忙");
+                                msg_zcd_iv.setImageResource(R.drawable.loyalty_icon_hui);
                             }
 
                             @Override

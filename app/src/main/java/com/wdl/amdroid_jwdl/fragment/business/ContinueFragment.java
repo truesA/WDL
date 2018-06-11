@@ -104,7 +104,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewy.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig lineConfig = new LineConfig();
         lineConfig.setColor(Color.parseColor("#c62828"));
-        lineConfig.setAlpha(100);
+//        lineConfig.setAlpha(100);
         // lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         lineConfig.setShadowVisible(false);
@@ -124,7 +124,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewm.setSelectedTextColor(getResources().getColor(R.color.black));
         lineConfig = new LineConfig();
         lineConfig.setColor(Color.parseColor("#c62828"));
-        lineConfig.setAlpha(100);
+//        lineConfig.setAlpha(100);
         //lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         lineConfig.setShadowVisible(false);
@@ -145,7 +145,7 @@ public class ContinueFragment extends BaseFragment {
         wheelListViewd.setSelectedTextColor(getResources().getColor(R.color.black));
         lineConfig = new LineConfig();
         lineConfig.setColor(Color.parseColor("#c62828"));
-        lineConfig.setAlpha(100);
+//        lineConfig.setAlpha(100);
         // lineConfig.setRatio(0.2F);
         lineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         lineConfig.setShadowVisible(false);

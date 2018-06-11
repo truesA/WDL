@@ -2,6 +2,7 @@ package com.wdl.amdroid_jwdl.activity.clientmsg;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.wdl.amdroid_jwdl.App;
 import com.wdl.amdroid_jwdl.R;
@@ -109,7 +111,7 @@ public class ClientIdentityActivity extends BaseActivity {
     @BindView(R.id.identity_fqbz_msg)
     TextView identity_fqbz_msg;
     @BindView(R.id.client_identity_et)
-    EditText client_identity_et;
+    TextView client_identity_et;
 
 
     @Override
@@ -221,7 +223,7 @@ public class ClientIdentityActivity extends BaseActivity {
             R.id.identity_cartype_msg_ll, R.id.identity_bxday_msg_ll, R.id.identity_jcday_msg_ll, R.id.identity_carage_msg_ll,
             R.id.client_identity_bz_sumit, R.id.identity_wechat_msg_ll, R.id.identity_place_msg_ll, R.id.identity_like_msg_ll,
             R.id.identity_birthday_msg_ll, R.id.identity_jh_msg_ll, R.id.identity_kid_msg_ll, R.id.identity_learn_msg_ll,
-            R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll,R.id.identity_xhh_msg_ll})
+            R.id.identity_userful_msg_ll,R.id.identity_hy_msg_ll,R.id.identity_zw_msg_ll,R.id.identity_xhh_msg_ll,R.id.client_identity_et})
     public void submitMsg(View view) {
         switch (view.getId()) {
             case R.id.identity_sex_msg_ll:
@@ -484,6 +486,22 @@ public class ClientIdentityActivity extends BaseActivity {
                 break;
             case R.id.client_identity_bz_sumit:
                 submitMsgData("feature_notes",client_identity_et.getText().toString() );
+                break;
+            case R.id.client_identity_et:
+                boolean wrapInScrollView = true;
+                new MaterialDialog.Builder(this)
+                        .title("备注")
+                        .customView(R.layout.continue_text_view, wrapInScrollView)
+                        .positiveText("确定")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                EditText editText = (EditText) dialog.getView().findViewById(R.id.text_content);
+                                client_identity_et.setText( editText.getText());
+                                client_identity_et.setTextColor(Color.BLACK);
+                            }
+                        })
+                        .show();
                 break;
         }
     }

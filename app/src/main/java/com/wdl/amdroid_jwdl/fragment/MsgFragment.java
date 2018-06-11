@@ -69,7 +69,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private String chiZi_model = "我的";
     private GirdDropDownAdapter chiZiAdapter;
 
-    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌", "雅力士", "致炫", "致享", "逸致"};
+    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌", "逸致","雅力士", "CHR"};
     private String type_model = "不限";
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
@@ -80,7 +80,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private String loyalty = "不限";
     private GirdDropDownAdapter loyaltyAdapter;
     private String[] loyaltys = {"不限", "0.1-0.3", "0.4-0.6", "0.7-0.9", "1.0-1.3", "1.4-1.6", "1.7-1.9", "2.0+"};
-    private String[] types = {"不限", "收藏", "预约", "继续", "续保", "T1", "M1", "M2", "5K", "10K"};
+    private String[] types = {"不限", "收藏", "预约", "继续", "续保", "T1", "M1", "M2", "5K", "10K","M1*","M2*"};
 
     private String[] headers = {"池子", "类型", "车型", "地区", "忠诚"};
     @BindView(R.id.dropDownMenu)
@@ -143,6 +143,8 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                 chiZi_model = position == 0 ? "我的" : chiZi[position];
                 Log.e("click0", chiZi_model);
                 showLoadingDialog();
+                isLoadMore = false;
+                arrayList.clear();
                 getDataList();
             }
         });
@@ -157,6 +159,8 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
                 Log.e("click1", type_model);
                 showLoadingDialog();
+                isLoadMore = false;
+                arrayList.clear();
                 getDataList();
 
             }
@@ -171,6 +175,8 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
                 Log.e("click2", car_model);
                 showLoadingDialog();
+                isLoadMore = false;
+                arrayList.clear();
                 getDataList();
             }
         });
@@ -184,6 +190,8 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
                 Log.e("click3", location);
                 showLoadingDialog();
+                isLoadMore = false;
+                arrayList.clear();
                 getDataList();
             }
         });
@@ -199,17 +207,14 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
 
                 Log.e("click4", loyalty);
                 showLoadingDialog();
+                isLoadMore = false;
+                arrayList.clear();
                 getDataList();
             }
         });
         mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, null);
     }
 
-    @Override
-    protected View setRootView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.msg_fg, container, false);
-        return view;
-    }
 
     @Override
     public void initData() {
@@ -251,6 +256,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
         HashMap<String, String> params = new HashMap();
         params.put("page", page + "");
         params.put("user_per_page", pageNum + "");
+        params.put("pool", chiZi_model);
         params.put("type", type_model);
         params.put("car_model", car_model);
         params.put("location", location);
@@ -271,23 +277,26 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                     public void onNext(MsgListBean msgListBean) {
                         dismissLoadingDialog();
                         if (msgListBean.getError_code() == 200) {
-                            if (msgListBean.getResult()==null||msgListBean.getResult().size()==0){
-                                recyclerView.setVisibility(View.GONE);
-                                emptyLl.setVisibility(View.VISIBLE);
-                                refreshAndloadMoreFinsh();
-                                return;
+                            if (msgListBean.getResult() == null || msgListBean.getResult().size() == 0) {
+                                if (!isLoadMore) {
+                                    recyclerView.setVisibility(View.GONE);
+                                    emptyLl.setVisibility(View.VISIBLE);
+                                    refreshAndloadMoreFinsh();
+                                    return;
+                                }
                             }
                             emptyLl.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
                             setRequset(msgListBean.getResult());
                             refreshAndloadMoreFinsh();
-                        }else {
+                        } else {
                             UIUtils.showToast(msgListBean.getReason());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                         refreshAndloadMoreFinsh();
                         dismissLoadingDialog();
                     }
@@ -299,13 +308,17 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                 });
     }
 
+    private boolean isLoadMore = false;
+
     private void loadMore() {
         page += 1;
+        isLoadMore = true;
         getDataList();
     }
 
     private void refresh() {
         page = 1;
+        isLoadMore = false;
         getDataList();
     }
 
@@ -376,5 +389,9 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                 break;
         }
     }
-
+    @Override
+    protected View setRootView(LayoutInflater inflater, ViewGroup container) {
+        View view = inflater.inflate(R.layout.msg_fg, container, false);
+        return view;
+    }
 }

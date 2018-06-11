@@ -85,8 +85,8 @@ public class CreditScoreView extends View {
 
         valuePaint = new Paint();
         valuePaint.setAntiAlias(true);
-        valuePaint.setColor(getResources().getColor(R.color.color1));
-        valuePaint.setAlpha(120);
+        valuePaint.setColor(getResources().getColor(R.color.new_color01));
+//        valuePaint.setAlpha(120);
         valuePaint.setStrokeWidth(5);
         valuePaint.setStyle(Paint.Style.FILL_AND_STROKE);
 

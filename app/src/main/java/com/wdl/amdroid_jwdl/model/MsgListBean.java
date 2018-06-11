@@ -59,6 +59,33 @@ public class MsgListBean
         private String initial;
         private int collection;
         private double loy_coef;
+        private int T1_target; //用户是否是T1目标（1-是，0-否）
+        private String color;
+        private String date;
+
+        public int getT1_target() {
+            return T1_target;
+        }
+
+        public void setT1_target(int t1_target) {
+            T1_target = t1_target;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
 
         public double getLoy_coef() {
 

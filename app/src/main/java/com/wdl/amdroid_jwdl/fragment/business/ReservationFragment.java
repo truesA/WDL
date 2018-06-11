@@ -72,7 +72,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewy.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig localLineConfig = new LineConfig();
         localLineConfig.setColor(Color.parseColor("#c62828"));
-        localLineConfig.setAlpha(100);
+//        localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         localLineConfig.setShadowVisible(false);
@@ -91,7 +91,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewm.setSelectedTextColor(getResources().getColor(R.color.black));
         localLineConfig = new LineConfig();
         localLineConfig.setColor(Color.parseColor("#c62828"));
-        localLineConfig.setAlpha(100);
+//        localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         localLineConfig.setShadowVisible(false);
@@ -110,7 +110,7 @@ public class ReservationFragment extends BaseFragment {
         wheelListViewd.setSelectedTextColor(getResources().getColor(R.color.black));
         localLineConfig = new LineConfig();
         localLineConfig.setColor(Color.parseColor("#c62828"));
-        localLineConfig.setAlpha(100);
+//        localLineConfig.setAlpha(100);
         // localLineConfig.setRatio(0.2F);
         localLineConfig.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
         localLineConfig.setShadowVisible(false);

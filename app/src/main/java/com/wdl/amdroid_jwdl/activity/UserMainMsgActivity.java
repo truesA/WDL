@@ -181,8 +181,9 @@ public class UserMainMsgActivity extends BaseActivity {
                         if (paramUserMainMsg.getError_code() == 200) {
                             setuserMainMsg(paramUserMainMsg.getResult());
                             mStateFrameLayout.changeState(StateFrameLayout.SUCCESS);
+                        }else {
+                            UIUtils.showToast(paramUserMainMsg.getReason());
                         }
-                        UIUtils.showToast(paramUserMainMsg.getReason());
                     }
 
                     public void onSubscribe(Disposable paramDisposable) {
@@ -193,10 +194,10 @@ public class UserMainMsgActivity extends BaseActivity {
     @SuppressLint({"SetTextI18n"})
     private void setuserMainMsg(UserMainMsg.ResultBean paramResultBean) {
 //        TextDecorator.decorate(user_jk_kh, "击溃" + paramResultBean.getJikuikehu() + "%").setTextColor(R.color.color1, new String[]{paramResultBean.getJikuikehu() + "%"}).build();
-        TextDecorator.decorate(user_yy_gs, "T1分数线 " + paramResultBean.getT1_threshold()).setTextColor(R.color.color1, new String[]{paramResultBean.getT1_threshold()+""}).build();
-        TextDecorator.decorate(user_yycs_tv, "预约次数 " + paramResultBean.getCount_appoint()).setTextColor(R.color.color1, new String[]{paramResultBean.getCount_appoint()+""}).build();
-        TextDecorator.decorate(user_jxcs_tv, "继续次数 " + paramResultBean.getCount_continue()).setTextColor(R.color.color1, new String[]{paramResultBean.getCount_continue()+""}).build();
-        TextDecorator.decorate(user_fqcs_tv, "放弃次数 " + paramResultBean.getCount_giveup()).setTextColor(R.color.color1, new String[]{paramResultBean.getCount_giveup()+""}).build();
+        TextDecorator.decorate(user_yy_gs, "T1分数线 " + paramResultBean.getT1_threshold()).setTextColor(R.color.new_color01, new String[]{paramResultBean.getT1_threshold()+""}).build();
+        TextDecorator.decorate(user_yycs_tv, "预约次数 " + paramResultBean.getCount_appoint()).setTextColor(R.color.new_color01, new String[]{paramResultBean.getCount_appoint()+""}).build();
+        TextDecorator.decorate(user_jxcs_tv, "继续次数 " + paramResultBean.getCount_continue()).setTextColor(R.color.new_color01, new String[]{paramResultBean.getCount_continue()+""}).build();
+        TextDecorator.decorate(user_fqcs_tv, "放弃次数 " + paramResultBean.getCount_giveup()).setTextColor(R.color.new_color01, new String[]{paramResultBean.getCount_giveup()+""}).build();
 
         ArrayList<Integer> arrayList = (ArrayList) paramResultBean.getCred_score();
         ArrayList<Double> arrayListd = (ArrayList)paramResultBean.getCred_score_ratio();

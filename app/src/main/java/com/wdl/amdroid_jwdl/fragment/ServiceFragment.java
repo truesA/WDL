@@ -390,8 +390,19 @@ public class ServiceFragment extends BaseFragment {
         ArrayList<BarEntry> entries1 = new ArrayList<>();
         ArrayList<BarEntry> entries2 = new ArrayList<>();
 
+        entries1.add(new BarEntry(1, yAxisValue1.get(1)));
+        entries1.add(new BarEntry(2, yAxisValue1.get(2)));
+        entries1.add(new BarEntry(4, yAxisValue1.get(4)));
+        entries1.add(new BarEntry(5, yAxisValue1.get(5)));
+        entries1.add(new BarEntry(10, yAxisValue1.get(10)));
+        entries1.add(new BarEntry(11, yAxisValue1.get(11)));
+        entries1.add(new BarEntry(6, 3));
+        entries1.add(new BarEntry(7, 10));
+        entries1.add(new BarEntry(10, yAxisValue1.get(10)));
+        entries1.add(new BarEntry(11, yAxisValue1.get(11)));
+
         for (int i = 0, n = yAxisValue1.size(); i < n; ++i) {
-            entries1.add(new BarEntry(i, yAxisValue1.get(i)));
+
             entries2.add(new BarEntry(i, yAxisValue2.get(i)));
         }
 

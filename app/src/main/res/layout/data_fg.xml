@@ -89,10 +89,10 @@
             app:srlEnablePreviewInEditMode="true">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
                 <ScrollView
@@ -111,20 +111,28 @@
                             android:layout_width="fill_parent"
                             android:layout_height="150.0dip"
                             android:layout_margin="10.0dip"
+                            android:visibility="gone"
+                            android:background="@drawable/edit_wilter_c5" />
+
+                        <com.github.mikephil.charting.charts.CombinedChart
+                            android:id="@+id/data_combind_chart"
+                            android:layout_width="fill_parent"
+                            android:layout_height="150.0dip"
+                            android:layout_margin="10.0dip"
                             android:background="@drawable/edit_wilter_c5" />
 
                         <LinearLayout
                             android:id="@+id/ll_chanZ"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="10dip"
                             android:layout_marginRight="10dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginTop="-5dp"
-                            android:padding="3dp"
                             android:background="@drawable/edit_wilter_c5"
                             android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="3dp">
 
                             <LinearLayout
                                 android:layout_width="0.0dip"
@@ -160,8 +168,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.0"
                                 android:gravity="center"
-                                android:orientation="horizontal"
-                               >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -188,8 +195,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.0"
                                 android:gravity="center"
-                                android:orientation="horizontal"
-                               >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -210,13 +216,17 @@
                         <LinearLayout
                             android:id="@+id/ll_taiC"
                             android:layout_width="fill_parent"
-                            android:layout_height="80.0dip"
-                            android:layout_margin="10.0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
                             android:background="@drawable/edit_wilter_c5"
                             android:gravity="center"
                             android:orientation="horizontal"
+                            android:padding="3dp"
                             android:visibility="gone"
-                           >
+                            >
 
                             <LinearLayout
                                 android:layout_width="0.0dip"
@@ -244,43 +254,44 @@
                                     android:textSize="@dimen/text_size5" />
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
+                            <!--<View-->
+                                <!--android:layout_width="1.0dip"-->
+                                <!--android:layout_height="20.0dip"-->
+                                <!--android:background="@color/new_line_color" />-->
 
                             <!--<LinearLayout-->
-                                <!--android:layout_width="0.0dip"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_weight="1.0"-->
-                                <!--android:gravity="center"-->
-                                <!--android:orientation="vertical"-->
-                                <!--android:paddingBottom="5.0dip"-->
-                                <!--android:paddingTop="5.0dip">-->
+                            <!--android:layout_width="0.0dip"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1.0"-->
+                            <!--android:gravity="center"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:paddingBottom="5.0dip"-->
+                            <!--android:paddingTop="5.0dip">-->
 
-                                <TextView
-                                    android:id="@+id/taiC_yuv"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:text="预约率"
-                                    android:gravity="center"
-                                    android:textSize="@dimen/text_size5" />
+                            <TextView
+                                android:id="@+id/taiC_yuv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="预约率"
+                                android:textSize="@dimen/text_size5"
+                                android:visibility="gone"/>
 
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
+                            <!--<View-->
+                                <!--android:layout_width="1.0dip"-->
+                                <!--android:layout_height="20.0dip"-->
+                                <!--android:background="@color/new_line_color" />-->
 
 
                             <TextView
-                                    android:id="@+id/taiC_mubv"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="达成率"
-                                    android:textSize="@dimen/text_size5" />
+                                android:id="@+id/taiC_mubv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="达成率"
+                                android:textSize="@dimen/text_size5" />
                             <!--</LinearLayout>-->
 
                             <View
@@ -289,22 +300,22 @@
                                 android:background="@color/new_line_color" />
 
                             <!--<LinearLayout-->
-                                <!--android:layout_width="0.0dip"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_weight="1.0"-->
-                                <!--android:gravity="center"-->
-                                <!--android:orientation="vertical"-->
-                                <!--android:paddingBottom="5.0dip"-->
-                                <!--android:paddingTop="5.0dip">-->
+                            <!--android:layout_width="0.0dip"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1.0"-->
+                            <!--android:gravity="center"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:paddingBottom="5.0dip"-->
+                            <!--android:paddingTop="5.0dip">-->
 
-                                <TextView
-                                    android:id="@+id/taiC_today"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="平日"
-                                    android:textSize="@dimen/text_size5" />
+                            <TextView
+                                android:id="@+id/taiC_today"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="平日"
+                                android:textSize="@dimen/text_size5" />
 
                             <View
                                 android:layout_width="1.0dip"
@@ -313,21 +324,200 @@
 
 
                             <TextView
-                                    android:id="@+id/taiC_sunday"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="周末"
-                                    android:textSize="@dimen/text_size5" />
+                                android:id="@+id/taiC_sunday"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="周末"
+                                android:textSize="@dimen/text_size5" />
                             <!--</LinearLayout>-->
                         </LinearLayout>
 
-                        <include layout="@layout/data_fg_progress_layout" />
+                        <include layout="@layout/data_fg_progress_layout2"
+                            />
+                        <include layout="@layout/data_fg_progress_layout3"
+                            />
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:background="@drawable/edit_wilter_c5"
+                          android:padding="5dp"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="10dp"
+                          android:layout_marginBottom="10dp"
+                          >
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:orientation="horizontal">
+
+                              <LinearLayout
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_weight="5">
+
+                                  <TextView
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="准时"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+
+                                  <TextView
+                                      android:id="@+id/data_CT_zhunshi_mine"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="236"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+
+                                  <TextView
+                                      android:id="@+id/data_CT_zhunshi_other"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="124"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+                              </LinearLayout>
+
+                              <LinearLayout
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_weight="5"
+                                  android:gravity="center"
+                                  android:orientation="horizontal">
+
+                                  <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                                      android:id="@+id/data_CT_zhunshi_p_left"
+                                      style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:max="100"
+                                      android:progress="60"
+                                      app:mpb_progressBackgroundTint="@color/new_color3"
+                                      app:mpb_progressStyle="horizontal"
+                                      app:mpb_progressTint="@color/white"
+                                      app:mpb_useIntrinsicPadding="false" />
+
+                                  <Space
+                                      android:layout_width="5dp"
+                                      android:layout_height="wrap_content" />
+
+
+                                  <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                                      android:id="@+id/data_CT_zhunshi_p_right"
+                                      style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:max="100"
+                                      android:progress="60"
+                                      app:mpb_progressBackgroundTint="@color/white"
+                                      app:mpb_progressStyle="horizontal"
+                                      app:mpb_progressTint="@color/new_color2"
+                                      app:mpb_useIntrinsicPadding="false" />
+
+                              </LinearLayout>
+                          </LinearLayout>
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="8dp"
+                              android:gravity="center"
+                              android:orientation="horizontal">
+
+                              <LinearLayout
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_weight="5">
+
+                                  <TextView
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="追加"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+
+                                  <TextView
+                                      android:id="@+id/data_CT_zhuijia_mine"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="236"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+
+                                  <TextView
+                                      android:id="@+id/data_CT_zhuijia_other"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:gravity="center"
+                                      android:text="124"
+                                      android:textColor="@color/new_color2"
+                                      android:textSize="@dimen/text_size3" />
+                              </LinearLayout>
+
+                              <LinearLayout
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_weight="5"
+                                  android:gravity="center"
+                                  android:orientation="horizontal">
+
+                                  <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                                      android:id="@+id/data_CT_zhuijia_p_left"
+                                      style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:max="100"
+                                      android:progress="60"
+                                      app:mpb_progressBackgroundTint="@color/new_color3"
+                                      app:mpb_progressStyle="horizontal"
+                                      app:mpb_progressTint="@color/white"
+                                      app:mpb_useIntrinsicPadding="false" />
+
+                                  <Space
+                                      android:layout_width="5dp"
+                                      android:layout_height="wrap_content" />
+
+
+                                  <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                                      android:id="@+id/data_CT_zhuijia_p_right"
+                                      style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:max="100"
+                                      android:progress="60"
+                                      app:mpb_progressBackgroundTint="@color/white"
+                                      app:mpb_progressStyle="horizontal"
+                                      app:mpb_progressTint="@color/new_color2"
+                                      app:mpb_useIntrinsicPadding="false" />
+
+                              </LinearLayout>
+                          </LinearLayout>
+                      </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
-        </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
 
