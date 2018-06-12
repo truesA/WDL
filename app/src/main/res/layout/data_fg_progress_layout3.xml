@@ -30,7 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="M1目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size3" />
@@ -113,7 +113,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="M2目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size3" />
@@ -198,7 +198,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="M1*目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size3" />
@@ -281,7 +281,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="M2*目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size3" />

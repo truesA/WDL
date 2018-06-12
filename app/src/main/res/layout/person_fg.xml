@@ -44,7 +44,7 @@
         android:layout_centerInParent="true"
         android:clickable="true"
         android:src="@drawable/out_app"
-        app:backgroundTint="@color/color1"
+        app:backgroundTint="@color/new_color3"
         app:borderWidth="0.0dip"
         app:fabSize="normal" />
 

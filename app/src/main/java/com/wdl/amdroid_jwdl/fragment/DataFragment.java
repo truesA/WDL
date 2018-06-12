@@ -228,6 +228,42 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     MaterialProgressBar data_CT_zhuijia_p_right;
 
 
+    @BindView(R.id.data_CT_m1mb_mine)
+    TextView data_CT_m1mb_mine;
+    @BindView(R.id.data_CT_m1mb_other)
+    TextView data_CT_m1mb_other;
+    @BindView(R.id.data_CT_m1mb_p_left)
+    MaterialProgressBar data_CT_m1mb_p_left;
+    @BindView(R.id.data_CT_m1mb_p_right)
+    MaterialProgressBar data_CT_m1mb_p_right;
+
+    @BindView(R.id.data_CT_m2mb_mine)
+    TextView data_CT_m2mb_mine;
+    @BindView(R.id.data_CT_m2mb_other)
+    TextView data_CT_m2mb_other;
+    @BindView(R.id.data_CT_m2mb_p_left)
+    MaterialProgressBar data_CT_m2mb_p_left;
+    @BindView(R.id.data_CT_m2mb_p_right)
+    MaterialProgressBar data_CT_m2mb_p_right;
+
+    @BindView(R.id.data_CT_m1mbs_mine)
+    TextView data_CT_m1mbs_mine;
+    @BindView(R.id.data_CT_m1mbs_other)
+    TextView data_CT_m1mbs_other;
+    @BindView(R.id.data_CT_m1mbs_p_left)
+    MaterialProgressBar data_CT_m1mbs_p_left;
+    @BindView(R.id.data_CT_m1mbs_p_right)
+    MaterialProgressBar data_CT_m1mbs_p_right;
+
+    @BindView(R.id.data_CT_m2mbs_mine)
+    TextView data_CT_m2mbs_mine;
+    @BindView(R.id.data_CT_m2mbs_other)
+    TextView data_CT_m2mbs_other;
+    @BindView(R.id.data_CT_m2mbs_p_left)
+    MaterialProgressBar data_CT_m2mbs_p_left;
+    @BindView(R.id.data_CT_m2mbs_p_right)
+    MaterialProgressBar data_CT_m2mbs_p_right;
+
     private MainDataBean resultBean;
     private LineDataSet set1;
     private LineDataSet set2;
@@ -316,7 +352,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         limitLine1.setLineWidth(1F);
         limitLine1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
         limitLine1.setTextSize(10F);
-        limitLine1.setLineColor(R.color.black);
+        limitLine1.setLineColor(R.color.new_color02);
         YAxis localYAxis = combinedChart.getAxisLeft();
         localYAxis.removeAllLimitLines();
         localYAxis.addLimitLine(limitLine1);
@@ -327,7 +363,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         combinedChart.getAxisRight().setEnabled(false);
         combinedChart.getLegend().setEnabled(false); //去掉图例缩样
 
-       // setCombindData();
+        // setCombindData();
 
 
     }
@@ -339,7 +375,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
      * @param line1
      * @param line2
      */
-    private void setCombindData(List<Double> barChartYs,List<Double> line1,List<Double>line2) {
+    private void setCombindData(List<Double> barChartYs, List<Double> line1, List<Double> line2) {
         CombinedData combinedData = new CombinedData();
 
         List<Double> barChartY = new ArrayList<>();
@@ -694,7 +730,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 //            }
             checkedIds = 0;
 //            ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getMn_rate().get(0));
- //           ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getMn_rate().get(1));
+            //           ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getMn_rate().get(1));
             llChanZ.setVisibility(View.VISIBLE);
             llTaiC.setVisibility(View.GONE);
 //            setData(value1, value2);
@@ -793,7 +829,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         BarData barData = new BarData();
         ArrayList<BarEntry> yValues = new ArrayList<>();
         for (int i = 0; i < barChartY.size(); i++) {
-            yValues.add(new BarEntry(i,barChartY.get(i).floatValue()));
+            yValues.add(new BarEntry(i, barChartY.get(i).floatValue()));
         }
 
         BarDataSet barDataSet = new BarDataSet(yValues, "");

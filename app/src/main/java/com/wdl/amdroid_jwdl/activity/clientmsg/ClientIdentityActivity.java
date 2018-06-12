@@ -112,7 +112,8 @@ public class ClientIdentityActivity extends BaseActivity {
     TextView identity_fqbz_msg;
     @BindView(R.id.client_identity_et)
     TextView client_identity_et;
-
+    @BindView(R.id.identity_zhekou_msg)
+    TextView identity_zhekou_msg;//折扣工时
 
     @Override
     protected int getlayoutview() {
