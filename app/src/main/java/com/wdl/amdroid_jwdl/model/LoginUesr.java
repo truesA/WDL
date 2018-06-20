@@ -53,16 +53,26 @@ public class LoginUesr implements Serializable
          * password : 123456
          */
 
-        private int logintype;
+        private String said;
         private String name;
         private String password;
+        private String SAname;
 
-        public int getLogintype() {
-            return logintype;
+
+        public String getSaid() {
+            return said;
         }
 
-        public void setLogintype(int logintype) {
-            this.logintype = logintype;
+        public void setSaid(String said) {
+            this.said = said;
+        }
+
+        public String getSAname() {
+            return SAname;
+        }
+
+        public void setSAname(String SAname) {
+            this.SAname = SAname;
         }
 
         public String getName() {

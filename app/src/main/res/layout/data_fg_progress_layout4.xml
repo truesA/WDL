@@ -1,71 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     android:layout_marginLeft="10dip"
     android:layout_marginRight="10dp"
-    android:padding="5dp"
     android:background="@drawable/edit_wilter_c5"
-    android:id="@+id/data_fg_pg_2">
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:id="@+id/data_fg_pg_4">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
+            android:layout_weight="5">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
+                android:layout_weight="1.8"
                 android:gravity="center"
-                android:text="总计"/>
+                android:text="当月预约"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
 
             <TextView
-                android:id="@+id/data_CT_zongji_mine"
+                android:id="@+id/data_CT_dyrk_mine"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="236"/>
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
 
             <TextView
-                android:id="@+id/data_CT_zongji_other"
+                android:id="@+id/data_CT_dyrk_other"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="124"/>
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_zongji_p_left"
+                android:id="@+id/data_CT_dyrk_p_left"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:max="100"
                 android:progress="60"
                 app:mpb_progressBackgroundTint="@color/new_color3"
@@ -79,519 +78,11 @@
 
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/data_CT_zongji_p_right"
+                android:id="@+id/data_CT_dyrk_p_right"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="保养"/>
-
-            <TextView
-                android:id="@+id/data_CT_baoyang_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_baoyang_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_baoyang_p_left"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_baoyang_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="维修"/>
-
-            <TextView
-                android:id="@+id/data_CT_weixiu_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_weixiu_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_weixiu_p_left"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_weixiu_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="精品"/>
-
-            <TextView
-                android:id="@+id/data_CT_jingping_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_jingping_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_jingping_p_left"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_jingping_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="预约"/>
-
-            <TextView
-                android:id="@+id/data_CT_yuyue_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_yuyue_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_yuyue_p_left"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_yuyue_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="T1"/>
-
-            <TextView
-                android:id="@+id/data_CT_t1_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_t1_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_t1_p_left"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_t1_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/white"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/new_color2"
-                app:mpb_useIntrinsicPadding="false" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="M1"/>
-
-            <TextView
-                android:id="@+id/data_CT_m1_mine"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="236"/>
-
-            <TextView
-                android:id="@+id/data_CT_m1_other"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size5"
-                android:textColor="@color/new_color2"
-                android:gravity="center"
-                android:text="124"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_m1_p_letf"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="60"
-                app:mpb_progressBackgroundTint="@color/new_color3"
-                app:mpb_progressStyle="horizontal"
-                app:mpb_progressTint="@color/white"
-                app:mpb_useIntrinsicPadding="false" />
-
-            <Space
-                android:layout_width="5dp"
-                android:layout_height="wrap_content" />
-
-
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_m1_p_right"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:max="100"
                 android:progress="60"
                 app:mpb_progressBackgroundTint="@color/white"
@@ -618,24 +109,24 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
                 android:gravity="center"
-                android:text="M2"
+                android:text="预约入库"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
 
             <TextView
-                android:id="@+id/data_CT_m2_mine"
+                android:id="@+id/data_CT_yyrk_mine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="23666"
+                android:text="236"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
 
             <TextView
-                android:id="@+id/data_CT_m2_other"
+                android:id="@+id/data_CT_yyrk_other"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -653,7 +144,7 @@
             android:orientation="horizontal">
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/data_CT_m2_p_left"
+                android:id="@+id/data_CT_yyrk_p_left"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -670,8 +161,510 @@
                 android:layout_height="wrap_content" />
 
 
-            <me.zhanghai.android.materialprogressbar.MaterialProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/data_CT_m2_p_right"
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_yyrk_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="预约成功率"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_yycgl_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_yycgl_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_yycgl_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_yycgl_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="入库成功率"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_rkcgl_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_rkcgl_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_rkcgl_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_rkcgl_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="当月收藏"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dysc_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dysc_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dysc_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dysc_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="当月继续"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyjx_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyjx_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyjx_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyjx_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="当月放弃"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyfq_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="236"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyfq_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyfq_p_letf"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyfq_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="当月流失"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyls_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="23666"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_dyls_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyls_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_dyls_p_right"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -685,8 +678,91 @@
 
         </LinearLayout>
 
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="收藏未处理"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_scwcl_mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="23666"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+
+            <TextView
+                android:id="@+id/data_CT_scwcl_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="124"
+                android:textColor="@color/new_color2"
+                android:textSize="@dimen/text_size5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_scwcl_p_left"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/new_color3"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/white"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content" />
+
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/data_CT_scwcl_p_right"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="60"
+                app:mpb_progressBackgroundTint="@color/white"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_progressTint="@color/new_color2"
+                app:mpb_useIntrinsicPadding="false" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

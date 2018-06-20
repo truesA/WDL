@@ -58,11 +58,12 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
         LinearLayout msg_data =ViewHolder.getView(R.id.msg_data);
         TextView msg_month =ViewHolder.getView(R.id.msg_month);
         TextView msg_day=ViewHolder.getView(R.id.msg_day);
+        TextView sa_name=ViewHolder.getView(R.id.sa_name);
 
         double loy_coef = new BigDecimal(paramResultBean.getLoy_coef()).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         msgzcd.setText(loy_coef+"");
-//        carType.setText(paramResultBean.getInitial());
-        carType.setText("凯美瑞");
+        sa_name.setText(paramResultBean.getSAname());
+        carType.setText(paramResultBean.getInitial());
         name.setText(paramResultBean.getName());
         phone.setText(paramResultBean.getPhone_number());
         carPai.setText(paramResultBean.getPlate_num());
@@ -117,6 +118,7 @@ public class MsgAdapter extends CommonRecyclerViewAdapter<MsgListBean.ResultBean
                                 if (baseBean.getError_code() == 200) {
                                     if (mdataPostionChangeListener!=null){
                                         mdataPostionChangeListener.dataPostionChange(paramInt);
+                                        UIUtils.showToast("收藏成功");
                                     }
                                 }else {
                                     UIUtils.showToast(baseBean.getReason());

@@ -28,7 +28,9 @@ import com.wdl.amdroid_jwdl.base.BaseFragment;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.BaseBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
 import butterknife.BindView;
@@ -70,8 +72,9 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     @BindView(R.id.lost_submit)
     Button lost_submit;
 
+    private UserInfo userInfo;
     public void initData() {
-        if (lostStatus==1){
+        if (lostStatus == 1) {
             lost_submit.setEnabled(false);
             lost_submit.setBackgroundResource(R.drawable.button_bg_mianhui_c5);
         }
@@ -80,6 +83,8 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     protected void initView() {
         getActivity().getWindow().setSoftInputMode(32);
         radioGroup.setOnCheckedChangeListener(this);
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
+
     }
 
     public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt) {
@@ -114,17 +119,19 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     }
 
 
-    @OnClick({R.id.lost_submit,R.id.lost_et})
+    @OnClick({R.id.lost_submit, R.id.lost_et})
     public void onclickSubmitLost(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.lost_submit:
                 showLoadingDialog();
-                HashMap localHashMap = new HashMap();
+                HashMap<String,String> localHashMap = new HashMap();
+                localHashMap.put("said",userInfo.getSAname());
                 localHashMap.put("loss_action", "1");
                 localHashMap.put("loss_user", CarUserid);
                 localHashMap.put("loss_reason", loss_reason);
                 localHashMap.put("loss_notes", lost_et.getText().toString());
-                App.getRetrofit(API.BASE_URL).create(UserService.class)
+                App.getRetrofit(API.BASE_URL)
+                        .create(UserService.class)
                         .getSubmit_Content(localHashMap)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -139,7 +146,7 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
                             }
 
                             public void onNext(BaseBean paramBaseBean) {
-                                if (paramBaseBean.getError_code() == 200){
+                                if (paramBaseBean.getError_code() == 200) {
                                     dismissLoadingDialog();
                                     AppManagerUtil.instance().finishActivity();
                                 }
@@ -160,7 +167,7 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 EditText editText = (EditText) dialog.getView().findViewById(R.id.text_content);
-                                lost_et.setText( editText.getText());
+                                lost_et.setText(editText.getText());
                                 lost_et.setTextColor(Color.BLACK);
                             }
                         })
@@ -170,8 +177,8 @@ public class LostFragment extends BaseFragment implements RadioGroup.OnCheckedCh
 
     }
 
-    public void setCarUseridandSubmitStatus(String paramString,int status) {
-        this.lostStatus=status;
+    public void setCarUseridandSubmitStatus(String paramString, int status) {
+        this.lostStatus = status;
         this.CarUserid = paramString;
     }
 

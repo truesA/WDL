@@ -69,7 +69,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private String chiZi_model = "我的";
     private GirdDropDownAdapter chiZiAdapter;
 
-    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌", "逸致","雅力士", "CHR"};
+    private String[] carTapes = {"不限", "凯美瑞", "汉兰达", "雷凌", "雅力士", "逸致","C-HR"};
     private String type_model = "不限";
     private GirdDropDownAdapter carTaypeAdatapter;
     private String car_model = "不限";
@@ -80,7 +80,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
     private String loyalty = "不限";
     private GirdDropDownAdapter loyaltyAdapter;
     private String[] loyaltys = {"不限", "0.1-0.3", "0.4-0.6", "0.7-0.9", "1.0-1.3", "1.4-1.6", "1.7-1.9", "2.0+"};
-    private String[] types = {"不限", "收藏", "预约", "继续", "续保", "T1", "M1", "M2", "5K", "10K","M1*","M2*"};
+    private String[] types = {"不限", "收藏", "预约", "继续", "续保", "T1", "M1目标", "M2目标","M1*目标","M2*目标", "5K", "10K"};
 
     private String[] headers = {"池子", "类型", "车型", "地区", "忠诚"};
     @BindView(R.id.dropDownMenu)
@@ -289,6 +289,7 @@ public class MsgFragment extends BaseFragment implements OnItemClickListener {
                             recyclerView.setVisibility(View.VISIBLE);
                             setRequset(msgListBean.getResult());
                             refreshAndloadMoreFinsh();
+
                         } else {
                             UIUtils.showToast(msgListBean.getReason());
                         }

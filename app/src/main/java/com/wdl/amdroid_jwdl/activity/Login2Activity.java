@@ -284,7 +284,8 @@ public class Login2Activity extends BaseActivity implements View.OnClickListener
                             UserInfo userInfo = new UserInfo();
                             userInfo.setUsername(loginUesr.getResult().getName());
                             userInfo.setPassword(loginUesr.getResult().getPassword());
-                            userInfo.setLogintype(loginUesr.getResult().getLogintype());
+                            userInfo.setSaid(loginUesr.getResult().getSaid());
+                            userInfo.setSAname(loginUesr.getResult().getSAname());
                             PreferencesUtil.getInstance(Login2Activity.this).saveParam("UserInfo", userInfo);
                             PreferencesUtil.getInstance(Login2Activity.this).setLogin(true);
                             startActivity(new Intent(Login2Activity.this, MainActivity.class));

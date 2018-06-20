@@ -29,7 +29,9 @@ import com.wdl.amdroid_jwdl.base.BaseFragment;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.BaseBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
 import butterknife.BindView;
@@ -60,7 +62,7 @@ public class WaiverFragment extends BaseFragment {
 
     @BindView(R.id.waiver_submit)
     Button waiver_submit;
-
+    private UserInfo userInfo;
     private void initRecycler() {
         ArrayList<String> arrayList = new ArrayList();
         arrayList.add("里程未到");
@@ -94,6 +96,7 @@ public class WaiverFragment extends BaseFragment {
     protected void initView() {
         getActivity().getWindow().setSoftInputMode(32);
         initRecycler();
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
     }
 
     @OnClick({R.id.waiver_submit,R.id.waiver_et})
@@ -102,6 +105,7 @@ public class WaiverFragment extends BaseFragment {
             case R.id.waiver_submit:
                 showLoadingDialog();
                 HashMap<String, String> params = new HashMap();
+                params.put("said",userInfo.getSAname());
                 params.put("giveup_action", "1");
                 params.put("giveup_user", this.CarUserid);
                 params.put("giveup_reason", this.giveup_reason);

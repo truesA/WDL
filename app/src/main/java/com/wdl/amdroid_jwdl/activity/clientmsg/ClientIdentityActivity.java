@@ -218,6 +218,7 @@ public class ClientIdentityActivity extends BaseActivity {
         identity_jxbz_msg.setText(result.getContinue_notes());
         identity_fqbz_msg.setText(result.getGiveup_notes());
         client_identity_et.setText(result.getFeature_notes());
+        identity_zhekou_msg.setText(result.getDiscount()+"");
     }
 
     @OnClick({ R.id.identity_sex_msg_ll, R.id.identity_carname_msg_ll,

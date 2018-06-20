@@ -46,6 +46,6 @@ public interface UserService {
     Observable<UserMainMsgBast> getUserMsgBast(@Query("id") int id);
 
     @GET(API.Main_saving)
-    Observable<SavingBean> getMainSavingMsg(@Query("date") String date);
+    Observable<SavingBean> getMainSavingMsg(@QueryMap Map<String, String> paramMap);
 
 }

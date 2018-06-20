@@ -20,7 +20,9 @@ import com.wdl.amdroid_jwdl.base.BaseFragment;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.BaseBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.TimeUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
@@ -66,6 +68,7 @@ public class ReservationFragment extends BaseFragment {
     WheelListView wheelListViewy;
     int year = 2018;
     private String years;
+    private UserInfo userInfo;
 
     private void initWheelList() {
         wheelListViewy.setItems(new String[]{"2018", "2019", "2020"}, 1);
@@ -133,12 +136,14 @@ public class ReservationFragment extends BaseFragment {
 
     protected void initView() {
         initWheelList();
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
     }
 
     @OnClick({R.id.submit_reservation})
     public void oncklickSubmitReser() {
         showLoadingDialog();
         HashMap<String, String> params = new HashMap();
+        params.put("said",userInfo.getSAname());
         params.put("appoint_action", "1");
         params.put("appoint_user", CarUserid);
         params.put("appoint_time", years + "-" + months + "-" + days);

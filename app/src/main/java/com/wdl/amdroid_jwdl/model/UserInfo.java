@@ -11,7 +11,25 @@ public class UserInfo implements Serializable {
 
     private String username;
     private String password;
-    private int logintype;
+    private String SAname;
+    private String said;
+
+
+    public String getSaid() {
+        return said;
+    }
+
+    public void setSaid(String said) {
+        this.said = said;
+    }
+
+    public String getSAname() {
+        return SAname;
+    }
+
+    public void setSAname(String SAname) {
+        this.SAname = SAname;
+    }
 
     public String getUsername() {
         return username;
@@ -29,11 +47,5 @@ public class UserInfo implements Serializable {
         this.password = password;
     }
 
-    public int getLogintype() {
-        return logintype;
-    }
 
-    public void setLogintype(int logintype) {
-        this.logintype = logintype;
-    }
 }

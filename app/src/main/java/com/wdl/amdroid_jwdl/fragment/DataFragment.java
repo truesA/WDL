@@ -6,10 +6,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -24,6 +27,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
@@ -61,10 +65,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import cn.addapp.pickers.common.LineConfig;
+import cn.addapp.pickers.listeners.OnMoreItemPickListener;
+import cn.addapp.pickers.picker.CarNumberPicker;
+import cn.addapp.pickers.util.ConvertUtils;
+import cn.addapp.pickers.widget.WheelListView;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -72,8 +82,11 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
@@ -104,7 +117,6 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @BindView(R.id.data_line_chart)
     public LineChart mLineChar;
-    private int monthdefult = 1;
 
     @BindView(R.id.rb_top_c)
     public RadioButton radioButtonC;
@@ -112,15 +124,18 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     @BindView(R.id.rb_top_t)
     public RadioButton radioButtonT;
 
+    @BindView(R.id.rb_top_k)
+    public RadioButton radioButtonK;
+
     @BindView(R.id.rg_top)
     public RadioGroup radioGroup;
 
 
-    @BindView(R.id.taiC_m1)
-    public TextView taiC_m1;
-
-    @BindView(R.id.taiC_m2)
-    public TextView taiC_m2;
+//    @BindView(R.id.taiC_m1)
+//    public TextView taiC_m1;
+//
+//    @BindView(R.id.taiC_m2)
+//    public TextView taiC_m2;
 
     @BindView(R.id.taiC_mubv)
     public TextView taiC_mubv;
@@ -264,6 +279,106 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     @BindView(R.id.data_CT_m2mbs_p_right)
     MaterialProgressBar data_CT_m2mbs_p_right;
 
+
+    @BindView(R.id.data_fg_pg_3)
+    LinearLayout data_fg_pg_3;
+    @BindView(R.id.ll_zhiBi)
+    LinearLayout ll_zhiBi;  //指标
+    @BindView(R.id.zhiBi_yupm)
+    TextView zhiBi_yupm;  //当月预约排名
+    @BindView(R.id.zhiBi_rkpm)
+    TextView zhiBi_rkpm; //当月入库排名
+
+    @BindView(R.id.data_CT_dyrk_mine)
+    TextView data_CT_dyrk_mine;
+    @BindView(R.id.data_CT_dyrk_other)
+    TextView data_CT_dyrk_other;
+    @BindView(R.id.data_CT_dyrk_p_left)
+    MaterialProgressBar data_CT_dyrk_p_left;
+    @BindView(R.id.data_CT_dyrk_p_right)
+    MaterialProgressBar data_CT_dyrk_p_right;
+
+    @BindView(R.id.data_CT_yyrk_mine)
+    TextView data_CT_yyrk_mine;
+    @BindView(R.id.data_CT_yyrk_other)
+    TextView data_CT_yyrk_other;
+    @BindView(R.id.data_CT_yyrk_p_left)
+    MaterialProgressBar data_CT_yyrk_p_left;
+    @BindView(R.id.data_CT_yyrk_p_right)
+    MaterialProgressBar data_CT_yyrk_p_right;
+
+    @BindView(R.id.data_CT_yycgl_mine)
+    TextView data_CT_yycgl_mine;
+    @BindView(R.id.data_CT_yycgl_other)
+    TextView data_CT_yycgl_other;
+    @BindView(R.id.data_CT_yycgl_p_left)
+    MaterialProgressBar data_CT_yycgl_p_left;
+    @BindView(R.id.data_CT_yycgl_p_right)
+    MaterialProgressBar data_CT_yycgl_p_right;
+
+    @BindView(R.id.data_CT_rkcgl_mine)
+    TextView data_CT_rkcgl_mine;
+    @BindView(R.id.data_CT_rkcgl_other)
+    TextView data_CT_rkcgl_other;
+    @BindView(R.id.data_CT_rkcgl_p_left)
+    MaterialProgressBar data_CT_rkcgl_p_left;
+    @BindView(R.id.data_CT_rkcgl_p_right)
+    MaterialProgressBar data_CT_rkcgl_p_right;
+
+    @BindView(R.id.data_CT_dysc_mine)
+    TextView data_CT_dysc_mine;
+    @BindView(R.id.data_CT_dysc_other)
+    TextView data_CT_dysc_other;
+    @BindView(R.id.data_CT_dysc_p_left)
+    MaterialProgressBar data_CT_dysc_p_left;
+    @BindView(R.id.data_CT_dysc_p_right)
+    MaterialProgressBar data_CT_dysc_p_right;
+
+    @BindView(R.id.data_CT_dyjx_mine)
+    TextView data_CT_dyjx_mine;
+    @BindView(R.id.data_CT_dyjx_other)
+    TextView data_CT_dyjx_other;
+    @BindView(R.id.data_CT_dyjx_p_left)
+    MaterialProgressBar data_CT_dyjx_p_left;
+    @BindView(R.id.data_CT_dyjx_p_right)
+    MaterialProgressBar data_CT_dyjx_p_right;
+
+    @BindView(R.id.data_CT_dyfq_mine)
+    TextView data_CT_dyfq_mine;
+    @BindView(R.id.data_CT_dyfq_other)
+    TextView data_CT_dyfq_other;
+    @BindView(R.id.data_CT_dyfq_p_letf)
+    MaterialProgressBar data_CT_dyfq_p_letf;
+    @BindView(R.id.data_CT_dyfq_p_right)
+    MaterialProgressBar data_CT_dyfq_p_right;
+
+    @BindView(R.id.data_CT_dyls_mine)
+    TextView data_CT_dyls_mine;
+    @BindView(R.id.data_CT_dyls_other)
+    TextView data_CT_dyls_other;
+    @BindView(R.id.data_CT_dyls_p_left)
+    MaterialProgressBar data_CT_dyls_p_left;
+    @BindView(R.id.data_CT_dyls_p_right)
+    MaterialProgressBar data_CT_dyls_p_right;
+
+    @BindView(R.id.data_CT_scwcl_mine)
+    TextView data_CT_scwcl_mine;
+    @BindView(R.id.data_CT_scwcl_other)
+    TextView data_CT_scwcl_other;
+    @BindView(R.id.data_CT_scwcl_p_left)
+    MaterialProgressBar data_CT_scwcl_p_left;
+    @BindView(R.id.data_CT_scwcl_p_right)
+    MaterialProgressBar data_CT_scwcl_p_right;
+
+    @BindView(R.id.data_fg_pg_2)
+    LinearLayout data_fg_pg_2;
+    @BindView(R.id.data_fg_pg_4)
+    LinearLayout data_fg_pg_4;
+    @BindView(R.id.data_CT_zhunshi_ll)
+    LinearLayout data_CT_zhunshi_ll;
+    @BindView(R.id.data_CT_zj_zs_ll)
+    LinearLayout data_CT_zj_zs_ll;
+
     private MainDataBean resultBean;
     private LineDataSet set1;
     private LineDataSet set2;
@@ -274,11 +389,17 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @BindView(R.id.data_combind_chart)
     CombinedChart combinedChart;
-    private YAxis leftAxis;
-    private YAxis rightAxis;
     private XAxis xAxis;
 
     private int isRefresh = 0;
+    private int noyear = 1;
+    private int nomonth = 1;
+    private int indexyear = 1;
+    private int indexmonth = 1;
+    private int indexSa = 0;
+    private String[] saArray;
+    private UserInfo userInfo;
+    private String SaName;
 
     @Override
     protected void initView() {
@@ -286,7 +407,7 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         refreshLayouts.setOnRefreshListener(new OnRefreshListener() {
             public void onRefresh(RefreshLayout RefreshLayout) {
                 isRefresh = 1;
-                getAllData(defulter);
+                getAllData(changeIndexYear(indexyear), indexmonth);
             }
         });
         refreshLayouts.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -296,10 +417,25 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
             }
         });
         radioGroup.setOnCheckedChangeListener(this);
-        //  initMAChartLine();
-        //  initMaCharBar();
-        //  getAllData(defulter);
+
         initCombindChart();
+    }
+
+
+    @Override
+    protected View setRootView(LayoutInflater inflater, ViewGroup container) {
+        View view = inflater.inflate(R.layout.data_fg, container, false);
+        return view;
+    }
+
+    @Override
+    public void initData() {
+        // setCombindData();
+        // getAllData(changeIndexYear(indexyear),indexmonth);
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
+        SaName=userInfo.getSAname();
+        getAllData(1900, 01);
+
     }
 
     private void initCombindChart() {
@@ -363,59 +499,54 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         combinedChart.getAxisRight().setEnabled(false);
         combinedChart.getLegend().setEnabled(false); //去掉图例缩样
 
-        // setCombindData();
-
-
     }
 
     /**
      * 设置曲线图
      *
-     * @param barChartYs
+     * @param
      * @param line1
      * @param line2
      */
-    private void setCombindData(List<Double> barChartYs, List<Double> line1, List<Double> line2) {
+    private void setCombindData(List<Integer> barChartYsup, List<Integer> barChartYsdown, List<Double> line1, List<Double> line2) {
         CombinedData combinedData = new CombinedData();
 
-        List<Double> barChartY = new ArrayList<>();
-        for (int j = 0; j <= 30; j++) {
-            barChartY.add((double) (Math.random() * 100));
-
-        }
-
         List<List<Double>> yLineDatat = new ArrayList<>();
-        yLineDatat.add(line1);
         yLineDatat.add(line2);
+        yLineDatat.add(line1);
 
-        List<List<Double>> yLineDatas = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            //y轴数
-            List<Double> yData = new ArrayList<>();
-            for (int j = 0; j <= 30; j++) {
-                yData.add((double) (Math.random() * 100));
-            }
-            yLineDatas.add(yData);
-        }
+        List<List<Integer>> barChartYs = new ArrayList<>();
+        barChartYs.add(barChartYsup);
+        barChartYs.add(barChartYsdown);
+
         List<Integer> colors = new ArrayList<>();
         colors.add(Color.parseColor("#c62828"));
         colors.add(Color.parseColor("#737373"));
 
-        combinedData.setData(getBarData(barChartY, Color.parseColor("#737373")));
-        combinedData.setData(getLineData(yLineDatas, colors));
+        List<Integer> colorsb = new ArrayList<>();
+        colorsb.add(Color.parseColor("#8f8f8f"));
+        colorsb.add(Color.parseColor("#8f8f8f"));
+
+        combinedData.setData(getBarDatas(barChartYs, colorsb));
+        combinedData.setData(getLineData(yLineDatat, colors));
 
         combinedChart.setData(combinedData);
         combinedChart.animateX(2000); // 立即执行的动画,x轴
         combinedChart.invalidate();
     }
 
-    private void getAllData(final int defulter) {
+    private void getAllData(final int defulteryear, final int defultermonth) {
         if (isRefresh == 0) {
             showLoadingDialog();
         }
+        Map<String, String> params = new HashMap<>();
+        params.put("sa_year", defulteryear + "");
+        params.put("sa_month", defultermonth + "");
+        params.put("said", userInfo.getSaid());
+        params.put("SAname", SaName);
         App.getRetrofit(API.BASE_URL)
                 .create(DataService.class)
-                .getMainData(defulter)
+                .getMainData(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<MainDataBean>() {
@@ -433,11 +564,11 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                         }
                         Log.e("mainDataBean", mainDataBean.getError_code() + "");
                         if (mainDataBean.getError_code() == 200) {
-                            monthdefult = defulter;
-                            time_selsect.setText(monthdefult + "月");
+
                             setReusltData(mainDataBean);
+                        } else {
+                            UIUtils.showToast(mainDataBean.getReason());
                         }
-                        UIUtils.showToast(mainDataBean.getReason());
                     }
 
                     @Override
@@ -456,99 +587,227 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     }
 
-    private ArrayList<Entry> dealLine(List<Double> paramList) {
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < paramList.size()) {
-            localArrayList.add(new Entry(i + 1, new Double(((Double) paramList.get(i)).doubleValue()).intValue()));
-            i += 1;
-        }
-        return localArrayList;
-    }
+//    private ArrayList<Entry> dealLine(List<Double> paramList) {
+//        ArrayList localArrayList = new ArrayList();
+//        int i = 0;
+//        while (i < paramList.size()) {
+//            localArrayList.add(new Entry(i + 1, new Double(((Double) paramList.get(i)).doubleValue()).intValue()));
+//            i += 1;
+//        }
+//        return localArrayList;
+//    }
 
     @RequiresApi(api = 24)
     private void setReusltData(MainDataBean resultBeans) {
         resultBean = resultBeans;
+        MainDataBean.ResultBean result = resultBeans.getResult();
+        // List转成数组
+        saArray = result.getSAname().toArray(new String[0]);
+        indexmonth = result.getSa_month();
+        if (result.getSa_year() == 2018) {
+            indexyear = 1;
+        } else if (result.getSa_year() == 2019) {
+            indexyear = 2;
+        } else if (result.getSa_year() == 2017) {
+            indexyear = 0;
+        }
+        time_selsect.setText(result.getSa_year() + "-" + indexmonth);
         dealProgess(resultBean, checkedIds);
         dealmeduler(resultBean, checkedIds);
         if (checkedIds == 0) {
-            setData(dealLine(resultBean.getResult().getMn_rate().get(0)), dealLine(resultBean.getResult().getMn_rate().get(1)));
+            setCombindData(result.getBackgroundup(), result.getBackgrounddown(), result.getMn_rate_me(), result.getMn_rate_other());
+        } else if (checkedIds == 1) {
+            setCombindData(result.getBackgroundup(), result.getBackgrounddown(), result.getTimes_rate_me(), result.getTimes_rate_other());
         } else {
-            setData(dealLine(resultBean.getResult().getTimes_rate().get(0)), dealLine(resultBean.getResult().getTimes_rate().get(1)));
+            setCombindData(result.getBackgroundup(), result.getBackgrounddown(), result.getKPI_enter_times_me(), result.getKPI_enter_times_other());
         }
-
-
-        mLineChar.animateX(2500);
-        mLineChar.invalidate();
+        combinedChart.animateX(2500);
+        combinedChart.invalidate();
     }
 
+    @SuppressLint("SetTextI18n")
     private void dealProgess(MainDataBean resultBean, int checkedIds) {
-        if (checkedIds == 0) {
-//            tv_zcz_tc.setText("总产值");
-//            tv_bycz_bytc.setText("保养产值");
-//            tv_t1cz_t1tc.setText("T1产值");
-//            tv_m1cz_m1tc.setText("M1产值");
-//            tv_m2cz_m2tc.setText("M2产值");
-//            tv_yycz_yytc.setText("预约产值");
-//            probar_zcz_right_p.setProgress(100 - dealProgressValues(500000, ((Integer) resultBean.getResult().getGoal_mn_now().get(0)).intValue()));
-//            probar_zcz_left_p.setProgress(dealProgressValues(500000, ((Integer) resultBean.getResult().getGoal_mn_now().get(1)).intValue()));
-//            probar_zcz_right_tv.setText(resultBean.getResult().getGoal_mn_now().get(0) + "");
-//            probar_zcz_left_tv.setText(resultBean.getResult().getGoal_mn_now().get(1) + "");
-//            probar_zbycz_right_p.setProgress(100 - dealProgressValues(150000, ((Integer) resultBean.getResult().getMaint_mn_now().get(0)).intValue()));
-//            probar_zbycz_left_p.setProgress(dealProgressValues(150000, ((Integer) resultBean.getResult().getMaint_mn_now().get(1)).intValue()));
-//            probar_zbycz_right_tv.setText(resultBean.getResult().getMaint_mn_now().get(0) + "");
-//            probar_zbycz_left_tv.setText(resultBean.getResult().getMaint_mn_now().get(1) + "");
-//            probar_t1cz_right_p.setProgress(100 - dealProgressValues(100000, ((Integer) resultBean.getResult().getT1_mn_now().get(0)).intValue()));
-//            probar_t1cz_left_p.setProgress(dealProgressValues(100000, ((Integer) resultBean.getResult().getT1_mn_now().get(1)).intValue()));
-//            probar_t1cz_right_tv.setText(resultBean.getResult().getT1_mn_now().get(0) + "");
-//            probar_t1cz_left_tv.setText(resultBean.getResult().getT1_mn_now().get(1) + "");
-//            probar_m1cz_right_p.setProgress(100 - dealProgressValues(100000, ((Integer) resultBean.getResult().getM1_mn_now().get(0)).intValue()));
-//            probar_m1cz_left_p.setProgress(dealProgressValues(100000, ((Integer) resultBean.getResult().getM1_mn_now().get(1)).intValue()));
-//            probar_m1cz_right_tv.setText(resultBean.getResult().getM1_mn_now().get(0) + "");
-//            probar_m1cz_left_tv.setText(resultBean.getResult().getM1_mn_now().get(1) + "");
-//            probar_m2cz_right_p.setProgress(100 - dealProgressValues(100000, ((Integer) resultBean.getResult().getM2_mn_now().get(0)).intValue()));
-//            probar_m2cz_left_p.setProgress(dealProgressValues(100000, ((Integer) resultBean.getResult().getM2_mn_now().get(1)).intValue()));
-//            probar_m2cz_right_tv.setText(resultBean.getResult().getM2_mn_now().get(0) + "");
-//            probar_m2cz_left_tv.setText(resultBean.getResult().getM2_mn_now().get(1) + "");
-//            probar_yycz_right_p.setProgress(100 - dealProgressValues(100000, ((Integer) resultBean.getResult().getAppoint_mn_now().get(0)).intValue()));
-//            probar_yycz_left_p.setProgress(dealProgressValues(100000, ((Integer) resultBean.getResult().getAppoint_mn_now().get(1)).intValue()));
-//            probar_yycz_right_tv.setText(resultBean.getResult().getAppoint_mn_now().get(0) + "");
-//            probar_yycz_left_tv.setText(resultBean.getResult().getAppoint_mn_now().get(1) + "");
+        MainDataBean.ResultBean resultBeans = resultBean.getResult();
 
-        } else {
-//            tv_zcz_tc.setText("总台次");
-//            tv_bycz_bytc.setText("保养台次");
-//            tv_t1cz_t1tc.setText("T1台次");
-//            tv_m1cz_m1tc.setText("M1台次");
-//            tv_m2cz_m2tc.setText("M2台次");
-//            tv_yycz_yytc.setText("预约台次");
-//            probar_zcz_right_p.setProgress(100 - dealProgressValues(350, ((Integer) resultBean.getResult().getGoal_times().get(0)).intValue()));
-//            probar_zcz_left_p.setProgress(dealProgressValues(350, ((Integer) resultBean.getResult().getGoal_times().get(1)).intValue()));
-//            probar_zcz_right_tv.setText(resultBean.getResult().getGoal_times().get(0) + "");
-//            probar_zcz_left_tv.setText(resultBean.getResult().getGoal_times().get(1) + "");
-//            probar_zbycz_right_p.setProgress(100 - dealProgressValues(350, ((Integer) resultBean.getResult().getMaint_times().get(0)).intValue()));
-//            probar_zbycz_left_p.setProgress(dealProgressValues(350, ((Integer) resultBean.getResult().getMaint_times().get(1)).intValue()));
-//            probar_zbycz_right_tv.setText(resultBean.getResult().getMaint_times().get(0) + "");
-//            probar_zbycz_left_tv.setText(resultBean.getResult().getMaint_times().get(1) + "");
-//            probar_t1cz_right_p.setProgress(100 - dealProgressValues(20, ((Integer) resultBean.getResult().getT1_times().get(0)).intValue()));
-//            probar_t1cz_left_p.setProgress(dealProgressValues(20, ((Integer) resultBean.getResult().getT1_times().get(1)).intValue()));
-//            probar_t1cz_right_tv.setText(resultBean.getResult().getT1_times().get(0) + "");
-//            probar_t1cz_left_tv.setText(resultBean.getResult().getT1_times().get(1) + "");
-//            probar_m1cz_right_p.setProgress(100 - dealProgressValues(20, ((Integer) resultBean.getResult().getM1_times().get(0)).intValue()));
-//            probar_m1cz_left_p.setProgress(dealProgressValues(20, ((Integer) resultBean.getResult().getM1_times().get(1)).intValue()));
-//            probar_m1cz_right_tv.setText(resultBean.getResult().getM1_times().get(0) + "");
-//            probar_m1cz_left_tv.setText(resultBean.getResult().getM1_times().get(1) + "");
-//            probar_m2cz_right_p.setProgress(100 - dealProgressValues(20, ((Integer) resultBean.getResult().getM2_times().get(0)).intValue()));
-//            probar_m2cz_left_p.setProgress(dealProgressValues(20, ((Integer) resultBean.getResult().getM2_times().get(1)).intValue()));
-//            probar_m2cz_right_tv.setText(resultBean.getResult().getM2_times().get(0) + "");
-//            probar_m2cz_left_tv.setText(resultBean.getResult().getM2_times().get(1) + "");
-//            probar_yycz_right_p.setProgress(100 - dealProgressValues(20, (resultBean.getResult().getAppoint_times().get(0)).intValue()));
-//            probar_yycz_left_p.setProgress(dealProgressValues(20, ((Integer) resultBean.getResult().getAppoint_times().get(1)).intValue()));
-//            probar_yycz_right_tv.setText(resultBean.getResult().getAppoint_times().get(0) + "");
-//            probar_yycz_left_tv.setText(resultBean.getResult().getAppoint_times().get(1) + "");
+        if (checkedIds == 0) {
+            MainDataBean.ResultBean.MnBean mn = resultBeans.getMn();
+            data_CT_zongji_mine.setText(mn.getGoal_mn_now_me() + "");
+            data_CT_zongji_other.setText(mn.getGoal_mn_now_other() + "");
+            data_CT_zongji_p_left.setProgress(100 - dealProgressValues(mn.getGoal_mn_now_max(), mn.getGoal_mn_now_me()));
+            data_CT_zongji_p_right.setProgress(dealProgressValues(mn.getGoal_mn_now_max(), mn.getGoal_mn_now_other()));
+
+            data_CT_baoyang_mine.setText(mn.getMaint_mn_now_me() + "");
+            data_CT_baoyang_other.setText(mn.getMaint_mn_now_other() + "");
+            data_CT_baoyang_p_left.setProgress(100 - dealProgressValues(mn.getMaint_mn_now_max(), mn.getMaint_mn_now_me()));
+            data_CT_baoyang_p_right.setProgress(dealProgressValues(mn.getMaint_mn_now_max(), mn.getMaint_mn_now_other()));
+
+            data_CT_weixiu_mine.setText(mn.getRepair_mn_now_me() + "");
+            data_CT_weixiu_other.setText(mn.getRepair_mn_now_other() + "");
+            data_CT_weixiu_p_left.setProgress(100 - dealProgressValues(mn.getRepair_mn_now_max(), mn.getRepair_mn_now_me()));
+            data_CT_weixiu_p_right.setProgress(dealProgressValues(mn.getRepair_mn_now_max(), mn.getRepair_mn_now_other()));
+
+            data_CT_jingping_mine.setText(mn.getExcelt_mn_now_me() + "");
+            data_CT_jingping_other.setText(mn.getExcelt_mn_now_other() + "");
+            data_CT_jingping_p_left.setProgress(100 - dealProgressValues(mn.getExcelt_mn_now_max(), mn.getExcelt_mn_now_me()));
+            data_CT_jingping_p_right.setProgress(dealProgressValues(mn.getExcelt_mn_now_max(), mn.getExcelt_mn_now_other()));
+
+            data_CT_yuyue_mine.setText(mn.getAppoint_mn_now_me() + "");
+            data_CT_yuyue_other.setText(mn.getAppoint_mn_now_other() + "");
+            data_CT_yuyue_p_left.setProgress(100 - dealProgressValues(mn.getAppoint_mn_now_max(), mn.getAppoint_mn_now_me()));
+            data_CT_yuyue_p_right.setProgress(dealProgressValues(mn.getAppoint_mn_now_max(), mn.getAppoint_mn_now_other()));
+
+            data_CT_t1_mine.setText(mn.getT1_mn_now_me() + "");
+            data_CT_t1_other.setText(mn.getT1_mn_now_other() + "");
+            data_CT_t1_p_left.setProgress(100 - dealProgressValues(mn.getT1_mn_now_max(), mn.getT1_mn_now_me()));
+            data_CT_t1_p_right.setProgress(dealProgressValues(mn.getT1_mn_now_max(), mn.getT1_mn_now_other()));
+
+            data_CT_m1_mine.setText(mn.getM1_mn_now_me() + "");
+            data_CT_m1_other.setText(mn.getM1_mn_now_other() + "");
+            data_CT_m1_p_letf.setProgress(100 - dealProgressValues(mn.getM1_mn_now_max(), mn.getM1_mn_now_me()));
+            data_CT_m1_p_right.setProgress(dealProgressValues(mn.getM1_mn_now_max(), mn.getM1_mn_now_other()));
+
+            data_CT_m2_mine.setText(mn.getM2_mn_now_me() + "");
+            data_CT_m2_other.setText(mn.getM2_mn_now_other() + "");
+            data_CT_m2_p_left.setProgress(100 - dealProgressValues(mn.getM2_mn_now_max(), mn.getM2_mn_now_me()));
+            data_CT_m2_p_right.setProgress(dealProgressValues(mn.getM2_mn_now_max(), mn.getM2_mn_now_other()));
+
+            data_CT_zhuijia_mine.setText(mn.getAdd_mn_now_me() + "");
+            data_CT_zhuijia_other.setText(mn.getAdd_mn_now_other() + "");
+            data_CT_zhuijia_p_left.setProgress(100 - dealProgressValues(mn.getAdd_mn_now_max(), mn.getAdd_mn_now_me()));
+            data_CT_zhuijia_p_right.setProgress(dealProgressValues(mn.getAdd_mn_now_max(), mn.getAdd_mn_now_other()));
+
+
+        } else if (checkedIds == 1) {  //台次
+            MainDataBean.ResultBean.TimesBean times = resultBeans.getTimes();
+            data_CT_zongji_mine.setText(times.getGoal_times_me() + "");
+            data_CT_zongji_other.setText(times.getGoal_times_other() + "");
+            data_CT_zongji_p_left.setProgress(100 - dealProgressValues(times.getGoal_times_max(), times.getGoal_times_me()));
+            data_CT_zongji_p_right.setProgress(dealProgressValues(times.getGoal_times_max(), times.getGoal_times_other()));
+
+            data_CT_baoyang_mine.setText(times.getMaint_times_me() + "");
+            data_CT_baoyang_other.setText(times.getMaint_times_other() + "");
+            data_CT_baoyang_p_left.setProgress(100 - dealProgressValues(times.getMaint_times_max(), times.getMaint_times_me()));
+            data_CT_baoyang_p_right.setProgress(dealProgressValues(times.getMaint_times_max(), times.getMaint_times_other()));
+
+            data_CT_weixiu_mine.setText(times.getRepair_times_me() + "");
+            data_CT_weixiu_other.setText(times.getRepair_times_other() + "");
+            data_CT_weixiu_p_left.setProgress(100 - dealProgressValues(times.getRepair_times_max(), times.getRepair_times_me()));
+            data_CT_weixiu_p_right.setProgress(dealProgressValues(times.getRepair_times_max(), times.getRepair_times_other()));
+
+            data_CT_jingping_mine.setText(times.getExcelt_times_me() + "");
+            data_CT_jingping_other.setText(times.getExcelt_times_other() + "");
+            data_CT_jingping_p_left.setProgress(100 - dealProgressValues(times.getExcelt_times_max(), times.getExcelt_times_me()));
+            data_CT_jingping_p_right.setProgress(dealProgressValues(times.getExcelt_times_max(), times.getExcelt_times_other()));
+
+            data_CT_yuyue_mine.setText(times.getAppoint_times_me() + "");
+            data_CT_yuyue_other.setText(times.getAppoint_times_other() + "");
+            data_CT_yuyue_p_left.setProgress(100 - dealProgressValues(times.getAppoint_times_max(), times.getAppoint_times_me()));
+            data_CT_yuyue_p_right.setProgress(dealProgressValues(times.getAppoint_times_max(), times.getAppoint_times_other()));
+
+            data_CT_t1_mine.setText(times.getT1_times_me() + "");
+            data_CT_t1_other.setText(times.getT1_times_other() + "");
+            data_CT_t1_p_left.setProgress(100 - dealProgressValues(times.getT1_times_max(), times.getT1_times_me()));
+            data_CT_t1_p_right.setProgress(dealProgressValues(times.getT1_times_max(), times.getT1_times_other()));
+
+            data_CT_m1_mine.setText(times.getM1_times_me() + "");
+            data_CT_m1_other.setText(times.getM1_times_other() + "");
+            data_CT_m1_p_letf.setProgress(100 - dealProgressValues(times.getM1_times_max(), times.getM1_times_me()));
+            data_CT_m1_p_right.setProgress(dealProgressValues(times.getM1_times_max(), times.getM1_times_other()));
+
+            data_CT_m2_mine.setText(times.getM2_times_me() + "");
+            data_CT_m2_other.setText(times.getM2_times_other() + "");
+            data_CT_m2_p_left.setProgress(100 - dealProgressValues(times.getM2_times_max(), times.getM2_times_me()));
+            data_CT_m2_p_right.setProgress(dealProgressValues(times.getM2_times_max(), times.getM2_times_other()));
+
+            data_CT_m1mb_mine.setText(times.getM2_goal_me() + "");
+            data_CT_m1mb_other.setText(times.getM2_goal_other() + "");
+            data_CT_m1mb_p_left.setProgress(100 - dealProgressValues(times.getM1_goal_max(), times.getM1_goal_me()));
+            data_CT_m1mb_p_right.setProgress(dealProgressValues(times.getM1_goal_max(), times.getM1_goal_other()));
+
+            data_CT_m2mb_mine.setText(times.getM2_goal_me() + "");
+            data_CT_m2mb_other.setText(times.getM2_goal_other() + "");
+            data_CT_m2mb_p_left.setProgress(100 - dealProgressValues(times.getM2_goal_max(), times.getM2_goal_me()));
+            data_CT_m2mb_p_right.setProgress(dealProgressValues(times.getM2_goal_max(), times.getM2_goal_other()));
+
+            data_CT_m1mbs_mine.setText(times.getM1_star_goal_me() + "");
+            data_CT_m1mbs_other.setText(times.getM1_star_goal_other() + "");
+            data_CT_m1mbs_p_left.setProgress(100 - dealProgressValues(times.getM1_star_goal_max(), times.getM1_star_goal_me()));
+            data_CT_m1mbs_p_right.setProgress(dealProgressValues(times.getM1_star_goal_max(), times.getM1_star_goal_other()));
+
+            data_CT_m2mbs_mine.setText(times.getM2_star_goal_me() + "");
+            data_CT_m2mbs_other.setText(times.getM2_star_goal_other() + "");
+            data_CT_m2mbs_p_left.setProgress(100 - dealProgressValues(times.getM2_star_goal_max(), times.getM2_star_goal_me()));
+            data_CT_m2mbs_p_right.setProgress(dealProgressValues(times.getM2_star_goal_max(), times.getM2_star_goal_other()));
+
+            data_CT_zhunshi_mine.setText(times.getOntime_times_me() + "");
+            data_CT_zhunshi_other.setText(times.getOntime_times_other() + "");
+            data_CT_zhunshi_p_left.setProgress(100 - dealProgressValues(times.getOntime_times_max(), times.getOntime_times_me()));
+            data_CT_zhunshi_p_right.setProgress(dealProgressValues(times.getOntime_times_max(), times.getOntime_times_other()));
+
+            data_CT_zhuijia_mine.setText(times.getAdd_times_me() + "");
+            data_CT_zhuijia_other.setText(times.getAdd_times_other() + "");
+            data_CT_zhuijia_p_left.setProgress(100 - dealProgressValues(times.getAdd_times_max(), times.getAdd_times_me()));
+            data_CT_zhuijia_p_right.setProgress(dealProgressValues(times.getAdd_times_max(), times.getAdd_times_other()));
+
+        } else if (checkedIds == 2) {  //kpi
+            MainDataBean.ResultBean.KPIBean kpi = resultBeans.getKPI();
+            //    sethtmlValue(zhiBi_yupm,"当月预约排名",kpi.getappr);
+            //     sethtmlValue(zhiBi_rkpm,"当月预入库排名",);
+            data_CT_dyrk_mine.setText(kpi.getAppoint_me() + "");
+            data_CT_dyrk_other.setText(kpi.getAppoint_other() + "");
+            data_CT_dyrk_p_left.setProgress(100 - dealProgressValues(kpi.getAppoint_max(), kpi.getAppoint_me()));
+            data_CT_dyrk_p_right.setProgress(dealProgressValues(kpi.getAppoint_max(), kpi.getAppoint_other()));
+
+            data_CT_yyrk_mine.setText(kpi.getAppoint_enter_me() + "");
+            data_CT_yyrk_other.setText(kpi.getAppoint_enter_other() + "");
+            data_CT_yyrk_p_left.setProgress(100 - dealProgressValues(kpi.getAppoint_enter_max(), kpi.getAppoint_enter_me()));
+            data_CT_yyrk_p_right.setProgress(dealProgressValues(kpi.getAppoint_enter_max(), kpi.getAppoint_enter_other()));
+
+            data_CT_yycgl_mine.setText(kpi.getAppoint_success_rate_me() + "");
+            data_CT_yycgl_other.setText(kpi.getAppoint_success_rate_other() + "");
+            data_CT_yycgl_p_left.setProgress(100 - dealProgressValues(kpi.getAppoint_success_rate_max(), kpi.getAppoint_success_rate_me()));
+            data_CT_yycgl_p_right.setProgress(dealProgressValues(kpi.getAppoint_success_rate_max(), kpi.getAppoint_success_rate_other()));
+
+            data_CT_rkcgl_mine.setText(kpi.getEnter_success_rate_me() + "");
+            data_CT_rkcgl_other.setText(kpi.getEnter_success_rate_other() + "");
+            data_CT_rkcgl_p_left.setProgress(100 - dealProgressValues(kpi.getEnter_success_rate_max(), kpi.getEnter_success_rate_me()));
+            data_CT_rkcgl_p_right.setProgress(dealProgressValues(kpi.getEnter_success_rate_max(), kpi.getEnter_success_rate_other()));
+
+            data_CT_dysc_mine.setText(kpi.getCollection_me() + "");
+            data_CT_dysc_other.setText(kpi.getCollection_other() + "");
+            data_CT_dysc_p_left.setProgress(100 - dealProgressValues(kpi.getCollection_max(), kpi.getCollection_me()));
+            data_CT_dysc_p_right.setProgress(dealProgressValues(kpi.getCollection_max(), kpi.getCollection_other()));
+
+            data_CT_dyjx_mine.setText(kpi.getContinue_me() + "");
+            data_CT_dyjx_other.setText(kpi.getContinue_other() + "");
+            data_CT_dyjx_p_left.setProgress(100 - dealProgressValues(kpi.getContinue_max(), kpi.getContinue_me()));
+            data_CT_dyjx_p_right.setProgress(dealProgressValues(kpi.getContinue_max(), kpi.getContinue_other()));
+
+            data_CT_dyfq_mine.setText(kpi.getGiveup_me() + "");
+            data_CT_dyfq_other.setText(kpi.getGiveup_other() + "");
+            data_CT_dyfq_p_letf.setProgress(100 - dealProgressValues(kpi.getGiveup_max(), kpi.getGiveup_me()));
+            data_CT_dyfq_p_right.setProgress(dealProgressValues(kpi.getGiveup_max(), kpi.getGiveup_other()));
+
+            data_CT_dyls_mine.setText(kpi.getLoss_me() + "");
+            data_CT_dyls_other.setText(kpi.getLoss_other() + "");
+            data_CT_dyls_p_left.setProgress(100 - dealProgressValues(kpi.getLoss_max(), kpi.getLoss_me()));
+            data_CT_dyls_p_right.setProgress(dealProgressValues(kpi.getLoss_max(), kpi.getLoss_other()));
+
+            data_CT_scwcl_mine.setText(kpi.getUnsolved_collection_me() + "");
+            data_CT_scwcl_other.setText(kpi.getUnsolved_collection_other() + "");
+            data_CT_scwcl_p_left.setProgress(100 - dealProgressValues(kpi.getUnsolved_collection_max(), kpi.getUnsolved_collection_me()));
+            data_CT_scwcl_p_right.setProgress(dealProgressValues(kpi.getUnsolved_collection_max(), kpi.getUnsolved_collection_other()));
+
         }
     }
 
+    /**
+     * 计算进度
+     *
+     * @param maxvalue
+     * @param value
+     * @return
+     */
     private int dealProgressValues(int maxvalue, int value) {
         int lastvalue = 0;
         if (value == 0) {
@@ -565,6 +824,13 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         lastvalue = (int) (100.0D * d1);
         Log.e("int", maxvalue + "---" + d1 + "");
 
+        if (lastvalue < 0.5) {
+            lastvalue = 1;
+            return lastvalue;
+        } else if (lastvalue < 1) {
+            lastvalue = 2;
+            return lastvalue;
+        }
         return lastvalue;
     }
 
@@ -573,187 +839,176 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
     private void dealmeduler(MainDataBean resultBean, int checkedIds) {
         UserInfo userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
         if (checkedIds == 0) {
-            if (userInfo.getLogintype() == 1) {
-                int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(0);
-                chanZ_mubv.setText(d + "%");
-                chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0).intValue() + "");
-                chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(0).intValue() + "");
-            } else {
-                int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(1);
-                chanZ_mubv.setText(d + "%");
-                chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(1) + "");
-                chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(1) + "");
-            }
+            int d = (Integer) resultBean.getResult().getGoal_mn_achv_rate().get(0);
+            chanZ_mubv.setText(d + "%");
+            chanZ_today.setText(resultBean.getResult().getWeekday_mn_now().get(0).intValue() + "");
+            chanZ_sunday.setText(resultBean.getResult().getWeekend_mn_now().get(0).intValue() + "");
+        } else if (checkedIds == 1) { //台次
+            sethtmlValue(taiC_mubv, "目标达成率", resultBean.getResult().getGoal_times_achv_rate().get(0) + "%");
+            sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(0).intValue() + "");
+            sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(0).intValue() + "");
         } else {
-            if (userInfo.getLogintype() == 1) {
-                sethtmlValue(taiC_m1, "M1", resultBean.getResult().getM1_rate().get(0) + "%");
-                sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(0) + "%");
-                sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(0) + "%");
-                sethtmlValue(taiC_mubv, "目标达成率", resultBean.getResult().getGoal_times_achv_rate().get(0) + "%");
-                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(0).intValue() + "");
-                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(0).intValue() + "");
-            } else {
-                sethtmlValue(taiC_m1, "M1", resultBean.getResult().getM1_rate().get(1) + "%");
-                sethtmlValue(taiC_m2, "M2", resultBean.getResult().getM2_rate().get(1) + "%");
-                sethtmlValue(taiC_yuv, "预约率", resultBean.getResult().getAppoint_rate().get(1) + "%");
-                sethtmlValue(taiC_mubv, "目标达成率", resultBean.getResult().getGoal_times_achv_rate().get(1) + "%");
-                sethtmlValue(taiC_today, "平日（辆）", resultBean.getResult().getWeekday_times().get(1).intValue() + "");
-                sethtmlValue(taiC_sunday, "周末（辆）", resultBean.getResult().getWeekend_times().get(1).intValue() + "");
-            }
+
+            sethtmlValue(zhiBi_yupm, "当月预约排名", resultBean.getResult().getKPI_appoint_rank().get(0) + "");
+            sethtmlValue(zhiBi_rkpm, "当月预入库排名", resultBean.getResult().getKPI_enter_rank().get(0) + "");
+
         }
     }
 
 
-    private void setData(ArrayList<Entry> paramArrayList1, ArrayList<Entry> paramArrayList2) {
-        if ((mLineChar.getData() != null) && (mLineChar.getData()).getDataSetCount() > 0) {
-
-            LineDataSet localLineDataSet1 = (LineDataSet) (mLineChar.getData()).getDataSetByIndex(0);
-            LineDataSet localLineDataSet2 = (LineDataSet) (mLineChar.getData().getDataSetByIndex(1));
-            localLineDataSet1.setValues(paramArrayList1);
-            localLineDataSet2.setValues(paramArrayList2);
-            mLineChar.getData().notifyDataChanged();
-            mLineChar.notifyDataSetChanged();
-
-        } else {
-            set1 = new LineDataSet(paramArrayList1, "");
-            set1.setColor(Color.parseColor("#c62828"));
-            //  set1.setCircleColor(getResources().getColor(R.color.color1));
-            set1.setLineWidth(3.0F);
-            set1.setCircleRadius(3.0F);
-            set1.setDrawCircleHole(false);
-            set1.setValueTextSize(9.0F);
-            set1.setDrawFilled(false);
-            set1.setFormSize(15.0F);
-
-            set2 = new LineDataSet(paramArrayList2, "");
-            set2.setColor(Color.parseColor("#737373"));
-            //  set2.setCircleColor(Color.BLACK);
-            set2.setLineWidth(3.0F);
-            set2.setCircleRadius(3.0F);
-            set2.setDrawCircleHole(false);
-            set2.setValueTextSize(9.0F);
-            set1.setDrawFilled(false);
-            set2.setFormSize(15.0F);
-
-            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-            dataSets.add(set1);
-            dataSets.add(set2);
-            LineData lineData1 = new LineData(dataSets);
-            lineData1.setValueTextColor(0);
-            lineData1.setValueTextSize(9.0F);
-            mLineChar.setData(lineData1);
-
-        }
-
-        List<ILineDataSet> setsFilled = mLineChar.getData().getDataSets();
-        for (ILineDataSet iSet : setsFilled) {
-            LineDataSet set = (LineDataSet) iSet;
-            set.setDrawCircles(false);
-            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        }
-
-
-    }
+//    private void setData(ArrayList<Entry> paramArrayList1, ArrayList<Entry> paramArrayList2) {
+//        if ((mLineChar.getData() != null) && (mLineChar.getData()).getDataSetCount() > 0) {
+//
+//            LineDataSet localLineDataSet1 = (LineDataSet) (mLineChar.getData()).getDataSetByIndex(0);
+//            LineDataSet localLineDataSet2 = (LineDataSet) (mLineChar.getData().getDataSetByIndex(1));
+//            localLineDataSet1.setValues(paramArrayList1);
+//            localLineDataSet2.setValues(paramArrayList2);
+//            mLineChar.getData().notifyDataChanged();
+//            mLineChar.notifyDataSetChanged();
+//
+//        } else {
+//            set1 = new LineDataSet(paramArrayList1, "");
+//            set1.setColor(Color.parseColor("#c62828"));
+//            //  set1.setCircleColor(getResources().getColor(R.color.color1));
+//            set1.setLineWidth(3.0F);
+//            set1.setCircleRadius(3.0F);
+//            set1.setDrawCircleHole(false);
+//            set1.setValueTextSize(9.0F);
+//            set1.setDrawFilled(false);
+//            set1.setFormSize(15.0F);
+//
+//            set2 = new LineDataSet(paramArrayList2, "");
+//            set2.setColor(Color.parseColor("#737373"));
+//            //  set2.setCircleColor(Color.BLACK);
+//            set2.setLineWidth(3.0F);
+//            set2.setCircleRadius(3.0F);
+//            set2.setDrawCircleHole(false);
+//            set2.setValueTextSize(9.0F);
+//            set1.setDrawFilled(false);
+//            set2.setFormSize(15.0F);
+//
+//            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+//            dataSets.add(set1);
+//            dataSets.add(set2);
+//            LineData lineData1 = new LineData(dataSets);
+//            lineData1.setValueTextColor(0);
+//            lineData1.setValueTextSize(9.0F);
+//            mLineChar.setData(lineData1);
+//
+//        }
+//
+//        List<ILineDataSet> setsFilled = mLineChar.getData().getDataSets();
+//        for (ILineDataSet iSet : setsFilled) {
+//            LineDataSet set = (LineDataSet) iSet;
+//            set.setDrawCircles(false);
+//            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+//        }
+//
+//
+//    }
 
     private void sethtmlValue(TextView paramTextView, String paramString1, String paramString2) {
         paramTextView.setText(Html.fromHtml(paramString1 + "  " + "<font color=\"#ff3366\">" + paramString2 + "</font>"));
     }
 
-    private void initMAChartLine() {
-        mLineChar.setOnChartGestureListener(this);
-        mLineChar.setOnChartValueSelectedListener(this);
-        mLineChar.setDrawGridBackground(false);
-        mLineChar.getDescription().setEnabled(false);
-        mLineChar.setTouchEnabled(true);
-        mLineChar.setDragEnabled(true);
-        mLineChar.setScaleEnabled(true);
-        mLineChar.setPinchZoom(true);
-        mLineChar.getAxisLeft().setDrawGridLines(false);
-        mLineChar.getXAxis().setDrawGridLines(false);
-        mLineChar.setNoDataText("没有数据");
-        mLineChar.setNoDataTextColor(-1);
-        MyMarkerView markerView = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
-        markerView.setChartView(mLineChar);
-        mLineChar.setMarker(markerView);
-        LimitLine limitLine = new LimitLine(1.0F, "标记");
-        limitLine.setLineWidth(4.0F);
-        limitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-        limitLine.setTextSize(10.0F);
-        XAxis xAxis = mLineChar.getXAxis();
-        xAxis.setAxisMaximum(31.0F);
-        xAxis.setAxisMinimum(1.0F);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setAvoidFirstLastClipping(false);
-        LimitLine limitLine1 = new LimitLine(0F, " ");
-        limitLine1.setLineWidth(1F);
-        limitLine1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-        limitLine1.setTextSize(10F);
-        limitLine1.setLineColor(R.color.black);
-        YAxis localYAxis = mLineChar.getAxisLeft();
-        localYAxis.removeAllLimitLines();
-        localYAxis.addLimitLine(limitLine1);
-        localYAxis.setAxisMaximum(150F);
-        localYAxis.setAxisMinimum(-150F);
-        localYAxis.setDrawZeroLine(false);
-        localYAxis.setDrawLimitLinesBehindData(true);
-        mLineChar.getAxisRight().setEnabled(false);
-        if (!isAnim) {
-            mLineChar.animateX(3000);
-            isAnim = true;
-        }
-        mLineChar.getLegend().setForm(Legend.LegendForm.LINE);
-        mLineChar.getLegend().setEnabled(false); //去掉图例缩样
-    }
+//    private void initMAChartLine() {
+//        mLineChar.setOnChartGestureListener(this);
+//        mLineChar.setOnChartValueSelectedListener(this);
+//        mLineChar.setDrawGridBackground(false);
+//        mLineChar.getDescription().setEnabled(false);
+//        mLineChar.setTouchEnabled(true);
+//        mLineChar.setDragEnabled(true);
+//        mLineChar.setScaleEnabled(true);
+//        mLineChar.setPinchZoom(true);
+//        mLineChar.getAxisLeft().setDrawGridLines(false);
+//        mLineChar.getXAxis().setDrawGridLines(false);
+//        mLineChar.setNoDataText("没有数据");
+//        mLineChar.setNoDataTextColor(-1);
+//        MyMarkerView markerView = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+//        markerView.setChartView(mLineChar);
+//        mLineChar.setMarker(markerView);
+//        LimitLine limitLine = new LimitLine(1.0F, "标记");
+//        limitLine.setLineWidth(4.0F);
+//        limitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+//        limitLine.setTextSize(10.0F);
+//        XAxis xAxis = mLineChar.getXAxis();
+//        xAxis.setAxisMaximum(31.0F);
+//        xAxis.setAxisMinimum(1.0F);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setAvoidFirstLastClipping(false);
+//        LimitLine limitLine1 = new LimitLine(0F, " ");
+//        limitLine1.setLineWidth(1F);
+//        limitLine1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+//        limitLine1.setTextSize(10F);
+//        limitLine1.setLineColor(R.color.black);
+//        YAxis localYAxis = mLineChar.getAxisLeft();
+//        localYAxis.removeAllLimitLines();
+//        localYAxis.addLimitLine(limitLine1);
+//        localYAxis.setAxisMaximum(150F);
+//        localYAxis.setAxisMinimum(-150F);
+//        localYAxis.setDrawZeroLine(false);
+//        localYAxis.setDrawLimitLinesBehindData(true);
+//        mLineChar.getAxisRight().setEnabled(false);
+//        if (!isAnim) {
+//            mLineChar.animateX(3000);
+//            isAnim = true;
+//        }
+//        mLineChar.getLegend().setForm(Legend.LegendForm.LINE);
+//        mLineChar.getLegend().setEnabled(false); //去掉图例缩样
+//    }
 
-    private void initMaCharBar() {
 
-    }
-
-    @Override
-    protected View setRootView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.data_fg, container, false);
-        return view;
-    }
-
-    @Override
-    public void initData() {
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (checkedId == radioButtonC.getId()) {
-            Log.e("checkedId", checkedId + "");
-//            if (resultBean == null) {
-//                getAllData(monthdefult);
-//                return;
-//            }
+        if (checkedId == radioButtonC.getId()) {  //产值
+            if (resultBean == null) {
+                getAllData(changeIndexYear(indexyear), indexmonth);
+                return;
+            }
             checkedIds = 0;
-//            ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getMn_rate().get(0));
-            //           ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getMn_rate().get(1));
+            data_fg_pg_2.setVisibility(View.VISIBLE);
+            data_fg_pg_3.setVisibility(View.GONE);
+            data_fg_pg_4.setVisibility(View.GONE);
             llChanZ.setVisibility(View.VISIBLE);
             llTaiC.setVisibility(View.GONE);
-//            setData(value1, value2);
-//            mLineChar.animateX(2500);
-//            mLineChar.invalidate();
-//            dealProgess(resultBean, checkedIds);
-//            dealmeduler(resultBean, checkedIds);
-        } else {
-//            if (resultBean == null) {
-//                getAllData(monthdefult);
-//                return;
-//            }
-            Log.e("checkedIds", checkedId + "");
+            ll_zhiBi.setVisibility(View.GONE);
+            data_CT_zhunshi_ll.setVisibility(View.GONE);
+            data_CT_zj_zs_ll.setVisibility(View.VISIBLE);
+            setReusltData(resultBean);
+
+        } else if (checkedId == radioButtonT.getId()) { //台次
+            if (resultBean == null) {
+                getAllData(changeIndexYear(indexyear), indexmonth);
+                return;
+            }
             checkedIds = 1;
-//            ArrayList<Entry> value1 = dealLine((List) resultBean.getResult().getTimes_rate().get(0));
-//            ArrayList<Entry> value2 = dealLine((List) resultBean.getResult().getTimes_rate().get(1));
+            data_fg_pg_2.setVisibility(View.VISIBLE);
+            data_fg_pg_3.setVisibility(View.VISIBLE);
+            data_fg_pg_4.setVisibility(View.GONE);
             llChanZ.setVisibility(View.GONE);
             llTaiC.setVisibility(View.VISIBLE);
-//            setData(value1, value2);
-//            mLineChar.animateX(2500);
-//            mLineChar.invalidate();
-//            dealProgess(resultBean, checkedIds);
-//            dealmeduler(resultBean, checkedIds);
+            ll_zhiBi.setVisibility(View.GONE);
+            data_CT_zhunshi_ll.setVisibility(View.VISIBLE);
+            data_CT_zj_zs_ll.setVisibility(View.VISIBLE);
+            setReusltData(resultBean);
+        } else if (checkedId == radioButtonK.getId()) { //指标
+            if (resultBean == null) {
+                getAllData(changeIndexYear(indexyear), indexmonth);
+                return;
+            }
+            checkedIds = 2;
+            data_fg_pg_2.setVisibility(View.GONE);
+            data_fg_pg_3.setVisibility(View.GONE);
+            data_fg_pg_4.setVisibility(View.VISIBLE);
+            llChanZ.setVisibility(View.GONE);
+            llTaiC.setVisibility(View.GONE);
+            data_CT_zhunshi_ll.setVisibility(View.VISIBLE);
+            ll_zhiBi.setVisibility(View.VISIBLE);
+            data_CT_zj_zs_ll.setVisibility(View.GONE);
+            setReusltData(resultBean);
+
         }
     }
 
@@ -812,38 +1067,145 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
 
     @OnClick({R.id.time_selsect})
     public void setTime() {
-        TimeMDdialog timeMDdialog = new TimeMDdialog();
-        timeMDdialog.setIndexmonthItem(monthdefult);
-        timeMDdialog.setTimeMDdialogListener(new TimeMDdialog.TimeMDdialogListener() {
+        MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                .title("选择时间")
+                .customView(R.layout.time_md_dialog, false)
+                .positiveText("确定")
+                .positiveColorRes(R.color.color1)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        isRefresh = 0;
+                        getAllData(changeIndexYear(indexyear), indexmonth);
+                    }
+                })
+                .build();
+        View customView = dialog.getCustomView();
+        WheelListView wheelListViewY = customView.findViewById(R.id.wheelview_timeY);
+        WheelListView wheelListViewM = customView.findViewById(R.id.wheelview_timeM);
+        wheelListViewY.setItems(new String[]{"2017", "2018", "2019"}, indexyear);
+        wheelListViewY.setSelectedTextColor(getResources().getColor(R.color.black));
+        LineConfig config = new LineConfig();
+        config.setColor(Color.parseColor("#c62828"));
+        config.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
+        config.setShadowVisible(false);
+        wheelListViewY.setLineConfig(config);
+        wheelListViewY.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
             @Override
-            public void ontimeMDdialogComplete(String year, String month) {
-                isRefresh = 0;
-                defulter = Integer.parseInt(month);
-                getAllData(Integer.parseInt(month));
+            public void onItemSelected(int paramInt, String s) {
+                indexyear = paramInt;
             }
         });
-        timeMDdialog.show(getActivity().getFragmentManager(), "time");
+        wheelListViewM.setItems(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}, indexmonth - 1);
+        wheelListViewM.setSelectedTextColor(getResources().getColor(R.color.black));
+        LineConfig configm = new LineConfig();
+        configm.setColor(Color.parseColor("#c62828"));
+        configm.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
+        configm.setShadowVisible(false);
+        wheelListViewM.setLineConfig(configm);
+        wheelListViewM.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
+            @Override
+            public void onItemSelected(int paramInt, String s) {
+                indexmonth = paramInt + 1;
+            }
+        });
+        dialog.show();
     }
 
-    private BarData getBarData(List<Double> barChartY, int barColor) {
-        BarData barData = new BarData();
-        ArrayList<BarEntry> yValues = new ArrayList<>();
-        for (int i = 0; i < barChartY.size(); i++) {
-            yValues.add(new BarEntry(i, barChartY.get(i).floatValue()));
+    @OnClick(R.id.sa_selsect)
+    public void selsectVsPerson() {
+        MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                .title("选择SA")
+                .customView(R.layout.sa_md_dialog, false)
+                .positiveText("确定")
+                .positiveColorRes(R.color.color1)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        isRefresh = 0;
+                         getAllData(indexyear,indexmonth);
+                    }
+                })
+                .build();
+        View customView = dialog.getCustomView();
+        WheelListView wheelListView = customView.findViewById(R.id.wheelview_single);
+        wheelListView.setItems(saArray, indexSa);
+        wheelListView.setSelectedTextColor(getResources().getColor(R.color.black));
+        LineConfig config = new LineConfig();
+        config.setColor(Color.parseColor("#c62828"));//线颜色
+        config.setThick(ConvertUtils.toPx(getActivity(), 3));//线粗
+        config.setShadowVisible(false);
+        wheelListView.setLineConfig(config);
+        wheelListView.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
+            @Override
+            public void onItemSelected(int index, String item) {
+//                UIUtils.showToast("index=" + index + ",item=" + item);
+                indexSa = index;
+                SaName=item;
+            }
+        });
+        dialog.show();
+    }
+
+//    private BarData getBarData(List<Integer> barChartY, int barColor) {
+//        BarData barData = new BarData();
+//        ArrayList<BarEntry> yValues = new ArrayList<>();
+//        for (int i = 0; i < barChartY.size(); i++) {
+//            yValues.add(new BarEntry(i, barChartY.get(i).floatValue()));
+//        }
+//
+//        BarDataSet barDataSet = new BarDataSet(yValues, "");
+//        barDataSet.setDrawValues(false);
+//        barDataSet.setColor(barColor);
+//        barDataSet.setValueTextSize(10f);
+//        barDataSet.setValueTextColor(barColor);
+//        barDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        barData.addDataSet(barDataSet);
+//
+//        //以下是为了解决 柱状图 左右两边只显示了一半的问题 根据实际情况 而定
+//        xAxis.setAxisMinimum(-0.5f);
+//        xAxis.setAxisMaximum((float) (barChartY.size() - 0.5));
+//
+//        return barData;
+//    }
+
+    /**
+     * 得到柱状图(多条)
+     *
+     * @param barChartYs Y轴值
+     * @param barColors  柱状图颜色
+     * @return
+     */
+
+    private BarData getBarDatas(List<List<Integer>> barChartYs, List<Integer> barColors) {
+        List<IBarDataSet> lists = new ArrayList<>();
+        for (int i = 0; i < barChartYs.size(); i++) {
+            ArrayList<BarEntry> entries = new ArrayList<>();
+
+            for (int j = 0; j < barChartYs.get(i).size(); j++) {
+                entries.add(new BarEntry(j, barChartYs.get(i).get(j).floatValue()));
+            }
+            BarDataSet barDataSet = new BarDataSet(entries, "");
+
+            barDataSet.setColor(barColors.get(i));
+            barDataSet.setValueTextColor(barColors.get(i));
+            barDataSet.setDrawValues(false);
+            barDataSet.setValueTextSize(10f);
+            barDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+            lists.add(barDataSet);
         }
+        BarData barData = new BarData(lists);
 
-        BarDataSet barDataSet = new BarDataSet(yValues, "");
-        barDataSet.setDrawValues(false);
-        barDataSet.setColor(barColor);
-        barDataSet.setValueTextSize(10f);
-        barDataSet.setValueTextColor(barColor);
-        barDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
-        barData.addDataSet(barDataSet);
-
-        //以下是为了解决 柱状图 左右两边只显示了一半的问题 根据实际情况 而定
-        xAxis.setAxisMinimum(-0.5f);
-        xAxis.setAxisMaximum((float) (barChartY.size() - 0.5));
-
+//        int amount = barChartYs.size(); //需要显示柱状图的类别 数量
+//        float groupSpace = 0.12f; //柱状图组之间的间距
+//        float barSpace = (float) ((1 - 0.12) / amount / 10); // x4 DataSet
+//        float barWidth = (float) ((1 - 0.12) / amount / 10 * 9); // x4 DataSet
+//
+//        // (0.2 + 0.02) * 4 + 0.12 = 1.00 即100% 按照百分百布局
+//        //柱状图宽度
+//        barData.setBarWidth(barWidth);
+//        //(起始点、柱状图组间距、柱状图之间间距)
+//        barData.groupBars(0, groupSpace, barSpace);
         return barData;
     }
 
@@ -863,17 +1225,8 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
                 yValues.add(new Entry(j, lineChartYs.get(i).get(j).floatValue()));
             }
             LineDataSet dataSet = new LineDataSet(yValues, "");
-//            dataSet.setColor(lineColors.get(i));
-//            dataSet.setCircleColor(lineColors.get(i));
-//            dataSet.setValueTextColor(lineColors.get(i));
-//
-//            dataSet.setCircleSize(1);
-//            dataSet.setDrawValues(true);
-//            dataSet.setValueTextSize(10f);
-//            dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-//            dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+
             dataSet.setColor(lineColors.get(i));
-            // dataSet.setValueTextColor(lineColors.get(i));
             dataSet.setDrawCircles(false);
             dataSet.setDrawValues(false);
             dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
@@ -887,5 +1240,17 @@ public class DataFragment extends BaseFragment implements OnCheckedChangeListene
         }
         return lineData;
     }
+
+    private int changeIndexYear(int defulteryear) {
+        if (defulteryear == 1) {
+            defulteryear = 2018;
+        } else if (defulteryear == 2) {
+            defulteryear = 2019;
+        } else if (defulteryear == 0) {
+            defulteryear = 2017;
+        }
+        return defulteryear;
+    }
+
 
 }

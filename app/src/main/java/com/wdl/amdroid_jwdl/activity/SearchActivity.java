@@ -11,6 +11,8 @@ import com.wdl.amdroid_jwdl.base.BaseActivity;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.MainBasePanService;
 import com.wdl.amdroid_jwdl.model.SeachBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.searchView.ICallBack;
 import com.wdl.amdroid_jwdl.view.searchView.SearchView;
@@ -66,11 +68,14 @@ public class SearchActivity extends BaseActivity {
     TextView search_zhe;
     private int userid = 1;
 
+    private UserInfo userInfo;
+
     private void getDataMsg(String String) {
+
         showLoadingDialog();
         App.getRetrofit(API.BASE_URL)
                 .create(MainBasePanService.class)
-                .getSeachContent(String)
+                .getSeachContent(userInfo.getSaid(),String)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<SeachBean>() {
             public void onComplete() {
@@ -121,6 +126,7 @@ public class SearchActivity extends BaseActivity {
     }
 
     protected void initData() {
+        userInfo = (UserInfo) PreferencesUtil.getInstance(this).getObject("UserInfo");
     }
 
     protected void initView() {

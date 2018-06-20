@@ -12,5 +12,5 @@ import retrofit2.http.Query;
 
 public  interface MainBasePanService {
     @GET(API.Msg_search)
-    Observable<SeachBean> getSeachContent(@Query("plate_number") String paramString);
+    Observable<SeachBean> getSeachContent(@Query("said") String said,@Query("plate_number") String paramString);
 }

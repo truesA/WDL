@@ -3,6 +3,7 @@ package com.wdl.amdroid_jwdl.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -31,9 +34,15 @@ import com.wdl.amdroid_jwdl.util.UIUtils;
 import com.wdl.amdroid_jwdl.view.TimeMDdialog;
 import com.wdl.amdroid_jwdl.view.XOView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.addapp.pickers.common.LineConfig;
 import cn.addapp.pickers.picker.DatePicker;
+import cn.addapp.pickers.util.ConvertUtils;
+import cn.addapp.pickers.widget.WheelListView;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -162,12 +171,16 @@ public class SavingFragment extends BaseFragment {
     private int bottomNavigationBarHeight;
     private int relativeLayoutBonusHeight;
     private int isRefresh = 0;
-    private String startdefult = "2018-05-26";
+    private String startdefult = "1900-01-31";
     private UserInfo userInfo;
+    private int indexSa = 0;
+    private String[] saArray;
+
+    private String SaName;
 
     @Override
     protected void initView() {
-        saving_month.setText("05-26");
+        //saving_month.setText("06-01");
         saving_bonus_rl.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
             @Override
@@ -197,6 +210,7 @@ public class SavingFragment extends BaseFragment {
                 layoutParams4.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 layoutParams4.height = viewSingeHeight / 3;
                 saving_data_three.setLayoutParams(layoutParams4);
+
             }
         });
 
@@ -205,9 +219,12 @@ public class SavingFragment extends BaseFragment {
             public void onRefresh(RefreshLayout RefreshLayout) {
                 isRefresh = 1;
                 getAllData(startdefult);
+
             }
         });
         refreshLayouts.setEnableLoadMore(false);
+
+
     }
 
     @Override
@@ -221,6 +238,7 @@ public class SavingFragment extends BaseFragment {
     @Override
     public void initData() {
         userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
+        SaName = userInfo.getSAname();
         getAllData(startdefult);
     }
 
@@ -229,9 +247,14 @@ public class SavingFragment extends BaseFragment {
         if (isRefresh == 0) {
             showLoadingDialog();
         }
+
+        Map<String, String> params = new HashMap<>();
+        params.put("date", date);
+        params.put("said", userInfo.getSaid());
+        params.put("SAname", SaName);
         App.getRetrofit(API.BASE_URL)
                 .create(UserService.class)
-                .getMainSavingMsg(date)
+                .getMainSavingMsg(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<SavingBean>() {
@@ -254,11 +277,13 @@ public class SavingFragment extends BaseFragment {
                         }
                         if (savingBean.getError_code() == 200) {
                             // ServiceFragment.access$002(ServiceFragment.this,val$month);
-                            startdefult = date.substring(date.indexOf("-")+1);
-                            saving_month.setText(startdefult);
+                            // startdefult = date.substring(date.indexOf("-")+1);
+//                            saving_month.setText(startdefult);
                             setDataMsg(savingBean.getResult());
+                        } else {
+                            saving_month.setText(startdefult);
+                            UIUtils.showToast(savingBean.getReason());
                         }
-                        UIUtils.showToast(savingBean.getReason());
                     }
 
                     @Override
@@ -271,85 +296,85 @@ public class SavingFragment extends BaseFragment {
 
     @SuppressLint("SetTextI18n")
     private void setDataMsg(SavingBean.ResultBean result) {
+        saArray = result.getSAname().toArray(new String[0]);
+        saving_month.setText(result.getDate());
         int cashSign;
-        if (userInfo.getLogintype() == 1) {
-            cashSign=result.getSA1().getCash_flow_sign();
-            saving_bonus_y_n.setText(cashSign == 1 ? "+" : "-");
-            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
-            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
-            saving_bonus_value.setText(result.getSA1().getCash_flow() + "");
-            saving_user_num.setText(result.getSA1().getCustomer_nm() + "");
+        cashSign = result.getSA1().getCash_flow_sign();
+        saving_bonus_y_n.setText(cashSign == 1 ? "+" : "-");
+        saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5") : Color.parseColor("#c62828"));
+        view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5") : Color.parseColor("#c62828"));
+        saving_bonus_value.setText(result.getSA1().getCash_flow() + "");
+        saving_user_num.setText(result.getSA1().getCustomer_nm() + "");
 
-            saving_hqje_value.setText(result.getSA1().getAlive_mn() + "");
-            saving_hqje_value2.setText(result.getSA2().getAlive_mn() + "");
-            saving_jjje_value.setText(result.getSA1().getS_pool_mn() + "");
-            saving_jjje_value2.setText(result.getSA1().getS_pool_mn() + "");
-            saving_dsje_value.setText(result.getSA1().getLost_mn() + "");
-            saving_dsje_value2.setText(result.getSA2().getLost_mn() + "");
-            saving_jtcdcl_value.setText(result.getSA1().getS_times_achv_rate() + "%");
-            saving_jtcdcl_value2.setText(result.getSA2().getS_times_achv_rate() + "%");
-            saving_t1khs_value.setText(result.getSA1().getS_T1_num() + "");
-            saving_t1khs_value2.setText(result.getSA2().getS_T1_num() + "");
-            saving_jczdcl_value.setText(result.getSA1().getS_mn_achv_rate() + "%");
-            saving_jczdcl_value2.setText(result.getSA2().getS_mn_achv_rate() + "%");
-            saving_m1khs_value.setText(result.getSA1().getS_M1_num() + "");
-            saving_m1khs_value2.setText(result.getSA2().getS_M1_num() + "");
-            saving_jyycgl_value.setText(result.getSA1().getS_appoint_rate() + "%");
-            saving_jyycgl_value2.setText(result.getSA2().getS_appoint_rate() + "%");
-            saving_m2khs_value.setText(result.getSA1().getS_M2_num() + "");
-            saving_m2khs_value2.setText(result.getSA2().getS_M2_num() + "");
-            saving_jzsjcs_value.setText(result.getSA1().getS_ontime_num() + "");
-            saving_jzsjcs_value2.setText(result.getSA2().getS_ontime_num() + "");
-            saving_jzjcz_value.setText(result.getSA1().getS_add_mn() + "");
-            saving_jzjcz_value2.setText(result.getSA2().getS_add_mn() + "");
-            saving_jzsl_value.setText(result.getSA1().getS_ontime_rate() + "%");
-            saving_jzsl_value2.setText(result.getSA2().getS_ontime_rate() + "%");
+        saving_hqje_value.setText(result.getSA1().getAlive_mn() + "");
+        saving_hqje_value2.setText(result.getSA2().getAlive_mn() + "");
+        saving_jjje_value.setText(result.getSA1().getS_pool_mn() + "");
+        saving_jjje_value2.setText(result.getSA1().getS_pool_mn() + "");
+        saving_dsje_value.setText(result.getSA1().getLost_mn() + "");
+        saving_dsje_value2.setText(result.getSA2().getLost_mn() + "");
+        saving_jtcdcl_value.setText(result.getSA1().getS_times_achv_rate() + "%");
+        saving_jtcdcl_value2.setText(result.getSA2().getS_times_achv_rate() + "%");
+        saving_t1khs_value.setText(result.getSA1().getS_T1_num() + "");
+        saving_t1khs_value2.setText(result.getSA2().getS_T1_num() + "");
+        saving_jczdcl_value.setText(result.getSA1().getS_mn_achv_rate() + "%");
+        saving_jczdcl_value2.setText(result.getSA2().getS_mn_achv_rate() + "%");
+        saving_m1khs_value.setText(result.getSA1().getS_M1_num() + "");
+        saving_m1khs_value2.setText(result.getSA2().getS_M1_num() + "");
+        saving_jyycgl_value.setText(result.getSA1().getS_appoint_rate() + "%");
+        saving_jyycgl_value2.setText(result.getSA2().getS_appoint_rate() + "%");
+        saving_m2khs_value.setText(result.getSA1().getS_M2_num() + "");
+        saving_m2khs_value2.setText(result.getSA2().getS_M2_num() + "");
+        saving_jzsjcs_value.setText(result.getSA1().getS_ontime_num() + "");
+        saving_jzsjcs_value2.setText(result.getSA2().getS_ontime_num() + "");
+        saving_jzjcz_value.setText(result.getSA1().getS_add_mn() + "");
+        saving_jzjcz_value2.setText(result.getSA2().getS_add_mn() + "");
+        saving_jzsl_value.setText(result.getSA1().getS_ontime_rate() + "%");
+        saving_jzsl_value2.setText(result.getSA2().getS_ontime_rate() + "%");
 
-        } else {
-            cashSign=result.getSA2().getCash_flow_sign();
-            saving_bonus_y_n.setText(cashSign== 1 ? "+" : "-");
-            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
-            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
-            saving_bonus_value.setText(result.getSA2().getCash_flow() + "");
-            saving_user_num.setText(result.getSA2().getCustomer_nm() + "");
-
-            saving_hqje_value2.setText(result.getSA1().getAlive_mn() + "");
-            saving_hqje_value.setText(result.getSA2().getAlive_mn() + "");
-            saving_jjje_value2.setText(result.getSA1().getS_pool_mn() + "");
-            saving_jjje_value.setText(result.getSA1().getS_pool_mn() + "");
-            saving_dsje_value2.setText(result.getSA1().getLost_mn() + "");
-            saving_dsje_value.setText(result.getSA2().getLost_mn() + "");
-            saving_jtcdcl_value2.setText(result.getSA1().getS_times_achv_rate() + "%");
-            saving_jtcdcl_value.setText(result.getSA2().getS_times_achv_rate() + "%");
-            saving_t1khs_value2.setText(result.getSA1().getS_T1_num() + "");
-            saving_t1khs_value.setText(result.getSA2().getS_T1_num() + "");
-            saving_jczdcl_value2.setText(result.getSA1().getS_mn_achv_rate() + "%");
-            saving_jczdcl_value.setText(result.getSA2().getS_mn_achv_rate() + "%");
-            saving_m1khs_value2.setText(result.getSA1().getS_M1_num() + "");
-            saving_m1khs_value.setText(result.getSA2().getS_M1_num() + "");
-            saving_jyycgl_value2.setText(result.getSA1().getS_appoint_rate() + "%");
-            saving_jyycgl_value.setText(result.getSA2().getS_appoint_rate() + "%");
-            saving_m2khs_value2.setText(result.getSA1().getS_M2_num() + "");
-            saving_m2khs_value.setText(result.getSA2().getS_M2_num() + "");
-            saving_jzsjcs_value2.setText(result.getSA1().getS_ontime_num() + "");
-            saving_jzsjcs_value.setText(result.getSA2().getS_ontime_num() + "");
-            saving_jzjcz_value2.setText(result.getSA1().getS_add_mn() + "");
-            saving_jzjcz_value.setText(result.getSA2().getS_add_mn() + "");
-            saving_jzsl_value2.setText(result.getSA1().getS_ontime_rate() + "%");
-            saving_jzsl_value.setText(result.getSA2().getS_ontime_rate() + "%");
-        }
-        saving_hqje_xo.setStatus(setXoStatus(cashSign,result.getSA1().getAlive_mn_sign()));
-        saving_jjje_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_pool_mn_sign()));
-        saving_dsje_xo.setStatus(setXoStatus(cashSign,result.getSA1().getLost_mn_sign()));
-        saving_jtcdcl_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_times_achv_rate_sign()));
-        saving_t1khs_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_T1_num_sign()));
-        saving_jczdcl_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_mn_achv_rate_sign()));
-        saving_m1khs_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_M1_num_sign()));
-        saving_jyycgl_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_appoint_rate_sign()));
-        saving_m2khs_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_M2_num_sign()));
-        saving_jzsjcs_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_ontime_num_sign()));
-        saving_jzjcz_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_add_mn_sign()));
-        saving_jzsl_xo.setStatus(setXoStatus(cashSign,result.getSA1().getS_ontime_rate_sign()));
+//        else {
+//            cashSign=result.getSA2().getCash_flow_sign();
+//            saving_bonus_y_n.setText(cashSign== 1 ? "+" : "-");
+//            saving_bonus_rl_value_bg.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
+//            view_status.setBackgroundColor(cashSign == 1 ? Color.parseColor("#1e88e5"): Color.parseColor("#c62828"));
+//            saving_bonus_value.setText(result.getSA2().getCash_flow() + "");
+//            saving_user_num.setText(result.getSA2().getCustomer_nm() + "");
+//
+//            saving_hqje_value2.setText(result.getSA1().getAlive_mn() + "");
+//            saving_hqje_value.setText(result.getSA2().getAlive_mn() + "");
+//            saving_jjje_value2.setText(result.getSA1().getS_pool_mn() + "");
+//            saving_jjje_value.setText(result.getSA1().getS_pool_mn() + "");
+//            saving_dsje_value2.setText(result.getSA1().getLost_mn() + "");
+//            saving_dsje_value.setText(result.getSA2().getLost_mn() + "");
+//            saving_jtcdcl_value2.setText(result.getSA1().getS_times_achv_rate() + "%");
+//            saving_jtcdcl_value.setText(result.getSA2().getS_times_achv_rate() + "%");
+//            saving_t1khs_value2.setText(result.getSA1().getS_T1_num() + "");
+//            saving_t1khs_value.setText(result.getSA2().getS_T1_num() + "");
+//            saving_jczdcl_value2.setText(result.getSA1().getS_mn_achv_rate() + "%");
+//            saving_jczdcl_value.setText(result.getSA2().getS_mn_achv_rate() + "%");
+//            saving_m1khs_value2.setText(result.getSA1().getS_M1_num() + "");
+//            saving_m1khs_value.setText(result.getSA2().getS_M1_num() + "");
+//            saving_jyycgl_value2.setText(result.getSA1().getS_appoint_rate() + "%");
+//            saving_jyycgl_value.setText(result.getSA2().getS_appoint_rate() + "%");
+//            saving_m2khs_value2.setText(result.getSA1().getS_M2_num() + "");
+//            saving_m2khs_value.setText(result.getSA2().getS_M2_num() + "");
+//            saving_jzsjcs_value2.setText(result.getSA1().getS_ontime_num() + "");
+//            saving_jzsjcs_value.setText(result.getSA2().getS_ontime_num() + "");
+//            saving_jzjcz_value2.setText(result.getSA1().getS_add_mn() + "");
+//            saving_jzjcz_value.setText(result.getSA2().getS_add_mn() + "");
+//            saving_jzsl_value2.setText(result.getSA1().getS_ontime_rate() + "%");
+//            saving_jzsl_value.setText(result.getSA2().getS_ontime_rate() + "%");
+        saving_hqje_xo.setStatus(setXoStatus(cashSign, result.getSA1().getAlive_mn_sign()));
+        saving_jjje_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_pool_mn_sign()));
+        saving_dsje_xo.setStatus(setXoStatus(cashSign, result.getSA1().getLost_mn_sign()));
+        saving_jtcdcl_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_times_achv_rate_sign()));
+        saving_t1khs_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_T1_num_sign()));
+        saving_jczdcl_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_mn_achv_rate_sign()));
+        saving_m1khs_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_M1_num_sign()));
+        saving_jyycgl_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_appoint_rate_sign()));
+        saving_m2khs_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_M2_num_sign()));
+        saving_jzsjcs_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_ontime_num_sign()));
+        saving_jzjcz_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_add_mn_sign()));
+        saving_jzsl_xo.setStatus(setXoStatus(cashSign, result.getSA1().getS_ontime_rate_sign()));
     }
 
     public void setBottomNavigationBarHeight(int height) {
@@ -365,7 +390,7 @@ public class SavingFragment extends BaseFragment {
         picker.setTitleTextSize(16);
         picker.setSelectedTextColor(getResources().getColor(R.color.color2));//前四位值是透明度
         picker.setTopPadding(15);
-        picker.setRangeStart(2018, 5, 26);
+        picker.setRangeStart(2018, 6, 1);
         picker.setRangeEnd(2118, 12, 31);
 //        picker.setSelectedItem(bxyear, bxmonth, bxday);
         picker.setTitleText("");
@@ -378,10 +403,45 @@ public class SavingFragment extends BaseFragment {
             public void onDatePicked(String year, String month, String day) {
                 //    UIUtils.showToast(year + "-" + month + "-" + day);
                 isRefresh = 0;
+                startdefult = year + "-" + month + "-" + day;
                 getAllData(year + "-" + month + "-" + day);
             }
         });
         picker.show();
+    }
+
+    @OnClick(R.id.saving_sa)
+    public void slsectSaveSa() {
+        MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                .title("选择SA")
+                .customView(R.layout.sa_md_dialog, false)
+                .positiveText("确定")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        isRefresh = 0;
+                         getAllData(startdefult);
+                    }
+                })
+                .build();
+        View customView = dialog.getCustomView();
+        WheelListView wheelListView = customView.findViewById(R.id.wheelview_single);
+        wheelListView.setItems(saArray, indexSa);
+        wheelListView.setSelectedTextColor(getResources().getColor(R.color.black));
+        LineConfig config = new LineConfig();
+        config.setColor(Color.parseColor("#c62828"));//线颜色
+        config.setThick(ConvertUtils.toPx(getActivity(), 3));//线粗
+        config.setShadowVisible(false);
+        wheelListView.setLineConfig(config);
+        wheelListView.setOnWheelChangeListener(new WheelListView.OnWheelChangeListener() {
+            @Override
+            public void onItemSelected(int index, String item) {
+//                UIUtils.showToast("index=" + index + ",item=" + item);
+                indexSa=index;
+                SaName=item;
+            }
+        });
+        dialog.show();
     }
 
     private int setXoStatus(int cashSign, int status) {

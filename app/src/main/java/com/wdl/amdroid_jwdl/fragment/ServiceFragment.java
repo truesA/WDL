@@ -60,6 +60,7 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
  * Created by Achers on 2017/11/22.
  */
 
+@Deprecated
 public class ServiceFragment extends BaseFragment {
 
     private static boolean isAniman = false;
@@ -161,6 +162,7 @@ public class ServiceFragment extends BaseFragment {
     private List<Float> yAxisValues2;
     @BindView(R.id.service_refreshLayout)
     SmartRefreshLayout refreshLayouts;
+
 
     private int isRefresh = 0;
 
@@ -291,11 +293,11 @@ public class ServiceFragment extends BaseFragment {
         }
         UserInfo userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
         //Log.e("login", loginuser.getUserType() + "");
-        if (userInfo.getLogintype() == 1) {
-            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(0) + "");
-        } else {
-            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(1) + "");
-        }
+//        if (userInfo.getLogintype() == 1) {
+//            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(0) + "");
+//        } else {
+//            jiangjinchi_tot_tv.setText(paramResultBean.getJiangjinchi_total().get(1) + "");
+//        }
 
 
         probar_hq_p.setProgress(100 - dealProgressValues(10000, new Double(((Integer) paramResultBean.getHuoqi().get(0)).intValue()).intValue()));

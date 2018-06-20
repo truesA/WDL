@@ -29,6 +29,7 @@ import cn.addapp.pickers.widget.WheelListView.OnWheelChangeListener;
 
 public class TimeMDdialog extends DialogFragment {
     private int indexmonth;
+    private int indexyear=1;
     private TimeMDdialogListener timeMDdialogListener;
     private String wMonths;
     private String wYears;
@@ -42,7 +43,7 @@ public class TimeMDdialog extends DialogFragment {
         View view = getActivity().getLayoutInflater().inflate(R.layout.time_md_dialog, null);
         WheelListView wheelListViewY =  view.findViewById(R.id.wheelview_timeY);
         WheelListView wheelListViewM =  view.findViewById(R.id.wheelview_timeM);
-        wheelListViewY.setItems(new String[]{"2017", "2018", "2019"}, 0);
+        wheelListViewY.setItems(new String[]{"2017", "2018", "2019"}, indexyear);
         wheelListViewY.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig config = new LineConfig();
         config.setColor(Color.parseColor("#ff3366"));
@@ -61,7 +62,7 @@ public class TimeMDdialog extends DialogFragment {
         wheelListViewM.setItems(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}, i);
         wheelListViewM.setSelectedTextColor(getResources().getColor(R.color.black));
         LineConfig configm = new LineConfig();
-        configm.setColor(Color.parseColor("#ff3366"));
+        configm.setColor(Color.parseColor("#c62828"));
         configm.setAlpha(100);
         //configm.setRatio(0.2F);
         configm.setThick(ConvertUtils.toPx(getActivity(), 3.0F));
@@ -85,6 +86,10 @@ public class TimeMDdialog extends DialogFragment {
 
     public void setIndexmonthItem(int paramInt) {
         indexmonth = (paramInt - 1);
+    }
+
+    public void setIndexYearItem(int yearItem){
+        indexyear=yearItem;
     }
 
     public void setTimeMDdialogListener(TimeMDdialogListener paramTimeMDdialogListener) {

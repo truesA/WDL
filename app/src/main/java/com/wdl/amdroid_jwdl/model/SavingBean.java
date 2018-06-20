@@ -1,6 +1,7 @@
 package com.wdl.amdroid_jwdl.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * author：lhm on 2018/5/27 15:06
@@ -54,6 +55,24 @@ public class SavingBean implements Serializable{
         private SA1Bean SA1;
         private SA2Bean SA2;
         private HeaderBean header;
+        private List<String> SAname;
+        private String date;
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public List<String> getSAname() {
+            return SAname;
+        }
+
+        public void setSAname(List<String> SAname) {
+            this.SAname = SAname;
+        }
 
         public SA1Bean getSA1() {
             return SA1;

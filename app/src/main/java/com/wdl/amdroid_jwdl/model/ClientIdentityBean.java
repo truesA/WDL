@@ -13,7 +13,7 @@ public class ClientIdentityBean implements Serializable {
     /**
      * error_code : 200
      * reason : 用户详细信息已正确返回!
-     * result : {"Numb":"13766286568","age":0,"birthday":"1900-01-31","car_age":7,"car_model":"汉兰达","car_purpose":"未填","children":0,"continue_insurance_date":"0000-00-00","continue_notes":"0.0","displacement":"2.7L","feature_notes":"0.0","gender":"男","giveup_notes":"0.0","hobby":"0.0","id":0,"identity_percent":49,"identity_score":0,"insurance_date":"1900-01-31","km_per_day":84,"location":"吉安市","marriage":"0.0","name":"罗","plate_num":"赣D-L1838","position":"未填","sale_date":"2011-02-15","small_scratch_number":0,"survey_speed":0,"wechat_id":"0.0","work_field":"未填"}
+     * result : {"Numb":"13979630156","age":0,"birthday":"1900-01-31","car_age":907,"car_model":"凯美瑞","car_purpose":"未填","children":"0.0","continue_insurance_date":"1900-01-31","continue_notes":"0.0","discount":7.5,"displacement":"0","feature_notes":"0.0","gender":"未填","giveup_notes":"0.0","hobby":"0.0","id":6353,"identity_percent":0,"identity_score":0,"insurance_date":"1900-01-31","km_per_day":20,"location":"江西省吉安市吉州区江西省吉安市吉州区井冈山大道22号","marriage":"0.0","name":"赵贵萍","plate_num":"赣D-8U977","position":"未填","sale_date":"1111-11-11","small_scratch_number":0,"survey_speed":0,"wechat_id":"0.0","work_field":"未填"}
      */
 
     private int error_code;
@@ -44,33 +44,34 @@ public class ClientIdentityBean implements Serializable {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable {
         /**
-         * Numb : 13766286568
+         * Numb : 13979630156
          * age : 0.0
          * birthday : 1900-01-31
-         * car_age : 7
-         * car_model : 汉兰达
+         * car_age : 907
+         * car_model : 凯美瑞
          * car_purpose : 未填
-         * children : 0
-         * continue_insurance_date : 0000-00-00
+         * children : 0.0
+         * continue_insurance_date : 1900-01-31
          * continue_notes : 0.0
-         * displacement : 2.7L
+         * discount : 7.5
+         * displacement : 0
          * feature_notes : 0.0
-         * gender : 男
+         * gender : 未填
          * giveup_notes : 0.0
          * hobby : 0.0
-         * id : 0
-         * identity_percent : 49
+         * id : 6353
+         * identity_percent : 0
          * identity_score : 0
          * insurance_date : 1900-01-31
-         * km_per_day : 84
-         * location : 吉安市
+         * km_per_day : 20
+         * location : 江西省吉安市吉州区江西省吉安市吉州区井冈山大道22号
          * marriage : 0.0
-         * name : 罗
-         * plate_num : 赣D-L1838
+         * name : 赵贵萍
+         * plate_num : 赣D-8U977
          * position : 未填
-         * sale_date : 2011-02-15
+         * sale_date : 1111-11-11
          * small_scratch_number : 0
          * survey_speed : 0
          * wechat_id : 0.0
@@ -86,6 +87,7 @@ public class ClientIdentityBean implements Serializable {
         private String children;
         private String continue_insurance_date;
         private String continue_notes;
+        private double discount;
         private String displacement;
         private String feature_notes;
         private String gender;
@@ -177,6 +179,14 @@ public class ClientIdentityBean implements Serializable {
 
         public void setContinue_notes(String continue_notes) {
             this.continue_notes = continue_notes;
+        }
+
+        public double getDiscount() {
+            return discount;
+        }
+
+        public void setDiscount(double discount) {
+            this.discount = discount;
         }
 
         public String getDisplacement() {

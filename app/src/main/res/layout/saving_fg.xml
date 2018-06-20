@@ -41,13 +41,27 @@
                         android:id="@+id/saving_month"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginTop="10dip"
                         android:drawablePadding="5.0dip"
                         android:gravity="center"
                         android:padding="5.0dip"
-                        android:text="5-26"
+                        android:text="6-01"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size3" />
+
+
+                    <TextView
+                        android:id="@+id/saving_sa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="10dip"
+                        android:drawablePadding="5.0dip"
+                        android:gravity="center"
+                        android:padding="5.0dip"
+                        android:text="SA2"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size3" />
 

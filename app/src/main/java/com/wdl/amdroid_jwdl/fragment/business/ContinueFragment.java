@@ -20,7 +20,9 @@ import com.wdl.amdroid_jwdl.base.BaseFragment;
 import com.wdl.amdroid_jwdl.interfaces.API;
 import com.wdl.amdroid_jwdl.interfaces.UserService;
 import com.wdl.amdroid_jwdl.model.BaseBean;
+import com.wdl.amdroid_jwdl.model.UserInfo;
 import com.wdl.amdroid_jwdl.util.AppManagerUtil;
+import com.wdl.amdroid_jwdl.util.PreferencesUtil;
 import com.wdl.amdroid_jwdl.util.TimeUtil;
 import com.wdl.amdroid_jwdl.util.UIUtils;
 
@@ -75,6 +77,7 @@ public class ContinueFragment extends BaseFragment {
 
     @BindView(R.id.continue_sumit)
     Button continue_sumit;
+    private UserInfo userInfo;
 
     private void initRecycler() {
         ArrayList<String> Arrayname = new ArrayList();
@@ -170,7 +173,7 @@ public class ContinueFragment extends BaseFragment {
         getActivity().getWindow().setSoftInputMode(32);
         initWheelList();
         initRecycler();
-
+        userInfo = (UserInfo) PreferencesUtil.getInstance(getActivity()).getObject("UserInfo");
     }
 
     @OnClick({R.id.continue_sumit,R.id.continue_et})
@@ -179,6 +182,7 @@ public class ContinueFragment extends BaseFragment {
            case R.id.continue_sumit:
                showLoadingDialog();
                HashMap<String, String> localHashMap = new HashMap();
+               localHashMap.put("said",userInfo.getSAname());
                localHashMap.put("continue_action", "1");
                localHashMap.put("continue_user", CarUserid);
                localHashMap.put("continue_time", years + "-" + months + "-" + days);
