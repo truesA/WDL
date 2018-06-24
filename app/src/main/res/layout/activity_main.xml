@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <com.wdl.amdroid_jwdl.view.NoSlidingViewPaper
+    <com.wdl.jwdl.view.NoSlidingViewPaper
         android:id="@+id/view_page"
         android:layout_width="fill_parent"
         android:layout_height="0dip"

@@ -25,11 +25,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="总计"/>
 
             <TextView
@@ -110,11 +111,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="保养"/>
 
             <TextView
@@ -194,11 +196,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="维修"/>
 
             <TextView
@@ -279,11 +282,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="精品"/>
 
             <TextView
@@ -363,11 +367,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="预约"/>
 
             <TextView
@@ -448,11 +453,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="T1"/>
 
             <TextView
@@ -533,11 +539,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size5"
                 android:textColor="@color/new_color2"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="M1"/>
 
             <TextView
@@ -618,8 +625,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_weight="1.8"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="M2"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />

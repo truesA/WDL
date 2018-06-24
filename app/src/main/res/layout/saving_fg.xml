@@ -61,7 +61,7 @@
                         android:drawablePadding="5.0dip"
                         android:gravity="center"
                         android:padding="5.0dip"
-                        android:text="SA2"
+                        tools:text="SA2"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size3" />
 
@@ -136,7 +136,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_hqje_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -181,7 +181,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jjje_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -224,7 +224,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_dsje_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -279,7 +279,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jtcdcl_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -325,7 +325,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_t1khs_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -369,7 +369,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jczdcl_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -422,7 +422,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_m1khs_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -465,7 +465,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jyycgl_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -508,7 +508,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_m2khs_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -560,7 +560,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jzsjcs_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -603,7 +603,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jzjcz_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -646,7 +646,7 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <com.wdl.amdroid_jwdl.view.XOView
+                            <com.wdl.jwdl.view.XOView
                                 android:id="@+id/saving_jzsl_xo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

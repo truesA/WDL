@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_wilter_c5"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <!--标题：beta_title，如：android:tag="beta_title"
+
+升级信息：beta_upgrade_info 如： android:tag="beta_upgrade_info"
+
+更新属性：beta_upgrade_feature 如： android:tag="beta_upgrade_feature"
+
+取消按钮：beta_cancel_button 如：android:tag="beta_cancel_button"
+
+确定按钮：beta_confirm_button 如：android:tag="beta_confirm_button"-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:tag="beta_title"
+        tools:text="titte" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:tag="beta_upgrade_info"
+        tools:text="info" />
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:tag="beta_upgrade_feature"
+        tools:text="feature" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:tag="beta_cancel_button"
+            android:background="@null"
+            android:text="@string/strUpgradeDialogCancelBtn"
+            android:textColor="@color/new_text_color03"/>
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="1dp" />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:tag="beta_confirm_button"
+            android:background="@null"
+            android:text="@string/strNotificationClickToInstall"
+            android:textColor="@color/color1"/>
+
+    </LinearLayout>
+</LinearLayout>

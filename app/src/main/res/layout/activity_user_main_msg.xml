@@ -1,5 +1,5 @@
-<?xml version="1" encoding="utf-8"?>
-<com.wdl.amdroid_jwdl.view.StateFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.wdl.jwdl.view.StateFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/stateLayout"
     android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             android:paddingTop="5dp"
             android:background="@drawable/edit_wilter_c5">
 
-            <com.wdl.amdroid_jwdl.view.CreditScoreView
+            <com.wdl.jwdl.view.CreditScoreView
                 android:id="@+id/creditscoreview"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
@@ -203,4 +203,4 @@
 
 
 </RelativeLayout>
-</com.wdl.amdroid_jwdl.view.StateFrameLayout>
+</com.wdl.jwdl.view.StateFrameLayout>

@@ -30,8 +30,9 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
+                    android:layout_weight="1.8"
+                    android:paddingLeft="5dp"
+                    android:gravity="left"
                     android:text="M1目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size5" />
@@ -113,8 +114,9 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
+                    android:layout_weight="1.8"
+                    android:paddingLeft="5dp"
+                    android:gravity="left"
                     android:text="M2目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size5" />
@@ -198,8 +200,9 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
+                    android:layout_weight="1.8"
+                    android:paddingLeft="5dp"
+                    android:gravity="left"
                     android:text="M1*目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size5" />
@@ -281,8 +284,9 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center"
+                    android:layout_weight="1.8"
+                    android:paddingLeft="5dp"
+                    android:gravity="left"
                     android:text="M2*目标"
                     android:textColor="@color/new_color2"
                     android:textSize="@dimen/text_size5" />

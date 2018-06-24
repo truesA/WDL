@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -47,26 +47,26 @@
                         android:id="@+id/carPai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="京A-888888"
+                        tools:text="京A-888888"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size2" />
+                        android:textSize="@dimen/text_size3" />
 
                     <TextView
                         android:id="@+id/carType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="美凯瑞"
+                        tools:text="美凯瑞"
                         android:layout_marginLeft="5dp"
-                        android:textSize="@dimen/text_size4" />
+                        android:textSize="@dimen/new_text_size2"/>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="\ 123456788"
+                    tools:text="123456788"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size3" />
+                    android:textSize="@dimen/text_size4" />
             </LinearLayout>
 
             <LinearLayout
@@ -92,9 +92,9 @@
                         android:gravity="left"
                         android:maxEms="12"
                         android:maxLines="1"
-                        android:text="刘浩明"
+                        tools:text="刘浩明"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size2" />
+                        android:textSize="@dimen/text_size3" />
 
                     <TextView
                         android:id="@+id/msg_total_score"
@@ -103,7 +103,8 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_marginRight="5.0dip"
                         android:gravity="center"
-                        android:text="830" />
+                        android:textSize="@dimen/new_text_size2"
+                        tools:text="830" />
 
                     <TextView
                         android:id="@+id/project_t1"
@@ -113,7 +114,8 @@
                         android:gravity="center"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:text="T1目标"
+                        tools:text="T1目标"
+                        android:textSize="@dimen/new_text_size2"
                         android:textColor="@color/white" />
 
 
@@ -132,7 +134,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5.0dip"
                         android:gravity="center"
-                        android:text="SAname" />
+                        android:textSize="@dimen/new_text_size2"
+                        tools:text="SAname" />
 
 
                     <TextView
@@ -140,7 +143,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="续3" />
+                        android:textSize="@dimen/new_text_size2"
+                        tools:text="续3" />
 
                     <TextView
                         android:id="@+id/zhe"
@@ -149,7 +153,8 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_marginRight="5.0dip"
                         android:gravity="center"
-                        android:text="折0.8" />
+                        android:textSize="@dimen/new_text_size2"
+                        tools:text="折0.8" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -173,7 +178,9 @@
                 android:id="@+id/msg_zcd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0.8"
+                tools:text="0.8"
+                android:layout_marginTop="2dp"
+                android:textSize="@dimen/new_text_size2"
                 android:textColor="@color/black" />
 
 

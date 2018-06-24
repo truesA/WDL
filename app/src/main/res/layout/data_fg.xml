@@ -16,7 +16,7 @@
         <View
             android:id="@+id/view_status"
             android:layout_width="fill_parent"
-            android:layout_height="25.0dip"
+            android:layout_height="35.0dip"
             android:background="@color/text_color05" />
 
         <RelativeLayout
@@ -95,9 +95,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="15.0dip"
-                android:text="1月"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size3" />
+                android:textSize="@dimen/text_size3"
+                tools:text="1月" />
 
             <TextView
                 android:id="@+id/sa_selsect"
@@ -124,6 +124,222 @@
                 android:orientation="vertical">
 
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/data_line_chart"
+                    android:layout_width="fill_parent"
+                    android:layout_height="150.0dip"
+                    android:layout_margin="10.0dip"
+                    android:background="@drawable/edit_wilter_c5"
+                    android:visibility="gone" />
+
+                <com.github.mikephil.charting.charts.CombinedChart
+                    android:id="@+id/data_combind_chart"
+                    android:layout_width="fill_parent"
+                    android:layout_height="170.0dip"
+                    android:layout_margin="10.0dip"
+                    android:background="@drawable/edit_wilter_c5" />
+
+                <LinearLayout
+                    android:id="@+id/ll_chanZ"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/edit_wilter_c5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="达成率"
+                            android:textSize="@dimen/text_size5" />
+
+                        <TextView
+                            android:id="@+id/chanZ_mubv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color1"
+                            android:textSize="@dimen/text_size5"
+                            tools:text="56%" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="20.0dip"
+                        android:background="@color/new_line_color" />
+
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="平日"
+                            android:textSize="@dimen/text_size5" />
+
+                        <TextView
+                            android:id="@+id/chanZ_today"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color1"
+                            android:textSize="@dimen/text_size5"
+                            tools:text="9786" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="20.0dip"
+                        android:background="@color/new_line_color" />
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="周末"
+                            android:textSize="@dimen/text_size5" />
+
+                        <TextView
+                            android:id="@+id/chanZ_sunday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color1"
+                            android:textSize="@dimen/text_size5"
+                            tools:text="14986" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_taiC"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/edit_wilter_c5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="3dp"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:id="@+id/taiC_yuv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="预约率"
+                        android:textSize="@dimen/text_size5"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/taiC_mubv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="达成率"
+                        android:textSize="@dimen/text_size5" />
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="20.0dip"
+                        android:background="@color/new_line_color" />
+
+
+                    <TextView
+                        android:id="@+id/taiC_today"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="平日"
+                        android:textSize="@dimen/text_size5" />
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="20.0dip"
+                        android:background="@color/new_line_color" />
+
+
+                    <TextView
+                        android:id="@+id/taiC_sunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="周末"
+                        android:textSize="@dimen/text_size5" />
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_zhiBi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/edit_wilter_c5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="3dp"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:id="@+id/zhiBi_yupm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="当月预约排名"
+                        android:textSize="@dimen/text_size5" />
+                    <!--</LinearLayout>-->
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="20.0dip"
+                        android:background="@color/new_line_color" />
+
+
+                    <TextView
+                        android:id="@+id/zhiBi_rkpm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="当月预入库排名"
+                        android:textSize="@dimen/text_size5" />
+
+
+                </LinearLayout>
+
                 <ScrollView
                     android:layout_width="fill_parent"
                     android:layout_height="0.0dip"
@@ -134,222 +350,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:orientation="vertical">
-
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/data_line_chart"
-                            android:layout_width="fill_parent"
-                            android:layout_height="150.0dip"
-                            android:layout_margin="10.0dip"
-                            android:background="@drawable/edit_wilter_c5"
-                            android:visibility="gone" />
-
-                        <com.github.mikephil.charting.charts.CombinedChart
-                            android:id="@+id/data_combind_chart"
-                            android:layout_width="fill_parent"
-                            android:layout_height="150.0dip"
-                            android:layout_margin="10.0dip"
-                            android:background="@drawable/edit_wilter_c5" />
-
-                        <LinearLayout
-                            android:id="@+id/ll_chanZ"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dip"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="-5dp"
-                            android:background="@drawable/edit_wilter_c5"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp">
-
-                            <LinearLayout
-                                android:layout_width="0.0dip"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.0"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="目标达成率"
-                                    android:textSize="@dimen/text_size5" />
-
-                                <TextView
-                                    android:id="@+id/chanZ_mubv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size5"
-                                    tools:text="56%" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
-
-
-                            <LinearLayout
-                                android:layout_width="0.0dip"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.0"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="平日"
-                                    android:textSize="@dimen/text_size5" />
-
-                                <TextView
-                                    android:id="@+id/chanZ_today"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size5"
-                                    tools:text="9786" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
-
-                            <LinearLayout
-                                android:layout_width="0.0dip"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.0"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="周末"
-                                    android:textSize="@dimen/text_size5" />
-
-                                <TextView
-                                    android:id="@+id/chanZ_sunday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/color1"
-                                    android:textSize="@dimen/text_size5"
-                                    tools:text="14986" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_taiC"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="-5dp"
-                            android:background="@drawable/edit_wilter_c5"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp"
-                            android:visibility="gone">
-
-
-                            <TextView
-                                android:id="@+id/taiC_yuv"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="预约率"
-                                android:textSize="@dimen/text_size5"
-                                android:visibility="gone" />
-
-
-                            <TextView
-                                android:id="@+id/taiC_mubv"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="达成率"
-                                android:textSize="@dimen/text_size5" />
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
-
-
-                            <TextView
-                                android:id="@+id/taiC_today"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="平日"
-                                android:textSize="@dimen/text_size5" />
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
-
-
-                            <TextView
-                                android:id="@+id/taiC_sunday"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="周末"
-                                android:textSize="@dimen/text_size5" />
-                            <!--</LinearLayout>-->
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_zhiBi"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="-5dp"
-                            android:background="@drawable/edit_wilter_c5"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp"
-                            android:visibility="gone">
-
-
-                            <TextView
-                                android:id="@+id/zhiBi_yupm"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="当月预约排名"
-                                android:textSize="@dimen/text_size5" />
-                            <!--</LinearLayout>-->
-
-                            <View
-                                android:layout_width="1.0dip"
-                                android:layout_height="20.0dip"
-                                android:background="@color/new_line_color" />
-
-
-                            <TextView
-                                android:id="@+id/zhiBi_rkpm"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="当月预入库排名"
-                                android:textSize="@dimen/text_size5" />
-
-
-                        </LinearLayout>
 
                         <include layout="@layout/data_fg_progress_layout2" />
 
@@ -376,8 +376,8 @@
                                 android:id="@+id/data_CT_zhunshi_ll"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
                                 android:layout_marginBottom="8dp"
+                                android:gravity="center"
                                 android:orientation="horizontal"
                                 android:visibility="gone">
 
@@ -389,8 +389,9 @@
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
+                                        android:layout_weight="1.8"
+                                        android:paddingLeft="5dp"
+                                        android:gravity="left"
                                         android:text="准时"
                                         android:textColor="@color/new_color2"
                                         android:textSize="@dimen/text_size5" />
@@ -471,8 +472,9 @@
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
+                                        android:layout_weight="1.8"
+                                        android:paddingLeft="5dp"
+                                        android:gravity="left"
                                         android:text="追加"
                                         android:textColor="@color/new_color2"
                                         android:textSize="@dimen/text_size5" />
@@ -538,6 +540,7 @@
 
                                 </LinearLayout>
                             </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorBackground">
 
-    <com.wdl.amdroid_jwdl.view.searchView.SearchView
+    <com.wdl.jwdl.view.searchView.SearchView
         android:id="@+id/search_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

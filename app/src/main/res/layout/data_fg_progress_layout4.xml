@@ -26,7 +26,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="当月预约"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -110,7 +111,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="预约入库"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -193,7 +195,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="预约成功率"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -277,7 +280,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="入库成功率"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -360,7 +364,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="当月收藏"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -444,7 +449,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="当月继续"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -528,7 +534,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="当月放弃"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -612,7 +619,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="当月流失"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
@@ -697,7 +705,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
-                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:gravity="left"
                 android:text="收藏未处理"
                 android:textColor="@color/new_color2"
                 android:textSize="@dimen/text_size5" />
